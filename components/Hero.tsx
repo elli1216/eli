@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
+import TextType from './TextType';
 
 export const Hero: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ export const Hero: React.FC = () => {
         >
           {/* Profile Image Placeholder */}
           <div className='flex flex-col md:flex-row gap-1 md:gap-16 items-center justify-center'>
-            <div className="size-80 rounded-full border-4 border-card dark:border-border shadow-2xl overflow-hidden mb-8 relative group">
+            <div className="size-80 floating rounded-full border-4 border-card dark:border-border shadow-2xl overflow-hidden mb-8 relative group">
               <div className="absolute inset-0 bg-accent animate-pulse" />
               <img
                 src="/me.JPG"
@@ -29,12 +30,16 @@ export const Hero: React.FC = () => {
             </div>
 
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight leading-tight">
-                Hi, I'm Eli. <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-cyan-500">
-                  Vibe Coder.
-                </span>
-              </h1>
+              <TextType
+                text={["Hi, I'm Eli.", "Vibe Coder."]}
+                typingSpeed={80}
+                pauseDuration={1500}
+                showCursor
+                className='text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-transparent bg-clip-text bg-linear-to-r from-primary to-cyan-500'
+                cursorCharacter="_"
+                deletingSpeed={50}
+                cursorBlinkDuration={0.5}
+              />
               <p className="text-md md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed">
                 BSIT Senior at Bulacan State University <br />
                 Crafting modern, scalable web solutions.
@@ -45,7 +50,7 @@ export const Hero: React.FC = () => {
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-4">
                 <a
                   href="#projects"
-                  className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                  className="px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
                 >
                   View My Work <ArrowRight size={18} />
                 </a>
