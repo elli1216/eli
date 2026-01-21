@@ -32,13 +32,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden roboto">
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
       <main className="grow">
         <Hero />
         <About />
         <Experience />
-        <Skills darkMode={darkMode}/>
+        <Skills darkMode={darkMode} />
         <Projects />
         <Contact />
       </main>

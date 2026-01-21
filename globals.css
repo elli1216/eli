@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
 :root {
   --background: #f9fafb;      /* gray-50 */
   --foreground: #111827;      /* gray-900 */
