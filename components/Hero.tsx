@@ -18,7 +18,7 @@ export const Hero: React.FC = () => {
           className="flex flex-col items-center"
         >
           {/* Profile Image Placeholder */}
-          <div className='flex flex-col md:flex-row gap-2 items-center justify-center'>
+          <div className='flex flex-col md:flex-row gap-16 items-center justify-center'>
             <div className="size-80 rounded-full border-4 border-card dark:border-border shadow-2xl overflow-hidden mb-8 relative group">
               <div className="absolute inset-0 bg-accent animate-pulse" />
               <img
@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight leading-tight">
                 Hi, I'm Eli. <br />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-cyan-500">
-                  Future-Ready Web Developer.
+                  Vibe Coder.
                 </span>
               </h1>
               <p className="text-md md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed">

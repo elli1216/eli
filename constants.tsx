@@ -39,7 +39,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     description: "Built a centralized management platform using NextJS, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
     techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS"],
     image: "/stc.png",
-    repoLink: "#",
+    repoLink: "",
     demoLink: "https://stcpac.vercel.app/"
   },
   {
@@ -48,7 +48,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
     techStack: ["React.js", "GitHub"],
     image: "/osas.png",
-    repoLink: "#",
+    repoLink: "",
     demoLink: "https://www.osascomplaints.dev/"
   },
   {
