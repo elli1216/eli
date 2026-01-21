@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb;      /* gray-50 */
-  --foreground: #111827;      /* gray-900 */
-  --muted-foreground: #4b5563; /* gray-600 */
-  --card: #ffffff;            /* white */
-  --border: #1e293b;          /* gray-200 */
-  --input: #f9fafb;            /* gray-50 */
-  --primary: #2563eb;          /* blue-600 */
+  --background: #ffffff;         /* canvas.default */
+  --foreground: #1f2328;         /* fg.default */
+  --muted-foreground: #656d76;   /* fg.muted */
+  --card: #f6f8fa;               /* canvas.subtle */
+  --border: #d0d7de;             /* border.default */
+  --input: #ffffff;              /* canvas.default (inputs usually white) */
+  --primary: #2da44e;            /* accent.fg (GitHub Blue) */
   --primary-foreground: #ffffff; /* white */
-  --accent: #bfdafd;         /* blue-100 */
+  --accent: #ddf4ff;             /* accent.subtle */
 }
 
 .dark {
-  --background: #020617;      /* slate-950 */
-  --foreground: #bed2fb;      /* gray-100 */
-  --muted-foreground: #d1d5db; /* gray-300 */
-  --card: #0f172a;            /* slate-900 */
-  --border: #1e293b;          /* slate-800 */
-  --input: #020617;            /* slate-950 */
-  --primary: #60a5fa;          /* blue-400 */
-  --primary-foreground: #0f172a; /* slate-900 */
-  --accent: #1e293b;  /* slate-800 */
+  --background: #0d1117;         /* canvas.default */
+  --foreground: #e6edf3;         /* fg.default */
+  --muted-foreground: #7d8590;   /* fg.muted */
+  --card: #161b22;               /* canvas.subtle */
+  --border: #30363d;             /* border.default */
+  --input: #0d1117;              /* canvas.default */
+  --primary: #238636;            /* accent.fg (GitHub Blue) */
+  --primary-foreground: #ffffff; /* white */
+  --accent: #1f2428;             /* neutral.subtle (often used for hovers) */
 }
 
 @theme {

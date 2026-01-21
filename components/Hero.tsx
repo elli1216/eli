@@ -6,9 +6,9 @@ export const Hero: React.FC = () => {
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000" />
+      <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob" />
+      <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000" />
+      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
@@ -31,7 +31,7 @@ export const Hero: React.FC = () => {
             <div>
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight leading-tight">
                 Hi, I'm Eli. <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-cyan-500">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-cyan-500">
                   Vibe Coder.
                 </span>
               </h1>
