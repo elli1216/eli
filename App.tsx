@@ -24,9 +24,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-300">
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
-      <main className="flex-grow">
+      <main className="grow">
         <Hero />
         <About />
         <Experience />
