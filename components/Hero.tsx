@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
           <span className="inline-block px-3 py-1 mb-6 text-sm font-semibold tracking-wider text-primary bg-accent rounded-full">
             Available for Hire
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight leading-tight">
             Hi, I'm Eli. <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-cyan-500">
               Future-Ready Web Developer.
