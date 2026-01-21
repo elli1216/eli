@@ -11,48 +11,76 @@ export const NAV_ITEMS = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
-    role: "Programmer Intern",
+    role: "Intern",
     company: "Landbank of the Philippines",
-    period: "2024 - Present",
+    period: "January 2026 - Present",
     description: "Immersed in a professional corporate banking environment, focusing on software development workflows, secure coding practices, and maintaining disciplined agile methodologies. Collaborated with senior developers to optimize internal tools."
   },
   {
     id: 2,
-    role: "BSIT Senior Student",
-    company: "Bulacan State University",
-    period: "2020 - 2024",
-    description: "Specializing in Web Development. Dean's Lister. Led multiple academic capstone projects focusing on full-stack web applications."
+    role: "Remote Intern",
+    company: "Salesforce Virtual Internship Program",
+    period: "March 2025 – May 2025",
+    description: "Built automation solutions on Salesforce including order confirmations, loyalty tiers, stock alerts, and bulk updates. Used Apex, Flow, and LWC to develop apps, integrate APIs, and query data with SOQL. Designed dashboards for insights and documented workflows for scalability."
+  },
+  {
+    id: 3,
+    role: "Student Assistant",
+    company: "Bulacan State University - CSER",
+    period: "January 2025 – May 2025",
+    description: "Managed front desk operations and document handling, ensuring efficient communication between university offices while maintaining high service standards for student inquiries."
   }
 ];
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
     id: 1,
-    title: "STC Performing Arts Center",
-    description: "A comprehensive web platform designed to manage events, ticket reservations, and artist portfolios for the Arts Center. Features real-time scheduling and a content management system.",
-    techStack: ["Next.js", "Supabase", "TypeScript", "Tailwind"],
-    image: "https://picsum.photos/seed/stc/800/600",
+    title: "STC Performing Arts Center Website",
+    description: "Built a centralized management platform using NextJS, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
+    techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS"],
+    image: "/stc.png",
     repoLink: "#",
     demoLink: "#"
   },
   {
     id: 2,
-    title: "Tic-a-Pic",
-    description: "An interactive personal photo booth software allowing users to capture, edit, and print photos instantly. Optimized for touch-screen interfaces.",
-    techStack: ["React", "CSS3", "Firebase"],
-    image: "https://picsum.photos/seed/ticapic/800/600",
+    title: "BuISU OSAS Complaint and Grievance Portal",
+    description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
+    techStack: ["React.js", "GitHub"],
+    image: "/osas.png",
+    repoLink: "#",
+    demoLink: "#"
+  },
+  {
+    id: 3,
+    title: "Tic-a-Pic Photobooth",
+    description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
+    techStack: ["Next.js"],
+    image: "/ticapic.png",
     repoLink: "#",
     demoLink: "#"
   }
 ];
 
 export const SKILL_DATA: SkillItem[] = [
-  { name: "React", category: "frontend" },
-  { name: "TypeScript", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "Tailwind CSS", category: "frontend" },
-  { name: "HTML5 & CSS3", category: "frontend" },
   { name: "JavaScript (ES6+)", category: "frontend" },
-  { name: "Supabase", category: "backend" },
-  { name: "Git & GitHub", category: "tools" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "Java", category: "backend" },
+  { name: "HTML5", category: "frontend" },
+  { name: "CSS3", category: "frontend" },
+  { name: "SQL", category: "backend" },
+  { name: "PostgreSQL", category: "backend" },
+  { name: "ReactJS", category: "frontend" },
+  { name: "NextJS", category: "frontend" },
+  { name: "ExpressJS", category: "backend" },
+  { name: "Tailwind CSS", category: "frontend" },
+  { name: "Zustand", category: "frontend" },
+  { name: "Tanstack", category: "frontend" },
+  { name: "Git/GitHub", category: "tools" },
+  { name: "Supabase", category: "tools" },
+  { name: "VS Code", category: "tools" },
+  { name: "Vercel", category: "tools" },
+  { name: "Render", category: "tools" },
+  { name: "Gemini CLI", category: "tools" },
+  { name: "Prisma", category: "backend" },
 ];
