@@ -9,7 +9,7 @@ This project is a single-page personal portfolio website for a web developer nam
 *   **Framework:** React
 *   **Language:** TypeScript
 *   **Build Tool:** Vite
-*   **Styling:** Tailwind CSS
+*   **Styling:** Tailwind CSS v4
 *   **Animations:** Framer Motion
 *   **Icons:** Lucide React
 
@@ -81,7 +81,10 @@ pnpm run preview
 
 *   **TypeScript:** The project is written in TypeScript. All new components and logic should be written in TypeScript.
 *   **Component-Based Architecture:** The application is built with a component-based architecture. Each section of the portfolio is a separate component.
-*   **Styling:** Styling is done using Tailwind CSS utility classes. Avoid writing custom CSS files where possible.
+*   **Styling:** Styling is done using Tailwind CSS v4. The configuration is managed in two places:
+    *   The `vite.config.ts` file configures the `darkMode` strategy and `content` paths for the `@tailwindcss/vite` plugin.
+    *   The `globals.css` file contains the main Tailwind CSS import (`@import "tailwindcss";`) and custom theme extensions using the `@theme` directive. This includes custom colors, fonts, and animations.
+    *   Avoid writing custom CSS files where possible and leverage the utility-first classes and theming capabilities of Tailwind CSS.
 *   **Data Separation:** The data for the portfolio sections (experience, projects, skills) is kept in the `constants.tsx` file. This separates the data from the UI components.
 *   **Types:** Custom types are defined in the `types.ts` file.
 *   **Path Aliases:** The project uses the `@/*` path alias to refer to the root directory. For example, instead of `import { Navbar } from '../components/Navbar'`, you can use `import { Navbar } from '@/components/Navbar'`.
