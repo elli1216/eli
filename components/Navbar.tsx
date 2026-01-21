@@ -21,11 +21,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-card/80 backdrop-blur-md shadow-sm border-b border'
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? 'bg-card/80 backdrop-blur-md shadow-sm border-b'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="text-xl font-bold text-foreground tracking-tighter">
@@ -54,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
 
         {/* Mobile Toggle */}
         <div className="flex items-center md:hidden gap-4">
-            <button
+          <button
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
           >
