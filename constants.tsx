@@ -74,7 +74,7 @@ export const SKILL_DATA: SkillItem[] = [
   { name: "NextJS", category: "frontend", icon: "nextjs2" },
   { name: "ExpressJS", category: "backend", icon: "expressjs" },
   { name: "Tailwind CSS", category: "frontend", icon: "tailwindcss" },
-  { name: "Zustand", category: "frontend", icon: "zustand" },
+  { name: "Zustand", category: "frontend", icon: "" },
   { name: "Tanstack", category: "frontend", icon: "tanstack" },
   { name: "Git/GitHub", category: "tools", icon: "github" },
   { name: "Supabase", category: "tools", icon: "supabase" },
