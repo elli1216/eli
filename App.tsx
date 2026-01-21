@@ -9,13 +9,21 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
 
@@ -24,9 +32,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
-      <main className="grow">
+      <main className="flex-grow">
         <Hero />
         <About />
         <Experience />

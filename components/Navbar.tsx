@@ -23,12 +23,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-slate-800'
+          ? 'bg-card/80 backdrop-blur-md shadow-sm border-b border'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold text-gray-900 dark:text-white tracking-tighter">
+        <a href="#" className="text-xl font-bold text-foreground tracking-tighter">
           Eli.
         </a>
 
@@ -38,14 +38,14 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
             <a
               key={item.label}
               href={item.href}
-              className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {item.label}
             </a>
           ))}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-gray-600 dark:text-gray-300"
+            className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
             aria-label="Toggle Theme"
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -56,13 +56,13 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
         <div className="flex items-center md:hidden gap-4">
             <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-gray-600 dark:text-gray-300"
+            className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-600 dark:text-gray-300"
+            className="text-muted-foreground"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -71,14 +71,14 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 px-6 py-4 shadow-lg">
+        <div className="md:hidden absolute top-16 left-0 w-full bg-card border-b border px-6 py-4 shadow-lg">
           <div className="flex flex-col space-y-4">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="text-base font-medium text-muted-foreground hover:text-primary"
               >
                 {item.label}
               </a>

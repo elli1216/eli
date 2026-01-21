@@ -4,12 +4,12 @@ import { Section } from './Section';
 export const About: React.FC = () => {
   return (
     <Section id="about">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">About Me</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-8">About Me</h2>
       <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
           <p>
             I am a graduating 4th-year BSIT student with a strong drive for software excellence.
-            Currently, I am honing my skills as a <span className="text-blue-600 dark:text-blue-400 font-semibold">Programmer Intern at Landbank of the Philippines</span>,
+            Currently, I am honing my skills as a <span className="text-primary font-semibold">Programmer Intern at Landbank of the Philippines</span>,
             where I am gaining firsthand exposure to enterprise-level software development and corporate IT workflows.
           </p>
           <p>
@@ -23,7 +23,7 @@ export const About: React.FC = () => {
             <img 
                 src="https://picsum.photos/seed/eli/600/600" 
                 alt="Eli working" 
-                className="relative rounded-2xl shadow-2xl border border-gray-200 dark:border-slate-800"
+                className="relative rounded-2xl shadow-2xl border"
             />
         </div>
       </div>
