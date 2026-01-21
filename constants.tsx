@@ -40,7 +40,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS"],
     image: "/stc.png",
     repoLink: "#",
-    demoLink: "#"
+    demoLink: "https://stcpac.vercel.app/"
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     techStack: ["React.js", "GitHub"],
     image: "/osas.png",
     repoLink: "#",
-    demoLink: "#"
+    demoLink: "https://www.osascomplaints.dev/"
   },
   {
     id: 3,
@@ -57,30 +57,30 @@ export const PROJECT_DATA: ProjectItem[] = [
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
     techStack: ["Next.js"],
     image: "/ticapic.png",
-    repoLink: "#",
-    demoLink: "#"
+    repoLink: "https://github.com/elli1216/Tic-a-Pic",
+    demoLink: "https://tic-a-pic.vercel.app/"
   }
 ];
 
 export const SKILL_DATA: SkillItem[] = [
-  { name: "JavaScript (ES6+)", category: "frontend" },
-  { name: "TypeScript", category: "frontend" },
-  { name: "Java", category: "backend" },
-  { name: "HTML5", category: "frontend" },
-  { name: "CSS3", category: "frontend" },
-  { name: "SQL", category: "backend" },
-  { name: "PostgreSQL", category: "backend" },
-  { name: "ReactJS", category: "frontend" },
-  { name: "NextJS", category: "frontend" },
-  { name: "ExpressJS", category: "backend" },
-  { name: "Tailwind CSS", category: "frontend" },
-  { name: "Zustand", category: "frontend" },
-  { name: "Tanstack", category: "frontend" },
-  { name: "Git/GitHub", category: "tools" },
-  { name: "Supabase", category: "tools" },
-  { name: "VS Code", category: "tools" },
-  { name: "Vercel", category: "tools" },
-  { name: "Render", category: "tools" },
-  { name: "Gemini CLI", category: "tools" },
-  { name: "Prisma", category: "backend" },
+  { name: "JavaScript (ES6+)", category: "frontend", icon: "react" },
+  { name: "TypeScript", category: "frontend", icon: "typescript" },
+  { name: "Java", category: "backend", icon: "java" },
+  { name: "HTML5", category: "frontend", icon: "html5" },
+  { name: "CSS3", category: "frontend", icon: "css3" },
+  { name: "SQL", category: "backend", icon: "mysql" },
+  { name: "PostgreSQL", category: "backend", icon: "postgresql" },
+  { name: "ReactJS", category: "frontend", icon: "react" },
+  { name: "NextJS", category: "frontend", icon: "nextjs2" },
+  { name: "ExpressJS", category: "backend", icon: "expressjs" },
+  { name: "Tailwind CSS", category: "frontend", icon: "tailwindcss" },
+  { name: "Zustand", category: "frontend", icon: "zustand" },
+  { name: "Tanstack", category: "frontend", icon: "tanstack" },
+  { name: "Git/GitHub", category: "tools", icon: "github" },
+  { name: "Supabase", category: "tools", icon: "supabase" },
+  { name: "VS Code", category: "tools", icon: "vscode" },
+  { name: "Vercel", category: "tools", icon: "vercel" },
+  { name: "Render", category: "tools", icon: "render" },
+  { name: "Gemini CLI", category: "tools", icon: "gemini" },
+  { name: "Prisma", category: "backend", icon: "prisma" },
 ];

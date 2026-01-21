@@ -38,7 +38,7 @@ const App: React.FC = () => {
         <Hero />
         <About />
         <Experience />
-        <Skills />
+        <Skills darkMode={darkMode}/>
         <Projects />
         <Contact />
       </main>

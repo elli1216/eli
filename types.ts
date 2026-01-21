@@ -23,6 +23,6 @@ export interface ProjectItem {
 
 export interface SkillItem {
   name: string;
-  icon?: React.ReactNode; 
+  icon?: string; 
   category: 'frontend' | 'backend' | 'tools';
 }
