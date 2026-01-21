@@ -34,7 +34,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
-      <main className="flex-grow">
+      <main className="grow">
         <Hero />
         <About />
         <Experience />
