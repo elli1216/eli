@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
         >
           {/* Profile Image Placeholder */}
           <div className='flex flex-col md:flex-row gap-1 md:gap-16 items-center justify-center'>
-            <div className="size-80 floating rounded-full border-4 border-card dark:border-border shadow-2xl overflow-hidden mb-8 relative group">
+            <div className="size-80 floating glow rounded-full border-4 border-card dark:border-border shadow-2xl overflow-hidden mb-8 relative group">
               <div className="absolute inset-0 bg-accent animate-pulse" />
               <img
                 src="/me.JPG"

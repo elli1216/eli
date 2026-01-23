@@ -138,3 +138,9 @@
 .text-type__cursor--hidden {
   display: none;
 }
+
+.glow {
+  -webkit-box-shadow: 0px 0px 124px 0px rgba(45, 164, 79, 0.76);
+  -moz-box-shadow: 0px 0px 124px 0px rgba(45, 164, 79, 0.76);
+  box-shadow: 0px 0px 124px 0px rgba(45, 164, 79, 0.76);
+}
