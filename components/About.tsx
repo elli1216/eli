@@ -1,5 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
+import ProfileCard from './ProfileCard';
 
 export const About: React.FC = () => {
   return (
@@ -18,14 +19,18 @@ export const About: React.FC = () => {
             and internship discipline to a full-time role.
           </p>
         </div>
-        <div className="relative group">
-            <div className="absolute inset-0 bg-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-            <img 
-                src="https://picsum.photos/seed/eli/600/600" 
-                alt="Eli working" 
-                className="relative rounded-2xl shadow-2xl border"
-            />
-        </div>
+        <ProfileCard
+          name='Darl Floresca'
+          title='Senior Student'
+          handle="javicodes"
+          status="Online"
+          contactText="Contact Me"
+          avatarUrl="/me_no_bg.png"
+          showUserInfo={false}
+          enableTilt={true}
+          enableMobileTilt={true}
+          onContactClick={() => console.log('Contact clicked')}
+        />
       </div>
     </Section>
   );
