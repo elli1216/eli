@@ -7,6 +7,7 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { BackToTop } from './components/BackToTop'
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -32,7 +33,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden roboto">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
       <main className="grow">
         <Hero />
@@ -43,6 +44,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
