@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Download, Mail } from 'lucide-react';
 import TextType from './TextType';
 
 export const Hero: React.FC = () => {
@@ -31,34 +31,34 @@ export const Hero: React.FC = () => {
 
             <div>
               <TextType
-                text={["Hi, I'm Eli.", "Vibe Coder."]}
+                text={["Hi, I'm Eli.", "Vibe Coder.", "Senior Student."]}
                 typingSpeed={80}
                 pauseDuration={1500}
                 showCursor
-                className='text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-transparent bg-clip-text bg-linear-to-r from-primary to-cyan-500'
+                className='text-4xl md:text-6xl font-bold text-nowrap mb-6 tracking-tight leading-tight text-transparent bg-clip-text bg-linear-to-r from-primary to-cyan-500'
                 cursorCharacter="_"
                 deletingSpeed={50}
                 cursorBlinkDuration={0.5}
               />
-              <p className="text-md md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed">
-                BSIT Senior at Bulacan State University <br />
-                Crafting modern, scalable web solutions.
+              <p className="text-md md:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed">
+                Aspiring software developer focused on building efficient,<br /> user-centric web applications.
               </p>
               <span className="text-md inline-block px-3 py-1 mb-6 text-sm font-semibold tracking-wider text-primary bg-accent rounded-full">
-                Available for Hire
+                In Development
               </span>
-              <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
                 <a
-                  href="#projects"
-                  className="px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                  href="/Floresca-Darl-Resume.pdf"
+                  download="Floresca-Darl-Resume.pdf"
+                  className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
                 >
-                  View My Work <ArrowRight size={18} />
+                  Download Resume <Download size={18} />
                 </a>
                 <a
-                  href="#contact"
-                  className="px-8 py-4 bg-accent text-foreground rounded-lg font-medium hover:bg-accent/80 transition-all flex items-center gap-2 border border-transparent hover:border-border"
+                  href="#projects"
+                  className="p-3 bg-accent text-foreground rounded-lg font-medium hover:bg-accent/80 transition-all flex items-center gap-2 border border-transparent hover:border-border"
                 >
-                  Contact Me <Mail size={18} />
+                  View My Work <ArrowRight size={18} />
                 </a>
               </div>
             </div>
