@@ -37,7 +37,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     id: 1,
     title: "STC Performing Arts Center Website",
     description: "Built a centralized management platform using NextJS, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
-    techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS"],
+    techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
     image: "/stc.png",
     repoLink: "",
     demoLink: "https://stcpac.vercel.app/"
@@ -46,7 +46,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     id: 2,
     title: "BuISU OSAS Complaint and Grievance Portal",
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
-    techStack: ["React.js", "GitHub"],
+    techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase"],
     image: "/osas.png",
     repoLink: "",
     demoLink: "https://www.osascomplaints.dev/"
@@ -55,7 +55,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     id: 3,
     title: "Tic-a-Pic Photobooth",
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
-    techStack: ["Next.js"],
+    techStack: ["Next.js", "DaisyUI"],
     image: "/ticapic.png",
     repoLink: "https://github.com/elli1216/Tic-a-Pic",
     demoLink: "https://tic-a-pic.vercel.app/"
