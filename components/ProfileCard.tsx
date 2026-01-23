@@ -457,7 +457,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           }}
         />
       )}
-      <div ref={shellRef} className="relative z-1 group md:pl-6">
+      <div ref={shellRef} className="relative z-1 group">
         <section
           className="grid relative overflow-hidden"
           style={{

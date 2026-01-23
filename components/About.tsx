@@ -30,6 +30,7 @@ export const About: React.FC = () => {
           enableTilt={true}
           enableMobileTilt={true}
           onContactClick={() => console.log('Contact clicked')}
+          className='flex items-center justify-center'
         />
       </div>
     </Section>
