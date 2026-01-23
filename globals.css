@@ -29,7 +29,7 @@
 }
 
 @theme {
-  --font-sans: "Roboto", sans-serif;
+  --font-sans: "Geist Mono", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted-foreground: var(--muted-foreground);

@@ -29,9 +29,9 @@ export const Hero: React.FC = () => {
               />
             </div>
 
-            <div>
+            <div className='flex-1/2'>
               <TextType
-                text={["Hi, I'm Eli.", "Vibe Coder.", "Senior Student."]}
+                text={["Hi, I'm Eli.", "Vibe Coder.", "BSIT Senior."]}
                 typingSpeed={80}
                 pauseDuration={1500}
                 showCursor
@@ -40,10 +40,10 @@ export const Hero: React.FC = () => {
                 deletingSpeed={50}
                 cursorBlinkDuration={0.5}
               />
-              <p className="text-md md:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto leading-relaxed">
-                Aspiring software developer focused on building efficient,<br /> user-centric web applications.
+              <p className="text-md md:text-lg text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
+                Aspiring software developer focused on building efficient, user-centric web applications.
               </p>
-              <span className="text-md inline-block px-3 py-1 mb-6 text-sm font-semibold tracking-wider text-primary bg-accent rounded-full">
+              <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
                 In Development
               </span>
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
