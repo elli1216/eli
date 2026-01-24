@@ -59,6 +59,14 @@ export const PROJECT_DATA: ProjectItem[] = [
     image: "/ticapic.png",
     repoLink: "https://github.com/elli1216/Tic-a-Pic",
     demoLink: "https://tic-a-pic.vercel.app/"
+  },
+  {
+    id: 4,
+    title: "Jobinator",
+    description: "A job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
+    techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
+    image: "/jobinator.png",
+    repoLink: "https://github.com/elli1216/Jobinator",
   }
 ];
 

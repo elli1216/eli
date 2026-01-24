@@ -46,9 +46,9 @@ export const Projects: React.FC = () => {
                 {project.repoLink ? <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="p-2 border rounded-full hover:bg-accent transition-colors" title="View Code">
                   <Github size={20} />
                 </a> : null}
-                <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="p-2 border rounded-full hover:bg-accent transition-colors" title="Live Demo">
+                {project.demoLink ? <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="p-2 border rounded-full hover:bg-accent transition-colors" title="Live Demo">
                   <ExternalLink size={20} />
-                </a>
+                </a> : null}
               </div>
             </div>
           </motion.div>
