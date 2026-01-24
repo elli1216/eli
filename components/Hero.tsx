@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Mail } from 'lucide-react';
+import { ArrowRight, Download, Facebook, Github, Instagram, Mail } from 'lucide-react';
 import TextType from './TextType';
 
 export const Hero: React.FC = () => {
@@ -19,11 +19,11 @@ export const Hero: React.FC = () => {
           className="flex flex-col items-center"
         >
           {/* Profile Image Placeholder */}
-          <div className='flex flex-col md:flex-row gap-1 md:gap-16 items-center justify-center'>
-            <div className="size-80 floating glow rounded-full border-4 border-card dark:border-border shadow-2xl overflow-hidden mb-8 relative group">
+          <div className='flex flex-col md:flex-row gap-0 md:gap-16 items-center justify-center'>
+            <div className="size-80 floating glow rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden mb-8 relative group">
               <div className="absolute inset-0 bg-accent animate-pulse" />
               <img
-                src="/me.JPG"
+                src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG1nazZzd2Q2ZHk5dTNiN2xzOWE3MjhreGRsZnNsNmxsdHppNnFqdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7NoNw4pMNTvgc/giphy.gif"
                 alt="Eli"
                 className="w-full h-full object-cover relative z-10 transform group-hover:scale-110 transition-transform duration-500"
               />
@@ -46,6 +46,7 @@ export const Hero: React.FC = () => {
               <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
                 In Development
               </span>
+
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
                 <a
                   href="/Floresca-Darl-Resume.pdf"
@@ -59,6 +60,23 @@ export const Hero: React.FC = () => {
                   className="p-3 bg-accent text-foreground rounded-lg font-medium hover:bg-accent/80 transition-all flex items-center gap-2 border border-transparent hover:border-border"
                 >
                   View My Work <ArrowRight size={18} />
+                </a>
+              </div>
+              <div className='flex flex-row items-center justify-center gap-2 pt-4'>
+                <a href="https://www.facebook.com/profile.php?id=61582634784747" target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-4 p-0 rounded-lg">
+                  <div className="p-3 bg-accent text-primary rounded-full hover:scale-110 transition-transform">
+                    <Facebook size={24} />
+                  </div>
+                </a>
+                <a href="https://www.instagram.com/darling_moo/" target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-4 p-0 rounded-lg">
+                  <div className="p-3 bg-accent text-primary rounded-full hover:scale-110 transition-transform">
+                    <Instagram size={24} />
+                  </div>
+                </a>
+                <a href="https://github.com/elli1216" target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-4 p-0 rounded-lg">
+                  <div className="p-3 bg-accent text-primary rounded-full hover:scale-110 transition-transform">
+                    <Github size={24} />
+                  </div>
                 </a>
               </div>
             </div>

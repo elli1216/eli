@@ -30,7 +30,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">LinkedIn</h3>
-                <p className="text-muted-foreground">Connect professionally</p>
+                <p className="text-muted-foreground">Darl Ellison Floresca</p>
               </div>
             </a>
 
@@ -40,7 +40,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">GitHub</h3>
-                <p className="text-muted-foreground">Review my code</p>
+                <p className="text-muted-foreground">@elli1216</p>
               </div>
             </a>
           </div>

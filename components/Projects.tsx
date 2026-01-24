@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 export const Projects: React.FC = () => {
   return (
     <Section id="projects" className="bg-accent">
-      <h2 className="text-3xl font-bold text-foreground mb-12">Featured Projects</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-12">Recent Work</h2>
       <div className="grid md:grid-cols-2 gap-8">
         {PROJECT_DATA.map((project) => (
           <motion.div
