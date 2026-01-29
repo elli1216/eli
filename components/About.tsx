@@ -1,13 +1,20 @@
 import React from 'react';
 import { Section } from './Section';
 import ProfileCard from './ProfileCard';
+import { motion } from 'framer-motion';
 
 export const About: React.FC = () => {
   return (
     <Section id="about">
       <h2 className="text-3xl font-bold text-foreground mb-8">About Me</h2>
       <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+        <motion.div
+          className="space-y-6 text-lg text-muted-foreground leading-relaxed"
+          initial={{ opacity: 0, x: -500 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <p>
             I am a graduating 4th-year BSIT student with a strong drive for software excellence.
             Currently, I am honing my skills as a <span className="text-primary font-semibold">Programmer Intern at Landbank of the Philippines</span>,
@@ -18,20 +25,27 @@ export const About: React.FC = () => {
             requirements into clean, user-friendly digital experiences. I am eager to bring my academic foundation
             and internship discipline to a full-time role.
           </p>
-        </div>
-        <ProfileCard
-          name='Darl Floresca'
-          title='Senior Student'
-          handle="javicodes"
-          status="Online"
-          contactText="Contact Me"
-          avatarUrl="/me_no_bg.png"
-          showUserInfo={false}
-          enableTilt={true}
-          enableMobileTilt={true}
-          onContactClick={() => console.log('Contact clicked')}
-          className='flex items-center justify-center'
-        />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 500 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <ProfileCard
+            name='Darl Floresca'
+            title='Senior Student'
+            handle="javicodes"
+            status="Online"
+            contactText="Contact Me"
+            avatarUrl="/me_no_bg.png"
+            showUserInfo={false}
+            enableTilt={true}
+            enableMobileTilt={true}
+            onContactClick={() => console.log('Contact clicked')}
+            className='flex items-center justify-center'
+          />
+        </motion.div>
       </div>
     </Section>
   );

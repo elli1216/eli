@@ -4,9 +4,10 @@ export const Footer: React.FC = () => {
   return (
     <footer className="py-8 px-5 md:px-0 bg-accent border-t text-center">
       <p className="text-muted-foreground">
-        © {new Date().getFullYear()} Eli. All rights reserved. Built with React, TypeScript and
-        {" "}
-        <a href="https://www.reactbits.dev/" target='blank' className='text-blue-500 underline'>ReactBits</a>.
+        © {new Date().getFullYear()} Eli. All rights reserved. Built with React, TypeScript, {" "}
+        <a href="https://www.reactbits.dev/" target='blank' className='text-blue-500 underline'>ReactBits</a>,
+        {" and "}
+        <a href="https://motion.dev/" target='blank' className='text-blue-500 underline'>Motion</a>.
       </p>
     </footer>
   );
