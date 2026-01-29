@@ -48,36 +48,61 @@ export const Hero: React.FC = () => {
               </span>
 
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
-                <a
+                <motion.a
                   href="/Floresca-Darl-Resume.pdf"
                   download="Floresca-Darl-Resume.pdf"
                   className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Download Resume <Download size={18} />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#projects"
                   className="p-3 bg-accent text-foreground rounded-lg font-medium hover:bg-accent/80 transition-all flex items-center gap-2 border border-transparent hover:border-border"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   View My Work <ArrowRight size={18} />
-                </a>
+                </motion.a>
               </div>
               <div className='flex flex-row items-center justify-center gap-2 pt-4'>
-                <a href="https://www.facebook.com/profile.php?id=61582634784747" target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-4 p-0 rounded-lg">
-                  <div className="p-3 bg-accent text-primary rounded-full hover:scale-110 transition-transform">
+                <motion.a 
+                  href="https://www.facebook.com/profile.php?id=61582634784747" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex w-fit items-center gap-4 p-0 rounded-lg"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <div className="p-3 bg-accent text-primary rounded-full">
                     <Facebook size={24} />
                   </div>
-                </a>
-                <a href="https://www.instagram.com/darling_moo/" target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-4 p-0 rounded-lg">
-                  <div className="p-3 bg-accent text-primary rounded-full hover:scale-110 transition-transform">
+                </motion.a>
+                <motion.a 
+                  href="https://www.instagram.com/darling_moo/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex w-fit items-center gap-4 p-0 rounded-lg"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <div className="p-3 bg-accent text-primary rounded-full">
                     <Instagram size={24} />
                   </div>
-                </a>
-                <a href="https://github.com/elli1216" target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-4 p-0 rounded-lg">
-                  <div className="p-3 bg-accent text-primary rounded-full hover:scale-110 transition-transform">
+                </motion.a>
+                <motion.a 
+                  href="https://github.com/elli1216" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex w-fit items-center gap-4 p-0 rounded-lg"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <div className="p-3 bg-accent text-primary rounded-full">
                     <Github size={24} />
                   </div>
-                </a>
+                </motion.a>
               </div>
             </div>
           </div>

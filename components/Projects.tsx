@@ -43,12 +43,28 @@ export const Projects: React.FC = () => {
               </div>
 
               <div className="flex items-center justify-end gap-4 mt-6">
-                {project.repoLink ? <a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="p-2 border rounded-full hover:bg-accent transition-colors" title="View Code">
+                {project.repoLink ? <motion.a 
+                  href={project.repoLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 border rounded-full hover:bg-accent transition-colors" 
+                  title="View Code"
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Github size={20} />
-                </a> : null}
-                {project.demoLink ? <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="p-2 border rounded-full hover:bg-accent transition-colors" title="Live Demo">
+                </motion.a> : null}
+                {project.demoLink ? <motion.a 
+                  href={project.demoLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 border rounded-full hover:bg-accent transition-colors" 
+                  title="Live Demo"
+                  whileHover={{ scale: 1.1, rotate: -10 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <ExternalLink size={20} />
-                </a> : null}
+                </motion.a> : null}
               </div>
             </div>
           </motion.div>

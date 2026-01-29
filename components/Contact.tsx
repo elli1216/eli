@@ -1,6 +1,7 @@
 import React from 'react';
 import { Section } from './Section';
 import { Mail, Linkedin, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const Contact: React.FC = () => {
   return (
@@ -14,35 +15,56 @@ export const Contact: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8 flex flex-col justify-center">
-            <a href="mailto:eli@example.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors">
-              <div className="p-3 bg-accent text-primary rounded-full group-hover:scale-110 transition-transform">
+            <motion.a 
+              href="mailto:eli@example.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="p-3 bg-accent text-primary rounded-full">
                 <Mail size={24} />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Email Me</h3>
                 <p className="text-muted-foreground">floresca.darlellisong@gmail.com</p>
               </div>
-            </a>
+            </motion.a>
 
-            <a href="https://www.linkedin.com/in/darlfloresca/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors">
-              <div className="p-3 bg-accent text-primary rounded-full group-hover:scale-110 transition-transform">
+            <motion.a 
+              href="https://www.linkedin.com/in/darlfloresca/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="p-3 bg-accent text-primary rounded-full">
                 <Linkedin size={24} />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">LinkedIn</h3>
                 <p className="text-muted-foreground">Darl Ellison Floresca</p>
               </div>
-            </a>
+            </motion.a>
 
-            <a href="https://github.com/elli1216" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors">
-              <div className="p-3 bg-accent text-primary rounded-full group-hover:scale-110 transition-transform">
+            <motion.a 
+              href="https://github.com/elli1216" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="p-3 bg-accent text-primary rounded-full">
                 <Github size={24} />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">GitHub</h3>
                 <p className="text-muted-foreground">@elli1216</p>
               </div>
-            </a>
+            </motion.a>
           </div>
 
           {/* Simple Form */}
@@ -74,12 +96,14 @@ export const Contact: React.FC = () => {
                 placeholder="Hello Eli, I'd like to discuss..."
               ></textarea>
             </div>
-            <button
+            <motion.button
               type="submit"
               className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-md"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Send Message
-            </button>
+            </motion.button>
           </form>
         </div>
       </div>
