@@ -21,15 +21,18 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? 'bg-card/80 backdrop-blur-md shadow-sm border-b'
-          : 'bg-transparent'
+        ? 'bg-card/80 backdrop-blur-md shadow-sm border-b'
+        : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <motion.a 
-          href="#" 
+        <motion.a
+          href="#"
           className="text-xl font-bold text-foreground tracking-tighter"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -101,6 +104,6 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
           </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 };

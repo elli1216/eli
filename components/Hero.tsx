@@ -13,9 +13,14 @@ export const Hero: React.FC = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 120, 
+            damping: 8, 
+            delay: 0.2 
+          }}
           className="flex flex-col items-center"
         >
           {/* Profile Image Placeholder */}
