@@ -71,7 +71,7 @@ export const PROJECT_DATA: ProjectItem[] = [
 ];
 
 export const SKILL_DATA: SkillItem[] = [
-  { name: "JavaScript (ES6+)", category: "frontend", icon: "react" },
+  { name: "JavaScript", category: "frontend", icon: "react" },
   { name: "TypeScript", category: "frontend", icon: "typescript" },
   { name: "Java", category: "backend", icon: "java" },
   { name: "HTML5", category: "frontend", icon: "html5" },

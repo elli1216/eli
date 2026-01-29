@@ -2,10 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Facebook, Github, Instagram, Move } from 'lucide-react';
 import TextType from './TextType';
+import LightRays from './LightRays';
 
 export const Hero: React.FC = () => {
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-hidden">
+      <LightRays
+        raysColor="#2da44e"
+        raysSpeed={1}
+        lightSpread={2}
+        rayLength={3}
+        pulsating={false}
+        mouseInfluence={0.05}
+        noiseAmount={0.1}
+        className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-50"
+      />
       {/* Background decoration */}
       <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob pointer-events-none" />
       <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000 pointer-events-none" />
