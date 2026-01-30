@@ -39,10 +39,13 @@ export const Hero: React.FC = () => {
             <motion.div
               drag
               dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-              whileHover={{ cursor: 'grabbing' }}
+              whileHover={{ cursor: 'grabbing', scale: 0.95 }}
               className="mb-8 relative z-10"
             >
-              <div className="size-80 floating glow rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden relative group pointer-events-none select-none">
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                className="size-80 glow rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden relative group pointer-events-none select-none">
                 <div className="absolute inset-0 bg-accent animate-pulse" />
                 <img
                   src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG1nazZzd2Q2ZHk5dTNiN2xzOWE3MjhreGRsZnNsNmxsdHppNnFqdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7NoNw4pMNTvgc/giphy.gif"
@@ -50,7 +53,7 @@ export const Hero: React.FC = () => {
                   draggable="false"
                   className="w-full h-full object-cover relative z-10 transform group-hover:scale-110 transition-transform duration-500"
                 />
-              </div>
+              </motion.div>
 
               {/* Drag Me Badge */}
               <motion.div
