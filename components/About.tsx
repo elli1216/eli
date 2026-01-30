@@ -10,24 +10,20 @@ export const About: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           className="space-y-6 text-lg text-muted-foreground leading-relaxed"
-          initial={{ opacity: 0, x: -500 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p>
-            I am a graduating 4th-year BSIT student with a strong drive for software excellence.
-            Currently, I am honing my skills as a <span className="text-primary font-semibold">Programmer Intern at Landbank of the Philippines</span>,
-            where I am gaining firsthand exposure to enterprise-level software development and corporate IT workflows.
+          <p className='text-wrap'>
+            I am a graduating 4th-year BSIT student with a relentless drive for software excellence. Currently, I am an <span className="text-primary font-semibold">Intern at Landbank of the Philippines</span>, where I am developing a custom file conversion utility to modernize legacy data processing. My role involves reverse-engineering complex data logic to build automated solutions that ensure 100% data integrity between legacy and modern systems.
           </p>
-          <p>
-            My journey is defined by a passion for modern web technologies. I love transforming complex
-            requirements into clean, user-friendly digital experiences. I am eager to bring my academic foundation
-            and internship discipline to a full-time role.
+          <p className='text-wrap'>
+            My journey is defined by a passion for building clean, user-friendly software—whether that’s a complex backend data tool or a polished web interface. I am excited to bring my technical adaptability and internship experience to a dynamic development team.
           </p>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, x: 500 }}
+          initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}

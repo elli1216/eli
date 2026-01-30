@@ -14,7 +14,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: "Intern",
     company: "Landbank of the Philippines",
     period: "January 2026 - Present",
-    description: "Immersed in a professional corporate banking environment, focusing on software development workflows, secure coding practices, and maintaining disciplined agile methodologies. Collaborated with senior developers to optimize internal tools."
+    description: "Focused on modernizing legacy financial systems by developing automated data processing tools. Tasks include designing algorithms for data transformation, validating output accuracy against legacy benchmarks, and documenting technical specifications for internal software utilities."
   },
   {
     id: 2,

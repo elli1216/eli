@@ -152,9 +152,9 @@ export const Projects: React.FC = () => {
                   </AnimatePresence>
                 </div>
 
-                <div className="p-6 md:p-8 grow flex flex-col h-2/5 md:h-1/3 overflow-hidden relative">
+                <div className="p-6 md:p-8 grow flex flex-col h-1/1 md:h-1/3 overflow-hidden relative">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl font-bold text-foreground line-clamp-1">
+                    <h3 className="text-2xl font-bold text-foreground md:line-clamp-1">
                       {project.title}
                     </h3>
 
