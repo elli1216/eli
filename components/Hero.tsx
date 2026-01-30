@@ -8,10 +8,10 @@ export const Hero: React.FC = () => {
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-hidden">
       <LightRays
-        raysColor="#2da44e"
+        raysColor="#ffffff"
         raysSpeed={1}
-        lightSpread={2}
-        rayLength={3}
+        lightSpread={1}
+        rayLength={2}
         pulsating={false}
         mouseInfluence={0.05}
         noiseAmount={0.1}
