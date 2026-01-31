@@ -39,7 +39,8 @@ export const Hero: React.FC = () => {
             <motion.div
               drag
               dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-              whileHover={{ cursor: 'grabbing', scale: 0.95 }}
+              whileHover={{ cursor: 'grab' }}
+              whileTap={{ cursor: 'grabbing', scale: 0.95 }}
               className="mb-8 relative z-10"
             >
               <motion.div
