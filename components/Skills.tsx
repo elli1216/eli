@@ -18,7 +18,7 @@ export const Skills: React.FC<props> = ({ darkMode }) => {
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    isMobile ? ["0%", "-1180%"] : ["0%", "-420%"]
+    isMobile ? ["0%", "-65%"] : ["0%", "-53%"]
   );
 
   return (
@@ -36,13 +36,13 @@ export const Skills: React.FC<props> = ({ darkMode }) => {
               I utilize a modern toolbelt to build fast, responsive, and robust applications.
             </p>
 
-            <motion.div style={{ x }} className="flex gap-4">
+            <motion.div style={{ x }} className="flex flex-wrap w-[260vw] md:w-[170vw] gap-4">
               {SKILL_DATA.map((skill) => (
                 <div
                   key={skill.name}
                   className="flex flex-col gap-2 shrink-0 items-center justify-center rounded-lg border bg-card px-6 py-3 font-medium text-muted-foreground shadow-sm transition-colors hover:border-primary hover:text-primary cursor-default"
                 >
-                  <div className='size-30'>
+                  <div className='size-15 md:size-30'>
                     <StackIcon name={skill.icon} variant={darkMode ? "dark" : "light"} />
                   </div>
                   {skill.name}
