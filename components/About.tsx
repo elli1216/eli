@@ -16,10 +16,11 @@ export const About: React.FC = () => {
           viewport={{ once: true }}
         >
           <p className='text-wrap'>
-            I am a graduating 4th-year BSIT student with a relentless drive for software excellence. Currently, I am an <span className="text-primary font-semibold">Intern at Landbank of the Philippines</span>, where I am developing a custom file conversion utility to modernize legacy data processing. My role involves reverse-engineering complex data logic to build automated solutions that ensure 100% data integrity between legacy and modern systems.
-          </p>
-          <p className='text-wrap'>
-            My journey is defined by a passion for building clean, user-friendly software—whether that’s a complex backend data tool or a polished web interface. I am excited to bring my technical adaptability and internship experience to a dynamic development team.
+            I am a senior BSIT student with a passion for modern web technologies and a high degree of technical flexibility.
+            I pride myself on being a <span className='text-primary font-semibold'>coachable developer</span> who thrives on feedback and industry-best practices to sharpen my skills.
+            I leverage an AI-augmented stack, including <span className='text-primary font-semibold'>Cursor, Gemini CLI, and MCP servers</span> to accelerate
+            development cycles while maintaining high standards for code scalability and performance. I am excited to bring my adaptable mindset and AI-driven
+            workflow to a dynamic development environment.
           </p>
         </motion.div>
         <motion.div

@@ -24,8 +24,8 @@ export const Hero: React.FC = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
-          initial={{ y: -100, x: -900 }}
-          animate={{ y: 0, x: 0 }}
+          initial={{ y: -500 }}
+          animate={{ y: 0 }}
           transition={{
             type: "spring",
             stiffness: 120,
