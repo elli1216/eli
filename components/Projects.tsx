@@ -8,24 +8,14 @@ import {
   useScroll,
   useTransform,
   useSpring,
-  MotionValue
 } from 'motion/react';
-
-function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 1], [-distance, distance]);
-}
 
 const ProjectCard = ({ project }: { project: ProjectItem; index: number }) => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
 
   return (
-    <section
-      className="h-[80vh] md:h-screen md:w-screen flex items-center justify-center relative snap-center perspective-500"
-      style={{ scrollSnapStop: 'always' }}
-    >
-      <div ref={ref} className="relative w-full h-125 md:h-160 md:w-screen overflow-hidden rounded-xl shadow-2xl">
+    <section className="h-[60vh] md:h-screen md:w-screen flex items-center justify-center relative perspective-500">
+      <div ref={ref} className="relative w-full h-125 md:h-175 overflow-hidden rounded-xl shadow-2xl">
         <img
           src={project.image}
           alt={project.title}
@@ -74,8 +64,7 @@ const ProjectCard = ({ project }: { project: ProjectItem; index: number }) => {
 
       {/* Parallax Title */}
       <motion.h2
-        style={{ y }}
-        className="absolute z-10 text-5xl font-bold uppercase italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-10%] w-auto top-0 md:top-[15%] px-4"
+        className="absolute bg-primary p-2 rounded-2xl z-10 text-2xl md:text-4xl font-bold italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-10%] w-auto top-[4%] md:top-[10%] px-4"
       >
         {project.title}
       </motion.h2>
@@ -104,9 +93,9 @@ export const Projects: React.FC = () => {
   });
 
   return (
-    <Section id="projects" className="bg-accent relative snap-start">
+    <Section id="projects" className="bg-accent relative">
       <div ref={containerRef} className="relative">
-        <div className="mb-12 text-center md:text-left snap-center">
+        <div className="mb-12 text-center md:text-left">
           <h2 className="text-3xl font-bold text-foreground">Recent Work</h2>
           <p className="text-muted-foreground mt-2">Scroll to explore my projects</p>
         </div>
@@ -120,7 +109,7 @@ export const Projects: React.FC = () => {
           style={{ opacity }}
           className="fixed left-0 right-0 bottom-10 z-50 px-6 hidden md:block"
         >
-          <div className="h-1.5 w-full bg-border/30 rounded-full overflow-hidden">
+          <div className="h-1.5 w-[92vw] bg-border/30 rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-primary origin-left"
               style={{ scaleX }}
