@@ -32,7 +32,7 @@ export const About: React.FC = () => {
           <ProfileCard
             name='Darl Floresca'
             title='Senior Student'
-            handle="javicodes"
+            handle="elifloresca"
             status="Online"
             contactText="Contact Me"
             avatarUrl="/me_no_bg.png"
