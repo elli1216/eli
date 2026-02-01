@@ -15,10 +15,10 @@ export const Contact: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8 flex flex-col justify-center">
-            <motion.a 
-              href="mailto:eli@example.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <motion.a
+              href="mailto:eli@example.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -32,10 +32,10 @@ export const Contact: React.FC = () => {
               </div>
             </motion.a>
 
-            <motion.a 
-              href="https://www.linkedin.com/in/darlfloresca/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <motion.a
+              href="https://www.linkedin.com/in/darlfloresca/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -49,10 +49,10 @@ export const Contact: React.FC = () => {
               </div>
             </motion.a>
 
-            <motion.a 
-              href="https://github.com/elli1216" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <motion.a
+              href="https://github.com/elli1216"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

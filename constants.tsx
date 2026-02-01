@@ -44,7 +44,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     id: 2,
-    title: "BuISU OSAS Complaint and Grievance Portal",
+    title: "BulSU OSAS Complaint and Grievance Portal",
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase"],
     image: "/osas.png",

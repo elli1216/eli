@@ -95,6 +95,9 @@
 }
 
 @layer base {
+  html {
+    scroll-snap-type: y proximity;
+  }
   * {
     @apply border-border outline-ring/50;
   }
