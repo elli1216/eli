@@ -144,7 +144,7 @@ export const Projects: React.FC = () => {
                         exit={{ opacity: 0, y: 20 }}
                         className="absolute inset-0 bg-card/95 p-8 flex items-center justify-center text-center backdrop-blur-sm z-20"
                       >
-                        <p className="text-foreground leading-relaxed text-lg">
+                        <p className="text-foreground leading-relaxed text-sm md:text-lg">
                           {project.description}
                         </p>
                       </motion.div>
