@@ -22,12 +22,12 @@ const App: React.FC = () => {
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1,
-      duration: 1.2,
+      duration: 1.5,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1,
       syncTouch: true,
     })
 
