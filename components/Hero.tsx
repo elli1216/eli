@@ -1,10 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Facebook, Github, Instagram, Move } from 'lucide-react';
+import { ArrowRight, FileText, Facebook, Github, Instagram, Move } from 'lucide-react';
 import TextType from './TextType';
 import LightRays from './LightRays';
 
 export const Hero: React.FC = () => {
+  const handleViewResume = async () => {
+    try {
+      const response = await fetch('/Floresca-Darl-Resume.pdf');
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    } catch (error) {
+      console.error('Error opening resume:', error);
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-hidden">
       <LightRays
@@ -87,15 +98,14 @@ export const Hero: React.FC = () => {
               </span>
 
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
-                <motion.a
-                  href="/Floresca-Darl-Resume.pdf"
-                  download="Floresca-Darl-Resume.pdf"
-                  className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                <motion.button
+                  onClick={handleViewResume}
+                  className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20 cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Download Resume <Download size={18} />
-                </motion.a>
+                  View Resume <FileText size={18} />
+                </motion.button>
                 <motion.a
                   href="#projects"
                   className="p-3 bg-accent text-foreground rounded-lg font-medium hover:bg-accent/80 transition-all flex items-center gap-2 border border-transparent hover:border-border"
