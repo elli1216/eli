@@ -107,10 +107,10 @@ export const Projects: React.FC = () => {
 
     tl.to(cardsRef.current.filter(Boolean), {
       y: 0,
-      rotate: 2,
+      rotate: 0.8,
       opacity: 1,
-      duration: 3,
-      stagger: 2,
+      duration: 1.5,
+      stagger: 1,
       ease: "power2.out",
     });
   }, { scope: sectionRef });
