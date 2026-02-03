@@ -1,123 +1,142 @@
-import React, { useRef } from 'react';
+import React, { useRef, forwardRef } from 'react';
 import { Section } from './Section';
 import { PROJECT_DATA } from '../constants';
 import { ProjectItem } from '../types';
 import { Github, ExternalLink } from 'lucide-react';
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-} from 'motion/react';
+import { motion } from 'framer-motion';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const ProjectCard = ({ project }: { project: ProjectItem; index: number }) => {
-  const ref = useRef(null);
+gsap.registerPlugin(ScrollTrigger);
 
-  return (
-    <section className="h-[60vh] md:h-screen md:w-screen flex items-center justify-center relative perspective-500">
-      <div ref={ref} className="relative w-full h-125 md:h-175 overflow-hidden rounded-xl shadow-2xl">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
+const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectItem; index: number }>(
+  ({ project, index }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className="absolute inset-0 flex items-center justify-center w-full md:w-screen h-150 md:h-full"
+        style={{ zIndex: index + 10 }}
+      >
+        <div className="relative w-full h-125 md:h-150 overflow-hidden rounded-xl shadow-2xl mx-auto">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
 
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/25" />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/25" />
 
-        {/* Project Details Overlay */}
-        <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-linear-to-t from-black/80 via-black/40 to-transparent text-white">
-          <div className="flex flex-wrap gap-2 mb-3">
-            {project.techStack.map((tech) => (
-              <span key={tech} className="px-2 py-1 text-xs font-semibold bg-primary/80 rounded text-primary-foreground backdrop-blur-sm">
-                {tech}
-              </span>
-            ))}
-          </div>
-          <p className="text-sm md:text-base text-gray-200 mb-4 max-w-xl">
-            {project.description}
-          </p>
-          <div className="flex gap-4">
-            {project.repoLink && (
-              <a
-                href={project.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-              >
-                <Github size={18} /> Code
-              </a>
-            )}
-            {project.demoLink && (
-              <a
-                href={project.demoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-              >
-                <ExternalLink size={18} /> Live
-              </a>
-            )}
+          {/* Project Details Overlay */}
+          <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-linear-to-t from-black/80 via-black/40 to-transparent text-white">
+            <div className="flex flex-wrap gap-2 mb-3">
+              {project.techStack.map((tech) => (
+                <span key={tech} className="px-2 py-1 text-xs font-semibold bg-primary/80 rounded text-primary-foreground backdrop-blur-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <p className="text-sm md:text-base text-gray-200 mb-4 max-w-xl">
+              {project.description}
+            </p>
+            <div className="flex gap-4">
+              {project.repoLink && (
+                <a
+                  href={project.repoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                >
+                  <Github size={18} /> Code
+                </a>
+              )}
+              {project.demoLink && (
+                <a
+                  href={project.demoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                >
+                  <ExternalLink size={18} /> Live
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Parallax Title */}
-      <motion.h2
-        className="absolute bg-primary p-2 rounded-2xl z-10 text-2xl md:text-4xl font-bold italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-10%] w-auto top-[4%] md:top-[10%] px-4"
-      >
-        {project.title}
-      </motion.h2>
-    </section>
-  );
-};
+        {/* Parallax Title */}
+        <motion.h2
+          className="absolute bg-primary p-2 rounded-2xl z-10 text-2xl md:text-4xl font-bold italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-5%] lg:left-[-10%] w-auto top-[23%] md:top-[10%] px-4"
+        >
+          {project.title}
+        </motion.h2>
+      </div>
+    );
+  }
+);
+
+ProjectCard.displayName = "ProjectCard";
 
 export const Projects: React.FC = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const { scrollYProgress: sectionProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  useGSAP(() => {
+    // Set initial state for cards
+    cardsRef.current.forEach((card, i) => {
+      if (card) {
+        gsap.set(card, {
+          y: "140%",
+          rotate: i % 2 === 0 ? -10 : 10,
+          opacity: 0,
+        });
+      }
+    });
 
-  const opacity = useTransform(sectionProgress, [0, 0.05, 0.95, 1], [0, 1, 1, 0]);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "+=1000%",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
 
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+    tl.to(cardsRef.current.filter(Boolean), {
+      y: 0,
+      rotate: 2,
+      opacity: 1,
+      duration: 3,
+      stagger: 2,
+      ease: "power2.out",
+    });
+  }, { scope: sectionRef });
 
   return (
-    <Section id="projects" className="bg-accent relative">
-      <div ref={containerRef} className="relative">
-        <div className="mb-12 text-center md:text-left">
+    <Section id="projects" className="bg-accent relative overflow-hidden">
+      <div ref={sectionRef} className="relative min-h-screen flex flex-col">
+        <div className="text-center md:text-left shrink-0">
           <h2 className="text-3xl font-bold text-foreground">Recent Work</h2>
           <p className="text-muted-foreground mt-2">Scroll to explore my projects</p>
         </div>
 
-        {PROJECT_DATA.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
-
-        {/* Progress Bar for Projects Section */}
-        <motion.div
-          style={{ opacity }}
-          className="fixed left-0 right-0 bottom-10 z-50 px-6 hidden md:block"
-        >
-          <div className="h-1.5 w-[92vw] bg-border/30 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-primary origin-left"
-              style={{ scaleX }}
+        {/* Cards Container */}
+        <div className="relative grow min-h-150">
+          {PROJECT_DATA.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              ref={(el) => { cardsRef.current[index] = el; }}
             />
-          </div>
-        </motion.div>
+          ))}
+        </div>
       </div>
     </Section>
   );
 };
+
 
