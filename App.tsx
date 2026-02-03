@@ -8,7 +8,7 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop'
-import Lenis from 'lenis'
+import SmoothScroll from './SmoothScroll';
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -18,31 +18,6 @@ const App: React.FC = () => {
     }
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.1,
-      duration: 1.5,
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1,
-      syncTouch: true,
-    })
-
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    const rafId = requestAnimationFrame(raf)
-
-    return () => {
-      cancelAnimationFrame(rafId)
-      lenis.destroy()
-    }
-  }, [])
 
   useEffect(() => {
     if (darkMode) {
@@ -59,19 +34,21 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
-      <main className="grow">
-        <Hero />
-        <About />
-        <Experience />
-        <Skills darkMode={darkMode} />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
+    <SmoothScroll>
+      <div className="min-h-screen flex flex-col">
+        <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
+        <main className="grow">
+          <Hero />
+          <About />
+          <Experience />
+          <Skills darkMode={darkMode} />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </SmoothScroll>
   );
 };
 
