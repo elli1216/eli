@@ -12,7 +12,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
     role: "Currently looking for an internship",
-    company: "Please see my resume",
+    company: "Please see my resume above.",
     period: "Present",
     description: ""
   },
@@ -67,7 +67,15 @@ export const PROJECT_DATA: ProjectItem[] = [
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/jobinator.png",
     repoLink: "https://github.com/elli1216/Jobinator",
-  }
+  },
+  {
+    id: 4,
+    title: "My Own Portfolio",
+    description: "A portfolio website built with Motion and ReactBits components that you are viewing right now. Showcases my skills and projects as well as my social media accounts.",
+    techStack: ["React", "TypeScript", "Motion React", "ReactBits"],
+    image: "/portfolio.png",
+    repoLink: "https://github.com/elli1216/eli",
+  },
 ];
 
 export const SKILL_DATA: SkillItem[] = [
