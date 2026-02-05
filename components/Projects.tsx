@@ -15,7 +15,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectItem; index: nu
     return (
       <div
         ref={ref}
-        className="absolute inset-0 flex items-center justify-center w-full md:w-screen h-150 md:h-full"
+        className="absolute inset-0 pt-20 md:pt-0 flex items-center justify-center w-full md:w-screen h-150 md:h-full"
         style={{ zIndex: index + 10 }}
       >
         <div className="relative w-full h-125 md:h-150 overflow-hidden rounded-xl shadow-2xl mx-auto">
@@ -67,7 +67,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectItem; index: nu
 
         {/* Parallax Title */}
         <motion.h2
-          className="absolute bg-primary p-2 rounded-2xl z-10 text-2xl md:text-4xl font-bold italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-5%] lg:left-[-10%] w-auto top-[23%] md:top-[10%] px-4"
+          className="absolute bg-primary p-2 rounded-2xl z-10 text-2xl md:text-4xl font-bold italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-5%] lg:left-[-10%] w-auto top-[15%] md:top-[10%] px-4"
         >
           {project.title}
         </motion.h2>

@@ -4,14 +4,14 @@ import Lenis from "lenis";
 const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1,
-      duration: 1.5,
+      duration: 1.2,
+      lerp: 0.07,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1,
-      syncTouch: true,
+      touchMultiplier: 2,
+      smoothTouch: true,
     })
 
     function raf(time: number) {
