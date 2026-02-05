@@ -11,10 +11,10 @@ export const NAV_ITEMS = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
-    role: "Currently looking for an internship",
-    company: "Please see my resume above.",
-    period: "Present",
-    description: ""
+    role: "Programmer Intern",
+    company: "Land Bank of the Philippines",
+    period: "February 2026 - Present",
+    description: "Developing software solutions to automate legacy system migration. Specializing in data logic analysis and the creation of custom utilities to bridge the gap between mainframe data and modern computing environments."
   },
   {
     id: 2,
