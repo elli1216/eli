@@ -11,7 +11,7 @@ export const NAV_ITEMS = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
-    role: "Cobol Developer",
+    role: "Cobol Developer Intern",
     company: "Land Bank of the Philippines",
     period: "February 2026 - Present",
     description: "Develop COBOL programs for mainframe computing environments. Focus on writing clean, efficient code for financial data processing. Ensure system reliability through comprehensive testing and debugging."
