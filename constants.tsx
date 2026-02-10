@@ -11,10 +11,10 @@ export const NAV_ITEMS = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
-    role: "Programmer Intern",
+    role: "Cobol Developer",
     company: "Land Bank of the Philippines",
     period: "February 2026 - Present",
-    description: "Convert Easytrieve programs to COBOL to support the bank's migration to z/OS. Analyze legacy code to replicate data logic accurately in the new environment. Test the converted programs to ensure full compatibility with the updated mainframe system."
+    description: "Develop COBOL programs for mainframe computing environments. Focus on writing clean, efficient code for financial data processing. Ensure system reliability through comprehensive testing and debugging."
   },
   {
     id: 2,
