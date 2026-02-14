@@ -11,14 +11,14 @@ export const NAV_ITEMS = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
-    role: "Cobol Developer Intern",
+    role: "Cobol Programmer Intern",
     company: "Land Bank of the Philippines",
     period: "February 2026 - Present",
     description: "Develop COBOL programs for mainframe computing environments. Focus on writing clean, efficient code for financial data processing. Ensure system reliability through comprehensive testing and debugging."
   },
   {
     id: 2,
-    role: "Remote Intern",
+    role: "Salesforce Developer Intern",
     company: "Salesforce Virtual Internship Program",
     period: "March 2025 – May 2025",
     description: "Built automation solutions on Salesforce including order confirmations, loyalty tiers, stock alerts, and bulk updates. Used Apex, Flow, and LWC to develop apps, integrate APIs, and query data with SOQL. Designed dashboards for insights and documented workflows for scalability."
