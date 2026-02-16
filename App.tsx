@@ -39,10 +39,10 @@ const App: React.FC = () => {
         <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
         <main className="grow">
           <Hero />
-          <About />
           <Experience />
           <Skills darkMode={darkMode} />
           <Projects />
+          <About />
           <Contact />
         </main>
         <Footer />

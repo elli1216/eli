@@ -79,23 +79,28 @@ export const Hero: React.FC = () => {
               </motion.div>
             </motion.div>
 
-            <div className='flex-1/2 relative z-20'>
-              <TextType
-                text={["Hi, I'm Eli.", "Vibe Coder.", "BSIT Senior."]}
-                typingSpeed={80}
-                pauseDuration={1500}
-                showCursor
-                className='text-4xl md:text-6xl font-bold text-nowrap mb-6 tracking-tight leading-tight text-transparent bg-clip-text bg-linear-to-r from-primary to-cyan-500'
-                cursorCharacter="_"
-                deletingSpeed={50}
-                cursorBlinkDuration={0.5}
-              />
-              <p className="text-md md:text-lg text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                Aspiring software developer focused on building efficient, user-centric web applications.
+            <div className='flex-1/2 items-center justify-center relative z-20 text-left'>
+              <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
+                <span className='text-3xl md:text-5xl'>Hi, I'm{" "}</span>
+                <TextType
+                  text={["Eli Floresca", "a Vibe Coder", "a BSIT Senior"]}
+                  typingSpeed={80}
+                  pauseDuration={1500}
+                  showCursor
+                  className="text-transparent text-4xl md:text-6xl bg-clip-text bg-linear-to-r from-primary to-cyan-500"
+                  cursorCharacter="_"
+                  deletingSpeed={50}
+                  cursorBlinkDuration={1}
+                />
+              </h1>
+              <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
+                23-year-old developer from Marilao, Bulacan. I build web applications with Next.js, React, and Python, focusing on clean, maintainable code.
               </p>
-              <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
-                In Development
-              </span>
+              <div className='flex items-center justify-center'>
+                <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
+                  In Development
+                </span>
+              </div>
 
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
                 <motion.button
