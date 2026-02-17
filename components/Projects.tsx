@@ -1,142 +1,198 @@
-import React, { useRef, forwardRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Section } from './Section';
 import { PROJECT_DATA } from '../constants';
 import { ProjectItem } from '../types';
-import { Github, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Github, ExternalLink, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-gsap.registerPlugin(ScrollTrigger);
+const ProjectCard: React.FC<{ project: ProjectItem; index: number; onClick: () => void }> = ({ project, index, onClick }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onClick={onClick}
+      className="group relative aspect-video bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-border cursor-pointer"
+    >
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
 
-const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectItem; index: number }>(
-  ({ project, index }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className="absolute inset-0 pt-20 md:pt-0 flex items-center justify-center w-full md:w-screen h-150 md:h-full"
-        style={{ zIndex: index + 10 }}
-      >
-        <div className="relative w-full h-125 md:h-150 overflow-hidden rounded-xl shadow-2xl mx-auto">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/25" />
-
-          {/* Project Details Overlay */}
-          <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-linear-to-t from-black/80 via-black/40 to-transparent text-white">
-            <div className="flex flex-wrap gap-2 mb-3">
-              {project.techStack.map((tech) => (
-                <span key={tech} className="px-2 py-1 text-xs font-semibold bg-primary/80 rounded text-primary-foreground backdrop-blur-sm">
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <p className="text-sm md:text-base text-gray-200 mb-4 max-w-xl">
-              {project.description}
-            </p>
-            <div className="flex gap-4">
-              {project.repoLink && (
-                <a
-                  href={project.repoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                >
-                  <Github size={18} /> Code
-                </a>
-              )}
-              {project.demoLink && (
-                <a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                >
-                  <ExternalLink size={18} /> Live
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Parallax Title */}
-        <motion.h2
-          className="absolute bg-primary p-2 rounded-xl z-10 text-2xl md:text-4xl font-bold italic text-foreground/80 md:text-foreground/80 pointer-events-none whitespace-normal md:whitespace-nowrap md:left-[-5%] lg:left-[-10%] w-auto top-[15%] md:top-[10%] px-4"
-        >
+      {/* Overlay Title */}
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+        <h3 className="text-xl font-bold text-white">
           {project.title}
-        </motion.h2>
+        </h3>
       </div>
-    );
-  }
-);
 
-ProjectCard.displayName = "ProjectCard";
+      {/* Permanent Title for Mobile/Touch */}
+      <div className="absolute bottom-0 left-0 w-full p-4 bg-black/40 backdrop-blur-xs md:hidden">
+        <h3 className="text-sm font-bold text-white truncate">
+          {project.title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+};
 
-export const Projects: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({ project, onClose }) => {
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
 
-  useGSAP(() => {
-    // Set initial state for cards
-    cardsRef.current.forEach((card, i) => {
-      if (card) {
-        gsap.set(card, {
-          y: "140%",
-          rotate: i % 2 === 0 ? -10 : 10,
-          opacity: 0,
-        });
-      }
-    });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=1000%",
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
-
-    tl.to(cardsRef.current.filter(Boolean), {
-      y: 0,
-      rotate: 0.8,
-      opacity: 1,
-      duration: 1.5,
-      stagger: 1,
-      ease: "power2.out",
-    });
-  }, { scope: sectionRef });
+    // --- Robust Scroll Lock ---
+    // Store original styles
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+    
+    // Prevent background scrolling
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = 'hidden'; // For html
+    document.body.style.overflow = 'hidden'; // For body
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+    
+    // Cleanup function to restore original styles
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+      document.body.style.paddingRight = '0px';
+    };
+  }, [onClose]);
 
   return (
-    <Section id="projects" className="bg-accent relative overflow-hidden">
-      <div ref={sectionRef} className="relative min-h-screen flex flex-col">
-        <div className="text-center md:text-left shrink-0">
-          <h2 className="text-3xl font-bold text-foreground">Recent Work</h2>
-          <p className="text-muted-foreground mt-2">Scroll to explore my projects</p>
-        </div>
+    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden outline-none" data-lenis-prevent>
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 bg-background/90 backdrop-blur-md"
+      />
+      
+      {/* Scrollable Container Wrapper */}
+      <div className="flex min-h-full items-center justify-center p-4 md:p-6 lg:p-12 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          className="relative w-full max-w-5xl bg-card rounded-2xl shadow-2xl border border-border overflow-hidden pointer-events-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full bg-background/50 backdrop-blur-md hover:bg-background transition-colors z-20 text-foreground"
+          >
+            <X size={20} />
+          </button>
 
-        {/* Cards Container */}
-        <div className="relative grow min-h-150">
-          {PROJECT_DATA.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              ref={(el) => { cardsRef.current[index] = el; }}
-            />
-          ))}
-        </div>
+          <div className="flex flex-col">
+            {/* Hero Image - Fitted to width */}
+            <div className="w-full bg-muted/30 flex items-center justify-center p-2 md:p-4 border-b border-border">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+              />
+            </div>
+
+            <div className="p-6 md:p-10">
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
+                <div className="flex-1">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                    {project.title}
+                  </h2>
+
+                  <div className="max-w-3xl text-muted-foreground">
+                    <p className="text-base md:text-lg leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3 min-w-[180px] shrink-0">
+                  {project.demoLink && (
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-bold text-sm shadow-lg shadow-primary/20"
+                    >
+                      <ExternalLink size={18} /> Live Demo
+                    </a>
+                  )}
+                  {project.repoLink && (
+                    <a
+                      href={project.repoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent hover:bg-accent/80 text-foreground transition-all font-bold text-sm border border-border"
+                    >
+                      <Github size={18} /> Source Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
+    </div>
+  );
+};
+export const Projects: React.FC = () => {
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+  return (
+    <Section id="projects" className="bg-accent">
+      <div className="mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Recent Projects</h2>
+        <p className="text-muted-foreground mt-3 max-w-2xl">
+          A collection of projects where I've applied my skills in full-stack development.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        {PROJECT_DATA.map((project, index) => (
+          <ProjectCard
+            key={project.id || index}
+            project={project}
+            index={index}
+            onClick={() => setSelectedProject(project)}
+          />
+        ))}
+      </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </Section>
   );
 };
+
+
 
 
