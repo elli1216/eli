@@ -37,7 +37,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     id: 1,
     title: "STC Performing Arts Center Website",
     description: "Built a centralized management platform using NextJS, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
-    techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
+    techStack: ["Tanstack Router", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
     image: "/stc.png",
     repoLink: "",
     demoLink: "https://stcpac.netlify.app/"
@@ -63,9 +63,10 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     id: 4,
     title: "Jobinator",
-    description: "A job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
+    description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/jobinator.png",
+    demoLink: "https://jobinator.netlify.app/landing",
     repoLink: "https://github.com/elli1216/Jobinator",
   },
   {
