@@ -40,7 +40,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     techStack: ["Next.js", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
     image: "/stc.png",
     repoLink: "",
-    demoLink: "https://stcpac.vercel.app/"
+    demoLink: "https://stcpac.netlify.app/"
   },
   {
     id: 2,
