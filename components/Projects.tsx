@@ -49,13 +49,13 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
     // Store original styles
     const originalHtmlOverflow = document.documentElement.style.overflow;
     const originalBodyOverflow = document.body.style.overflow;
-    
+
     // Prevent background scrolling
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.overflow = 'hidden'; // For html
     document.body.style.overflow = 'hidden'; // For body
     document.body.style.paddingRight = `${scrollBarWidth}px`;
-    
+
     // Cleanup function to restore original styles
     return () => {
       window.removeEventListener('keydown', handleEsc);
@@ -75,7 +75,7 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
         onClick={onClose}
         className="fixed inset-0 bg-background/90 backdrop-blur-md"
       />
-      
+
       {/* Scrollable Container Wrapper */}
       <div className="flex min-h-full items-center justify-center p-4 md:p-6 lg:p-12 pointer-events-none">
         <motion.div
@@ -128,7 +128,7 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 min-w-[180px] shrink-0">
+                <div className="flex flex-col gap-3 min-w-45 shrink-0">
                   {project.demoLink && (
                     <a
                       href={project.demoLink}

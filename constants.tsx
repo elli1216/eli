@@ -12,9 +12,9 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
     role: "Cobol Programmer Intern",
-    company: "Land Bank of the Philippines",
-    period: "February 2026 - Present",
-    description: "Develop COBOL programs for mainframe computing environments. Focus on writing clean, efficient code for financial data processing. Ensure system reliability through comprehensive testing and debugging."
+    company: "Land Bank of the Philippines (HO)",
+    period: "February 2026 - April 2026",
+    description: "Successfully developed 12 COBOL programs for z/OS mainframe computing environment. Focused on writing clean, efficient code for financial data processing. Ensured system reliability through comprehensive testing and debugging."
   },
   {
     id: 2,
@@ -37,10 +37,10 @@ export const PROJECT_DATA: ProjectItem[] = [
     id: 1,
     title: "STC Performing Arts Center Website",
     description: "Built a centralized management platform using NextJS, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
-    techStack: ["Tanstack Router", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
+    techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
     image: "/stc.png",
     repoLink: "",
-    demoLink: "https://stcpac.netlify.app/"
+    demoLink: "https://stcpacv3.vercel.app/"
   },
   {
     id: 2,
