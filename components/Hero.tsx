@@ -7,7 +7,7 @@ import LightRays from './LightRays';
 export const Hero: React.FC = () => {
   const handleViewResume = async () => {
     try {
-      const response = await fetch('/Floresca-Darl-Resume.pdf');
+      const response = await fetch('/Floresca-Darl-Resume-2026.pdf');
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       window.open(url, '_blank');
