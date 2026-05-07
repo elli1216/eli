@@ -13,7 +13,7 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number; onClick: () =
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onClick={onClick}
-      className="group relative aspect-video bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-border cursor-pointer"
+      className="group relative aspect-video rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-border cursor-pointer"
     >
       <img
         src={project.image}
@@ -162,7 +162,7 @@ export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   return (
-    <Section id="projects" className="bg-accent">
+    <Section id="projects">
       <div className="mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground">Recent Projects</h2>
         <p className="text-muted-foreground mt-3 max-w-2xl">

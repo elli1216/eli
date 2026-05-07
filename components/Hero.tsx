@@ -1,34 +1,39 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, FileText, Facebook, Github, Instagram, Move } from 'lucide-react';
-import TextType from './TextType';
-import LightRays from './LightRays';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, FileText, Facebook, Github, Instagram, Move } from 'lucide-react'
+import TextType from './TextType'
+import Particles from './Particles'
 
 export const Hero: React.FC = () => {
   const handleViewResume = async () => {
     try {
-      const response = await fetch('/Floresca-Darl-Resume-2026.pdf');
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
+      const response = await fetch('/Floresca-Darl-Resume-2026.pdf')
+      const blob = await response.blob()
+      const url = URL.createObjectURL(blob)
+      window.open(url, '_blank')
     } catch (error) {
-      console.error('Error opening resume:', error);
+      console.error('Error opening resume:', error)
     }
-  };
+  }
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-hidden">
-      <LightRays
-        raysColor="#ffffff"
-        raysSpeed={1}
-        lightSpread={1}
-        rayLength={2}
-        pulsating={false}
-        mouseInfluence={0.05}
-        noiseAmount={0.1}
-        className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-50"
-      />
-      {/* Background decoration */}
+    <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-visible">
+
+      {/* Changed absolute to fixed and added -z-10 */}
+      <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
+        <Particles
+          particleColors={["#01d54e"]}
+          particleCount={300}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation
+          pixelRatio={1}
+        />
+      </div>
+
       <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob pointer-events-none" />
       <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000 pointer-events-none" />
       <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000 pointer-events-none" />
@@ -45,7 +50,6 @@ export const Hero: React.FC = () => {
           }}
           className="flex flex-col items-center"
         >
-          {/* Profile Image Placeholder */}
           <div className='flex flex-col md:flex-row gap-0 md:gap-16 items-center justify-center'>
             <motion.div
               drag
@@ -68,7 +72,6 @@ export const Hero: React.FC = () => {
                 />
               </motion.div>
 
-              {/* Drag Me Badge */}
               <motion.div
                 className="absolute bottom-6 right-6 bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-20 pointer-events-none"
                 animate={{ y: [0, -5, 0] }}
@@ -95,7 +98,7 @@ export const Hero: React.FC = () => {
                 />
               </h1>
               <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                23-year-old developer from Marilao, Bulacan. I build web applications with Next.js, React, and Spring Boot, focusing on clean, maintainable code.
+                23-year-old software developer from Marilao, Bulacan. I build web applications with Next.js, React, and Spring Boot, focusing on clean, maintainable code.
               </p>
               <div className='flex items-center justify-center'>
                 <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
@@ -165,5 +168,5 @@ export const Hero: React.FC = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}

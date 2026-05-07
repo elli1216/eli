@@ -26,7 +26,7 @@ const itemVariants = {
 
 export const Experience: React.FC = () => {
   return (
-    <Section id="experience" className="bg-card">
+    <Section id="experience">
       <h2 className="text-3xl font-bold text-foreground mb-12">Experience</h2>
       <motion.div
         className="relative border-l ml-3 space-y-12"

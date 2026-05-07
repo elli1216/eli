@@ -16,7 +16,7 @@ export const About: React.FC = () => {
           viewport={{ once: true }}
         >
           <p className='text-wrap'>
-            I am a senior BSIT student with a passion for modern web technologies and a high degree of technical flexibility.
+            I am a BSIT graduate with a passion for modern web technologies and a high degree of technical flexibility.
             I pride myself on being a <span className='text-primary font-semibold'>coachable developer</span> who thrives on feedback and industry-best practices to sharpen my skills.
             I leverage an AI-augmented stack, including <span className='text-primary font-semibold'>Cursor, Gemini CLI, and MCP servers</span> to accelerate
             development cycles while maintaining high standards for code scalability and performance. I am excited to bring my adaptable mindset and AI-driven
