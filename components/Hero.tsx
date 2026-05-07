@@ -33,7 +33,7 @@ export const Hero: React.FC = () => {
       <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000 pointer-events-none" />
       <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="max-w-4xl mx-auto w-full text-center relative z-10">
         <motion.div
           initial={{ y: -500 }}
           animate={{ y: 0 }}
@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
                 className="size-80 glow rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden relative group pointer-events-none select-none">
                 <div className="absolute inset-0 bg-accent animate-pulse" />
                 <img
-                  src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG1nazZzd2Q2ZHk5dTNiN2xzOWE3MjhreGRsZnNsNmxsdHppNnFqdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7NoNw4pMNTvgc/giphy.gif"
+                  src="/mypic.JPG"
                   alt="Eli"
                   draggable="false"
                   className="w-full h-full object-cover relative z-10 transform group-hover:scale-110 transition-transform duration-500"
@@ -81,20 +81,21 @@ export const Hero: React.FC = () => {
 
             <div className='flex-1/2 items-center justify-center relative z-20 text-left'>
               <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
-                <span className='text-3xl md:text-5xl'>Hi, I'm{" "}</span>
+                <span className='text-2xl md:text-3xl'>Hi, I'm{" "}</span>
+                <span className='text-3xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-primary from-primary to-primary/10 text-center'>Eli Floresca</span>
                 <TextType
-                  text={["Eli Floresca", "a Vibe Coder", "a BSIT Senior"]}
-                  typingSpeed={80}
+                  text={["Software Developer", "BSIT Graduate", "Mainframe Developer"]}
+                  typingSpeed={90}
                   pauseDuration={1500}
-                  showCursor
-                  className="text-transparent text-4xl md:text-6xl bg-clip-text bg-linear-to-r from-primary to-cyan-500"
+                  showCursor={true}
+                  className="text-transparent w-full text-nowrap text-center text-4xl bg-clip-text bg-linear-to-r from-primary to-cyan-900"
                   cursorCharacter="_"
                   deletingSpeed={50}
-                  cursorBlinkDuration={1}
+                  cursorBlinkDuration={0.8}
                 />
               </h1>
               <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                23-year-old developer from Marilao, Bulacan. I build web applications with Next.js, React, and Python, focusing on clean, maintainable code.
+                23-year-old developer from Marilao, Bulacan. I build web applications with Next.js, React, and Spring Boot, focusing on clean, maintainable code.
               </p>
               <div className='flex items-center justify-center'>
                 <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">

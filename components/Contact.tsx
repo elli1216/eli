@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Contact: React.FC = () => {
@@ -12,14 +12,14 @@ export const Contact: React.FC = () => {
           Whether you have a question, a job opportunity, or just want to say hi, my inbox is always open.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="flex items-center justify-center">
           {/* Contact Info */}
-          <div className="space-y-8 flex flex-col justify-center">
+          <div className="space-y-8 space-x-4 grid grid-cols-1 md:grid-cols-2 justify-center">
             <motion.a
               href="mailto:eli@example.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors m-0"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -36,7 +36,7 @@ export const Contact: React.FC = () => {
               href="https://www.linkedin.com/in/darlfloresca/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors m-0"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -53,7 +53,7 @@ export const Contact: React.FC = () => {
               href="https://github.com/elli1216"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors"
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors m-0"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -65,10 +65,27 @@ export const Contact: React.FC = () => {
                 <p className="text-muted-foreground">@elli1216</p>
               </div>
             </motion.a>
+
+            <motion.a
+              href="https://www.facebook.com/darlellison/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 group p-4 rounded-lg hover:bg-accent transition-colors m-0"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="p-3 bg-accent text-primary rounded-full">
+                <Facebook size={24} />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">Facebook</h3>
+                <p className="text-muted-foreground">Darl Ellison Floresca</p>
+              </div>
+            </motion.a>
           </div>
 
           {/* Simple Form */}
-          <form className="bg-card p-8 rounded-2xl shadow-lg border space-y-6" onSubmit={(e) => e.preventDefault()}>
+          {/* <form className="bg-card p-8 rounded-2xl shadow-lg border space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">Name</label>
               <input
@@ -104,7 +121,7 @@ export const Contact: React.FC = () => {
             >
               Send Message
             </motion.button>
-          </form>
+          </form> */}
         </div>
       </div>
     </Section>

@@ -34,7 +34,7 @@ const TextType = ({
   showCursor = true,
   hideCursorWhileTyping = false,
   cursorCharacter = '|',
-  cursorClassName = '',
+  cursorClassName = 'text-white',
   cursorBlinkDuration = 0.5,
   textColors = [],
   variableSpeed,
@@ -172,7 +172,7 @@ const TextType = ({
     Component,
     {
       ref: containerRef,
-      className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
+      className: `inline-block text-nowrap tracking-tight ${className}`,
       ...props
     },
     <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
