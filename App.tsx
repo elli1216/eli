@@ -9,6 +9,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop'
 import SmoothScroll from './SmoothScroll';
+import { Certificates } from './components/Certificates';
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -42,6 +43,7 @@ const App: React.FC = () => {
           <Experience />
           <Skills darkMode={darkMode} />
           <Projects />
+          <Certificates />
           <About />
           <Contact />
         </main>
