@@ -383,7 +383,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     maskRepeat: 'repeat',
     maskSize: '150%',
     maskPosition: 'top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
-    filter: 'brightness(0.66) contrast(1.33) saturate(0.33) opacity(0.5)',
+    filter: 'brightness(0.66) contrast(1.33) saturate(0.33) opacity(0.4)',
     animation: 'pc-holo-bg 18s linear infinite',
     animationPlayState: 'running' as const,
     mixBlendMode: 'color-dodge' as const,
@@ -392,7 +392,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     zIndex: 3,
     background: 'transparent',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'top',
     backgroundImage: `
       repeating-linear-gradient(
         0deg,
@@ -434,7 +434,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       hsla(207, 40%, 30%, 0.8) 90%
     )`,
     mixBlendMode: 'overlay',
-    filter: 'brightness(0.8) contrast(1.2)',
+    filter: 'brightness(0.55) contrast(1.1)',
     zIndex: 4,
     gridArea: '1 / -1',
     borderRadius: cardRadius,

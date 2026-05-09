@@ -30,8 +30,8 @@ export const About: React.FC = () => {
           viewport={{ once: true }}
         >
           <ProfileCard
-            name='Darl Floresca'
-            title='Senior Student'
+            name='Eli Floresca'
+            title='BSIT Graduate'
             handle="elifloresca"
             status="Online"
             contactText="Contact Me"
