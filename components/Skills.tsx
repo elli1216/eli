@@ -68,7 +68,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, darkMode }) => {
   return (
     <div className="flex flex-col gap-2 items-center justify-center rounded-lg border bg-card px-4 py-3 font-medium text-muted-foreground shadow-sm transition-colors hover:border-primary hover:text-primary cursor-default">
       <div className="size-12 md:size-14">
-        <StackIcon name={skill.icon} variant={darkMode ? "dark" : "light"} />
+        <StackIcon name={skill.icon || ""} variant={darkMode ? "dark" : "light"} />
       </div>
       <span className="text-xs md:text-sm text-center">{skill.name}</span>
     </div>

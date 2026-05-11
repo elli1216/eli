@@ -23,13 +23,15 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: "Full Stack Development Trainee",
     company: "Accenture Academy",
     period: "April 2026 - Present",
-    description: "Currently taking a 343-hour Full Stack Development training to sharpen my skills covering Core Java, Spring Boot, JPA, Hibernate, SQL for backend. ReactJS and TypeScript for Frontend."
+    location: "Mandaluyong City, Philippines | Hybrid",
+    description: "Took a 343-hour training program to sharpen my skills on Full Stack Development covering Core Java, Spring Boot, JPA, Hibernate for backend. MySQL for database. ReactJS and TypeScript for Frontend."
   },
   {
     id: 2,
     role: "COBOL Programmer Intern",
     company: "Land Bank of the Philippines (HO)",
     period: "February 2026 - April 2026",
+    location: "Malate, Manila, Philippines",
     description: "Successfully developed 13 COBOL programs for z/OS mainframe computing environment. Focused on writing clean, efficient code for financial data processing. Ensured system reliability through comprehensive testing and debugging."
   },
   {
@@ -37,6 +39,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: "Salesforce Developer Intern",
     company: "Salesforce Virtual Internship Program",
     period: "March 2025 – May 2025",
+    location: "Philippines | Remote",
     description: "Built automation solutions on Salesforce including order confirmations, loyalty tiers, stock alerts, and bulk updates. Used Apex, Flow, and LWC to develop apps, integrate APIs, and query data with SOQL. Designed dashboards for insights and documented workflows for scalability."
   },
   {
@@ -44,6 +47,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: "Student Assistant",
     company: "Bulacan State University - CSER",
     period: "January 2025 – May 2025",
+    location: "Malolos City, Bulacan, Philippines",
     description: "Managed front desk operations and document handling, ensuring efficient communication between university offices while maintaining high service standards for student inquiries."
   }
 ];
@@ -52,7 +56,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     id: 1,
     title: "STC Performing Arts Center Website",
-    description: "Built a centralized management platform using NextJS, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
+    description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
     techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
     image: "/stc.png",
     repoLink: "",
@@ -98,6 +102,7 @@ export const PROJECT_DATA: ProjectItem[] = [
 export const SKILL_DATA: SkillItem[] = [
   { name: "Java", category: "backend", icon: "java" },
   { name: "Spring Boot", category: "backend", icon: "spring" },
+  { name: "COBOL", category: "backend", icon: "cobol" },
   { name: "ReactJS", category: "frontend", icon: "react" },
   { name: "Tailwind CSS", category: "frontend", icon: "tailwindcss" },
   { name: "NextJS", category: "frontend", icon: "nextjs2" },
@@ -107,6 +112,7 @@ export const SKILL_DATA: SkillItem[] = [
   { name: "HTML5", category: "frontend", icon: "html5" },
   { name: "CSS3", category: "frontend", icon: "css3" },
   { name: "SQL", category: "backend", icon: "mysql" },
+  { name: "JCL", category: "backend", icon: "jobcontrollanguage" },
   { name: "PostgreSQL", category: "backend", icon: "postgresql" },
   { name: "ExpressJS", category: "backend", icon: "expressjs" },
   { name: "Shadcn", category: "frontend", icon: "shadcnui" },

@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Section } from './Section';
 import { EXPERIENCE_DATA } from '../constants';
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.8
+      staggerChildren: 0.35
     }
   }
 };
@@ -25,6 +26,8 @@ const itemVariants = {
 };
 
 export const Experience: React.FC = () => {
+  const [expandedId, setExpandedId] = useState<string | number | null>(null);
+
   return (
     <Section id="experience">
       <h2 className="text-3xl font-bold text-foreground mb-12">Experience</h2>
@@ -53,13 +56,30 @@ export const Experience: React.FC = () => {
               </span>
             </div>
 
-            <h4 className="text-lg font-medium text-primary mb-4">
-              {item.company}
-            </h4>
+            <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2'>
+              <h4 className="text-lg font-medium text-primary mb-4">
+                {item.company}
+              </h4>
+              <h4 className="text-md font-medium text-foreground italic mb-4">
+                {item.location}
+              </h4>
+            </div>
 
-            <p className="text-muted-foreground leading-relaxed max-w-3xl">
-              {item.description}
-            </p>
+            <button
+              onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+              className="text-sm text-accent-foreground hover:underline flex items-center gap-1"
+            >
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${expandedId === item.id ? 'rotate-180' : ''}`}
+              />
+              {expandedId === item.id ? 'Hide' : 'Description'}
+            </button>
+
+            {expandedId === item.id && (
+              <p className="text-muted-foreground leading-relaxed max-w-3xl mt-2">
+                {item.description}
+              </p>
+            )}
           </motion.div>
         ))}
       </motion.div>

@@ -94,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
                 <span className='text-2xl md:text-3xl'>Hi, I'm{" "}</span>
                 <span className='text-3xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-primary from-primary to-primary/10 text-center'>Eli Floresca</span>
                 <TextType
-                  text={["Software Developer", "BSIT Graduate", "Mainframe Developer"]}
+                  text={["Web Developer", "BSIT Graduate", "COBOL Programmer"]}
                   typingSpeed={90}
                   pauseDuration={1500}
                   showCursor={true}
@@ -105,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
                 />
               </h1>
               <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                23-year-old software developer from Marilao, Bulacan. I build web applications with Next.js, React, and Spring Boot, focusing on clean, maintainable code.
+                23-year-old aspiring software engineer from Marilao, Bulacan. I build web applications with Next.js, React, and Spring Boot, focusing on clean, maintainable code.
               </p>
               <div className='flex items-center justify-center'>
                 <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">

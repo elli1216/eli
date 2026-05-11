@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { useMobile } from '@/lib/utils';
 
 const certificates = [
   { src: "/mainframedeveloper.jpg", alt: "IBM Mainframe Developer", href: "https://www.coursera.org/account/accomplishments/specialization/certificate/GTA3SGF8S3NV" },
@@ -16,7 +17,7 @@ const certificates = [
 export const Certificates = () => {
   const [showAll, setShowAll] = useState(false);
 
-  const INITIAL_VISIBLE = 6;
+  const INITIAL_VISIBLE = useMobile() ? 4 : 3;
   const visibleCerts = showAll ? certificates : certificates.slice(0, INITIAL_VISIBLE);
   const remainingCount = certificates.length - INITIAL_VISIBLE;
 
@@ -25,7 +26,7 @@ export const Certificates = () => {
       <div className="mb-12 mx-auto max-w-5xl w-full px-6">
         <h2 className="text-3xl font-bold text-foreground">Certificates</h2>
         <p className="text-muted-foreground mt-3 max-w-2xl">
-          Online certifications I have earned through the years.
+          Online certificates I have earned through the years.
         </p>
       </div>
       <div className="mx-auto max-w-5xl px-6">
