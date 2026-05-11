@@ -160,6 +160,11 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
 };
 export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const INITIAL_VISIBLE = 2;
+  const visibleProjects = showAll ? PROJECT_DATA : PROJECT_DATA.slice(0, INITIAL_VISIBLE);
+  const remainingCount = PROJECT_DATA.length - INITIAL_VISIBLE;
 
   return (
     <Section id="projects">
@@ -171,7 +176,7 @@ export const Projects: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-        {PROJECT_DATA.map((project, index) => (
+        {visibleProjects.map((project, index) => (
           <ProjectCard
             key={project.id || index}
             project={project}
@@ -180,6 +185,17 @@ export const Projects: React.FC = () => {
           />
         ))}
       </div>
+
+      {!showAll && remainingCount > 0 && (
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setShowAll(true)}
+            className="px-6 py-2 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors font-medium"
+          >
+            See More ({remainingCount})
+          </button>
+        </div>
+      )}
 
       <AnimatePresence>
         {selectedProject && (

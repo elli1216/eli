@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, FileText, Facebook, Github, Instagram, Move } from 'lucide-react'
+import { ArrowRight, FileText, Facebook, Github, Instagram, Move, Linkedin } from 'lucide-react'
 import TextType from './TextType'
 import Particles from './Particles'
 import { ACCENT_COLORS } from '../constants'
@@ -25,8 +25,6 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-visible">
-
-      {/* Changed absolute to fixed and added -z-10 */}
       <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
         <Particles
           key={`particles-${accentColor}`}
@@ -148,7 +146,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
                   </div>
                 </motion.a>
                 <motion.a
-                  href="https://www.instagram.com/darling_moo/"
+                  href="https://www.linkedin.com/in/darlfloresca/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-fit items-center gap-4 p-0 rounded-lg"
@@ -156,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
                   whileTap={{ scale: 0.9 }}
                 >
                   <div className="p-3 bg-accent text-primary rounded-full">
-                    <Instagram size={24} />
+                    <Linkedin size={24} />
                   </div>
                 </motion.a>
                 <motion.a

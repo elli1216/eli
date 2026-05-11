@@ -23,7 +23,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: "Full Stack Development Trainee",
     company: "Accenture Academy",
     period: "April 2026 - Present",
-    description: "Currently taking a 343-hour Full Stack Development training covering Core Java, Spring Boot, JPA, Hibernate, SQL for backend. ReactJS and TypeScript for Frontend."
+    description: "Currently taking a 343-hour Full Stack Development training to sharpen my skills covering Core Java, Spring Boot, JPA, Hibernate, SQL for backend. ReactJS and TypeScript for Frontend."
   },
   {
     id: 2,
@@ -104,7 +104,6 @@ export const SKILL_DATA: SkillItem[] = [
   { name: "JavaScript", category: "frontend", icon: "js" },
   { name: "Tanstack", category: "frontend", icon: "tanstack2" },
   { name: "TypeScript", category: "frontend", icon: "typescript" },
-  { name: "Python", category: "backend", icon: "python" },
   { name: "HTML5", category: "frontend", icon: "html5" },
   { name: "CSS3", category: "frontend", icon: "css3" },
   { name: "SQL", category: "backend", icon: "mysql" },
@@ -115,10 +114,7 @@ export const SKILL_DATA: SkillItem[] = [
   { name: "Zod", category: "frontend", icon: "zod" },
   { name: "Docker", category: "tools", icon: "docker" },
   { name: "Git/GitHub", category: "tools", icon: "github" },
-  { name: "Neon", category: "backend", icon: "neon" },
   { name: "Supabase", category: "tools", icon: "supabase" },
-  { name: "Vercel", category: "tools", icon: "vercel" },
-  { name: "Render", category: "tools", icon: "render" },
   { name: "Bash", category: "tools", icon: "bash" },
   { name: "Prisma", category: "backend", icon: "prisma" },
   { name: "Vite", category: "frontend", icon: "vitejs" },
