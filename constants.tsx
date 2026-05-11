@@ -20,20 +20,27 @@ export const NAV_ITEMS = [
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 1,
+    role: "Full Stack Development Trainee",
+    company: "Accenture Academy",
+    period: "April 2026 - Present",
+    description: "Currently taking a 343-hour Full Stack Development training covering Core Java, Spring Boot, JPA, Hibernate, SQL for backend. ReactJS and TypeScript for Frontend."
+  },
+  {
+    id: 2,
     role: "COBOL Programmer Intern",
     company: "Land Bank of the Philippines (HO)",
     period: "February 2026 - April 2026",
     description: "Successfully developed 13 COBOL programs for z/OS mainframe computing environment. Focused on writing clean, efficient code for financial data processing. Ensured system reliability through comprehensive testing and debugging."
   },
   {
-    id: 2,
+    id: 3,
     role: "Salesforce Developer Intern",
     company: "Salesforce Virtual Internship Program",
     period: "March 2025 – May 2025",
     description: "Built automation solutions on Salesforce including order confirmations, loyalty tiers, stock alerts, and bulk updates. Used Apex, Flow, and LWC to develop apps, integrate APIs, and query data with SOQL. Designed dashboards for insights and documented workflows for scalability."
   },
   {
-    id: 3,
+    id: 4,
     role: "Student Assistant",
     company: "Bulacan State University - CSER",
     period: "January 2025 – May 2025",
