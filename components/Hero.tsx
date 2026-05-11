@@ -3,8 +3,15 @@ import { motion } from 'framer-motion'
 import { ArrowRight, FileText, Facebook, Github, Instagram, Move } from 'lucide-react'
 import TextType from './TextType'
 import Particles from './Particles'
+import { ACCENT_COLORS } from '../constants'
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  accentColor: string;
+}
+
+export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
+  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#2da44e'
+
   const handleViewResume = async () => {
     try {
       const response = await fetch('/Floresca-Darl-Resume-2026.pdf')
@@ -22,9 +29,10 @@ export const Hero: React.FC = () => {
       {/* Changed absolute to fixed and added -z-10 */}
       <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
         <Particles
-          particleColors={["#01d54e"]}
-          particleCount={300}
-          particleSpread={10}
+          key={`particles-${accentColor}`}
+          particleColors={[currentAccent]}
+          particleCount={500}
+          particleSpread={9}
           speed={0.1}
           particleBaseSize={100}
           moveParticlesOnHover={false}
@@ -34,9 +42,9 @@ export const Hero: React.FC = () => {
         />
       </div>
 
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob pointer-events-none" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000 pointer-events-none" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000 pointer-events-none" />
+      <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob pointer-events-none" />
+      <div className="absolute top-0 -right-4 w-72 h-72 bg-primary/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000 pointer-events-none" />
+      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto w-full text-center relative z-10">
         <motion.div
@@ -62,7 +70,8 @@ export const Hero: React.FC = () => {
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="size-80 glow rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden relative group pointer-events-none select-none">
+                className="size-80 rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden relative group pointer-events-none select-none"
+                style={{ boxShadow: `0px 0px 50px 0px ${currentAccent}c4` }}>
                 <div className="absolute inset-0 bg-accent animate-pulse" />
                 <img
                   src="/mypic.JPG"
@@ -109,7 +118,8 @@ export const Hero: React.FC = () => {
               <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
                 <motion.button
                   onClick={handleViewResume}
-                  className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20 cursor-pointer"
+                  className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+                  style={{ boxShadow: `0 10px 15px -3px ${currentAccent}33` }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

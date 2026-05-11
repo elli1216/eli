@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { NAV_ITEMS } from '../constants';
+import { Moon, Sun, Menu, X, Palette } from 'lucide-react';
+import { NAV_ITEMS, ACCENT_COLORS } from '../constants';
 import { motion } from 'framer-motion';
 
 interface NavbarProps {
   darkMode: boolean;
   toggleTheme: () => void;
+  accentColor: string;
+  setAccent: (color: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
+export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, accentColor, setAccent }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
         </motion.a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 relative">
           {NAV_ITEMS.map((item) => (
             <motion.a
               key={item.label}
@@ -53,15 +56,48 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
               {item.label}
             </motion.a>
           ))}
-          <motion.button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
-            aria-label="Toggle Theme"
-            whileHover={{ scale: 1.1, rotate: 15 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </motion.button>
+          <div className="flex items-center gap-1">
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
+              aria-label="Toggle Theme"
+              whileHover={{ scale: 1.1, rotate: 15 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </motion.button>
+            <div className="relative">
+              <motion.button
+                onClick={() => setShowColorPicker(!showColorPicker)}
+                className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Palette size={20} />
+              </motion.button>
+              {showColorPicker && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="absolute right-0 top-full mt-2 p-3 bg-card border border-border rounded-lg shadow-lg flex gap-2"
+                >
+                  {ACCENT_COLORS.map((color) => (
+                    <button
+                      key={color.name}
+                      onClick={() => {
+                        setAccent(color.name);
+                        setShowColorPicker(false);
+                      }}
+                      className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''
+                        }`}
+                      style={{ backgroundColor: color.value }}
+                      aria-label={`Set accent color to ${color.name}`}
+                    />
+                  ))}
+                </motion.div>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
@@ -74,6 +110,36 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme }) => {
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </motion.button>
+          <motion.button
+            onClick={() => setShowColorPicker(!showColorPicker)}
+            className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Palette size={20} />
+          </motion.button>
+          {showColorPicker && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="absolute top-16 right-6 p-3 bg-card border border-border rounded-lg shadow-lg flex gap-2"
+            >
+              {ACCENT_COLORS.map((color) => (
+                <button
+                  key={color.name}
+                  onClick={() => {
+                    setAccent(color.name);
+                    setShowColorPicker(false);
+                  }}
+                  className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''
+                    }`}
+                  style={{ backgroundColor: color.value }}
+                  aria-label={`Set accent color to ${color.name}`}
+                />
+              ))}
+            </motion.div>
+          )}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             className="text-muted-foreground"

@@ -20,26 +20,42 @@ const App: React.FC = () => {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
+  const [accentColor, setAccentColor] = useState(() => {
+    const savedAccent = localStorage.getItem('accentColor');
+    if (savedAccent) {
+      return savedAccent;
+    }
+    return 'green';
+  });
+
   useEffect(() => {
+    const root = document.documentElement;
     if (darkMode) {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-  }, [darkMode]);
+    root.classList.remove('accent-green', 'accent-blue', 'accent-red', 'accent-orange', 'accent-purple', 'accent-gray');
+    root.classList.add(`accent-${accentColor}`);
+    localStorage.setItem('accentColor', accentColor);
+  }, [darkMode, accentColor]);
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
 
+  const setAccent = (color: string) => {
+    setAccentColor(color);
+  };
+
   return (
     <SmoothScroll>
       <div className="min-h-screen flex flex-col">
-        <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
+        <Navbar darkMode={darkMode} toggleTheme={toggleTheme} accentColor={accentColor} setAccent={setAccent} />
         <main className="grow">
-          <Hero />
+          <Hero accentColor={accentColor} />
           <Experience />
           <Skills darkMode={darkMode} />
           <Projects />

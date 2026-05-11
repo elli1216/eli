@@ -1,4 +1,13 @@
-import { ExperienceItem, ProjectItem, SkillItem } from './types';
+import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from './types';
+
+export const ACCENT_COLORS: AccentColor[] = [
+  { name: 'green', value: '#2da44e' },
+  { name: 'blue', value: '#2563eb' },
+  { name: 'red', value: '#e63946' },
+  { name: 'orange', value: '#ea580c' },
+  { name: 'purple', value: '#9333ea' },
+  { name: 'gray', value: '#71717a' },
+];
 
 export const NAV_ITEMS = [
   { label: 'Experience', href: '#experience' },
