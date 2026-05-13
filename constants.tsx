@@ -14,6 +14,7 @@ export const NAV_ITEMS = [
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'About Me', href: '#about' },
+  { label: 'Certificates', href: '#certificates' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -22,6 +23,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 1,
     role: "Full Stack Development Trainee",
     company: "Accenture Academy",
+    companyUrl: "accenture.com",
     period: "April 2026 - Present",
     location: "Mandaluyong City, Philippines | Hybrid",
     description: "Took a 343-hour training program to sharpen my skills on Full Stack Development covering Core Java, Spring Boot, JPA, Hibernate for backend. MySQL for database. ReactJS and TypeScript for Frontend."
@@ -30,22 +32,25 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 2,
     role: "COBOL Programmer Intern",
     company: "Land Bank of the Philippines (HO)",
+    companyUrl: "landbank.com",
     period: "February 2026 - April 2026",
     location: "Malate, Manila, Philippines",
-    description: "Successfully developed 13 COBOL programs for z/OS mainframe computing environment. Focused on writing clean, efficient code for financial data processing. Ensured system reliability through comprehensive testing and debugging."
+    description: "Successfully developed 13 COBOL programs for z/OS mainframe computing environment. Focused on writing clean, efficient code for financial data processing. Ensured system reliability through comprehensive testing and debugging. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
   },
   {
     id: 3,
-    role: "Salesforce Developer Intern",
-    company: "Salesforce Virtual Internship Program",
+    role: "Salesforce Developer Trainee",
+    company: "SmartBridge",
+    companyUrl: "thesmartbridge.com",
     period: "March 2025 – May 2025",
     location: "Philippines | Remote",
-    description: "Built automation solutions on Salesforce including order confirmations, loyalty tiers, stock alerts, and bulk updates. Used Apex, Flow, and LWC to develop apps, integrate APIs, and query data with SOQL. Designed dashboards for insights and documented workflows for scalability."
+    description: "Completed 22 superbadges on Salesforce Trailhead, reflecting hands-on experience in CRM concepts, security models, workflow automation, and scalable system design, simulating real-world scenarios on utilizing Salesforce technologies."
   },
   {
     id: 4,
     role: "Student Assistant",
     company: "Bulacan State University - CSER",
+    companyUrl: "bulsu.edu.ph",
     period: "January 2025 – May 2025",
     location: "Malolos City, Bulacan, Philippines",
     description: "Managed front desk operations and document handling, ensuring efficient communication between university offices while maintaining high service standards for student inquiries."
@@ -86,7 +91,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/jobinator.png",
-    demoLink: "https://jobinator.netlify.app/landing",
     repoLink: "https://github.com/elli1216/Jobinator",
   },
   {
@@ -102,7 +106,7 @@ export const PROJECT_DATA: ProjectItem[] = [
 export const SKILL_DATA: SkillItem[] = [
   { name: "Java", category: "backend", icon: "java" },
   { name: "Spring Boot", category: "backend", icon: "spring" },
-  { name: "COBOL", category: "backend", icon: "cobol" },
+  { name: "COBOL", category: "backend", icon: "" },
   { name: "ReactJS", category: "frontend", icon: "react" },
   { name: "Tailwind CSS", category: "frontend", icon: "tailwindcss" },
   { name: "NextJS", category: "frontend", icon: "nextjs2" },
@@ -112,7 +116,7 @@ export const SKILL_DATA: SkillItem[] = [
   { name: "HTML5", category: "frontend", icon: "html5" },
   { name: "CSS3", category: "frontend", icon: "css3" },
   { name: "SQL", category: "backend", icon: "mysql" },
-  { name: "JCL", category: "backend", icon: "jobcontrollanguage" },
+  { name: "JCL", category: "backend", icon: "" },
   { name: "PostgreSQL", category: "backend", icon: "postgresql" },
   { name: "ExpressJS", category: "backend", icon: "expressjs" },
   { name: "Shadcn", category: "frontend", icon: "shadcnui" },

@@ -4,6 +4,14 @@ import { EXPERIENCE_DATA } from '../constants';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
+const CompanyLogo: React.FC<{ domain: string }> = ({ domain }) => (
+  <img
+    src={`https://img.logo.dev/${domain}?token=${import.meta.env.VITE_LOGO_DEV_PUBLIC_KEY}&retina=true`}
+    alt="Company logo"
+    className="w-6 h-6 rounded-full object-contain"
+  />
+);
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -47,6 +55,16 @@ export const Experience: React.FC = () => {
             {/* Timeline Dot */}
             <div className="absolute -left-2.25 top-0 w-4 h-4 rounded-full bg-primary border-4 border-background group-hover:scale-125 transition-transform" />
 
+            <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between'>
+              <h4 className="text-lg font-medium text-primary mb-4 flex items-center gap-2">
+                {item.companyUrl && <CompanyLogo domain={item.companyUrl} />}
+                {item.company}
+              </h4>
+              <h4 className="text-md font-medium text-foreground italic">
+                {item.location}
+              </h4>
+            </div>
+
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
               <h3 className="text-xl font-bold text-foreground">
                 {item.role}
@@ -54,15 +72,6 @@ export const Experience: React.FC = () => {
               <span className="text-sm font-medium text-muted-foreground bg-accent px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">
                 {item.period}
               </span>
-            </div>
-
-            <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2'>
-              <h4 className="text-lg font-medium text-primary mb-4">
-                {item.company}
-              </h4>
-              <h4 className="text-md font-medium text-foreground italic mb-4">
-                {item.location}
-              </h4>
             </div>
 
             <button

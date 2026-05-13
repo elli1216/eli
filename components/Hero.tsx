@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-visible">
+    <section className="flex items-center justify-center mt-20 md:mt-45 md:mb-20 px-6 relative overflow-visible">
       <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
         <Particles
           key={`particles-${accentColor}`}

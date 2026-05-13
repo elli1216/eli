@@ -12,6 +12,7 @@ export interface ExperienceItem {
   id: number;
   role: string;
   company: string;
+  companyUrl?: string;
   period: string;
   location: string;
   description: string;

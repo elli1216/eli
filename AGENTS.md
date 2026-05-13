@@ -11,7 +11,9 @@ No lint, typecheck, or test scripts are configured.
 ## Environment
 
 - Requires `GEMINI_API_KEY` in `.env.local` (see `.env.example` if it exists)
+- Requires `VITE_LOGO_DEV_PUBLIC_KEY` in `.env.local` for company logos in Experience section (see `.env.example`)
 - Vite injects `GEMINI_API_KEY` into `process.env.GEMINI_API_KEY` via `define` in `vite.config.ts`
+- Client-side env vars must be prefixed with `VITE_` (e.g., `VITE_LOGO_DEV_PUBLIC_KEY`) and accessed via `import.meta.env.VITE_*`
 - Do not commit `.env.local` — it's gitignored as `*.local`
 
 ## Path Aliases
