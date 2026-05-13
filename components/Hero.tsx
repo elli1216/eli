@@ -68,25 +68,93 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="size-80 rounded-full border-4 border-primary dark:border-primary shadow-2xl overflow-hidden relative group pointer-events-none select-none"
-                style={{ boxShadow: `0px 0px 50px 0px ${currentAccent}c4` }}>
-                <div className="absolute inset-0 bg-accent animate-pulse" />
-                <img
-                  src="/other/mypic.JPG"
-                  alt="Eli"
-                  draggable="false"
-                  className="w-full h-full object-cover relative z-10 transform group-hover:scale-110 transition-transform duration-500"
-                />
+                className="relative w-80 h-80"
+              >
+                {/* Corner brackets frame */}
+                <div className="absolute inset-0 border-2 border-primary/60 rounded-lg" style={{ boxShadow: `0px 0px 30px 0px ${currentAccent}40, inset 0px 0px 20px 0px ${currentAccent}20` }}>
+                  {/* Top-left bracket */}
+                  <div className="absolute -top-1 -left-1 w-8 h-8 border-l-2 border-t-2 border-primary" />
+                  <div className="absolute -top-1 -left-1 w-3 h-3 bg-primary/60" />
+                  {/* Top-right bracket */}
+                  <div className="absolute -top-1 -right-1 w-8 h-8 border-r-2 border-t-2 border-primary" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary/60" />
+                  {/* Bottom-left bracket */}
+                  <div className="absolute -bottom-1 -left-1 w-8 h-8 border-l-2 border-b-2 border-primary" />
+                  <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-primary/60" />
+                  {/* Bottom-right bracket */}
+                  <div className="absolute -bottom-1 -right-1 w-8 h-8 border-r-2 border-b-2 border-primary" />
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-primary/60" />
+                </div>
+
+                {/* Inner glow ring */}
+                <div className="absolute inset-1 rounded-lg border border-primary/30 animate-pulse" style={{ boxShadow: `0px 0px 15px 0px ${currentAccent}60` }} />
+
+                {/* Scanlines overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,0,0.03)_50%)] bg-size-[100%_4px] pointer-events-none z-20" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/30 pointer-events-none z-20" />
+
+                {/* Image container with chromatic aberration */}
+                <div className="absolute inset-2 rounded overflow-hidden">
+                  {/* RGB split layers */}
+                  <div className="absolute inset-0 bg-primary/20 mix-blend-screen opacity-0 group-hover:opacity-100 transition-opacity">
+                    <img
+                      src="/other/mypic.JPG"
+                      alt="Eli"
+                      draggable="false"
+                      className="w-full h-full object-cover blur-[2px] translate-x-0.5"
+                    />
+                  </div>
+                  <img
+                    src="/other/mypic.JPG"
+                    alt="Eli"
+                    draggable="false"
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Glitch effect lines */}
+                <div className="absolute inset-0 pointer-events-none z-30 opacity-0 group-hover:opacity-100">
+                  <div className="absolute top-1/4 left-0 w-full h-0.5 bg-primary/50 animate-pulse" style={{ animationDuration: '0.5s' }} />
+                  <div className="absolute top-1/2 left-0 w-full h-px bg-primary/30 animate-pulse" style={{ animationDuration: '0.7s' }} />
+                  <div className="absolute top-3/4 left-0 w-full h-0.5 bg-primary/50 animate-pulse" style={{ animationDuration: '0.6s' }} />
+                </div>
               </motion.div>
 
+              {/* Drag indicator */}
               <motion.div
-                className="absolute bottom-6 right-6 bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg z-20 pointer-events-none"
-                animate={{ y: [0, -5, 0] }}
+                className="absolute -bottom-2 right-0 bg-primary/80 text-primary-foreground px-2 py-1 rounded text-xs font-bold flex items-center gap-1 z-30"
+                animate={{ y: [0, -3, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               >
-                <Move size={12} />
-                <span>Drag me</span>
+                <Move size={10} />
+                <span>DRAG ME</span>
               </motion.div>
+
+              {/* Corner tech accents */}
+              <div className="absolute -top-3 -left-3 text-primary/60">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M0 10h10M10 0v10" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="10" cy="10" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              <div className="absolute -top-3 -right-3 text-primary/60">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M20 10h-10M10 0v10" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="10" cy="10" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              <div className="absolute -bottom-3 -left-3 text-primary/60">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M0 10h10M10 10v10" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="10" cy="10" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              <div className="absolute -bottom-3 -right-3 text-primary/60">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M20 10h-10M10 10v10" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="10" cy="10" r="2" fill="currentColor" />
+                </svg>
+              </div>
             </motion.div>
 
             <div className='flex-1/2 items-center justify-center relative z-20 text-left'>

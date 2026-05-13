@@ -4,8 +4,22 @@ import { PROJECT_DATA } from '../constants';
 import { ProjectItem } from '../types';
 import { Github, ExternalLink, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { category } from '../constants';
 
 const ProjectCard: React.FC<{ project: ProjectItem; index: number; onClick: () => void }> = ({ project, index, onClick }) => {
+  const getBadgeStyles = (Category: typeof category[keyof typeof category]) => {
+    switch (Category) {
+      case category.ACADEMIC:
+        return 'bg-purple-500/20 text-purple-500 border-purple-500/30';
+      case category.FREELANCE:
+        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+      case category.CAPSTONE:
+        return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
+      default:
+        return 'bg-primary/20 text-primary border-primary/30';
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -20,6 +34,13 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number; onClick: () =
         alt={project.title}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
+
+      {/* Badge */}
+      {project.category && (
+        <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-medium rounded-full border ${getBadgeStyles(project.category)} z-10`}>
+          {project.category}
+        </span>
+      )}
 
       {/* Overlay Title */}
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -117,9 +138,16 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
                     ))}
                   </div>
 
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                    {project.title}
-                  </h2>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                      {project.title}
+                    </h2>
+                    {project.category && (
+                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30">
+                        {project.category}
+                      </span>
+                    )}
+                  </div>
 
                   <div className="max-w-3xl text-muted-foreground">
                     <p className="text-base md:text-lg leading-relaxed">
@@ -136,7 +164,7 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-bold text-sm shadow-lg shadow-primary/20"
                     >
-                      <ExternalLink size={18} /> Live Demo
+                      <ExternalLink size={18} /> Live Site
                     </a>
                   )}
                   {project.repoLink && (
@@ -146,7 +174,7 @@ const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent hover:bg-accent/80 text-foreground transition-all font-bold text-sm border border-border"
                     >
-                      <Github size={18} /> Source Code
+                      <Github size={18} /> Repository
                     </a>
                   )}
                 </div>

@@ -1,3 +1,5 @@
+import { category } from "./constants";
+
 export interface AccentColor {
   name: string;
   value: string;
@@ -26,6 +28,7 @@ export interface ProjectItem {
   image: string;
   repoLink?: string;
   demoLink?: string;
+  category?: typeof category[keyof typeof category];
 }
 
 export interface SkillItem {

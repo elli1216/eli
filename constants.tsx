@@ -1,5 +1,12 @@
 import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from './types';
 
+export const category = {
+  FREELANCE: "Freelance",
+  ACADEMIC: "Academic Project",
+  PERSONAL: "Personal Project",
+  CAPSTONE: "Capstone Project"
+}
+
 export const ACCENT_COLORS: AccentColor[] = [
   { name: 'green', value: '#2da44e' },
   { name: 'blue', value: '#2563eb' },
@@ -62,44 +69,85 @@ export const PROJECT_DATA: ProjectItem[] = [
     id: 1,
     title: "STC Performing Arts Center Website",
     description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
-    techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase"],
+    techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
     image: "/projects/stc.png",
     repoLink: "",
-    demoLink: "https://stcpacv3.vercel.app/"
+    demoLink: "https://stcpacv3.vercel.app/",
+    category: category.FREELANCE
   },
   {
     id: 2,
     title: "BulSU OSAS Complaint and Grievance Portal",
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
-    techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase"],
+    techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase", "Agile Development"],
     image: "/projects/osas.png",
     repoLink: "",
-    demoLink: "https://www.osascomplaints.dev/"
+    demoLink: "https://www.osascomplaints.dev/",
+    category: category.CAPSTONE
   },
   {
     id: 3,
+    title: "COBOL Files",
+    description: "My files from Z/OS Mainframe Developer Course and IBM Z Xplore hands-on labs.",
+    techStack: ["COBOL", "JCL", "IBM Z Xplore", "z/OS", "Mainframe", "ISPF", "RACF", "Zowe CLI", "VSAM", "TSO"],
+    image: "/projects/zos.png",
+    repoLink: "https://github.com/elli1216/ds-jcl-cbl-files",
+    category: category.PERSONAL
+  },
+  {
+    id: 4,
     title: "Tic-a-Pic Photobooth",
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
     techStack: ["Next.js", "DaisyUI"],
     image: "/projects/ticapic.png",
     repoLink: "https://github.com/elli1216/Tic-a-Pic",
-    demoLink: "https://tic-a-pic.vercel.app/"
+    demoLink: "https://tic-a-pic.vercel.app/",
+    category: category.PERSONAL
   },
   {
-    id: 4,
+    id: 5,
     title: "Jobinator",
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/projects/jobinator.png",
     repoLink: "https://github.com/elli1216/Jobinator",
+    category: category.PERSONAL
   },
   {
-    id: 4,
+    id: 6,
     title: "My Own Portfolio",
     description: "A portfolio website built with Motion and ReactBits components that you are viewing right now. Showcases my skills and projects as well as my social media accounts.",
     techStack: ["React", "TypeScript", "Motion React", "ReactBits"],
     image: "/projects/portfolio.png",
     repoLink: "https://github.com/elli1216/eli",
+    category: category.PERSONAL
+  },
+  {
+    id: 7,
+    title: "Scroll Report",
+    description: "A project I practiced with Next.js using the News API for the data.",
+    techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
+    image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
+    repoLink: "https://github.com/elli1216/Scroll-Report",
+    category: category.PERSONAL
+  },
+  {
+    id: 8,
+    title: "ByteBazaar",
+    description: "A final project presented during my 3rd year, 1st Semester in Web Systems and Technologies (1). A full-stack e-commerce application built with React (TypeScript) frontend and Express.js backend, featuring Firebase authentication and XML-based data storage.",
+    techStack: ["React", "Node.js", "Express.js", "XML", "Firebase", "TypeScript"],
+    image: "/projects/bytebazaar.png",
+    repoLink: "https://github.com/elli1216/Bytebazaar",
+    category: category.ACADEMIC
+  },
+  {
+    id: 9,
+    title: "Student Management System",
+    description: "A final project presented during my 2nd year, 2nd Semester in Advanced Programming. A school management system designed in Java with MVC Framework. Features included Student, Faculty, and Admin Dashboards. Check the repository for more details.",
+    techStack: ["Java", "Java Swing", "JDBC", "MVC Framework", "SQL Server", "Agile Development"],
+    image: "/projects/sms.png",
+    repoLink: "https://github.com/elli1216/School-Enrollment-System",
+    category: category.ACADEMIC
   },
 ];
 
