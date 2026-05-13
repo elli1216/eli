@@ -35,7 +35,7 @@ export const About: React.FC = () => {
             handle="elifloresca"
             status="Online"
             contactText="Contact Me"
-            avatarUrl="/me_no_bg.png"
+            avatarUrl="/other/me_no_bg.png"
             showUserInfo={false}
             enableTilt={true}
             enableMobileTilt={true}

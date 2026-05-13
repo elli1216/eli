@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
                 style={{ boxShadow: `0px 0px 50px 0px ${currentAccent}c4` }}>
                 <div className="absolute inset-0 bg-accent animate-pulse" />
                 <img
-                  src="/mypic.JPG"
+                  src="/other/mypic.JPG"
                   alt="Eli"
                   draggable="false"
                   className="w-full h-full object-cover relative z-10 transform group-hover:scale-110 transition-transform duration-500"
