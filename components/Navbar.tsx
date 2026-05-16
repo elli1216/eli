@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, accentCol
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Eli.
+          {"<Eli />"}
         </motion.a>
 
         {/* Desktop Menu */}

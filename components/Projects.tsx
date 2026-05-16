@@ -197,9 +197,9 @@ export const Projects: React.FC = () => {
   return (
     <Section id="projects">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Recent Projects</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Works so far</h2>
         <p className="text-muted-foreground mt-3 max-w-2xl">
-          A collection of projects where I've applied my skills in full-stack development.
+          A collection of projects where I've applied my skills in full-stack development and mainframe development.
         </p>
       </div>
 

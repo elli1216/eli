@@ -37,12 +37,12 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   },
   {
     id: 2,
-    role: "COBOL Programmer Intern",
+    role: "COBOL Developer Intern",
     company: "Land Bank of the Philippines (HO)",
     companyUrl: "landbank.com",
     period: "February 2026 - April 2026",
     location: "Malate, Manila, Philippines",
-    description: "Successfully developed 13 COBOL programs for z/OS mainframe computing environment. Focused on writing clean, efficient code for financial data processing. Ensured system reliability through comprehensive testing and debugging. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
+    description: "Contributed to the development of COBOL programs in z/OS mainframe for financial data processing. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
   },
   {
     id: 3,
@@ -55,7 +55,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   },
   {
     id: 4,
-    role: "Student Assistant",
+    role: "Institutional Student Assistant",
     company: "Bulacan State University - CSER",
     companyUrl: "bulsu.edu.ph",
     period: "January 2025 – May 2025",
@@ -182,6 +182,9 @@ export const certificates = [
   { src: "/certificates/mainframedeveloper.jpg", alt: "IBM Mainframe Developer", href: "https://www.coursera.org/account/accomplishments/specialization/certificate/GTA3SGF8S3NV" },
   { src: "/certificates/learnintermediatejava.jpg", alt: "Java", href: "https://www.codecademy.com/profiles/degf/certificates/2624ed9b49bb4d5c994983877e5263f0" },
   { src: "/certificates/IBMZALLSTAR.jpg", alt: "All Star Badge - IBM Z Xplore", href: "https://www.credly.com/badges/9c95a33b-7c50-434b-b7eb-eba86e1c1c0e/linked_in_profile" },
+  { src: "/certificates/EnterpriseCOBOLProgrammingwithVSCode.png", alt: "COBOL with VSCode", href: "https://www.credly.com/badges/9f1d7099-11ed-4ddd-af8f-c296f22c7d4a/linked_in?t=tf4cc7" },
+  { src: "/certificates/springbootfundamentals.png", alt: "Spring Boot Fundamentals", href: "https://app.pluralsight.com/achievements/share/1c045e31-29f3-4a9d-a0f7-6f0db161da6b" },
+  { src: "/certificates/java8.png", alt: "Java 8", href: "https://app.pluralsight.com/achievements/share/ece26aa5-2f58-4dc6-91aa-6bbad8e143b8" },
   { src: "/certificates/sfvip2025floresca.jpg", alt: "SFVIP", href: "https://www.salesforce.com/ap/" },
   { src: "/certificates/nextjsproj_page.jpg", alt: "NextJS Project BootCamp", href: "https://www.udemy.com/certificate/UC-e4312cb7-9b70-4822-ae7a-5270b6759622/" },
   { src: "/certificates/foundations.jpg", alt: "Foundations", href: "https://www.udemy.com/certificate/UC-47707ddb-68d9-4661-80e1-c54313587553/" },
