@@ -14,6 +14,7 @@ export interface ExperienceItem {
   id: number;
   role: string;
   company: string;
+  classname?: string;
   companyUrl?: string;
   period: string;
   location: string;
@@ -28,11 +29,11 @@ export interface ProjectItem {
   image: string;
   repoLink?: string;
   demoLink?: string;
-  category?: typeof category[keyof typeof category];
+  category?: (typeof category)[keyof typeof category];
 }
 
 export interface SkillItem {
   name: string;
-  icon?: string; 
-  category: 'frontend' | 'backend' | 'tools';
+  icon?: string;
+  category: "frontend" | "backend" | "tools";
 }

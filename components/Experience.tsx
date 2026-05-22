@@ -4,11 +4,11 @@ import { EXPERIENCE_DATA } from '../constants';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-const CompanyLogo: React.FC<{ domain: string }> = ({ domain }) => (
+const CompanyLogo: React.FC<{ domain: string, classname?: string }> = ({ domain, classname }) => (
   <img
     src={`https://img.logo.dev/${domain}?token=${import.meta.env.VITE_LOGO_DEV_PUBLIC_KEY}&retina=true`}
     alt="Company logo"
-    className="w-6 h-6 rounded-full object-contain"
+    className={`size-7 rounded-full object-contain` + classname}
   />
 );
 
@@ -49,15 +49,17 @@ export const Experience: React.FC = () => {
         {EXPERIENCE_DATA.map((item) => (
           <motion.div
             key={item.id}
-            className="relative pl-8 sm:pl-12 group"
+            className="relative pl-8 group"
             variants={itemVariants}
           >
-            {/* Timeline Dot */}
-            <div className="absolute -left-2.25 top-0 w-4 h-4 rounded-full bg-primary border-4 border-background group-hover:scale-125 transition-transform" />
+            {/* Timeline Dot - Company Logo */}
+            <div className="absolute -left-4 top-0 w-8 h-7 flex items-center justify-center">
+              {item.companyUrl && <CompanyLogo domain={item.companyUrl} />}
+            </div>
 
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between'>
               <h4 className="text-lg font-medium text-primary mb-4 flex items-center gap-2">
-                {item.companyUrl && <CompanyLogo domain={item.companyUrl} />}
+                {/* {item.companyUrl && <CompanyLogo domain={item.companyUrl} />} */}
                 {item.company}
               </h4>
               <h4 className="text-md font-medium text-foreground italic">
@@ -85,7 +87,7 @@ export const Experience: React.FC = () => {
             </button>
 
             {expandedId === item.id && (
-              <p className="text-muted-foreground leading-relaxed max-w-3xl mt-2">
+              <p className="text-muted-foreground text-xs md:text-[0.9em] leading-relaxed max-w-3xl mt-2">
                 {item.description}
               </p>
             )}

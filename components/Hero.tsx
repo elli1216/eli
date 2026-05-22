@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
   }
 
   return (
-    <section className="flex items-center justify-center mt-20 md:mt-45 md:mb-20 px-6 relative overflow-visible">
+    <section className="flex items-center justify-center mt-18 md:mt-45 md:mb-20 px-6 relative overflow-visible">
       <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
         <Particles
           key={`particles-${accentColor}`}
@@ -46,12 +46,10 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
 
       <div className="max-w-4xl mx-auto w-full text-center relative z-10">
         <motion.div
-          initial={{ y: -500 }}
+          initial={{ y: -700 }}
           animate={{ y: 0 }}
           transition={{
-            type: "spring",
-            stiffness: 120,
-            damping: 8,
+            type: "tween",
             delay: 0.2
           }}
           className="flex flex-col items-center"
@@ -68,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="relative w-80 h-80"
+                className="relative size-60 md:size-80"
               >
                 {/* Corner brackets frame */}
                 <div className="absolute inset-0 border-2 border-primary/60 rounded-lg" style={{ boxShadow: `0px 0px 30px 0px ${currentAccent}40, inset 0px 0px 20px 0px ${currentAccent}20` }}>
@@ -160,31 +158,32 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
             <div className='flex-1/2 items-center justify-center relative z-20 text-left'>
               <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
                 <span className='text-2xl md:text-3xl'>Hi, I'm{" "}</span>
-                <span className='text-3xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-primary from-primary to-primary/10 text-center'>Eli Floresca</span>
+                <span className='text-5xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
                 <TextType
-                  text={["Web Developer", "BSIT Graduate", "COBOL Programmer"]}
+                  text={["Web Developer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
                   typingSpeed={90}
                   pauseDuration={1500}
                   showCursor={true}
-                  className="text-transparent w-full text-nowrap text-center text-4xl bg-clip-text bg-linear-to-r from-primary to-cyan-900"
+                  className="w-full text-nowrap text-center text-3xl sm:text-4xl text-primary italic"
                   cursorCharacter="_"
                   deletingSpeed={50}
                   cursorBlinkDuration={0.8}
                 />
               </h1>
               <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                23-year-old aspiring software engineer from Marilao, Bulacan. I build web applications with Next.js, React, and Spring Boot, focusing on clean, maintainable code.
+                23-year-old aspiring software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
+                I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
               </p>
               <div className='flex items-center justify-center'>
-                <span className="text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
-                  In Development
+                <span className="text-xs md:text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
+                  <span className='italic uppercase'>Status:</span> Learning Spring Boot
                 </span>
               </div>
 
-              <div className="flex flex-col text-sm sm:flex-row items-center justify-center gap-3">
+              <div className="flex text-xs md:text-sm flex-row items-center justify-center gap-3">
                 <motion.button
                   onClick={handleViewResume}
-                  className="p-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+                  className="p-3 size-fit bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg cursor-pointer"
                   style={{ boxShadow: `0 10px 15px -3px ${currentAccent}33` }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
