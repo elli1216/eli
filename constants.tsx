@@ -9,6 +9,7 @@ export const category = {
 
 export const ACCENT_COLORS: AccentColor[] = [
   { name: 'green', value: '#2da44e' },
+  { name: 'white', value: '#ffffff' },
   { name: 'blue', value: '#2563eb' },
   { name: 'red', value: '#e63946' },
   { name: 'orange', value: '#ea580c' },
@@ -20,8 +21,8 @@ export const NAV_ITEMS = [
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'About Me', href: '#about' },
   { label: 'Certificates', href: '#certificates' },
+  { label: 'About Me', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -46,8 +47,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   },
   {
     id: 3,
-    role: "Salesforce Developer Trainee",
-    company: "SmartBridge",
+    role: "Salesforce Intern",
+    company: "The SmartBridge",
     companyUrl: "thesmartbridge.com",
     period: "March 2025 – May 2025",
     location: "Philippines | Remote",
@@ -56,7 +57,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
     id: 4,
     role: "Institutional Student Assistant",
-    company: "Bulacan State University - CSER",
+    company: "Bulacan State University",
     companyUrl: "bulsu.edu.ph",
     period: "January 2025 – May 2025",
     location: "Malolos City, Bulacan, Philippines",

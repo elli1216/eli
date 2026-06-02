@@ -16,9 +16,9 @@
   --card: #f6f8fa; /* canvas.subtle */
   --border: #d0d7de; /* border.default */
   --input: #ffffff; /* canvas.default (inputs usually white) */
-  --primary: #2da44e; /* accent.fg (GitHub Blue) */
-  --primary-foreground: #ffffff; /* white */
-  --accent: #ddf4ff;
+  --primary: #1f2328; /* foreground (monochrome default) */
+  --primary-foreground: #ffffff;
+  --accent: #f0f0f0;
   --radius: 0.5rem;
 }
 
@@ -29,9 +29,9 @@
   --card: #161b22; /* canvas.subtle */
   --border: #30363d; /* border.default */
   --input: #0d1117; /* canvas.default */
-  --primary: #238636; /* accent.fg (GitHub Blue) */
-  --primary-foreground: #ffffff; /* white */
-  --accent: #1f2428;
+  --primary: #e6edf3; /* foreground (monochrome default) */
+  --primary-foreground: #0d1117;
+  --accent: #1a1a1a;
 }
 
 .accent-green { --primary: #2da44e; --primary-foreground: #ffffff; }
@@ -39,14 +39,14 @@
 .accent-red { --primary: #e63946; --primary-foreground: #ffffff; }
 .accent-orange { --primary: #ea580c; --primary-foreground: #ffffff; }
 .accent-purple { --primary: #9333ea; --primary-foreground: #ffffff; }
-.accent-gray { --primary: #71717a; --primary-foreground: #ffffff; }
+.accent-gray { --primary: #1f2328; --primary-foreground: #ffffff; }
 
 .dark.accent-green { --primary: #2da44e; }
 .dark.accent-blue { --primary: #2563eb; }
 .dark.accent-red { --primary: #e63946; }
 .dark.accent-orange { --primary: #ea580c; }
 .dark.accent-purple { --primary: #9333ea; }
-.dark.accent-gray { --primary: #71717a; }
+.dark.accent-gray { --primary: #e6edf3; }
 
 .glow {
   -webkit-box-shadow: 0px 0px 50px 0px rgba(45, 164, 79, 0.76);

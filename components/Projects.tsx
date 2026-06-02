@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Section } from './Section';
-import { PROJECT_DATA } from '../constants';
+import { PROJECT_DATA, ACCENT_COLORS } from '../constants';
 import { ProjectItem } from '../types';
-import { Github, ExternalLink, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Github, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { category } from '../constants';
+import { DecorativeFrame } from './DecorativeFrame';
 
-const ProjectCard: React.FC<{ project: ProjectItem; index: number; onClick: () => void }> = ({ project, index, onClick }) => {
+interface ProjectsProps {
+  accentColor: string;
+}
+
+const ProjectCard: React.FC<{ project: ProjectItem; index: number; accentColor: string }> = ({ project, index, accentColor }) => {
+  const [showFullDesc, setShowFullDesc] = useState(false);
+  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+
   const getBadgeStyles = (Category: typeof category[keyof typeof category]) => {
     switch (Category) {
       case category.ACADEMIC:
@@ -21,173 +29,94 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number; onClick: () =
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      onClick={onClick}
-      className="group relative aspect-video rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-border cursor-pointer"
-    >
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      />
-
-      {/* Badge */}
-      {project.category && (
-        <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-medium rounded-full border ${getBadgeStyles(project.category)} z-10`}>
-          {project.category}
-        </span>
-      )}
-
-      {/* Overlay Title */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-        <h3 className="text-xl font-bold text-white">
-          {project.title}
-        </h3>
-      </div>
-
-      {/* Permanent Title for Mobile/Touch */}
-      <div className="absolute bottom-0 left-0 w-full p-4 bg-black/40 backdrop-blur-xs md:hidden">
-        <h3 className="text-sm font-bold text-white truncate">
-          {project.title}
-        </h3>
-      </div>
-    </motion.div>
-  );
-};
-
-const ProjectModal: React.FC<{ project: ProjectItem; onClose: () => void }> = ({ project, onClose }) => {
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleEsc);
-
-    // --- Robust Scroll Lock ---
-    // Store original styles
-    const originalHtmlOverflow = document.documentElement.style.overflow;
-    const originalBodyOverflow = document.body.style.overflow;
-
-    // Prevent background scrolling
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.overflow = 'hidden'; // For html
-    document.body.style.overflow = 'hidden'; // For body
-    document.body.style.paddingRight = `${scrollBarWidth}px`;
-
-    // Cleanup function to restore original styles
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-      document.documentElement.style.overflow = originalHtmlOverflow;
-      document.body.style.overflow = originalBodyOverflow;
-      document.body.style.paddingRight = '0px';
-    };
-  }, [onClose]);
-
-  return (
-    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden outline-none" data-lenis-prevent>
-      {/* Backdrop */}
+    <DecorativeFrame accentColor={currentAccent}>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-        className="fixed inset-0 bg-background/90 backdrop-blur-md"
-      />
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-card"
+      >
+        {/* Image */}
+        <div className="aspect-video overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
 
-      {/* Scrollable Container Wrapper */}
-      <div className="flex min-h-full items-center justify-center p-4 md:p-6 lg:p-12 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-5xl bg-card rounded-2xl shadow-2xl border border-border overflow-hidden pointer-events-auto"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-background/50 backdrop-blur-md hover:bg-background transition-colors z-20 text-foreground"
-          >
-            <X size={20} />
-          </button>
+        {/* Badge */}
+        {project.category && (
+          <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-medium rounded-full border ${getBadgeStyles(project.category)} z-10`}>
+            {project.category}
+          </span>
+        )}
 
-          <div className="flex flex-col">
-            {/* Hero Image - Fitted to width */}
-            <div className="w-full bg-muted/30 flex items-center justify-center p-2 md:p-4 border-b border-border">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
-              />
-            </div>
+        {/* Content */}
+        <div className="p-5">
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            {project.title}
+          </h3>
 
-            <div className="p-6 md:p-10">
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
-                <div className="flex-1">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-3 mb-4">
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                      {project.title}
-                    </h2>
-                    {project.category && (
-                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30">
-                        {project.category}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="max-w-3xl text-muted-foreground">
-                    <p className="text-base md:text-lg leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-3 min-w-45 shrink-0">
-                  {project.demoLink && (
-                    <a
-                      href={project.demoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-bold text-sm shadow-lg shadow-primary/20"
-                    >
-                      <ExternalLink size={18} /> Live Site
-                    </a>
-                  )}
-                  {project.repoLink && (
-                    <a
-                      href={project.repoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent hover:bg-accent/80 text-foreground transition-all font-bold text-sm border border-border"
-                    >
-                      <Github size={18} /> Repository
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
-        </motion.div>
-      </div>
-    </div>
+
+          {/* Description */}
+          <div>
+            <p className={`text-muted-foreground text-sm leading-relaxed ${showFullDesc ? '' : 'line-clamp-2'}`}>
+              {project.description}
+            </p>
+            {project.description.length > 100 && (
+              <button
+                onClick={() => setShowFullDesc(!showFullDesc)}
+                className="text-xs text-primary hover:underline mt-1"
+              >
+                {showFullDesc ? 'Show less' : 'See full description'}
+              </button>
+            )}
+          </div>
+
+          {/* Links */}
+          <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
+            {project.demoLink && (
+              <a
+                href={project.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-sm shadow-primary/20"
+              >
+                <ExternalLink size={14} /> Live Site
+              </a>
+            )}
+            {project.repoLink && (
+              <a
+                href={project.repoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-accent hover:bg-accent/80 text-foreground transition-all border border-border"
+              >
+                <Github size={14} /> Repository
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </DecorativeFrame>
   );
 };
-export const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+
+export const Projects: React.FC<ProjectsProps> = ({ accentColor }) => {
   const [showAll, setShowAll] = useState(false);
 
   const INITIAL_VISIBLE = 2;
@@ -209,7 +138,7 @@ export const Projects: React.FC = () => {
             key={project.id || index}
             project={project}
             index={index}
-            onClick={() => setSelectedProject(project)}
+            accentColor={accentColor}
           />
         ))}
       </div>
@@ -225,14 +154,7 @@ export const Projects: React.FC = () => {
         </div>
       )}
 
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </AnimatePresence>
+
     </Section>
   );
 };

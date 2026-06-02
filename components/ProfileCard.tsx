@@ -1,3 +1,4 @@
+import { useMobile } from '@/lib/utils';
 import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react';
 
 const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
@@ -461,7 +462,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         <section
           className="grid relative overflow-hidden"
           style={{
-            height: '80svh',
+            height: useMobile() ? '55svh' : "60svh",
             maxHeight: '540px',
             aspectRatio: '0.718',
             borderRadius: cardRadius,

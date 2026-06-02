@@ -25,7 +25,7 @@ const App: React.FC = () => {
     if (savedAccent) {
       return savedAccent;
     }
-    return 'green';
+    return 'gray';
   });
 
   useEffect(() => {
@@ -56,12 +56,12 @@ const App: React.FC = () => {
         <Navbar darkMode={darkMode} toggleTheme={toggleTheme} accentColor={accentColor} setAccent={setAccent} />
         <main className="grow">
           <Hero accentColor={accentColor} />
-          <Experience />
-          <Skills darkMode={darkMode} />
-          <Projects />
-          <Certificates />
+          <Experience accentColor={accentColor} />
+          <Skills darkMode={darkMode} accentColor={accentColor} />
+          <Projects accentColor={accentColor} />
+          <Certificates accentColor={accentColor} />
           <About />
-          <Contact />
+          <Contact accentColor={accentColor} />
         </main>
         <Footer />
         <BackToTop />

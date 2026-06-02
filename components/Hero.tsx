@@ -1,16 +1,53 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, FileText, Facebook, Github, Instagram, Move, Linkedin } from 'lucide-react'
+import { ArrowRight, FileText, Facebook, Github, Linkedin } from 'lucide-react'
 import TextType from './TextType'
 import Particles from './Particles'
 import { ACCENT_COLORS } from '../constants'
+import { DecorativeFrame } from './DecorativeFrame'
+
+const heroOuterVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+} as const
+
+const heroImageVariants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+  },
+} as const
+
+const textColumnVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+} as const
+
+const textItemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' as const },
+  },
+} as const
 
 interface HeroProps {
   accentColor: string;
 }
 
 export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#2da44e'
+  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a'
 
   const handleViewResume = async () => {
     try {
@@ -24,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
   }
 
   return (
-    <section className="flex items-center justify-center mt-18 md:mt-45 md:mb-20 px-6 relative overflow-visible">
+    <section className="flex items-center justify-center mt-35 md:mt-45 md:mb-20 px-6 relative overflow-visible">
       <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
         <Particles
           key={`particles-${accentColor}`}
@@ -46,199 +83,138 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
 
       <div className="max-w-4xl mx-auto w-full text-center relative z-10">
         <motion.div
-          initial={{ y: -700 }}
-          animate={{ y: 0 }}
-          transition={{
-            type: "tween",
-            delay: 0.2
-          }}
+          initial="hidden"
+          animate="visible"
           className="flex flex-col items-center"
         >
-          <div className='flex flex-col md:flex-row gap-0 md:gap-16 items-center justify-center'>
-            <motion.div
-              drag
-              dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
-              whileHover={{ cursor: 'grab' }}
-              whileTap={{ cursor: 'grabbing', scale: 0.95 }}
-              className="mb-8 relative z-10 touch-none"
-              data-lenis-prevent
-            >
+          <motion.div
+            variants={heroOuterVariants}
+            className='flex flex-col md:flex-row gap-0 md:gap-16 items-center justify-center'
+          >
+            <motion.div variants={heroImageVariants}>
               <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="relative size-60 md:size-80"
+                drag
+                dragConstraints={{ left: -50, right: 50, top: -50, bottom: 50 }}
+                whileHover={{ cursor: 'grab' }}
+                whileTap={{ cursor: 'grabbing', scale: 0.95 }}
+                className="mb-8 relative z-10 touch-none"
+                data-lenis-prevent
               >
-                {/* Corner brackets frame */}
-                <div className="absolute inset-0 border-2 border-primary/60 rounded-lg" style={{ boxShadow: `0px 0px 30px 0px ${currentAccent}40, inset 0px 0px 20px 0px ${currentAccent}20` }}>
-                  {/* Top-left bracket */}
-                  <div className="absolute -top-1 -left-1 w-8 h-8 border-l-2 border-t-2 border-primary" />
-                  <div className="absolute -top-1 -left-1 w-3 h-3 bg-primary/60" />
-                  {/* Top-right bracket */}
-                  <div className="absolute -top-1 -right-1 w-8 h-8 border-r-2 border-t-2 border-primary" />
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary/60" />
-                  {/* Bottom-left bracket */}
-                  <div className="absolute -bottom-1 -left-1 w-8 h-8 border-l-2 border-b-2 border-primary" />
-                  <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-primary/60" />
-                  {/* Bottom-right bracket */}
-                  <div className="absolute -bottom-1 -right-1 w-8 h-8 border-r-2 border-b-2 border-primary" />
-                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-primary/60" />
-                </div>
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  className="relative size-60 md:size-80"
+                >
+                  <DecorativeFrame accentColor={currentAccent} className="absolute inset-0">
+                    <div className="size-full p-2">
+                      <div className="size-full rounded-lg overflow-hidden relative">
+                        <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/10 pointer-events-none z-10" />
+                        <img
+                          src="/other/mypic.JPG"
+                          alt="Eli"
+                          draggable="false"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                  </DecorativeFrame>
+                </motion.div>
 
-                {/* Inner glow ring */}
-                <div className="absolute inset-1 rounded-lg border border-primary/30 animate-pulse" style={{ boxShadow: `0px 0px 15px 0px ${currentAccent}60` }} />
 
-                {/* Scanlines overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,0,0.03)_50%)] bg-size-[100%_4px] pointer-events-none z-20" />
-                <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/30 pointer-events-none z-20" />
-
-                {/* Image container with chromatic aberration */}
-                <div className="absolute inset-2 rounded overflow-hidden">
-                  {/* RGB split layers */}
-                  <div className="absolute inset-0 bg-primary/20 mix-blend-screen opacity-0 group-hover:opacity-100 transition-opacity">
-                    <img
-                      src="/other/mypic.JPG"
-                      alt="Eli"
-                      draggable="false"
-                      className="w-full h-full object-cover blur-[2px] translate-x-0.5"
-                    />
-                  </div>
-                  <img
-                    src="/other/mypic.JPG"
-                    alt="Eli"
-                    draggable="false"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-
-                {/* Glitch effect lines */}
-                <div className="absolute inset-0 pointer-events-none z-30 opacity-0 group-hover:opacity-100">
-                  <div className="absolute top-1/4 left-0 w-full h-0.5 bg-primary/50 animate-pulse" style={{ animationDuration: '0.5s' }} />
-                  <div className="absolute top-1/2 left-0 w-full h-px bg-primary/30 animate-pulse" style={{ animationDuration: '0.7s' }} />
-                  <div className="absolute top-3/4 left-0 w-full h-0.5 bg-primary/50 animate-pulse" style={{ animationDuration: '0.6s' }} />
-                </div>
               </motion.div>
-
-              {/* Drag indicator */}
-              <motion.div
-                className="absolute -bottom-2 right-0 bg-primary/80 text-primary-foreground px-2 py-1 rounded text-xs font-bold flex items-center gap-1 z-30"
-                animate={{ y: [0, -3, 0] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              >
-                <Move size={10} />
-                <span>DRAG ME</span>
-              </motion.div>
-
-              {/* Corner tech accents */}
-              <div className="absolute -top-3 -left-3 text-primary/60">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M0 10h10M10 0v10" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="10" cy="10" r="2" fill="currentColor" />
-                </svg>
-              </div>
-              <div className="absolute -top-3 -right-3 text-primary/60">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M20 10h-10M10 0v10" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="10" cy="10" r="2" fill="currentColor" />
-                </svg>
-              </div>
-              <div className="absolute -bottom-3 -left-3 text-primary/60">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M0 10h10M10 10v10" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="10" cy="10" r="2" fill="currentColor" />
-                </svg>
-              </div>
-              <div className="absolute -bottom-3 -right-3 text-primary/60">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M20 10h-10M10 10v10" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="10" cy="10" r="2" fill="currentColor" />
-                </svg>
-              </div>
             </motion.div>
 
-            <div className='flex-1/2 items-center justify-center relative z-20 text-left'>
-              <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
-                <span className='text-2xl md:text-3xl'>Hi, I'm{" "}</span>
-                <span className='text-5xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
-                <TextType
-                  text={["Web Developer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
-                  typingSpeed={90}
-                  pauseDuration={1500}
-                  showCursor={true}
-                  className="w-full text-nowrap text-center text-3xl sm:text-4xl text-primary italic"
-                  cursorCharacter="_"
-                  deletingSpeed={50}
-                  cursorBlinkDuration={0.8}
-                />
-              </h1>
-              <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                23-year-old aspiring software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
-                I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
-              </p>
-              <div className='flex items-center justify-center'>
-                <span className="text-xs md:text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
-                  <span className='italic uppercase'>Status:</span> Learning Spring Boot
-                </span>
-              </div>
+            <motion.div
+              variants={textColumnVariants}
+              className='flex-1/2 items-center justify-center relative z-20 text-left'
+            >
+              <motion.div variants={textItemVariants}>
+                <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
+                  <span className='text-2xl md:text-3xl'>Hi, I'm{" "}</span>
+                  <span className='text-5xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
+                  <TextType
+                    text={["Web Developer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
+                    typingSpeed={90}
+                    pauseDuration={1500}
+                    showCursor={true}
+                    className="w-full text-nowrap text-center text-3xl sm:text-4xl text-primary italic"
+                    cursorCharacter="_"
+                    deletingSpeed={50}
+                    cursorBlinkDuration={0.8}
+                  />
+                </h1>
+              </motion.div>
+              <motion.div variants={textItemVariants}>
+                <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
+                  23-year-old aspiring software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
+                  I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
+                </p>
+              </motion.div>
+              <motion.div variants={textItemVariants}>
+                <div className='flex items-center justify-center'>
+                  <span className="text-xs md:text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
+                    <span className='italic uppercase'>Status:</span> Learning Spring Boot
+                  </span>
+                </div>
+              </motion.div>
 
-              <div className="flex text-xs md:text-sm flex-row items-center justify-center gap-3">
-                <motion.button
-                  onClick={handleViewResume}
-                  className="p-3 size-fit bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg cursor-pointer"
-                  style={{ boxShadow: `0 10px 15px -3px ${currentAccent}33` }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View Resume <FileText size={18} />
-                </motion.button>
-                <motion.a
-                  href="#projects"
-                  className="p-3 bg-accent text-foreground rounded-lg font-medium hover:bg-accent/80 transition-all flex items-center gap-2 border border-transparent hover:border-border"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View My Work <ArrowRight size={18} />
-                </motion.a>
-              </div>
-              <div className='flex flex-row items-center justify-center gap-2 pt-4'>
-                <motion.a
-                  href="https://www.facebook.com/profile.php?id=61582634784747"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex w-fit items-center gap-4 p-0 rounded-lg"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <div className="p-3 bg-accent text-primary rounded-full">
-                    <Facebook size={24} />
-                  </div>
-                </motion.a>
-                <motion.a
-                  href="https://www.linkedin.com/in/darlfloresca/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex w-fit items-center gap-4 p-0 rounded-lg"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <div className="p-3 bg-accent text-primary rounded-full">
-                    <Linkedin size={24} />
-                  </div>
-                </motion.a>
-                <motion.a
-                  href="https://github.com/elli1216"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex w-fit items-center gap-4 p-0 rounded-lg"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <div className="p-3 bg-accent text-primary rounded-full">
-                    <Github size={24} />
-                  </div>
-                </motion.a>
-              </div>
-            </div>
-          </div>
+              <motion.div variants={textItemVariants}>
+                <div className="flex text-xs md:text-sm flex-row items-center justify-center gap-3">
+                  <motion.button
+                    onClick={handleViewResume}
+                    className="p-3 size-fit bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+                    style={{ boxShadow: `0 10px 15px -3px ${currentAccent}33` }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View Resume <FileText size={18} />
+                  </motion.button>
+                  <motion.a
+                    href="#projects"
+                    className="p-3 bg-transparent text-foreground rounded-md font-medium hover:bg-primary/5 transition-all flex items-center gap-2 border border-border"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View My Work <ArrowRight size={18} />
+                  </motion.a>
+                </div>
+              </motion.div>
+              <motion.div variants={textItemVariants}>
+                <div className='flex flex-row items-center justify-center gap-4 pt-4'>
+                  <motion.a
+                    href="https://www.facebook.com/profile.php?id=61582634784747"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Facebook size={20} />
+                  </motion.a>
+                  <motion.a
+                    href="https://www.linkedin.com/in/darlfloresca/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Linkedin size={20} />
+                  </motion.a>
+                  <motion.a
+                    href="https://github.com/elli1216"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Github size={20} />
+                  </motion.a>
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
         </motion.div>
       </div>

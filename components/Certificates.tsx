@@ -2,10 +2,16 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useMobile } from '@/lib/utils';
 import { Section } from './Section';
-import { certificates } from '@/constants';
+import { certificates, ACCENT_COLORS } from '@/constants';
+import { DecorativeFrame } from './DecorativeFrame';
 
-export const Certificates = () => {
+interface CertificatesProps {
+  accentColor: string;
+}
+
+export const Certificates: React.FC<CertificatesProps> = ({ accentColor }) => {
   const [showAll, setShowAll] = useState(false);
+  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
 
   const INITIAL_VISIBLE = useMobile() ? 4 : 3;
   const visibleCerts = showAll ? certificates : certificates.slice(0, INITIAL_VISIBLE);
@@ -14,7 +20,7 @@ export const Certificates = () => {
   return (
     <Section id='certificates'>
       <div className="mb-12 mx-auto max-w-5xl w-full px-6">
-        <h2 className="text-3xl font-bold text-foreground">Certificates</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Certificates</h2>
         <p className="text-muted-foreground mt-3 max-w-2xl">
           Online certificates I have earned through the years.
         </p>
@@ -22,23 +28,28 @@ export const Certificates = () => {
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {visibleCerts.map((cert, index) => (
-            <motion.a
+            <motion.div
               key={cert.alt}
-              href={cert.href}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="block rounded-lg overflow-hidden border border-border hover:border-primary transition-colors"
             >
-              <img
-                src={cert.src}
-                alt={cert.alt}
-                className="w-full h-auto object-cover"
-              />
-            </motion.a>
+              <DecorativeFrame accentColor={currentAccent}>
+                <a
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-xl overflow-hidden"
+                >
+                  <img
+                    src={cert.src}
+                    alt={cert.alt}
+                    className="w-full h-auto object-cover"
+                  />
+                </a>
+              </DecorativeFrame>
+            </motion.div>
           ))}
         </div>
 
