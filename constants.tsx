@@ -68,6 +68,15 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 export const PROJECT_DATA: ProjectItem[] = [
   {
     id: 1,
+    title: "InstantMock - Local",
+    description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
+    techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
+    image: "https://placehold.co/800/black/white?text=InstantMock+-+Local&font=playfair-display",
+    repoLink: "https://github.com/elli1216/InstantMock-Local",
+    category: category.PERSONAL
+  },
+  {
+    id: 2,
     title: "STC Performing Arts Center Website",
     description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
     techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
@@ -77,7 +86,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.FREELANCE
   },
   {
-    id: 2,
+    id: 3,
     title: "BulSU OSAS Complaint and Grievance Portal",
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase", "Agile Development"],
@@ -87,7 +96,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.CAPSTONE
   },
   {
-    id: 3,
+    id: 4,
     title: "COBOL Files",
     description: "My files from Z/OS Mainframe Developer Course and IBM Z Xplore hands-on labs.",
     techStack: ["COBOL", "JCL", "IBM Z Xplore", "z/OS", "Mainframe", "ISPF", "RACF", "Zowe CLI", "VSAM", "TSO"],
@@ -96,7 +105,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 4,
+    id: 5,
     title: "Tic-a-Pic Photobooth",
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
     techStack: ["Next.js", "DaisyUI"],
@@ -106,7 +115,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 5,
+    id: 6,
     title: "Jobinator",
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
@@ -115,7 +124,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 6,
+    id: 7,
     title: "My Own Portfolio",
     description: "A portfolio website built with Motion and ReactBits components that you are viewing right now. Showcases my skills and projects as well as my social media accounts.",
     techStack: ["React", "TypeScript", "Motion React", "ReactBits"],
@@ -124,7 +133,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 7,
+    id: 8,
     title: "Scroll Report",
     description: "A project I practiced with Next.js using the News API for the data.",
     techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
@@ -133,7 +142,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 8,
+    id: 9,
     title: "ByteBazaar",
     description: "A final project presented during my 3rd year, 1st Semester in Web Systems and Technologies (1). A full-stack e-commerce application built with React (TypeScript) frontend and Express.js backend, featuring Firebase authentication and XML-based data storage.",
     techStack: ["React", "Node.js", "Express.js", "XML", "Firebase", "TypeScript"],
@@ -142,7 +151,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.ACADEMIC
   },
   {
-    id: 9,
+    id: 10,
     title: "Student Management System",
     description: "A final project presented during my 2nd year, 2nd Semester in Advanced Programming. A school management system designed in Java with MVC Framework. Features included Student, Faculty, and Admin Dashboards. Check the repository for more details.",
     techStack: ["Java", "Java Swing", "JDBC", "MVC Framework", "SQL Server", "Agile Development"],

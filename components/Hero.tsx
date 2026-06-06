@@ -5,7 +5,7 @@ import TextType from './TextType'
 import Particles from './Particles'
 import { ACCENT_COLORS } from '../constants'
 import { DecorativeFrame } from './DecorativeFrame'
-
+//trigger deploy
 const heroOuterVariants = {
   hidden: {},
   visible: {

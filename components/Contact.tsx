@@ -47,7 +47,7 @@ export const Contact: React.FC<ContactProps> = ({ accentColor }) => {
           Whether you have a question, a job opportunity, or just want to say hi — my inbox is always open.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-5xl mx-auto">
           {contactItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -72,7 +72,7 @@ export const Contact: React.FC<ContactProps> = ({ accentColor }) => {
                     </div>
                     <div className="text-left">
                       <h3 className="font-semibold text-foreground">{item.label}</h3>
-                      <p className="text-sm text-muted-foreground truncate max-w-[200px]">{item.value}</p>
+                      <p className="text-sm text-muted-foreground truncate max-w-50 sm:max-w-70">{item.value}</p>
                     </div>
                   </a>
                 </DecorativeFrame>

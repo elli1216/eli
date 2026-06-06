@@ -36,18 +36,18 @@ export const Certificates: React.FC<CertificatesProps> = ({ accentColor }) => {
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
               <DecorativeFrame accentColor={currentAccent}>
-                <a
-                  href={cert.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block rounded-xl overflow-hidden"
-                >
-                  <img
-                    src={cert.src}
-                    alt={cert.alt}
-                    className="w-full h-auto object-cover"
-                  />
-                </a>
+                  <a
+                    href={cert.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl overflow-hidden aspect-video"
+                  >
+                    <img
+                      src={cert.src}
+                      alt={cert.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  </a>
               </DecorativeFrame>
             </motion.div>
           ))}
