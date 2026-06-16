@@ -73,6 +73,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     techStack: ["Spring Boot", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
     repoLink: "https://github.com/elli1216/QuickRoute-Web",
+    demoLink: "https://quickroute.degf.workers.dev/",
     category: category.PERSONAL
   },
   {
