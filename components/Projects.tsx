@@ -132,7 +132,7 @@ export const Projects: React.FC<ProjectsProps> = ({ accentColor }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {visibleProjects.map((project, index) => (
           <ProjectCard
-            key={project.id || index}
+            key={index}
             project={project}
             index={index}
             accentColor={accentColor}

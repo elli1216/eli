@@ -28,16 +28,14 @@ export const NAV_ITEMS = [
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
-    id: 1,
     role: "Full Stack Development Trainee",
     company: "Accenture Academy",
     companyUrl: "accenture.com",
     period: "April 2026 - Present",
     location: "Mandaluyong City, Philippines | Hybrid",
-    description: "Took a 343-hour training program to sharpen my skills on Full Stack Development covering Core Java, Spring Boot, JPA, Hibernate for backend. MySQL for database. ReactJS and TypeScript for Frontend."
+    description: "Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development covering Core Java, Spring Boot, JPA, Hibernate for backend. MySQL for database. ReactJS and TypeScript for Frontend."
   },
   {
-    id: 2,
     role: "COBOL Developer Intern",
     company: "Land Bank of the Philippines (HO)",
     companyUrl: "landbank.com",
@@ -46,7 +44,6 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     description: "Contributed to the development of COBOL programs in z/OS mainframe for financial data processing. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
   },
   {
-    id: 3,
     role: "Salesforce Intern",
     company: "The SmartBridge",
     companyUrl: "thesmartbridge.com",
@@ -55,7 +52,6 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     description: "Completed 22 superbadges on Salesforce Trailhead, reflecting hands-on experience in CRM concepts, security models, workflow automation, and scalable system design, simulating real-world scenarios on utilizing Salesforce technologies."
   },
   {
-    id: 4,
     role: "Institutional Student Assistant",
     company: "Bulacan State University",
     companyUrl: "bulsu.edu.ph",
@@ -67,36 +63,14 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
-    id: 1,
     title: "QuickRoute - Web",
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
     techStack: ["Spring Boot", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
-    repoLink: "https://github.com/elli1216/QuickRoute-Web",
     demoLink: "https://quickroute.degf.workers.dev/",
     category: category.PERSONAL
   },
   {
-    id: 2,
-    title: "QuickRoute - Local",
-    description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
-    techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
-    image: "https://placehold.co/800/black/white?text=QuickRoute+-+Local&font=playfair-display",
-    repoLink: "https://github.com/elli1216/InstantMock-Local",
-    category: category.PERSONAL
-  },
-  {
-    id: 3,
-    title: "STC Performing Arts Center Website",
-    description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
-    techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
-    image: "/projects/stc.png",
-    repoLink: "",
-    demoLink: "https://stcpacv3.vercel.app/",
-    category: category.FREELANCE
-  },
-  {
-    id: 4,
     title: "BulSU OSAS Complaint and Grievance Portal",
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase", "Agile Development"],
@@ -106,7 +80,23 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.CAPSTONE
   },
   {
-    id: 5,
+    title: "STC Performing Arts Center Website",
+    description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
+    techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
+    image: "/projects/stc.png",
+    repoLink: "",
+    demoLink: "https://stcpacv3.vercel.app/",
+    category: category.FREELANCE
+  },
+  {
+    title: "QuickRoute - Local",
+    description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
+    techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
+    image: "https://placehold.co/800/black/white?text=QuickRoute+-+Local&font=playfair-display",
+    repoLink: "https://github.com/elli1216/InstantMock-Local",
+    category: category.PERSONAL
+  },
+  {
     title: "COBOL Files",
     description: "My files from Z/OS Mainframe Developer Course and IBM Z Xplore hands-on labs.",
     techStack: ["COBOL", "JCL", "IBM Z Xplore", "z/OS", "Mainframe", "ISPF", "RACF", "Zowe CLI", "VSAM", "TSO"],
@@ -115,7 +105,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 6,
     title: "Tic-a-Pic Photobooth",
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
     techStack: ["Next.js", "DaisyUI"],
@@ -125,7 +114,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 7,
     title: "Jobinator",
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
@@ -134,7 +122,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 8,
     title: "My Own Portfolio",
     description: "A portfolio website built with Motion and ReactBits components that you are viewing right now. Showcases my skills and projects as well as my social media accounts.",
     techStack: ["React", "TypeScript", "Motion React", "ReactBits"],
@@ -143,16 +130,14 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    id: 9,
     title: "Scroll Report",
-    description: "A project I practiced with Next.js using the News API for the data.",
+    description: "A project I practiced with Next.js using the News API for the data just for practicing NextJS.",
     techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
     image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
     repoLink: "https://github.com/elli1216/Scroll-Report",
     category: category.PERSONAL
   },
   {
-    id: 10,
     title: "ByteBazaar",
     description: "A final project presented during my 3rd year, 1st Semester in Web Systems and Technologies (1). A full-stack e-commerce application built with React (TypeScript) frontend and Express.js backend, featuring Firebase authentication and XML-based data storage.",
     techStack: ["React", "Node.js", "Express.js", "XML", "Firebase", "TypeScript"],
@@ -161,7 +146,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.ACADEMIC
   },
   {
-    id: 11,
     title: "Student Management System",
     description: "A final project presented during my 2nd year, 2nd Semester in Advanced Programming. A school management system designed in Java with MVC Framework. Features included Student, Faculty, and Admin Dashboards. Check the repository for more details.",
     techStack: ["Java", "Java Swing", "JDBC", "MVC Framework", "SQL Server", "Agile Development"],

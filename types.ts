@@ -11,7 +11,6 @@ export interface NavItem {
 }
 
 export interface ExperienceItem {
-  id: number;
   role: string;
   company: string;
   classname?: string;
@@ -22,7 +21,6 @@ export interface ExperienceItem {
 }
 
 export interface ProjectItem {
-  id: number;
   title: string;
   description: string;
   techStack: string[];

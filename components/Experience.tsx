@@ -57,11 +57,11 @@ export const Experience: React.FC<ExperienceProps> = ({ accentColor }) => {
           {EXPERIENCE_DATA.map((item, index) => {
             const isEven = index % 2 === 0;
             const isFirst = index === 0;
-            const isExpanded = expandedId === item.id;
+            const isExpanded = expandedId === index;
 
             return (
               <motion.div
-                key={item.id}
+                key={index}
                 className="relative flex flex-col md:flex-row"
                 variants={itemVariants}
               >
@@ -106,7 +106,7 @@ export const Experience: React.FC<ExperienceProps> = ({ accentColor }) => {
                         </p>
                         {item.description.length > 120 && (
                           <button
-                            onClick={() => setExpandedId(isExpanded ? null : item.id)}
+                            onClick={() => setExpandedId(isExpanded ? null : index)}
                             className="text-xs text-primary hover:underline mt-1 flex items-center gap-1"
                           >
                             {isExpanded ? 'Show less' : 'Read more'}
