@@ -15,7 +15,7 @@ export const About: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className='text-md md:text-lg w-fit max-w-md'>
+          <p className='text-sm md:text-lg w-fit max-w-md'>
             I am a BSIT graduate from Marilao, Bulacan and an aspiring Software Engineer and Mainframe Developer.
             I pride myself on being a <span className='text-primary font-semibold'>coachable developer</span> who thrives on feedback and industry-best practices to sharpen my skills.
             I leverage an AI-augmented stack, including <span className='text-primary font-semibold'>Cursor, Open Code, and MCP servers</span> to accelerate

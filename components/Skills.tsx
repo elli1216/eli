@@ -28,9 +28,6 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode, accentColor }) => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="mb-8 text-3xl md:text-4xl font-bold text-foreground">Tech Stack & Skills</h2>
-          <p className="max-w-2xl text-muted-foreground mb-8">
-            I utilize a modern toolbelt to build fast, responsive, and robust applications.
-          </p>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-5">
             {visibleSkills.map((skill, index) => (

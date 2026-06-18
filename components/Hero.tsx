@@ -130,14 +130,14 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
             >
               <motion.div variants={textItemVariants}>
                 <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
-                  <span className='text-2xl md:text-3xl'>Hi, I'm{" "}</span>
-                  <span className='text-5xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
+                  <span className='text-xl md:text-3xl'>Hi, I'm{" "}</span>
+                  <span className='text-4xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
                   <TextType
                     text={["Web Developer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
                     typingSpeed={90}
                     pauseDuration={1500}
                     showCursor={true}
-                    className="w-full text-nowrap text-center text-3xl sm:text-4xl text-primary italic"
+                    className="w-full text-nowrap text-center text-2xl sm:text-4xl text-primary italic"
                     cursorCharacter="_"
                     deletingSpeed={50}
                     cursorBlinkDuration={0.8}
@@ -145,7 +145,7 @@ export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
                 </h1>
               </motion.div>
               <motion.div variants={textItemVariants}>
-                <p className="text-md md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-sm md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
                   23-year-old aspiring software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
                   I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
                 </p>

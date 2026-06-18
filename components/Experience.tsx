@@ -101,7 +101,7 @@ export const Experience: React.FC<ExperienceProps> = ({ accentColor }) => {
 
                       {/* Description with clamp */}
                       <div>
-                        <p className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? '' : 'line-clamp-2'}`}>
+                        <p className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? '' : 'line-clamp-1'}`}>
                           {item.description}
                         </p>
                         {item.description.length > 120 && (

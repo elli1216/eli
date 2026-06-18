@@ -21,9 +21,6 @@ export const Certificates: React.FC<CertificatesProps> = ({ accentColor }) => {
     <Section id='certificates'>
       <div className="mb-12 mx-auto max-w-5xl w-full px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground">Certificates</h2>
-        <p className="text-muted-foreground mt-3 max-w-2xl">
-          Online certificates I have earned through the years.
-        </p>
       </div>
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -34,20 +31,21 @@ export const Certificates: React.FC<CertificatesProps> = ({ accentColor }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
+              className='flex items-center'
             >
               <DecorativeFrame accentColor={currentAccent}>
-                  <a
-                    href={cert.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block rounded-xl overflow-hidden aspect-video"
-                  >
-                    <img
-                      src={cert.src}
-                      alt={cert.alt}
-                      className="w-full h-full object-cover"
-                    />
-                  </a>
+                <a
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl overflow-hidden items-center"
+                >
+                  <img
+                    src={cert.src}
+                    alt={cert.alt}
+                    className="w-full h-full"
+                  />
+                </a>
               </DecorativeFrame>
             </motion.div>
           ))}

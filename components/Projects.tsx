@@ -73,7 +73,7 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number; accentColor: 
 
           {/* Description */}
           <div>
-            <p className={`text-muted-foreground text-sm leading-relaxed ${showFullDesc ? '' : 'line-clamp-2'}`}>
+            <p className={`text-muted-foreground text-sm leading-relaxed ${showFullDesc ? '' : 'line-clamp-1'}`}>
               {project.description}
             </p>
             {project.description.length > 100 && (
@@ -127,9 +127,6 @@ export const Projects: React.FC<ProjectsProps> = ({ accentColor }) => {
     <Section id="projects">
       <div className="mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground">Works so far</h2>
-        <p className="text-muted-foreground mt-3 max-w-2xl">
-          A collection of projects where I've applied my skills in full-stack development and mainframe development.
-        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
