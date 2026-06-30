@@ -108,6 +108,11 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number; accentColor: 
                 <Github size={14} /> Repository
               </a>
             )}
+            {!project.demoLink && !project.repoLink && (
+              <span className="text-xs text-muted-foreground bg-secondary italic px-1 py-1.5">
+                In Progress
+              </span>
+            )}
           </div>
         </div>
       </motion.div>

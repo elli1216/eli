@@ -4,7 +4,7 @@ export const category = {
   FREELANCE: "Freelance",
   ACADEMIC: "Academic Project",
   PERSONAL: "Personal Project",
-  CAPSTONE: "Capstone Project"
+  CAPSTONE: "Capstone Project",
 }
 
 export const ACCENT_COLORS: AccentColor[] = [
@@ -63,9 +63,16 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
+    title: "EntityForge",
+    description: "A browser-based visual database designer that lets developers model JPA entities and relationships through an intuitive drag-and-drop canvas. It eliminates the boilerplate of hand-writing entity classes, annotations, and Flyway migration SQL by generating production-ready Spring Boot code in real time. It provides a split-screen workspace where visual design and generated JPA/SQL code stay in sync. The tool solves the common friction of translating entity relationship diagrams into correct, compilable Java persistence code with zero backend dependencies.",
+    techStack: ["React", "React Flow", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
+    image: "/projects/entityforge.png",
+    category: category.PERSONAL
+  },
+  {
     title: "QuickRoute - Web",
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
-    techStack: ["Spring Boot", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
+    techStack: ["Spring Boot", "PostgreSQL", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
     demoLink: "https://quickroute.degf.workers.dev/",
     category: category.PERSONAL
