@@ -2,11 +2,12 @@ import React from 'react';
 import { Section } from './Section';
 import ProfileCard from './ProfileCard';
 import { motion } from 'framer-motion';
+import { SectionTitle } from './SectionTitle';
 
 export const About: React.FC = () => {
   return (
     <Section id="about">
-      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">About Me</h2>
+      <SectionTitle className="mb-8">About Me</SectionTitle>
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           className="space-y-6 text-lg text-muted-foreground leading-relaxed"
@@ -18,7 +19,7 @@ export const About: React.FC = () => {
           <p className='text-sm md:text-lg w-fit max-w-md'>
             I am a BSIT graduate from Marilao, Bulacan and an aspiring Software Engineer and Mainframe Developer.
             I pride myself on being a <span className='text-primary font-semibold'>coachable developer</span> who thrives on feedback and industry-best practices to sharpen my skills.
-            I leverage an AI-augmented stack, including <span className='text-primary font-semibold'>Cursor, Open Code, and MCP servers</span> to accelerate
+            I leverage an AI-augmented stack, including <span className='text-primary font-semibold'>Cursor, Anti-Gravity, and MCP servers</span> to accelerate
             development cycles while maintaining high standards for code scalability and performance. I am excited to bring my adaptable mindset and AI-driven
             workflow to a dynamic development environment.
           </p>

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Section } from './Section';
-import { PROJECT_DATA, ACCENT_COLORS } from '../constants';
+import { PROJECT_DATA } from '../constants';
 import { ProjectItem } from '../types';
 import { Github, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { category } from '../constants';
 import { DecorativeFrame } from './DecorativeFrame';
+import { SectionTitle } from './SectionTitle';
+import { useAccent } from '../contexts/AccentContext';
 
-interface ProjectsProps {
-  accentColor: string;
-}
+interface ProjectsProps {}
 
-const ProjectCard: React.FC<{ project: ProjectItem; index: number; accentColor: string }> = ({ project, index, accentColor }) => {
+const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ project, index }) => {
   const [showFullDesc, setShowFullDesc] = useState(false);
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+  const { currentAccent } = useAccent();
 
   const getBadgeStyles = (Category: typeof category[keyof typeof category]) => {
     switch (Category) {
@@ -121,7 +121,7 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number; accentColor: 
 };
 
 
-export const Projects: React.FC<ProjectsProps> = ({ accentColor }) => {
+export const Projects: React.FC<ProjectsProps> = () => {
   const [showAll, setShowAll] = useState(false);
 
   const INITIAL_VISIBLE = 2;
@@ -131,7 +131,7 @@ export const Projects: React.FC<ProjectsProps> = ({ accentColor }) => {
   return (
     <Section id="projects">
       <div className="mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Works so far</h2>
+        <SectionTitle>Works so far</SectionTitle>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
@@ -140,7 +140,6 @@ export const Projects: React.FC<ProjectsProps> = ({ accentColor }) => {
             key={index}
             project={project}
             index={index}
-            accentColor={accentColor}
           />
         ))}
       </div>

@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useMobile } from '@/lib/utils';
 import { Section } from './Section';
-import { certificates, ACCENT_COLORS } from '@/constants';
+import { certificates } from '@/constants';
 import { DecorativeFrame } from './DecorativeFrame';
+import { SectionTitle } from './SectionTitle';
+import { useAccent } from '../contexts/AccentContext';
 
-interface CertificatesProps {
-  accentColor: string;
-}
+interface CertificatesProps {}
 
-export const Certificates: React.FC<CertificatesProps> = ({ accentColor }) => {
+export const Certificates: React.FC<CertificatesProps> = () => {
   const [showAll, setShowAll] = useState(false);
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+  const { currentAccent } = useAccent();
 
   const INITIAL_VISIBLE = useMobile() ? 4 : 3;
   const visibleCerts = showAll ? certificates : certificates.slice(0, INITIAL_VISIBLE);
@@ -20,7 +20,7 @@ export const Certificates: React.FC<CertificatesProps> = ({ accentColor }) => {
   return (
     <Section id='certificates'>
       <div className="mb-12 mx-auto max-w-5xl w-full px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Certificates</h2>
+        <SectionTitle>Certificates</SectionTitle>
       </div>
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

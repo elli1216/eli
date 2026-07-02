@@ -3,12 +3,11 @@ import { Section } from './Section';
 import { EXPERIENCE_DATA } from '../constants';
 import { motion } from 'framer-motion';
 import { ChevronDown, MapPin } from 'lucide-react';
-import { ACCENT_COLORS } from '../constants';
 import { DecorativeFrame } from './DecorativeFrame';
+import { SectionTitle } from './SectionTitle';
+import { useAccent } from '../contexts/AccentContext';
 
-interface ExperienceProps {
-  accentColor: string;
-}
+interface ExperienceProps {}
 
 const CompanyLogo: React.FC<{ domain: string; className?: string }> = ({ domain, className = '' }) => (
   <img
@@ -35,13 +34,13 @@ const itemVariants = {
   } as const,
 };
 
-export const Experience: React.FC<ExperienceProps> = ({ accentColor }) => {
+export const Experience: React.FC<ExperienceProps> = () => {
   const [expandedId, setExpandedId] = useState<string | number | null>(null);
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+  const { currentAccent } = useAccent();
 
   return (
     <Section id="experience" className='mt-10'>
-      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Experience</h2>
+      <SectionTitle className="mb-12">Experience</SectionTitle>
 
       <div className="relative">
         {/* Timeline line */}

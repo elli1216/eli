@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { ArrowRight, FileText, Facebook, Github, Linkedin } from 'lucide-react'
 import TextType from './TextType'
 import Particles from './Particles'
-import { ACCENT_COLORS } from '../constants'
 import { DecorativeFrame } from './DecorativeFrame'
+import { useAccent } from '../contexts/AccentContext'
 //trigger deploy
 const heroOuterVariants = {
   hidden: {},
@@ -42,12 +42,10 @@ const textItemVariants = {
   },
 } as const
 
-interface HeroProps {
-  accentColor: string;
-}
+interface HeroProps {}
 
-export const Hero: React.FC<HeroProps> = ({ accentColor }) => {
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a'
+export const Hero: React.FC<HeroProps> = () => {
+  const { currentAccent, accentColor } = useAccent();
 
   const handleViewResume = async () => {
     try {

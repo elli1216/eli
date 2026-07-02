@@ -2,12 +2,11 @@ import React from 'react';
 import { Section } from './Section';
 import { Mail, Linkedin, Github, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ACCENT_COLORS } from '../constants';
 import { DecorativeFrame } from './DecorativeFrame';
+import { SectionTitle } from './SectionTitle';
+import { useAccent } from '../contexts/AccentContext';
 
-interface ContactProps {
-  accentColor: string;
-}
+interface ContactProps {}
 
 const contactItems = [
   {
@@ -36,13 +35,13 @@ const contactItems = [
   },
 ];
 
-export const Contact: React.FC<ContactProps> = ({ accentColor }) => {
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+export const Contact: React.FC<ContactProps> = () => {
+  const { currentAccent } = useAccent();
 
   return (
     <Section id="contact">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-foreground mb-4">Get In Touch</h2>
+        <SectionTitle className="mb-4">Get In Touch</SectionTitle>
         <p className="text-muted-foreground mb-12 max-w-xl mx-auto text-sm md:text-lg">
           Whether you have a question, a job opportunity, or just want to say hi — my inbox is always open.
         </p>

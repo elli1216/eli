@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import StackIcon from 'tech-stack-icons';
-import { SKILL_DATA, ACCENT_COLORS } from '../constants';
+import { SKILL_DATA } from '../constants';
 import { motion } from 'motion/react';
 import { SkillItem } from '../types';
 import { DecorativeFrame } from './DecorativeFrame';
+import { SectionTitle } from './SectionTitle';
+import { useAccent } from '../contexts/AccentContext';
+import { useTheme } from '../contexts/ThemeContext';
 
-interface SkillsProps {
-  darkMode: boolean;
-  accentColor: string;
-}
+interface SkillsProps {}
 
 const INITIAL_VISIBLE = 12;
 
-export const Skills: React.FC<SkillsProps> = ({ darkMode, accentColor }) => {
+export const Skills: React.FC<SkillsProps> = () => {
   const [showAll, setShowAll] = useState(false);
   const visibleSkills = showAll ? SKILL_DATA : SKILL_DATA.slice(0, INITIAL_VISIBLE);
   const remainingCount = SKILL_DATA.length - INITIAL_VISIBLE;
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+  const { currentAccent } = useAccent();
+  const { darkMode } = useTheme();
 
   return (
     <section id="skills" className="py-20">
@@ -27,7 +28,7 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode, accentColor }) => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="mb-8 text-3xl md:text-4xl font-bold text-foreground">Tech Stack & Skills</h2>
+          <SectionTitle className="mb-8">Tech Stack & Skills</SectionTitle>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-5">
             {visibleSkills.map((skill, index) => (

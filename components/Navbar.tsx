@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X, Palette } from 'lucide-react';
 import { NAV_ITEMS, ACCENT_COLORS } from '../constants';
 import { motion } from 'framer-motion';
+import { useAccent } from '../contexts/AccentContext';
+import { useTheme } from '../contexts/ThemeContext';
 
-interface NavbarProps {
-  darkMode: boolean;
-  toggleTheme: () => void;
-  accentColor: string;
-  setAccent: (color: string) => void;
-}
+interface NavbarProps {}
 
-export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, accentColor, setAccent }) => {
+export const Navbar: React.FC<NavbarProps> = () => {
+  const { accentColor, setAccentColor } = useAccent();
+  const { darkMode, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showColorPicker, setShowColorPicker] = useState(false);
@@ -85,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, accentCol
                     <button
                       key={color.name}
                       onClick={() => {
-                        setAccent(color.name);
+                        setAccentColor(color.name);
                         setShowColorPicker(false);
                       }}
                       className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''
@@ -129,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, accentCol
                 <button
                   key={color.name}
                   onClick={() => {
-                    setAccent(color.name);
+                    setAccentColor(color.name);
                     setShowColorPicker(false);
                   }}
                   className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''

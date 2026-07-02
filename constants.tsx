@@ -18,9 +18,9 @@ export const ACCENT_COLORS: AccentColor[] = [
 ];
 
 export const NAV_ITEMS = [
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Certificates', href: '#certificates' },
   { label: 'About Me', href: '#about' },
   { label: 'Contact', href: '#contact' },
@@ -71,7 +71,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    title: "QuickRoute - Web",
+    title: "QuickRoute",
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
     techStack: ["Spring Boot", "PostgreSQL", "Docker", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
