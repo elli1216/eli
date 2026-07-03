@@ -4,7 +4,7 @@ import { ArrowRight, FileText, Facebook, Github, Linkedin } from 'lucide-react'
 import TextType from './TextType'
 import Particles from './Particles'
 import { DecorativeFrame } from './DecorativeFrame'
-import { useAccent } from '../contexts/AccentContext'
+import { useAccent } from '@/contexts/AccentContext'
 //trigger deploy
 const heroOuterVariants = {
   hidden: {},
@@ -42,9 +42,8 @@ const textItemVariants = {
   },
 } as const
 
-interface HeroProps {}
 
-export const Hero: React.FC<HeroProps> = () => {
+export const Hero: React.FC = () => {
   const { currentAccent, accentColor } = useAccent();
 
   const handleViewResume = async () => {
@@ -60,7 +59,7 @@ export const Hero: React.FC<HeroProps> = () => {
 
   return (
     <section className="flex items-center justify-center mt-35 md:mt-45 md:mb-20 px-6 relative overflow-visible">
-      <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
+      <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none" aria-hidden="true">
         <Particles
           key={`particles-${accentColor}`}
           particleColors={[currentAccent]}
@@ -183,6 +182,7 @@ export const Hero: React.FC<HeroProps> = () => {
                     href="https://www.facebook.com/profile.php?id=61582634784747"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Facebook Profile"
                     className="text-muted-foreground hover:text-primary transition-colors"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.9 }}
@@ -193,6 +193,7 @@ export const Hero: React.FC<HeroProps> = () => {
                     href="https://www.linkedin.com/in/darlfloresca/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
                     className="text-muted-foreground hover:text-primary transition-colors"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.9 }}
@@ -203,6 +204,7 @@ export const Hero: React.FC<HeroProps> = () => {
                     href="https://github.com/elli1216"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
                     className="text-muted-foreground hover:text-primary transition-colors"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.9 }}
