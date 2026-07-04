@@ -9,8 +9,6 @@ import { DecorativeFrame } from './DecorativeFrame';
 import { SectionTitle } from './SectionTitle';
 import { useAccent } from '../contexts/AccentContext';
 
-interface ProjectsProps {}
-
 const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ project, index }) => {
   const [showFullDesc, setShowFullDesc] = useState(false);
   const { currentAccent } = useAccent();
@@ -121,7 +119,7 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
 };
 
 
-export const Projects: React.FC<ProjectsProps> = () => {
+export const Projects: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
 
   const INITIAL_VISIBLE = 2;
