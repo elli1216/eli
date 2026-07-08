@@ -1,9 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, FileText, Facebook, Github, Linkedin } from 'lucide-react'
-import TextType from './TextType'
-import Particles from './Particles'
-import { DecorativeFrame } from './DecorativeFrame'
+import TextType from '@/components/shared/TextType'
+import Particles from '@/components/home/Particles'
+import { DecorativeFrame } from '@/components/shared/DecorativeFrame'
 import { useAccent } from '@/contexts/AccentContext'
 //trigger deploy
 const heroOuterVariants = {

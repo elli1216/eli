@@ -1,4 +1,4 @@
-import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from './types';
+import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from '@/types/types';
 
 export const category = {
   FREELANCE: "Freelance",

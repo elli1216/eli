@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Section } from './Section';
-import { PROJECT_DATA } from '../constants';
-import { ProjectItem } from '../types';
+import { Section } from '@/components/layout/Section';
+import { PROJECT_DATA } from '@/constants/constants';
+import { ProjectItem } from '@/types/types';
 import { Github, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { category } from '../constants';
-import { DecorativeFrame } from './DecorativeFrame';
-import { SectionTitle } from './SectionTitle';
-import { useAccent } from '../contexts/AccentContext';
+import { category } from '@/constants/constants';
+import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
+import { SectionTitle } from '@/components/layout/SectionTitle';
+import { useAccent } from '@/contexts/AccentContext';
 
 const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ project, index }) => {
   const [showFullDesc, setShowFullDesc] = useState(false);

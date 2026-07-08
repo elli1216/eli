@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { ACCENT_COLORS } from '../constants';
+import { ACCENT_COLORS } from '@/constants/constants';
 
 interface AccentContextValue {
   accentColor: string;

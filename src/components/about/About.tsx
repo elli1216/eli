@@ -1,8 +1,8 @@
 import React from 'react';
-import { Section } from './Section';
-import ProfileCard from './ProfileCard';
+import { Section } from '@/components/layout/Section';
+import ProfileCard from '@/components/about/ProfileCard';
 import { motion } from 'framer-motion';
-import { SectionTitle } from './SectionTitle';
+import { SectionTitle } from '@/components/layout/SectionTitle';
 
 export const About: React.FC = () => {
   return (

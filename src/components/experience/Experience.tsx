@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Section } from './Section';
-import { EXPERIENCE_DATA } from '../constants';
+import { Section } from '@/components/layout/Section';
+import { EXPERIENCE_DATA } from '@/constants/constants';
 import { motion } from 'framer-motion';
 import { ChevronDown, MapPin } from 'lucide-react';
-import { DecorativeFrame } from './DecorativeFrame';
-import { SectionTitle } from './SectionTitle';
-import { useAccent } from '../contexts/AccentContext';
-
-interface ExperienceProps {}
+import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
+import { SectionTitle } from '@/components/layout/SectionTitle';
+import { useAccent } from '@/contexts/AccentContext';
 
 const CompanyLogo: React.FC<{ domain: string; className?: string }> = ({ domain, className = '' }) => (
   <img
@@ -34,7 +32,7 @@ const itemVariants = {
   } as const,
 };
 
-export const Experience: React.FC<ExperienceProps> = () => {
+export const Experience = () => {
   const [expandedId, setExpandedId] = useState<string | number | null>(null);
   const { currentAccent } = useAccent();
 

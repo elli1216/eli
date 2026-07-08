@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import StackIcon from 'tech-stack-icons';
-import { SKILL_DATA } from '../constants';
+import { SKILL_DATA } from '@/constants/constants';
 import { motion } from 'motion/react';
-import { SkillItem } from '../types';
-import { DecorativeFrame } from './DecorativeFrame';
-import { SectionTitle } from './SectionTitle';
-import { useAccent } from '../contexts/AccentContext';
-import { useTheme } from '../contexts/ThemeContext';
-
-interface SkillsProps {}
+import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
+import { SectionTitle } from '@/components/layout/SectionTitle';
+import { useAccent } from '@/contexts/AccentContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const INITIAL_VISIBLE = 12;
 
-export const Skills: React.FC<SkillsProps> = () => {
+export const Skills = () => {
   const [showAll, setShowAll] = useState(false);
   const visibleSkills = showAll ? SKILL_DATA : SKILL_DATA.slice(0, INITIAL_VISIBLE);
   const remainingCount = SKILL_DATA.length - INITIAL_VISIBLE;

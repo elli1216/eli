@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X, Palette } from 'lucide-react';
-import { NAV_ITEMS, ACCENT_COLORS } from '../constants';
+import { NAV_ITEMS, ACCENT_COLORS } from '@/constants/constants';
 import { motion } from 'framer-motion';
-import { useAccent } from '../contexts/AccentContext';
-import { useTheme } from '../contexts/ThemeContext';
+import { useAccent } from '@/contexts/AccentContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
-interface NavbarProps {}
-
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar = () => {
   const { accentColor, setAccentColor } = useAccent();
   const { darkMode, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);

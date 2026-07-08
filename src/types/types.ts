@@ -1,4 +1,4 @@
-import { category } from "./constants";
+import { category } from '@/constants/constants';
 
 export interface AccentColor {
   name: string;
@@ -33,5 +33,5 @@ export interface ProjectItem {
 export interface SkillItem {
   name: string;
   icon?: string;
-  category: "frontend" | "backend" | "tools";
+  category: 'frontend' | 'backend' | 'tools';
 }

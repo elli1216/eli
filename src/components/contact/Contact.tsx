@@ -1,12 +1,10 @@
 import React from 'react';
-import { Section } from './Section';
+import { Section } from '@/components/layout/Section';
 import { Mail, Linkedin, Github, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { DecorativeFrame } from './DecorativeFrame';
-import { SectionTitle } from './SectionTitle';
-import { useAccent } from '../contexts/AccentContext';
-
-interface ContactProps {}
+import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
+import { SectionTitle } from '@/components/layout/SectionTitle';
+import { useAccent } from '@/contexts/AccentContext';
 
 const contactItems = [
   {
@@ -35,7 +33,7 @@ const contactItems = [
   },
 ];
 
-export const Contact: React.FC<ContactProps> = () => {
+export const Contact = () => {
   const { currentAccent } = useAccent();
 
   return (

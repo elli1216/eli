@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useMobile } from '@/lib/utils';
-import { Section } from './Section';
-import { certificates } from '@/constants';
-import { DecorativeFrame } from './DecorativeFrame';
-import { SectionTitle } from './SectionTitle';
-import { useAccent } from '../contexts/AccentContext';
+import { Section } from '@/components/layout/Section';
+import { certificates } from '@/constants/constants';
+import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
+import { SectionTitle } from '@/components/layout/SectionTitle';
+import { useAccent } from '@/contexts/AccentContext';
 
-interface CertificatesProps {}
-
-export const Certificates: React.FC<CertificatesProps> = () => {
+export const Certificates = () => {
   const [showAll, setShowAll] = useState(false);
   const { currentAccent } = useAccent();
 
