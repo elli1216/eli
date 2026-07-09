@@ -75,7 +75,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
     techStack: ["Spring Boot", "PostgreSQL", "Docker", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
-    demoLink: "https://quickroute.degf.workers.dev/",
+    demoLink: "https://quick-route.app/",
     category: category.PERSONAL
   },
   {
