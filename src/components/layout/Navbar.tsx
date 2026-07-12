@@ -4,6 +4,7 @@ import { NAV_ITEMS, ACCENT_COLORS } from '@/constants/constants';
 import { motion } from 'framer-motion';
 import { useAccent } from '@/contexts/AccentContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { SectionTitle } from './SectionTitle';
 
 export const Navbar = () => {
   const { accentColor, setAccentColor } = useAccent();
@@ -37,7 +38,7 @@ export const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {"<Eli />"}
+          <SectionTitle textSize='2xl'>Eli</SectionTitle>
         </motion.a>
 
         {/* Desktop Menu */}
