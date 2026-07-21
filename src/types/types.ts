@@ -22,6 +22,7 @@ export interface ExperienceItem {
 
 export interface ProjectItem {
   title: string;
+  position?: string;
   description: string;
   techStack: string[];
   image: string;

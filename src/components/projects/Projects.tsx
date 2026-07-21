@@ -21,6 +21,8 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
         return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
       case category.CAPSTONE:
         return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
+      case category.HACKATHON:
+        return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
       default:
         return 'bg-primary/20 text-primary border-primary/30';
     }
@@ -53,8 +55,13 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
 
         {/* Content */}
         <div className="p-5">
-          <h3 className="text-xl font-bold text-foreground mb-3">
+          <h3 className="flex gap-2 flex-wrap text-xl font-bold text-foreground mb-3 content-center">
             {project.title}
+            {project.position && (
+              <div>
+                <span className="text-muted-foreground font-normal opacity-80 text-sm italic text-center"> {project.position}</span>
+              </div>
+            )}
           </h3>
 
           {/* Tech Stack */}
@@ -113,8 +120,8 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
             )}
           </div>
         </div>
-      </motion.div>
-    </DecorativeFrame>
+      </motion.div >
+    </DecorativeFrame >
   );
 };
 

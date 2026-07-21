@@ -5,6 +5,7 @@ export const category = {
   ACADEMIC: "Academic Project",
   PERSONAL: "Personal Project",
   CAPSTONE: "Capstone Project",
+  HACKATHON: "Hackathon Project"
 }
 
 export const ACCENT_COLORS: AccentColor[] = [
@@ -63,7 +64,18 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
+    title: "PlotWeaver",
+    position: "Full Stack Lead",
+    description: "PlotWeaver offers an infinite node-based canvas where authors map story beats as causal pathways. Its AI companion continuously traces these connections, instantly flagging downstream logic breaks and suggesting modular alternatives, so writers stay immersed while the tool handles consistency.",
+    techStack: ["Fast API", "IBM watsonx", "IBM Bob", "React", "React Flow", "Supabase", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
+    image: "/projects/plotweaver.png",
+    // demoLink: "",
+    repoLink: "https://github.com/IBMPlotWeaver/plotweaver",
+    category: category.HACKATHON
+  },
+  {
     title: "EntityForge",
+    position: "Front-end Developer",
     description: "A browser-based visual database designer that lets spring boot developers model JPA entities and relationships through an intuitive drag-and-drop canvas. It provides a split-screen workspace where visual design and generated JPA/SQL code stay in sync. The tool solves the common friction of translating entity relationship diagrams into correct, compilable Java persistence code.",
     techStack: ["React", "React Flow", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/entityforge.png",
@@ -72,6 +84,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "QuickRoute",
+    position: "Full Stack Developer",
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
     techStack: ["Spring Boot", "PostgreSQL", "Docker", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
@@ -79,7 +92,8 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL
   },
   {
-    title: "BulSU OSAS Complaint and Grievance Portal",
+    title: "BulSU OSAS Grievance and Response Management Portal",
+    position: "Full Stack Developer",
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase", "Agile Development"],
     image: "/projects/osas.png",
@@ -89,6 +103,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "STC Performing Arts Center Website",
+    position: "Full Stack Developer",
     description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
     techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
     image: "/projects/stc.png",
@@ -98,6 +113,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "QuickRoute - Local",
+    position: "Developer",
     description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
     techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
     image: "https://placehold.co/800/black/white?text=QuickRoute+-+Local&font=playfair-display",
@@ -114,6 +130,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "Tic-a-Pic Photobooth",
+    position: "Full Stack Developer",
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
     techStack: ["Next.js", "DaisyUI"],
     image: "/projects/ticapic.png",
@@ -123,6 +140,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "Jobinator",
+    position: "Full Stack Developer",
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/projects/jobinator.png",
@@ -131,6 +149,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "My Own Portfolio",
+    position: "Developer",
     description: "A portfolio website built with Motion and ReactBits components that you are viewing right now. Showcases my skills and projects as well as my social media accounts.",
     techStack: ["React", "TypeScript", "Motion React", "ReactBits"],
     image: "/projects/portfolio.png",
@@ -139,6 +158,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "Scroll Report",
+    position: "Developer",
     description: "A project I practiced with Next.js using the News API for the data just for practicing NextJS.",
     techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
     image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
@@ -147,6 +167,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "ByteBazaar",
+    position: "Developer",
     description: "A final project presented during my 3rd year, 1st Semester in Web Systems and Technologies (1). A full-stack e-commerce application built with React (TypeScript) frontend and Express.js backend, featuring Firebase authentication and XML-based data storage.",
     techStack: ["React", "Node.js", "Express.js", "XML", "Firebase", "TypeScript"],
     image: "https://placehold.co/800/purple/white?text=ByteBazaar&font=playfair-display",
@@ -155,6 +176,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: "Student Management System",
+    position: "Developer",
     description: "A final project presented during my 2nd year, 2nd Semester in Advanced Programming. A school management system designed in Java with MVC Framework. Features included Student, Faculty, and Admin Dashboards. Check the repository for more details.",
     techStack: ["Java", "Java Swing", "JDBC", "MVC Framework", "SQL Server", "Agile Development"],
     image: "https://placehold.co/800/darkblue/white?text=School+Management+System&font=playfair-display",
