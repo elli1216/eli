@@ -130,7 +130,7 @@ export const Hero: React.FC = () => {
                   <span className='text-xl md:text-3xl'>Hi, I'm{" "}</span>
                   <span className='text-4xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
                   <TextType
-                    text={["Web Developer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
+                    text={["Software Engineer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
                     typingSpeed={90}
                     pauseDuration={1500}
                     showCursor={true}
@@ -143,14 +143,14 @@ export const Hero: React.FC = () => {
               </motion.div>
               <motion.div variants={textItemVariants}>
                 <p className="text-sm md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
-                  23-year-old aspiring software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
+                  23-year-old software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
                   I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
                 </p>
               </motion.div>
               <motion.div variants={textItemVariants}>
                 <div className='flex items-center justify-center'>
                   <span className="text-xs md:text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
-                    <span className='italic uppercase'>Status:</span> Learning Spring Boot
+                    <span className='italic uppercase'>Current Role:</span> Associate Software Engineer
                   </span>
                 </div>
               </motion.div>

@@ -85,7 +85,7 @@ export const Certificates = () => {
           ))}
         </div>
 
-        {!showAll && remainingCount > 0 && (
+        {!showAll && remainingCount > 0 ? (
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll(true)}
@@ -94,7 +94,15 @@ export const Certificates = () => {
               See More ({remainingCount})
             </button>
           </div>
-        )}
+        ) :
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowAll(false)}
+              className="px-6 py-2 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors font-medium cursor-pointer"
+            >
+              See Less
+            </button>
+          </div>}
       </div>
 
       {/* Lightbox Modal */}
@@ -109,6 +117,7 @@ export const Certificates = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
+            data-lenis-prevent="true"
           >
             {/* Close button - Top Right */}
             <button

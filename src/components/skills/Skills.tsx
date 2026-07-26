@@ -48,7 +48,7 @@ export const Skills = () => {
             ))}
           </div>
 
-          {!showAll && remainingCount > 0 && (
+          {!showAll && remainingCount > 0 ? (
             <div className="mt-10 flex justify-center">
               <button
                 onClick={() => setShowAll(true)}
@@ -57,7 +57,15 @@ export const Skills = () => {
                 See More ({remainingCount})
               </button>
             </div>
-          )}
+          ) :
+            <div className="mt-10 flex justify-center">
+              <button
+                onClick={() => setShowAll(false)}
+                className="px-6 py-2 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors font-medium"
+              >
+                See Less
+              </button>
+            </div>}
         </motion.div>
       </div>
     </section>

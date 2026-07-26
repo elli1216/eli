@@ -29,10 +29,18 @@ export const NAV_ITEMS = [
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
-    role: "Full Stack Development Trainee",
-    company: "Accenture Academy",
+    role: "Associate Software Engineer",
+    company: "Accenture",
     companyUrl: "accenture.com",
-    period: "April 2026 - Present",
+    period: "August 2026 - Present",
+    location: "Philippines | Hybrid",
+    description: ""
+  },
+  {
+    role: "Full Stack Development Trainee",
+    company: "Accenture",
+    companyUrl: "accenture.com",
+    period: "April 2026 - July 2026",
     location: "Mandaluyong City, Philippines | Hybrid",
     description: "Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development covering Core Java, Spring Boot, JPA, Hibernate for backend. MySQL for database. ReactJS and TypeScript for Frontend."
   },
@@ -111,23 +119,23 @@ export const PROJECT_DATA: ProjectItem[] = [
     demoLink: "https://stcpacv3.vercel.app/",
     category: category.FREELANCE
   },
-  {
-    title: "QuickRoute - Local",
-    position: "Developer",
-    description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
-    techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
-    image: "https://placehold.co/800/black/white?text=QuickRoute+-+Local&font=playfair-display",
-    repoLink: "https://github.com/elli1216/InstantMock-Local",
-    category: category.PERSONAL
-  },
-  {
-    title: "COBOL Files",
-    description: "My files from Z/OS Mainframe Developer Course and IBM Z Xplore hands-on labs.",
-    techStack: ["COBOL", "JCL", "IBM Z Xplore", "z/OS", "Mainframe", "ISPF", "RACF", "Zowe CLI", "VSAM", "TSO"],
-    image: "/projects/zos.png",
-    repoLink: "https://github.com/elli1216/ds-jcl-cbl-files",
-    category: category.PERSONAL
-  },
+  // {
+  //   title: "QuickRoute - Local",
+  //   position: "Developer",
+  //   description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
+  //   techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
+  //   image: "https://placehold.co/800/black/white?text=QuickRoute+-+Local&font=playfair-display",
+  //   repoLink: "https://github.com/elli1216/InstantMock-Local",
+  //   category: category.PERSONAL
+  // },
+  // {
+  //   title: "COBOL Files",
+  //   description: "My files from Z/OS Mainframe Developer Course and IBM Z Xplore hands-on labs.",
+  //   techStack: ["COBOL", "JCL", "IBM Z Xplore", "z/OS", "Mainframe", "ISPF", "RACF", "Zowe CLI", "VSAM", "TSO"],
+  //   image: "/projects/zos.png",
+  //   repoLink: "https://github.com/elli1216/ds-jcl-cbl-files",
+  //   category: category.PERSONAL
+  // },
   {
     title: "Tic-a-Pic Photobooth",
     position: "Full Stack Developer",
@@ -188,8 +196,8 @@ export const PROJECT_DATA: ProjectItem[] = [
 export const SKILL_DATA: SkillItem[] = [
   { name: "Java", category: "backend", icon: "java" },
   { name: "COBOL", category: "backend", icon: "" },
-  { name: "ReactJS", category: "frontend", icon: "react" },
   { name: "Spring Boot", category: "backend", icon: "spring" },
+  { name: "ReactJS", category: "frontend", icon: "react" },
   { name: "Tailwind CSS", category: "frontend", icon: "tailwindcss" },
   { name: "NextJS", category: "frontend", icon: "nextjs2" },
   { name: "Tanstack", category: "frontend", icon: "tanstack2" },
@@ -199,13 +207,18 @@ export const SKILL_DATA: SkillItem[] = [
   { name: "CSS3", category: "frontend", icon: "css3" },
   { name: "SQL", category: "backend", icon: "mysql" },
   { name: "PostgreSQL", category: "backend", icon: "postgresql" },
+  { name: "SQLite", category: "backend", icon: "sqlite" },
   { name: "JCL", category: "backend", icon: "" },
   { name: "ExpressJS", category: "backend", icon: "expressjs" },
+  { name: "NodeJS", category: "backend", icon: "nodejs" },
   { name: "Docker", category: "tools", icon: "docker" },
   { name: "Git", category: "tools", icon: "git" },
   { name: "GitHub", category: "tools", icon: "github" },
   { name: "Bash", category: "tools", icon: "bash" },
+  { name: "Supabase", category: "tools", icon: "supabase" },
+  { name: "Python", category: "backend", icon: "python" },
   { name: "Prisma", category: "backend", icon: "prisma" },
+  { name: "OpenAI", category: "tools", icon: "openai" },
   { name: "Vite", category: "frontend", icon: "vitejs" },
 ];
 

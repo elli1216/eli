@@ -25,8 +25,8 @@ const App: React.FC = () => {
             <main className="grow">
               <Hero />
               <Suspense fallback={<SectionLoader />}>
-                <Projects />
                 <Skills />
+                <Projects />
                 <Experience />
                 <Certificates />
                 <About />
