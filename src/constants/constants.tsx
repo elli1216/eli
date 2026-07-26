@@ -19,8 +19,8 @@ export const ACCENT_COLORS: AccentColor[] = [
 ];
 
 export const NAV_ITEMS = [
-  { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Certificates', href: '#certificates' },
   { label: 'About Me', href: '#about' },

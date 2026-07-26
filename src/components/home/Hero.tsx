@@ -58,8 +58,8 @@ export const Hero: React.FC = () => {
   }
 
   return (
-    <section className="flex items-center justify-center mt-35 md:mt-45 md:mb-20 px-6 relative overflow-visible">
-      <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none" aria-hidden="true">
+    <section className="flex items-center justify-center mt-35 md:mt-45 md:mb-20 px-6 relative">
+      <div className="fixed inset-0 z-0 w-full h-full pointer-events-none">
         <Particles
           key={`particles-${accentColor}`}
           particleColors={[currentAccent]}
@@ -128,13 +128,13 @@ export const Hero: React.FC = () => {
               <motion.div variants={textItemVariants}>
                 <h1 className="flex flex-col items-center justify-center gap-2 font-bold mb-6">
                   <span className='text-xl md:text-3xl'>Hi, I'm{" "}</span>
-                  <span className='text-4xl md:text-6xl text-transparent w-full text-nowrap bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
+                  <span className='text-4xl md:text-6xl text-transparent w-full bg-clip-text bg-linear-to-r from-primary to-primary/50 text-center'>Eli Floresca</span>
                   <TextType
                     text={["Software Engineer", "BSIT Graduate", "COBOL Developer", "IBM Z Advocate"]}
                     typingSpeed={90}
                     pauseDuration={1500}
                     showCursor={true}
-                    className="w-full text-nowrap text-center text-2xl sm:text-4xl text-primary italic"
+                    className="w-full text-center text-2xl sm:text-4xl text-primary italic"
                     cursorCharacter="_"
                     deletingSpeed={50}
                     cursorBlinkDuration={0.8}

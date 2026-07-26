@@ -34,54 +34,58 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
   const { currentAccent } = useAccent();
 
   return (
-    <DecorativeFrame accentColor={currentAccent} className="h-full">
-      <motion.button
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        onClick={onClick}
-        className="group relative w-full h-full text-left rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-card border border-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background p-6 flex flex-col justify-between min-h-40"
-      >
-        {/* Subtle background gradient on hover */}
-        <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="h-full"
+    >
+      <DecorativeFrame accentColor={currentAccent} className="h-full">
+        <button
+          onClick={onClick}
+          className="group relative w-full h-full text-left rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-card border border-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background p-6 flex flex-col justify-between min-h-40 cursor-pointer"
+        >
+          {/* Subtle background gradient on hover */}
+          <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-        <div className="relative z-10 flex-1">
-          {/* Header */}
-          <div className="flex justify-between items-start mb-4 gap-4">
-            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
-              {project.title}
-              {project.position && (
-                <span className="block mt-1 text-sm font-normal text-muted-foreground italic group-hover:text-primary/70 transition-colors">
-                  {project.position}
+          <div className="relative z-10 flex-1 flex flex-col justify-between">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-4 gap-4">
+              <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                {project.title}
+                {project.position && (
+                  <span className="block mt-1 text-sm font-normal text-muted-foreground italic group-hover:text-primary/70 transition-colors">
+                    {project.position}
+                  </span>
+                )}
+              </h3>
+
+              <div className="text-primary/40 group-hover:text-primary transition-all duration-300 transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                <ExternalLink size={20} />
+              </div>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="flex flex-nowrap gap-1.5 mt-auto">
+              {project.techStack.slice(0, 4).map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-1 text-[10px] sm:text-xs font-medium bg-secondary text-secondary-foreground rounded-md border border-border/50"
+                >
+                  {tech}
+                </span>
+              ))}
+              {project.techStack.length > 5 && (
+                <span className="px-2 py-1 text-[10px] sm:text-xs font-medium bg-transparent text-muted-foreground rounded-md border border-transparent">
+                  +{project.techStack.length - 4} more
                 </span>
               )}
-            </h3>
-
-            <div className="text-primary/40 group-hover:text-primary transition-all duration-300 transform group-hover:translate-x-1 group-hover:-translate-y-1">
-              <ExternalLink size={20} />
             </div>
           </div>
-
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-1.5 mt-auto">
-            {project.techStack.slice(0, 4).map((tech) => (
-              <span
-                key={tech}
-                className="px-2 py-1 text-[10px] sm:text-xs font-medium bg-secondary text-secondary-foreground rounded-md border border-border/50"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.techStack.length > 5 && (
-              <span className="px-2 py-1 text-[10px] sm:text-xs font-medium bg-transparent text-muted-foreground rounded-md border border-transparent">
-                +{project.techStack.length - 5} more
-              </span>
-            )}
-          </div>
-        </div>
-      </motion.button>
-    </DecorativeFrame>
+        </button>
+      </DecorativeFrame>
+    </motion.div>
   );
 };
 

@@ -20,7 +20,7 @@ const App: React.FC = () => {
     <ThemeProvider>
       <AccentProvider>
         <SmoothScroll>
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-dvh w-full overflow-x-hidden flex flex-col">
             <Navbar />
             <main className="grow">
               <Hero />
