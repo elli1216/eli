@@ -33,16 +33,16 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     company: "Accenture",
     companyUrl: "accenture.com",
     period: "August 2026 - Present",
-    location: "Philippines | Hybrid",
+    location: "NCR, Philippines | Hybrid",
     description: ""
   },
   {
     role: "Full Stack Development Trainee",
-    company: "Accenture",
+    company: "Accenture Technology Academy",
     companyUrl: "accenture.com",
     period: "April 2026 - July 2026",
     location: "Mandaluyong City, Philippines | Hybrid",
-    description: "Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development covering Core Java, Spring Boot, JPA, Hibernate for backend. MySQL for database. ReactJS and TypeScript for Frontend."
+    description: "Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development and Microservices, covering Core Java, Spring Boot for backend. ReactJS and TypeScript for Frontend."
   },
   {
     role: "COBOL Developer Intern",
@@ -50,10 +50,10 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: "landbank.com",
     period: "February 2026 - April 2026",
     location: "Malate, Manila, Philippines",
-    description: "Contributed to the development of COBOL programs in z/OS mainframe for financial data processing. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
+    description: "Contributed to the migration and development of 10+ COBOL programs to z/OS mainframe for financial data processing. Worked with PS and VSAM input files to handle data reading, validation, and processing logic. Executed JCL job submissions and monitored execution status to maintain system reliability. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
   },
   {
-    role: "Salesforce Intern",
+    role: "Salesforce Developer Intern",
     company: "The SmartBridge",
     companyUrl: "thesmartbridge.com",
     period: "March 2025 – May 2025",
