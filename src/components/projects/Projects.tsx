@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
                 {project.title}
                 {project.position && (
                   <span className="block mt-1 text-sm font-normal text-muted-foreground italic group-hover:text-primary/70 transition-colors">
-                    {project.position}
+                    {project.position} {project.category === category.HACKATHON ? "(Hackathon)" : ""}
                   </span>
                 )}
               </h3>

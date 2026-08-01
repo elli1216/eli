@@ -72,9 +72,19 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
+    title: "WhatsApp Notification Router",
+    position: "AI Developer",
+    description: "An AI-powered WhatsApp Message Notification Router (HackerRank Orchestrate 24-hour Hackathon) that classifies incoming multimodal messages (text, image posters, voice notes) as notify, digest, or mute. It personalizes decisions by fusing per-user notification behavior, group roles and mute states, business account trust signals, and historical reactions into a context-aware prompt, while a heuristic retrieval engine surfaces the three most relevant past messages with real reactions as evidence. Routing runs on a free-tier Gemini model with temperature-0 structured JSON output for deterministic, schema-validated results. The production pipeline writes predictions incrementally to output.csv, making it resumable against the free tier's 15-requests-per-minute limit. Evaluation results: Action Accuracy 29/30 (96.67%) and Message Type Accuracy 28/30 (93.33%).",
+    techStack: ["Python", "Pydantic v2", "Gemini API", "Pandas", "Jaccard", "Heuristic Ranking"],
+    image: "https://placehold.co/800/black/white?text=Message+Notification+Router+(Hackathon)&font=playfair-display",
+    // demoLink: "",
+    repoLink: "https://github.com/elli1216/message-notification-router",
+    category: category.HACKATHON
+  },
+  {
     title: "PlotWeaver",
     position: "Full Stack Lead",
-    description: "PlotWeaver offers an infinite node-based canvas where authors map story beats as causal pathways. Its AI companion continuously traces these connections, instantly flagging downstream logic breaks and suggesting modular alternatives, so writers stay immersed while the tool handles consistency.",
+    description: "Collaborated with 2 AI Engineers in the IBM AI Builders Challenge (July Challenge) to develop PlotWeaver, that offers an infinite node-based canvas where authors map story beats as causal pathways. Its AI companion continuously traces these connections, instantly flagging downstream logic breaks and suggesting modular alternatives, so writers stay immersed while the tool handles consistency.",
     techStack: ["Fast API", "IBM watsonx", "IBM Bob", "React", "React Flow", "Supabase", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/plotweaver.png",
     // demoLink: "",
