@@ -74,7 +74,10 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "WhatsApp Notification Router",
     position: "AI Developer",
-    description: "An AI-powered WhatsApp Message Notification Router (HackerRank Orchestrate 24-hour Hackathon) that classifies incoming multimodal messages (text, image posters, voice notes) as notify, digest, or mute. It personalizes decisions by fusing per-user notification behavior, group roles and mute states, business account trust signals, and historical reactions into a context-aware prompt, while a heuristic retrieval engine surfaces the three most relevant past messages with real reactions as evidence. Routing runs on a free-tier Gemini model with temperature-0 structured JSON output for deterministic, schema-validated results. The production pipeline writes predictions incrementally to output.csv, making it resumable against the free tier's 15-requests-per-minute limit. Evaluation results: Action Accuracy 29/30 (96.67%) and Message Type Accuracy 28/30 (93.33%).",
+    hackathonTitle: "HackerRank Orchestrate 24-hour Hackathon",
+    collaborators: null,
+    problem: "WhatsApp is noisy — family chats, school updates, work messages, promotions, image posters, voice notes, and scams all share one stream. Treating every message the same makes important ones get missed and lets unwanted or risky ones interrupt the user. The system must reason over multimodal messages (text, images, voice notes) and decide, per incoming message, whether to interrupt now, batch it into a digest, or mute it — while keeping the decision personalized to each user, and always muting clear scam or safety risks regardless of the user's usual engagement.",
+    description: "An AI-powered WhatsApp Message Notification Router that classifies incoming multimodal messages (text, image posters, voice notes) as notify, digest, or mute. It personalizes decisions by fusing per-user notification behavior, group roles and mute states, business account trust signals, and historical reactions into a context-aware prompt, while a heuristic retrieval engine surfaces the three most relevant past messages with real reactions as evidence. Routing runs on a free-tier Gemini model with temperature-0 structured JSON output for deterministic, schema-validated results. The production pipeline writes predictions incrementally to output.csv, making it resumable against the free tier's 15-requests-per-minute limit. Evaluation results: Action Accuracy 29/30 (96.67%) and Message Type Accuracy 28/30 (93.33%).",
     techStack: ["Python", "Pydantic v2", "Gemini API", "Pandas", "Jaccard", "Heuristic Ranking"],
     image: "https://placehold.co/800/black/white?text=Message+Notification+Router+(Hackathon)&font=playfair-display",
     // demoLink: "",
@@ -84,7 +87,16 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "PlotWeaver",
     position: "Full Stack Lead",
-    description: "Collaborated with 2 AI Engineers in the IBM AI Builders Challenge (July Challenge) to develop PlotWeaver, that offers an infinite node-based canvas where authors map story beats as causal pathways. Its AI companion continuously traces these connections, instantly flagging downstream logic breaks and suggesting modular alternatives, so writers stay immersed while the tool handles consistency.",
+    hackathonTitle: "IBM AI Builders Challenge (July Edition)",
+    collaborators: [{
+      name: "Karan Munreja",
+      link: "https://www.linkedin.com/in/karan-munreja/"
+    }, {
+      name: "Michael Omijie",
+      link: "https://www.linkedin.com/in/michaelomijie/"
+    }],
+    problem: "Writing complex novels, screenplays, or game lore is notoriously difficult. Authors lose track of character arcs, timelines, and established lore in hundreds of pages, and tracking strict world-building rules across 50 chapters is tedious and error-prone. Most AI writing tools make it worse by ghostwriting prose that dilutes the author's voice instead of fixing the underlying plot logic.",
+    description: "Collaborated with 2 AI Engineers to develop PlotWeaver, that offers an infinite node-based canvas where authors map story beats as causal pathways. Its AI companion continuously traces these connections, instantly flagging downstream logic breaks and suggesting modular alternatives, so writers stay immersed while the tool handles consistency.",
     techStack: ["Fast API", "IBM watsonx", "IBM Bob", "React", "React Flow", "Supabase", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/plotweaver.png",
     // demoLink: "",
@@ -94,24 +106,38 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "EntityForge",
     position: "Front-end Developer",
+    collaborators: null,
     description: "A browser-based visual database designer that lets spring boot developers model JPA entities and relationships through an intuitive drag-and-drop canvas. It provides a split-screen workspace where visual design and generated JPA/SQL code stay in sync. The tool solves the common friction of translating entity relationship diagrams into correct, compilable Java persistence code.",
     techStack: ["React", "React Flow", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/entityforge.png",
     demoLink: "https://entityforge.degf.workers.dev/",
+    repoLink: "https://github.com/elli1216/entityforge",
     category: category.PERSONAL
   },
   {
     title: "QuickRoute",
     position: "Full Stack Developer",
+    collaborators: null,
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
     techStack: ["Spring Boot", "PostgreSQL", "Docker", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
     demoLink: "https://quick-route.app/",
+    repoLink: "https://github.com/elli1216/QuickRoute-Web",
     category: category.PERSONAL
   },
   {
     title: "BulSU OSAS Grievance and Response Management Portal",
     position: "Full Stack Developer",
+    collaborators: [{
+      name: "Mico Cerbito",
+      link: "https://www.linkedin.com/in/mico-cerbito/"
+    }, {
+      name: "Romeo Quiñones",
+      link: "https://www.linkedin.com/in/romeo-m-quinones-jr/"
+    }, {
+      name: "Enrico Tienzo",
+      link: "https://www.linkedin.com/in/chainsaw-353350379/"
+    }],
     description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase", "Agile Development"],
     image: "/projects/osas.png",
@@ -122,6 +148,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "STC Performing Arts Center Website",
     position: "Full Stack Developer",
+    collaborators: null,
     description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
     techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
     image: "/projects/stc.png",
@@ -149,6 +176,10 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "Tic-a-Pic Photobooth",
     position: "Full Stack Developer",
+    collaborators: [{
+      name: "Paolo Angelo",
+      link: "https://www.linkedin.com/in/paolo-angelo/"
+    }],
     description: "Developed an interactive web-based photobooth using NextJS to provide users with a fun, seamless, and engaging digital photography experience.",
     techStack: ["Next.js", "DaisyUI"],
     image: "/projects/ticapic.png",
@@ -159,6 +190,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "Jobinator",
     position: "Full Stack Developer",
+    collaborators: null,
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/projects/jobinator.png",
@@ -168,6 +200,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "My Own Portfolio",
     position: "Developer",
+    collaborators: null,
     description: "A portfolio website built with Motion and ReactBits components that you are viewing right now. Showcases my skills and projects as well as my social media accounts.",
     techStack: ["React", "TypeScript", "Motion React", "ReactBits"],
     image: "/projects/portfolio.png",
@@ -177,6 +210,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "Scroll Report",
     position: "Developer",
+    collaborators: null,
     description: "A project I practiced with Next.js using the News API for the data just for practicing NextJS.",
     techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
     image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
@@ -186,6 +220,16 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "ByteBazaar",
     position: "Developer",
+    collaborators: [{
+      name: "Mico Cerbito",
+      link: "https://www.linkedin.com/in/mico-cerbito/"
+    }, {
+      name: "Romeo Quiñones",
+      link: "https://www.linkedin.com/in/romeo-m-quinones-jr/"
+    }, {
+      name: "Enrico Tienzo",
+      link: "https://www.linkedin.com/in/chainsaw-353350379/"
+    }],
     description: "A final project presented during my 3rd year, 1st Semester in Web Systems and Technologies (1). A full-stack e-commerce application built with React (TypeScript) frontend and Express.js backend, featuring Firebase authentication and XML-based data storage.",
     techStack: ["React", "Node.js", "Express.js", "XML", "Firebase", "TypeScript"],
     image: "https://placehold.co/800/purple/white?text=ByteBazaar&font=playfair-display",
@@ -195,6 +239,20 @@ export const PROJECT_DATA: ProjectItem[] = [
   {
     title: "Student Management System",
     position: "Developer",
+    collaborators: [{
+      name: "Paolo Angelo",
+      link: "https://www.linkedin.com/in/paolo-angelo/"
+    }, {
+      name: "James Godoy",
+      link: "https://www.linkedin.com/in/jamessamuelgodoy/"
+    }, {
+      name: "Ervin Ilarde",
+      link: "https://www.linkedin.com/in/ervinilarde/"
+    },
+    {
+      name: "Ryan Gomez",
+      link: "https://ph.linkedin.com/in/ryan-carlo-gomez-4aa035292"
+    }],
     description: "A final project presented during my 2nd year, 2nd Semester in Advanced Programming. A school management system designed in Java with MVC Framework. Features included Student, Faculty, and Admin Dashboards. Check the repository for more details.",
     techStack: ["Java", "Java Swing", "JDBC", "MVC Framework", "SQL Server", "Agile Development"],
     image: "https://placehold.co/800/darkblue/white?text=School+Management+System&font=playfair-display",

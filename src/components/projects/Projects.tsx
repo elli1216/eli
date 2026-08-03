@@ -210,6 +210,11 @@ export const Projects: React.FC = () => {
                         {selectedProject.position}
                       </p>
                     )}
+                    {selectedProject.hackathonTitle && (
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {selectedProject.hackathonTitle}
+                      </p>
+                    )}
                   </div>
 
                   {/* Action Links */}
@@ -256,6 +261,36 @@ export const Projects: React.FC = () => {
                     ))}
                   </div>
                 </div>
+
+                {/* Collaborators */}
+                {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
+                  <div className="mb-8">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Collaborators</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.collaborators.map(({ name, link }) => (
+                        <a
+                          key={name}
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3 py-1.5 text-xs sm:text-sm font-medium bg-secondary text-secondary-foreground hover:text-primary hover:border-primary/40 rounded-md border border-border/50 transition-all"
+                        >
+                          {name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Problem */}
+                {selectedProject.problem && (
+                  <div className="mb-8">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">About the Problem</h4>
+                    <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                      {selectedProject.problem}
+                    </p>
+                  </div>
+                )}
 
                 {/* Description */}
                 <div>

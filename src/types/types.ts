@@ -23,8 +23,11 @@ export interface ExperienceItem {
 export interface ProjectItem {
   title: string;
   position?: string;
+  hackathonTitle?: string;
   description: string;
+  problem?: string;
   techStack: string[];
+  collaborators?: { name: string; link: string }[] | null;
   image: string;
   repoLink?: string;
   demoLink?: string;
