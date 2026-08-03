@@ -1,10 +1,10 @@
 import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from '@/types/types';
 
 export const category = {
-  FREELANCE: "Freelance",
   ACADEMIC: "Academic Project",
   PERSONAL: "Personal Project",
   CAPSTONE: "Capstone Project",
+  FREELANCE: "Freelance",
   HACKATHON: "Hackathon Project"
 }
 
@@ -19,30 +19,32 @@ export const ACCENT_COLORS: AccentColor[] = [
 ];
 
 export const NAV_ITEMS = [
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Certificates', href: '#certificates' },
   { label: 'About Me', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Hackathons', href: '#hackathons' },
+  { label: 'Certificates', href: '#certificates' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export const EXPERIENCE_DATA: ExperienceItem[] = [
   {
-    role: "Associate Software Engineer",
+    role: "Custom Software Engineer",
     company: "Accenture",
     companyUrl: "accenture.com",
     period: "August 2026 - Present",
     location: "NCR, Philippines | Hybrid",
-    description: ""
+    description: "Onboarded as an Custom Software Engineer after 4 month long training."
   },
   {
-    role: "Full Stack Development Trainee",
+    role: "Full Stack/AI Trainee",
     company: "Accenture Technology Academy",
     companyUrl: "accenture.com",
     period: "April 2026 - July 2026",
     location: "Mandaluyong City, Philippines | Hybrid",
-    description: "Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development and Microservices, covering Core Java, Spring Boot for backend. ReactJS and TypeScript for Frontend."
+    description: "Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development and Microservices, covering Core Java, Spring Boot for backend. ReactJS and TypeScript for Frontend.",
+    certificate: "/certificates/training.png"
   },
   {
     role: "COBOL Developer Intern",
@@ -50,7 +52,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: "landbank.com",
     period: "February 2026 - April 2026",
     location: "Malate, Manila, Philippines",
-    description: "Contributed to the migration and development of 10+ COBOL programs to z/OS mainframe for financial data processing. Worked with PS and VSAM input files to handle data reading, validation, and processing logic. Executed JCL job submissions and monitored execution status to maintain system reliability. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration."
+    description: "Contributed to the migration and development of 10+ COBOL programs to z/OS mainframe for financial data processing. Worked with PS and VSAM input files to handle data reading, validation, and processing logic. Executed JCL job submissions and monitored execution status to maintain system reliability. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration.",
+    certificate: "/certificates/internship.png"
   },
   {
     role: "Salesforce Developer Intern",
@@ -58,7 +61,8 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: "thesmartbridge.com",
     period: "March 2025 – May 2025",
     location: "Philippines | Remote",
-    description: "Completed 22 superbadges on Salesforce Trailhead, reflecting hands-on experience in CRM concepts, security models, workflow automation, and scalable system design, simulating real-world scenarios on utilizing Salesforce technologies."
+    description: "Completed 22 superbadges on Salesforce Trailhead, reflecting hands-on experience in CRM concepts, security models, workflow automation, and scalable system design, simulating real-world scenarios on utilizing Salesforce technologies.",
+    certificate: "/certificates/salesforce.png"
   },
   {
     role: "Institutional Student Assistant",
@@ -72,12 +76,33 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
-    title: "WhatsApp Notification Router",
+    title: "MergeMaster AI",
+    position: "Full Stack & AI Developer",
+    theme: "AI is evolving from a productivity tool into a true collaborator that can help people plan, coordinate, decide, and execute work moreffectively. Build solutions that help individuals, teams, and organizations achieve better outcomes through intelligent automation, workflow orchestration, and decision support. Whether you're building workflow automation systems, AI co-workers, decision intelligence platforms, or business process orchestration tools, your project should demonstrate how AI can help transform work from disconnected tasks into intelligent, outcome-driven systems.",
+    hackathonTitle: "IBM AI Builders Challenge (August Wildcard)",
+    collaborators: null,
+    problem: "Engineering teams lose valuable hours manually reviewing code, routing tickets, and hunting for security flaws, which creates severe friction and slows down shipping velocity. Context-switching to fix minor issues or reviewing PRs outside a developer's expertise stalls progress, while traditional AI review tools only leave passive comments that still require manual effort.",
+    description: "MergeMaster AI acts as an active, autonomous co-worker that fixes issues directly and orchestrates the entire pull request workflow. It automatically generates and pushes code fixes for vulnerabilities, intelligently routes PRs to the right domain experts based on touched files, and evaluates deployment safety through AI-driven risk-confidence scoring.",
+    techStack: ["Fast API", "React", "Convex", "WorkOS", "Gemini API", "IBM Bob", "Tanstack Router", "Tanstack Query", "Github Apps", "Shadcn UI"],
+    image: "/projects/mergemaster.png",
+    // demoLink: "",
+    repoLink: "https://github.com/elli1216/MergeMasterAI",
+    category: category.HACKATHON
+  },
+  {
+    title: "WhatsApp AI Notification Router",
     position: "AI Developer",
     hackathonTitle: "HackerRank Orchestrate 24-hour Hackathon",
     collaborators: null,
+    placement: "401st Place",
+    placementOutOf: "1983 contestants",
     problem: "WhatsApp is noisy — family chats, school updates, work messages, promotions, image posters, voice notes, and scams all share one stream. Treating every message the same makes important ones get missed and lets unwanted or risky ones interrupt the user. The system must reason over multimodal messages (text, images, voice notes) and decide, per incoming message, whether to interrupt now, batch it into a digest, or mute it — while keeping the decision personalized to each user, and always muting clear scam or safety risks regardless of the user's usual engagement.",
-    description: "An AI-powered WhatsApp Message Notification Router that classifies incoming multimodal messages (text, image posters, voice notes) as notify, digest, or mute. It personalizes decisions by fusing per-user notification behavior, group roles and mute states, business account trust signals, and historical reactions into a context-aware prompt, while a heuristic retrieval engine surfaces the three most relevant past messages with real reactions as evidence. Routing runs on a free-tier Gemini model with temperature-0 structured JSON output for deterministic, schema-validated results. The production pipeline writes predictions incrementally to output.csv, making it resumable against the free tier's 15-requests-per-minute limit. Evaluation results: Action Accuracy 29/30 (96.67%) and Message Type Accuracy 28/30 (93.33%).",
+    description: "An AI-powered WhatsApp Message Notification Router that classifies incoming multimodal messages (text, image posters, voice notes) as notify, digest, or mute. It personalizes decisions by fusing per-user notification behavior, group roles and mute states, business account trust signals, and historical reactions into a context-aware prompt, while a heuristic retrieval engine surfaces the three most relevant past messages with real reactions as evidence. Routing runs on a free-tier Gemini model with temperature-0 structured JSON output for deterministic, schema-validated results. The production pipeline writes predictions incrementally to output.csv, making it resumable against the free tier's 15-requests-per-minute limit.",
+    metrics: [
+      { label: "Action Accuracy", value: "96.67%" },
+      { label: "Message Type Accuracy", value: "93.33%" },
+      { label: "Messages Routed", value: "110/110" },
+    ],
     techStack: ["Python", "Pydantic v2", "Gemini API", "Pandas", "Jaccard", "Heuristic Ranking"],
     image: "https://placehold.co/800/black/white?text=Message+Notification+Router+(Hackathon)&font=playfair-display",
     // demoLink: "",
@@ -85,9 +110,10 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.HACKATHON
   },
   {
-    title: "PlotWeaver",
+    title: "PlotWeaver AI",
     position: "Full Stack Lead",
     hackathonTitle: "IBM AI Builders Challenge (July Edition)",
+    theme: "AI is transforming how people create content, tell stories, design experiences, and bring ideas to life. Creative industries are driven by imagination and expression, but the creative process is often constrained by time-consuming production workflows, technical complexity, limited access to advanced tools, and challenges turning ideas into finished outputs quickly. As demand for digital content continues to grow, creators are expected to produce more, faster, and across multiple formats than ever before. Your challenge is to build AI-powered tools that transform how creative work is imagined, produced, and experienced. Whether you're creating AI creative partners, storytelling tools, multimodal experiences, creative ideation platforms, or personalized creative assistants, your solution should demonstrate how AI can expand creative potential and redefine creative workflows.",
     collaborators: [{
       name: "Karan Munreja",
       link: "https://www.linkedin.com/in/karan-munreja/"

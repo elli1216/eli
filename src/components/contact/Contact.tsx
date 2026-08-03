@@ -40,8 +40,11 @@ export const Contact = () => {
     <Section id="contact">
       <div className="max-w-4xl mx-auto text-center">
         <SectionTitle className="mb-4">Get In Touch</SectionTitle>
-        <p className="text-muted-foreground mb-12 max-w-xl mx-auto text-sm md:text-lg">
-          Whether you have a question, a job opportunity, or just want to say hi — my inbox is always open.
+        <p className="text-muted-foreground mb-3 max-w-xl mx-auto text-sm md:text-lg">
+          Every project starts with a question. If you have a problem worth solving — a noisy system to calm, a product to ship, or a team to join — let's write the next chapter together.
+        </p>
+        <p className="text-muted-foreground mb-12 max-w-xl mx-auto text-sm md:text-base italic text-primary/80">
+          "My inbox is always open."
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-5xl mx-auto">

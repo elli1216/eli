@@ -18,20 +18,25 @@ export interface ExperienceItem {
   period: string;
   location: string;
   description: string;
+  certificate?: string;
 }
 
 export interface ProjectItem {
   title: string;
   position?: string;
   hackathonTitle?: string;
+  theme?: string;
   description: string;
   problem?: string;
+  metrics?: { label: string; value: string }[];
   techStack: string[];
   collaborators?: { name: string; link: string }[] | null;
   image: string;
   repoLink?: string;
   demoLink?: string;
   category?: (typeof category)[keyof typeof category];
+  placement?: string;
+  placementOutOf?: string;
 }
 
 export interface SkillItem {

@@ -1,19 +1,61 @@
 import React, { useState } from 'react';
 import { Section } from '@/components/layout/Section';
 import { EXPERIENCE_DATA } from '@/constants/constants';
-import { motion } from 'framer-motion';
-import { ChevronDown, MapPin } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, MapPin, Award } from 'lucide-react';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { useAccent } from '@/contexts/AccentContext';
+import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
 
-const CompanyLogo: React.FC<{ domain: string; className?: string }> = ({ domain, className = '' }) => (
-  <img
-    src={`https://img.logo.dev/${domain}?token=${import.meta.env.VITE_LOGO_DEV_PUBLIC_KEY}&retina=true`}
-    alt="Company logo"
-    className={`rounded-full object-contain ${className}`}
-  />
-);
+const getInitials = (name: string) =>
+  name
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+
+const CompanyLogo: React.FC<{ domain: string; company: string; className?: string }> = ({ domain, company, className = '' }) => {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    return (
+      <span className={`rounded-full bg-primary/15 text-primary font-bold flex items-center justify-center ${className}`}>
+        {getInitials(company)}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={`https://img.logo.dev/${domain}?token=${import.meta.env.VITE_LOGO_DEV_PUBLIC_KEY}&retina=true`}
+      alt={`${company} logo`}
+      onError={() => setError(true)}
+      className={`rounded-full object-contain ${className}`}
+    />
+  );
+};
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+const getDurationLabel = (period: string): string => {
+  const [startPart, endPart] = period.split(/\s*[-–]\s*/);
+  const parse = (raw: string) => {
+    const [monthName, year] = raw.split(' ');
+    return new Date(Number(year), MONTHS.indexOf(monthName), 1);
+  };
+  const start = parse(startPart);
+  const end = endPart && endPart.toLowerCase() !== 'present' ? parse(endPart) : new Date();
+
+  let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
+  if (months <= 0) months = 1;
+
+  if (months < 12) return `${months} mo${months > 1 ? 's' : ''}`;
+  const years = Math.floor(months / 12);
+  const rem = months % 12;
+  return rem ? `${years} yr ${rem} mo` : `${years} yr${years > 1 ? 's' : ''}`;
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,36 +76,64 @@ const itemVariants = {
 
 export const Experience = () => {
   const [expandedId, setExpandedId] = useState<string | number | null>(null);
+  const [selectedCert, setSelectedCert] = useState<CertificateModalData | null>(null);
   const { currentAccent } = useAccent();
 
   return (
-    <Section id="experience" className='mt-10'>
+    <Section id="experience" className="mt-10">
       <SectionTitle className="mb-12">Experience</SectionTitle>
 
       <div className="relative">
-        {/* Timeline line */}
+        {/* Desktop center line */}
         <div className="hidden md:block absolute md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-border" />
+        {/* Mobile left line */}
+        <div className="md:hidden absolute left-[7px] top-0 bottom-0 w-px bg-border" />
 
         <motion.div
           className="space-y-8 md:space-y-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           {EXPERIENCE_DATA.map((item, index) => {
             const isEven = index % 2 === 0;
             const isFirst = index === 0;
             const isExpanded = expandedId === index;
+            const duration = getDurationLabel(item.period);
 
             return (
               <motion.div
                 key={index}
-                className="relative flex flex-col md:flex-row"
+                className="relative flex flex-col md:flex-row md:items-center"
                 variants={itemVariants}
               >
-                {/* Content - alternates sides on desktop */}
-                <div className={`w-full md:w-1/2 ${isEven ? 'md:ml-auto md:pr-10' : 'md:pl-10'}`}>
+                {/* Center node dot (desktop) */}
+                <span
+                  className="hidden md:block absolute left-1/2 -translate-x-1/2 size-3 rounded-full border-2 border-card"
+                  style={{ backgroundColor: currentAccent, boxShadow: `0 0 0 4px ${currentAccent}22` }}
+                />
+                {/* Mobile node dot */}
+                <span
+                  className="md:hidden absolute left-2 top-[50%] -translate-x-1/2 size-3 rounded-full border-2 border-card"
+                  style={{ backgroundColor: currentAccent, boxShadow: `0 0 0 4px ${currentAccent}22` }}
+                />
+
+                {/* Period marker on the opposite side (desktop) */}
+                <div
+                  className={`hidden md:flex w-1/2 ${isEven ? 'justify-end pr-12 text-right' : 'order-2 justify-start pl-12'
+                    }`}
+                >
+                  <div>
+                    <p className="text-2xl font-extrabold leading-none text-foreground">
+                      {duration}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">{item.period}</p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className={`w-full pl-8 md:w-1/2 md:pl-0 ${isEven ? 'md:order-2 md:pr-12' : 'md:order-1 md:pl-12'}`}>
                   <DecorativeFrame accentColor={currentAccent}>
                     <div className="bg-card rounded-xl p-5">
                       {/* badge */}
@@ -73,22 +143,22 @@ export const Experience = () => {
                         </span>
                       )}
 
-                      {/* Header with company logo */}
+                      {/* Header: role-first with company logo */}
                       <div className="flex items-start gap-3 mb-3">
                         {item.companyUrl && (
                           <div className="size-10 rounded-lg overflow-hidden bg-background border border-primary/20 flex items-center justify-center shrink-0">
-                            <CompanyLogo domain={item.companyUrl} className="size-6" />
+                            <CompanyLogo domain={item.companyUrl} company={item.company} className="size-6" />
                           </div>
                         )}
                         <div className="min-w-0">
-                          <h3 className="text-lg font-bold text-foreground">{item.company}</h3>
-                          <p className="text-sm text-muted-foreground">{item.role}</p>
+                          <h3 className="text-base font-bold text-foreground leading-snug">{item.role}</h3>
+                          <p className="text-sm text-muted-foreground">{item.company}</p>
                         </div>
                       </div>
 
                       {/* Period and location */}
                       <div className="flex flex-wrap items-center gap-2 mb-3">
-                        <span className="text-xs text-muted-foreground bg-accent px-2.5 py-1 rounded-full">
+                        <span className="md:hidden text-xs text-muted-foreground bg-accent px-2.5 py-1 rounded-full">
                           {item.period}
                         </span>
                         <span className="text-xs text-muted-foreground flex items-center gap-1">
@@ -96,21 +166,54 @@ export const Experience = () => {
                         </span>
                       </div>
 
-                      {/* Description with clamp */}
-                      <div>
-                        <p className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? '' : 'line-clamp-1'}`}>
-                          {item.description}
-                        </p>
-                        {item.description.length > 120 && (
+                      {/* Description with expand */}
+                      {item.description && (
+                        <div>
+                          <p className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? 'hidden' : 'line-clamp-2'}`}>
+                            {item.description}
+                          </p>
+                          <AnimatePresence initial={false}>
+                            {isExpanded && (
+                              <motion.p
+                                key="full-description"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: 'easeOut' }}
+                                className="text-sm text-muted-foreground leading-relaxed overflow-hidden"
+                              >
+                                {item.description}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
+                          {item.description.length > 120 && (
+                            <button
+                              onClick={() => setExpandedId(isExpanded ? null : index)}
+                              className="text-xs text-primary hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
+                            >
+                              {isExpanded ? 'Show less' : 'Read more'}
+                              <ChevronDown size={12} className={`transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                            </button>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Certificate trigger */}
+                      {item.certificate && (
+                        <div className="mt-4 pt-3 border-t border-border/50 flex items-center">
                           <button
-                            onClick={() => setExpandedId(isExpanded ? null : index)}
-                            className="text-xs text-primary hover:underline mt-1 flex items-center gap-1"
+                            onClick={() =>
+                              setSelectedCert({
+                                src: item.certificate!,
+                                alt: `${item.role}`,
+                              })
+                            }
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all cursor-pointer border border-primary/20 shadow-xs"
                           >
-                            {isExpanded ? 'Show less' : 'Read more'}
-                            <ChevronDown size={12} className={`transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                            <Award size={14} /> View Certificate
                           </button>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   </DecorativeFrame>
                 </div>
@@ -119,6 +222,9 @@ export const Experience = () => {
           })}
         </motion.div>
       </div>
+
+      {/* Lightbox Modal */}
+      <CertificateModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
     </Section>
   );
 };

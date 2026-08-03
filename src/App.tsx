@@ -10,6 +10,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const About = React.lazy(() => import('@/components/about/About').then(m => ({ default: m.About })));
 const Experience = React.lazy(() => import('@/components/experience/Experience').then(m => ({ default: m.Experience })));
+const Hackathons = React.lazy(() => import('@/components/hackathons/Hackathons').then(m => ({ default: m.Hackathons })));
 const Projects = React.lazy(() => import('@/components/projects/Projects').then(m => ({ default: m.Projects })));
 const Skills = React.lazy(() => import('@/components/skills/Skills').then(m => ({ default: m.Skills })));
 const Contact = React.lazy(() => import('@/components/contact/Contact').then(m => ({ default: m.Contact })));
@@ -25,11 +26,12 @@ const App: React.FC = () => {
             <main className="grow">
               <Hero />
               <Suspense fallback={<SectionLoader />}>
-                <Skills />
-                <Projects />
-                <Experience />
-                <Certificates />
                 <About />
+                <Experience />
+                <Projects />
+                <Skills />
+                <Hackathons />
+                <Certificates />
                 <Contact />
               </Suspense>
             </main>

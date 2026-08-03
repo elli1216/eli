@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Section } from '@/components/layout/Section';
 import { PROJECT_DATA } from '@/constants/constants';
 import { ProjectItem } from '@/types/types';
-import { Github, ExternalLink, X, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, X, ArrowRight, ChevronRight, Trophy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { category } from '@/constants/constants';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { useAccent } from '@/contexts/AccentContext';
+
+const CATEGORY_COUNTS = Object.values(category)
+  .map((cat) => ({
+    name: cat as typeof category[keyof typeof category],
+    count: PROJECT_DATA.filter((p) => p.category === cat).length,
+  }))
+  .filter((cat) => cat.count > 0);
 
 const getBadgeStyles = (Category: typeof category[keyof typeof category]) => {
   switch (Category) {
@@ -39,35 +46,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="h-full"
+      className="h-fit"
     >
       <DecorativeFrame accentColor={currentAccent} className="h-full">
         <button
           onClick={onClick}
-          className="group relative w-full h-full text-left rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-card border border-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background p-6 flex flex-col justify-between min-h-40 cursor-pointer"
+          className="group relative w-full h-full text-left rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-card border border-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background flex flex-col cursor-pointer"
         >
-          {/* Subtle background gradient on hover */}
-          <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          {/* Accent top bar */}
+          <div
+            className="h-1 w-full shrink-0"
+            style={{ background: `linear-gradient(90deg, ${currentAccent}, transparent)` }}
+          />
 
-          <div className="relative z-10 flex-1 flex flex-col justify-between">
-            {/* Header */}
-            <div className="flex justify-between items-start mb-4 gap-4">
-              <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
-                {project.title}
-                {project.position && (
-                  <span className="block mt-1 text-sm font-normal text-muted-foreground italic group-hover:text-primary/70 transition-colors">
-                    {project.position} {project.category === category.HACKATHON ? "(Hackathon)" : ""}
-                  </span>
-                )}
-              </h3>
+          <div className="relative flex-1 flex flex-col p-6">
+            {/* Category badge */}
+            {project.category && (
+              <span className={`inline-flex w-fit items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full border ${getBadgeStyles(project.category)} mb-3`}>
+                {project.category}
+              </span>
+            )}
 
-              <div className="text-primary/40 group-hover:text-primary transition-all duration-300 transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                <ExternalLink size={20} />
-              </div>
-            </div>
+            {/* Title */}
+            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight mb-1">
+              {project.title}
+            </h3>
+            {project.position && (
+              <p className="text-sm font-normal text-muted-foreground italic group-hover:text-primary/70 transition-colors">
+                {project.position} {project.category === category.HACKATHON ? "(Hackathon)" : ""}
+              </p>
+            )}
 
             {/* Tech Stack */}
-            <div className="flex flex-nowrap gap-1.5 mt-auto">
+            <div className="flex flex-wrap gap-1.5 mt-4 mb-5">
               {project.techStack.slice(0, 4).map((tech) => (
                 <span
                   key={tech}
@@ -82,6 +93,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
                 </span>
               )}
             </div>
+
+            {/* Footer CTA */}
+            <div className="flex items-center justify-end mt-auto pt-4 border-t border-border/50">
+              <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                View Details
+                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </div>
           </div>
         </button>
       </DecorativeFrame>
@@ -92,17 +111,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
 export const Projects: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const INITIAL_VISIBLE = 4;
-  const visibleProjects = showAll ? PROJECT_DATA : PROJECT_DATA.slice(0, INITIAL_VISIBLE);
-  const remainingCount = PROJECT_DATA.length - INITIAL_VISIBLE;
+  const filteredProjects = activeFilter
+    ? PROJECT_DATA.filter((p) => p.category === activeFilter)
+    : PROJECT_DATA;
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, INITIAL_VISIBLE);
+  const remainingCount = filteredProjects.length - INITIAL_VISIBLE;
 
-  // Handle ESC key to close modal
+  // Handle ESC key to close modal + focus close button on open
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedProject(null);
     };
     if (selectedProject) {
+      closeButtonRef.current?.focus();
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     } else {
@@ -118,6 +143,30 @@ export const Projects: React.FC = () => {
     <Section id="projects">
       <div className="mb-12">
         <SectionTitle>Works so far</SectionTitle>
+        <div className="mt-6 flex flex-wrap justify-center gap-2.5">
+          {CATEGORY_COUNTS.map((cat) => {
+            const isActive = activeFilter === cat.name;
+            return (
+              <button
+                key={cat.name}
+                onClick={() => {
+                  setActiveFilter(isActive ? null : cat.name);
+                  setShowAll(false);
+                }}
+                className={`inline-flex items-center gap-2 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full border transition-all cursor-pointer hover:scale-105 active:scale-95 ${isActive || activeFilter === null
+                  ? getBadgeStyles(cat.name)
+                  : 'bg-transparent text-muted-foreground border-border/50 hover:border-border hover:text-foreground'
+                  }`}
+              >
+                {cat.name}
+                <span className={`px-1.5 py-0.5 rounded-md text-[10px] shadow-sm ${isActive || activeFilter === null ? 'bg-background/40 backdrop-blur-sm' : 'bg-secondary/50 text-muted-foreground'
+                  }`}>
+                  {cat.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -132,7 +181,10 @@ export const Projects: React.FC = () => {
       </div>
 
       {!showAll && remainingCount > 0 ? (
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 flex flex-col items-center gap-3">
+          <p className="text-xs text-muted-foreground tabular-nums">
+            Showing {visibleProjects.length} of {filteredProjects.length} projects
+          </p>
           <button
             onClick={() => setShowAll(true)}
             className="group flex items-center gap-2 px-6 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-medium cursor-pointer"
@@ -141,7 +193,7 @@ export const Projects: React.FC = () => {
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
-      ) :
+      ) : visibleProjects.length > 4 ?
         <div className="mt-12 flex justify-center">
           <button
             onClick={() => setShowAll(false)}
@@ -149,7 +201,7 @@ export const Projects: React.FC = () => {
           >
             See Less
           </button>
-        </div>}
+        </div> : null}
 
       {/* Project Details Modal */}
       <AnimatePresence>
@@ -167,6 +219,7 @@ export const Projects: React.FC = () => {
           >
             {/* Close button */}
             <button
+              ref={closeButtonRef}
               onClick={() => setSelectedProject(null)}
               className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-card/80 hover:bg-card text-foreground transition-all backdrop-blur-md border border-border/50 shadow-lg z-50 cursor-pointer hover:rotate-90 hover:scale-110"
               aria-label="Close modal"
@@ -187,6 +240,7 @@ export const Projects: React.FC = () => {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-card via-card/20 to-transparent" />
@@ -211,9 +265,11 @@ export const Projects: React.FC = () => {
                       </p>
                     )}
                     {selectedProject.hackathonTitle && (
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {selectedProject.hackathonTitle}
-                      </p>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 mt-2">
+                        <p className="text-sm text-muted-foreground font-medium flex items-center gap-1.5">
+                          <Trophy size={14} className="text-primary" /> {selectedProject.hackathonTitle}
+                        </p>
+                      </div>
                     )}
                   </div>
 
@@ -262,6 +318,38 @@ export const Projects: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Metrics & Placement */}
+                {(selectedProject.placement || (selectedProject.metrics && selectedProject.metrics.length > 0)) && (
+                  <div className="mb-8">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Key Results & Achievements</h4>
+                    <div className={`grid gap-3 max-w-fit ${selectedProject.metrics && selectedProject.metrics.length > 0 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2'}`}>
+                      {selectedProject.placement && (
+                        <div className="rounded-lg border border-border/50 bg-background/50 px-3 py-3 text-center flex flex-col justify-center">
+                          <p className="text-xl sm:text-2xl font-extrabold text-primary leading-tight">
+                            {selectedProject.placement}
+                          </p>
+                          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1 leading-snug">
+                            {selectedProject.placementOutOf ? `Out of ${selectedProject.placementOutOf}` : 'Placement'}
+                          </p>
+                        </div>
+                      )}
+                      {selectedProject.metrics?.map((metric) => (
+                        <div
+                          key={metric.label}
+                          className="rounded-lg border border-border/50 bg-background/50 px-3 py-3 text-center flex flex-col justify-center"
+                        >
+                          <p className="text-xl sm:text-2xl font-extrabold text-primary leading-tight">
+                            {metric.value}
+                          </p>
+                          <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1 leading-snug">
+                            {metric.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Collaborators */}
                 {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
                   <div className="mb-8">
@@ -283,9 +371,19 @@ export const Projects: React.FC = () => {
                 )}
 
                 {/* Problem */}
+                {selectedProject.theme && (
+                  <div className="mb-8">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Hackathon Theme</h4>
+                    <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                      {selectedProject.theme}
+                    </p>
+                  </div>
+                )}
+
+                {/* Problem */}
                 {selectedProject.problem && (
                   <div className="mb-8">
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">About the Problem</h4>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">About the Problem</h4>
                     <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                       {selectedProject.problem}
                     </p>
@@ -294,7 +392,7 @@ export const Projects: React.FC = () => {
 
                 {/* Description */}
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">About the Project</h4>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">About the Project</h4>
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                     {selectedProject.description}
                   </p>

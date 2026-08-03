@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
   }
 
   return (
-    <section className="flex items-center justify-center mt-35 md:mt-45 md:mb-20 px-6 relative">
+    <section className="flex items-center justify-center mt-35 md:mt-0 md:h-screen mb-20 md:mb-0 px-6 relative">
       <div className="fixed inset-0 z-0 w-full h-full pointer-events-none">
         <Particles
           key={`particles-${accentColor}`}
@@ -144,13 +144,13 @@ export const Hero: React.FC = () => {
               <motion.div variants={textItemVariants}>
                 <p className="text-sm md:text-lg text-center text-muted-foreground text-wrap mb-4 max-w-2xl mx-auto leading-relaxed">
                   23-year-old software engineer from <span className='italic text-primary/90'>Bulacan, Philippines</span>.
-                  I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
+                  I build web applications with <span className='text-primary font-bold'>React</span>, <span className='text-primary font-bold'>NextJS</span>, <span className='text-primary font-bold'>Tanstack Start</span>, <span className='text-primary font-bold'>Java</span> and also interested in <span className='text-primary font-bold'>COBOL Mainframe</span> development.
                 </p>
               </motion.div>
               <motion.div variants={textItemVariants}>
                 <div className='flex items-center justify-center'>
                   <span className="text-xs md:text-sm inline-block px-3 py-1 mb-6 font-semibold tracking-wider text-primary bg-accent rounded-full">
-                    <span className='italic uppercase'>Current Role:</span> Associate Software Engineer
+                    <span className='italic uppercase'>Current Role:</span> Custom Software Engineer
                   </span>
                 </div>
               </motion.div>
