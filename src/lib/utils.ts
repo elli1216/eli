@@ -27,3 +27,28 @@ export const useMobile = (breakpoint: number = 768) => {
 
   return isMobile;
 };
+
+export const getInitials = (name: string) =>
+  name
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+
+export const getBadgeStyles = (Category: string) => {
+  // Using hardcoded strings to avoid circular dependency with constants.tsx if not needed, 
+  // or we can import category from constants.tsx
+  switch (Category) {
+    case "Academic Project":
+      return 'bg-purple-500/20 text-purple-500 border-purple-500/30';
+    case "Freelance":
+      return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+    case "Capstone Project":
+      return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
+    case "Hackathon Project":
+      return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
+    default:
+      return 'bg-primary/20 text-primary border-primary/30';
+  }
+};

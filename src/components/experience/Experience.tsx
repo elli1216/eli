@@ -6,15 +6,10 @@ import { ChevronDown, MapPin, Award } from 'lucide-react';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { useAccent } from '@/contexts/AccentContext';
+import { getInitials } from '@/lib/utils';
 import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
 
-const getInitials = (name: string) =>
-  name
-    .split(' ')
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase();
+
 
 const CompanyLogo: React.FC<{ domain: string; company: string; className?: string }> = ({ domain, company, className = '' }) => {
   const [error, setError] = useState(false);

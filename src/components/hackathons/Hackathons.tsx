@@ -6,16 +6,13 @@ import { useAccent } from '@/contexts/AccentContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Github, Trophy, Users, Target, Lightbulb, ArrowUpRight, ChevronLeft, ChevronRight, Palette } from 'lucide-react';
 import { PROJECT_DATA, category } from '@/constants/constants';
+import { getInitials } from '@/lib/utils';
+import { ProjectMetrics } from '@/components/shared/ProjectMetrics';
+import { TechStack } from '@/components/shared/TechStack';
 
 const HACKATHON_PROJECTS = PROJECT_DATA.filter((p) => p.category === category.HACKATHON);
 
-const getInitials = (name: string) =>
-  name
-    .split(' ')
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase();
+
 
 interface HackathonCardProps {
   project: (typeof HACKATHON_PROJECTS)[number];
@@ -58,33 +55,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) =
         </div>
 
         {/* Metrics & Placement */}
-        {(project.placement || (project.metrics && project.metrics.length > 0)) && (
-          <div className={`grid gap-2.5 sm:gap-3 mb-6 ${project.metrics && project.metrics.length > 0 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2'}`}>
-            {project.placement && (
-              <div className="rounded-lg border border-border/50 bg-background/50 px-2 py-3 text-center flex flex-col justify-center">
-                <p className="text-lg sm:text-xl font-extrabold text-primary leading-tight">
-                  {project.placement}
-                </p>
-                <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mt-1 leading-snug">
-                  {project.placementOutOf ? `Out of ${project.placementOutOf}` : 'Placement'}
-                </p>
-              </div>
-            )}
-            {project.metrics?.map((metric) => (
-              <div
-                key={metric.label}
-                className="rounded-lg border border-border/50 bg-background/50 px-2 py-3 text-center flex flex-col justify-center"
-              >
-                <p className="text-lg sm:text-xl font-extrabold text-primary leading-tight">
-                  {metric.value}
-                </p>
-                <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mt-1 leading-snug">
-                  {metric.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
+        <ProjectMetrics project={project} className="mb-6" />
 
         {/* Theme */}
         {project.theme && (
@@ -142,16 +113,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) =
           )}
 
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap gap-1.5">
-              {project.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 text-[10px] font-medium bg-secondary text-secondary-foreground rounded-md border border-border/50"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <TechStack technologies={project.techStack} />
             {project.repoLink && (
               <a
                 href={project.repoLink}
