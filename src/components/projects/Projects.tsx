@@ -305,7 +305,7 @@ export const Projects: React.FC = () => {
 
                 {/* Tech Stack */}
                 <div className="mb-8">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Technologies Used</h4>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.techStack.map((tech) => (
                       <span
@@ -321,7 +321,7 @@ export const Projects: React.FC = () => {
                 {/* Metrics & Placement */}
                 {(selectedProject.placement || (selectedProject.metrics && selectedProject.metrics.length > 0)) && (
                   <div className="mb-8">
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Key Results & Achievements</h4>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Key Results & Achievements</h4>
                     <div className={`grid gap-3 max-w-fit ${selectedProject.metrics && selectedProject.metrics.length > 0 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2'}`}>
                       {selectedProject.placement && (
                         <div className="rounded-lg border border-border/50 bg-background/50 px-3 py-3 text-center flex flex-col justify-center">
@@ -353,7 +353,7 @@ export const Projects: React.FC = () => {
                 {/* Collaborators */}
                 {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
                   <div className="mb-8">
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Collaborators</h4>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Collaborators</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.collaborators.map(({ name, link }) => (
                         <a
