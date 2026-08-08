@@ -38,7 +38,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     description: "Onboarded as an Custom Software Engineer after 4 month long training."
   },
   {
-    role: "Full Stack/AI Trainee",
+    role: "Full Stack Development Trainee",
     company: "Accenture Technology Academy",
     companyUrl: "accenture.com",
     period: "April 2026 - July 2026",
