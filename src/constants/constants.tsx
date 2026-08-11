@@ -76,6 +76,17 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
+    title: "Code3270",
+    position: "Developer",
+    collaborators: null,
+    description: "Built an interactive e-learning platform that modernizes the experience of writing and validating COBOL and JCL through an integrated in-browser workspace.",
+    techStack: ["React", "TypeScript", "TailwindCSS", "Tanstack Router", "Monaco Editor", "Shadcn UI"],
+    image: "/projects/code3270.png",
+    demoLink: "https://code3270.degf.workers.dev/",
+    repoLink: "https://github.com/elli1216/code3270",
+    category: category.PERSONAL
+  },
+  {
     title: "MergeMaster AI",
     position: "Full Stack & AI Developer",
     theme: "AI is evolving from a productivity tool into a true collaborator that can help people plan, coordinate, decide, and execute work moreffectively. Build solutions that help individuals, teams, and organizations achieve better outcomes through intelligent automation, workflow orchestration, and decision support. Whether you're building workflow automation systems, AI co-workers, decision intelligence platforms, or business process orchestration tools, your project should demonstrate how AI can help transform work from disconnected tasks into intelligent, outcome-driven systems.",
