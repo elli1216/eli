@@ -82,7 +82,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     description: "Built an interactive e-learning platform that modernizes the experience of writing and validating COBOL and JCL through an integrated in-browser workspace.",
     techStack: ["React", "TypeScript", "TailwindCSS", "Tanstack Router", "Monaco Editor", "Shadcn UI"],
     image: "/projects/code3270.png",
-    demoLink: "https://code3270.degf.workers.dev/",
+    demoLink: "https://code3270.vercel.app/",
     repoLink: "https://github.com/elli1216/code3270",
     category: category.PERSONAL
   },
@@ -144,6 +144,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     title: "EntityForge",
     position: "Front-end Developer",
     collaborators: null,
+    problem: "Setting up a Spring Boot backend with JPA can be tedious and repetitive. There's often a disconnect between visualizing the database architecture and writing the actual persistence code, leading to friction when translating entity relationship diagrams into compilable Java classes.",
     description: "A browser-based visual database designer that lets spring boot developers model JPA entities and relationships through an intuitive drag-and-drop canvas. It provides a split-screen workspace where visual design and generated JPA/SQL code stay in sync. The tool solves the common friction of translating entity relationship diagrams into correct, compilable Java persistence code.",
     techStack: ["React", "React Flow", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/entityforge.png",
@@ -155,6 +156,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     title: "QuickRoute",
     position: "Full Stack Developer",
     collaborators: null,
+    problem: "Frontend developers and QA testers often get blocked waiting for backend APIs to be ready. Existing API mocking tools are often either too complex, paid, or require tedious setup, leaving a gap for a free, plug-and-play local mock server.",
     description: "A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.",
     techStack: ["Spring Boot", "PostgreSQL", "Docker", "Java", "Maven", "React", "Tanstack Router", "Tanstack Query", "Shadcn UI"],
     image: "/projects/quickroute.png",
@@ -175,7 +177,8 @@ export const PROJECT_DATA: ProjectItem[] = [
       name: "Enrico Tienzo",
       link: "https://www.linkedin.com/in/chainsaw-353350379/"
     }],
-    description: "Enabled administrators to monitor, categorize, and resolve student concerns in real time. Improved operational efficiency by digitizing submissions and centralizing records using ReactJS. Leveraged GitHub for version control.",
+    problem: "The university's grievance and complaint handling relied heavily on manual paperwork, creating a slow and inefficient process. Students had to physically visit the office to submit complaints, and tracking the status across different college departments was difficult due to fragmented communication.",
+    description: "Digitized and streamlined the university's end-to-end grievance handling workflow. Online complaint submissions are automatically routed to the OSAS head administrator for validation, after which valid claims can be endorsed to the complained party's respective college with a single click—replacing physical office visits. Built a real-time grievance tracking system that provides students with full transparency into the status and progress of their submitted concerns.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "DaisyUI", "Express.js", "Supabase", "Agile Development"],
     image: "/projects/osas.png",
     repoLink: "",
@@ -186,6 +189,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     title: "STC Performing Arts Center Website",
     position: "Full Stack Developer",
     collaborators: null,
+    problem: "The business managed its class registrations and scheduling through manual Google Forms, which lacked automation and professional polish. This approach made tracking payments, managing class capacities, and coordinating schedules increasingly difficult as the business grew.",
     description: "Built a centralized management platform using Tanstack Start, replacing manual scheduling with a digital system for classes, coaches, and studio rentals. Enabled secure, automated transactions by integrating PayMongo, and designed an administrative dashboard.",
     techStack: ["Tanstack Start", "React", "PayMongo", "TypeScript", "Tailwind CSS", "Shadcn UI", "Supabase", "Agile Development"],
     image: "/projects/stc.png",
@@ -228,6 +232,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     title: "Jobinator",
     position: "Full Stack Developer",
     collaborators: null,
+    problem: "Keeping track of multiple job applications, interview stages, and recruiter notes across various platforms and spreadsheets is messy and unorganized, making it easy to miss important updates or follow-ups during the job search process.",
     description: "A simple CRUD job application tracker that streamlines the job search process by organizing applications, statuses, and notes in a centralized dashboard.",
     techStack: ["Tanstack Start", "Prisma", "Neon", "Netlify", "Clerk", "Shadcn UI"],
     image: "/projects/jobinator.png",
@@ -244,16 +249,16 @@ export const PROJECT_DATA: ProjectItem[] = [
     repoLink: "https://github.com/elli1216/eli",
     category: category.PERSONAL
   },
-  {
-    title: "Scroll Report",
-    position: "Developer",
-    collaborators: null,
-    description: "A project I practiced with Next.js using the News API for the data just for practicing NextJS.",
-    techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
-    image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
-    repoLink: "https://github.com/elli1216/Scroll-Report",
-    category: category.PERSONAL
-  },
+  // {
+  //   title: "Scroll Report",
+  //   position: "Developer",
+  //   collaborators: null,
+  //   description: "A project I practiced with Next.js using the News API for the data just for practicing NextJS.",
+  //   techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
+  //   image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
+  //   repoLink: "https://github.com/elli1216/Scroll-Report",
+  //   category: category.PERSONAL
+  // },
   {
     title: "ByteBazaar",
     position: "Developer",
@@ -328,6 +333,7 @@ export const SKILL_DATA: SkillItem[] = [
 ];
 
 export const certificates = [
+  { src: "/certificates/hackerrank.png", alt: "HackerRank Orchestrate August", href: "https://www.hackerrank.com/contests/hackerrank-orchestrate-august26/challenges/message-notification-router/leaderboard?username=darl" },
   { src: "/certificates/assocai.png", alt: "Associate AI Engineer for Developers", href: "https://www.datacamp.com/completed/statement-of-accomplishment/track/185ae827af3fb597750701fb515e41c0c01cff74" },
   { src: "/certificates/javadev-1.png", alt: "Java Developer", href: "https://www.datacamp.com/completed/statement-of-accomplishment/track/d24f11d25eef873a334251eaac3d132d5e082d51" },
   { src: "/certificates/mainframedeveloper.jpg", alt: "IBM Mainframe Developer", href: "https://www.coursera.org/account/accomplishments/specialization/certificate/GTA3SGF8S3NV" },

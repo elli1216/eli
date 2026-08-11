@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Section } from '@/components/layout/Section';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { PROJECT_DATA } from '@/constants/constants';
@@ -18,8 +18,6 @@ const CATEGORY_COUNTS = Object.values(category)
     count: PROJECT_DATA.filter((p) => p.category === cat).length,
   }))
   .filter((cat) => cat.count > 0);
-
-
 
 interface ProjectCardProps {
   project: ProjectItem;
@@ -68,9 +66,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
             )}
 
             {/* Tech Stack */}
-            <TechStack 
-              technologies={project.techStack} 
-              limit={4} 
+            <TechStack
+              technologies={project.techStack}
+              limit={4}
               className="mt-4 mb-5"
               itemClassName="sm:text-xs"
               moreClassName="sm:text-xs"
