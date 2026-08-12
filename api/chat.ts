@@ -1,5 +1,13 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { EXPERIENCE_DATA, PROJECT_DATA, SKILL_DATA } from '../src/constants/constants.js';
+import { category } from '../src/constants/constants';
+import {
+  EXPERIENCE_DATA,
+  PROJECT_DATA,
+  SKILL_DATA,
+  EDUCATION,
+  INTERESTS,
+  NAMES,
+} from '../src/constants/constants.js';
 
 // This acts as a Serverless Function
 export default async function handler(req: any, res: any) {
@@ -31,6 +39,7 @@ export default async function handler(req: any, res: any) {
       problem: p.problem,
       description: p.description,
       techStack: p.techStack,
+      category: p.category,
     }));
 
     const serializedSkills = SKILL_DATA.map((s: any) => s.name);
@@ -45,13 +54,24 @@ export default async function handler(req: any, res: any) {
 
       Eli's Skills:
       ${JSON.stringify(serializedSkills, null, 2)}
+
+      Eli's Education:
+      ${JSON.stringify(EDUCATION, null, 2)}
+
+      Eli's Interests:
+      ${JSON.stringify(INTERESTS, null, 2)}
     `;
 
     const systemInstruction = `
-You are the official AI Assistant for Eli's personal developer portfolio.
+You are the official AI Assistant for Darl Ellison Floresca (Eli)'s personal developer portfolio.
+
+<names>
+The developer also has the following names:
+  ${JSON.stringify(NAMES, null, 2)}
+</names>
 
 <role_and_objective>
-Your primary purpose is to assist visitors by answering questions strictly about Eli's background, skills, work experience, projects, education, hackathons, and technical services.
+Your primary purpose is to assist visitors by answering questions strictly about his background, skills, work experience, projects, education, hackathons, and technical services.
 </role_and_objective>
 
 <strict_guardrails>

@@ -13,11 +13,16 @@ const TypingIndicator = () => (
   </div>
 );
 
-const AnimatedMessage: React.FC<{ content: string; isBot: boolean }> = ({ content, isBot }) => {
-  const [displayedContent, setDisplayedContent] = useState(isBot ? '' : content);
+const AnimatedMessage: React.FC<{ 
+  content: string; 
+  isBot: boolean;
+  animate?: boolean;
+  onAnimationComplete?: () => void;
+}> = ({ content, isBot, animate = true, onAnimationComplete }) => {
+  const [displayedContent, setDisplayedContent] = useState(() => (isBot && animate ? '' : content));
 
   useEffect(() => {
-    if (!isBot) {
+    if (!isBot || !animate) {
       setDisplayedContent(content);
       return;
     }
@@ -30,11 +35,12 @@ const AnimatedMessage: React.FC<{ content: string; isBot: boolean }> = ({ conten
       if (i > content.length) {
         setDisplayedContent(content);
         clearInterval(interval);
+        onAnimationComplete?.();
       }
     }, 15);
 
     return () => clearInterval(interval);
-  }, [content, isBot]);
+  }, [content, isBot, animate]);
 
   if (!isBot) {
     return <div className="p-3 rounded-2xl text-sm bg-primary text-primary-foreground rounded-tr-sm">{content}</div>;
@@ -61,6 +67,7 @@ export const ChatWidget: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     { role: 'model', content: "Hi! I'm Eli's portfolio assistant. Ask me anything about his skills, experience, or projects!" }
   ]);
+  const animatedIndicesRef = useRef<Set<number>>(new Set([0]));
   const [messageTimestamps, setMessageTimestamps] = useState<number[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -137,79 +144,80 @@ export const ChatWidget: React.FC = () => {
       </motion.button>
 
       {/* Chat Window */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-6 left-6 w-85 sm:w-100 h-125 max-h-[80vh] bg-card border border-border/50 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+      <motion.div
+        initial={false}
+        animate={isOpen ? { opacity: 1, y: 0, scale: 1, pointerEvents: 'auto' } : { opacity: 0, y: 20, scale: 0.95, pointerEvents: 'none' }}
+        transition={{ duration: 0.2 }}
+        className="fixed bottom-6 left-6 w-85 sm:w-100 h-125 max-h-[80vh] bg-card border border-border/50 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
+      >
+        {/* Header */}
+        <div 
+          className="p-4 flex items-center justify-between text-white"
+          style={{ backgroundColor: currentAccent }}
+        >
+          <div className="flex items-center gap-2 font-bold">
+            <Bot size={20} />
+            Portfolio Assistant
+          </div>
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="hover:bg-black/20 p-1 rounded-md transition-colors cursor-pointer"
           >
-            {/* Header */}
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Messages Area */}
+        <div className="flex-1 overflow-y-auto overscroll-contain p-4 flex flex-col gap-4" data-lenis-prevent>
+          {messages.map((msg, idx) => (
             <div 
-              className="p-4 flex items-center justify-between text-white"
-              style={{ backgroundColor: currentAccent }}
+              key={idx} 
+              className={`flex gap-2 max-w-[85%] ${msg.role === 'user' ? 'self-end flex-row-reverse' : 'self-start'}`}
             >
-              <div className="flex items-center gap-2 font-bold">
-                <Bot size={20} />
-                Portfolio Assistant
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-primary/20 text-secondary' : 'bg-secondary text-secondary-foreground'}`}>
+                {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
               </div>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="hover:bg-black/20 p-1 rounded-md transition-colors cursor-pointer"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto overscroll-contain p-4 flex flex-col gap-4" data-lenis-prevent>
-              {messages.map((msg, idx) => (
-                <div 
-                  key={idx} 
-                  className={`flex gap-2 max-w-[85%] ${msg.role === 'user' ? 'self-end flex-row-reverse' : 'self-start'}`}
-                >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-primary/20 text-primary' : 'bg-secondary text-secondary-foreground'}`}>
-                    {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
-                  </div>
-                  <AnimatedMessage content={msg.content} isBot={msg.role === 'model'} />
-                </div>
-              ))}
-              {isLoading && (
-                <div className="flex gap-2 max-w-[85%] self-start">
-                  <div className="w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center shrink-0">
-                    <Bot size={16} />
-                  </div>
-                  <div className="p-3 rounded-2xl bg-secondary text-secondary-foreground rounded-tl-sm flex items-center justify-center min-w-[3rem]">
-                    <TypingIndicator />
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Input Area */}
-            <form onSubmit={handleSubmit} className="p-3 border-t border-border/50 bg-background/50 flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about Eli's experience..."
-                className="flex-1 bg-secondary text-foreground text-sm rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                disabled={isLoading}
+              <AnimatedMessage 
+                content={msg.content} 
+                isBot={msg.role === 'model'} 
+                animate={!animatedIndicesRef.current.has(idx)}
+                onAnimationComplete={() => animatedIndicesRef.current.add(idx)}
               />
-              <button
-                type="submit"
-                disabled={!input.trim() || isLoading}
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-transform hover:scale-105 active:scale-95 shrink-0"
-                style={{ backgroundColor: currentAccent }}
-              >
-                <Send size={16} />
-              </button>
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          ))}
+          {isLoading && (
+            <div className="flex gap-2 max-w-[85%] self-start">
+              <div className="w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center shrink-0">
+                <Bot size={16} />
+              </div>
+              <div className="p-3 rounded-2xl bg-secondary text-secondary-foreground rounded-tl-sm flex items-center justify-center min-w-12">
+                <TypingIndicator />
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Input Area */}
+        <form onSubmit={handleSubmit} className="p-3 border-t border-border/50 bg-background/50 flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask about Eli's experience..."
+            className="flex-1 bg-secondary text-foreground text-sm rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            disabled={!input.trim() || isLoading}
+            className="w-10 h-10 rounded-full flex items-center justify-center text-white disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-transform hover:scale-105 active:scale-95 shrink-0"
+            style={{ backgroundColor: currentAccent }}
+          >
+            <Send size={16} />
+          </button>
+        </form>
+      </motion.div>
     </>
   );
 };

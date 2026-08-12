@@ -12,10 +12,10 @@ const AccentContext = createContext<AccentContextValue | undefined>(undefined);
 export const AccentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [accentColor, setAccentColorState] = useState(() => {
     const saved = localStorage.getItem('accentColor');
-    return saved || 'gray';
+    return saved || 'green';
   });
 
-  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#71717a';
+  const currentAccent = ACCENT_COLORS.find(c => c.name === accentColor)?.value || '#2da44e';
 
   const setAccentColor = useCallback((color: string) => {
     setAccentColorState(color);
@@ -23,7 +23,7 @@ export const AccentProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('accent-green', 'accent-blue', 'accent-red', 'accent-orange', 'accent-purple', 'accent-gray');
+    root.classList.remove('accent-green', 'accent-blue', 'accent-red', 'accent-orange', 'accent-purple');
     root.classList.add(`accent-${accentColor}`);
     localStorage.setItem('accentColor', accentColor);
   }, [accentColor]);
