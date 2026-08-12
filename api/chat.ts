@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { EXPERIENCE_DATA, PROJECT_DATA, SKILL_DATA } from './constants.js';
+import { EXPERIENCE_DATA, PROJECT_DATA, SKILL_DATA } from '../src/constants/constants.js';
 
 // This acts as a Serverless Function
 export default async function handler(req: any, res: any) {

@@ -2,6 +2,54 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, User, Bot, Loader2 } from 'lucide-react';
 import { useAccent } from '@/contexts/AccentContext';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+const TypingIndicator = () => (
+  <div className="flex gap-1 items-center justify-center h-5 px-1">
+    <motion.div className="w-1.5 h-1.5 bg-current rounded-full" animate={{ y: [0, -4, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0 }} />
+    <motion.div className="w-1.5 h-1.5 bg-current rounded-full" animate={{ y: [0, -4, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }} />
+    <motion.div className="w-1.5 h-1.5 bg-current rounded-full" animate={{ y: [0, -4, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }} />
+  </div>
+);
+
+const AnimatedMessage: React.FC<{ content: string; isBot: boolean }> = ({ content, isBot }) => {
+  const [displayedContent, setDisplayedContent] = useState(isBot ? '' : content);
+
+  useEffect(() => {
+    if (!isBot) {
+      setDisplayedContent(content);
+      return;
+    }
+
+    let i = 0;
+    const interval = setInterval(() => {
+      // Reveal 3 characters at a time for smooth "typing" without breaking tags constantly
+      setDisplayedContent(content.substring(0, i));
+      i += 3;
+      if (i > content.length) {
+        setDisplayedContent(content);
+        clearInterval(interval);
+      }
+    }, 15);
+
+    return () => clearInterval(interval);
+  }, [content, isBot]);
+
+  if (!isBot) {
+    return <div className="p-3 rounded-2xl text-sm bg-primary text-primary-foreground rounded-tr-sm">{content}</div>;
+  }
+
+  return (
+    <div className="p-3 rounded-2xl text-sm bg-secondary text-secondary-foreground rounded-tl-sm overflow-hidden 
+      [&>p]:mb-2 last:[&>p]:mb-0 [&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4 [&>li]:mb-1 [&>strong]:font-bold [&>a]:text-blue-500 [&>a]:underline"
+    >
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {displayedContent}
+      </ReactMarkdown>
+    </div>
+  );
+};
 
 interface Message {
   role: 'user' | 'model';
@@ -115,7 +163,7 @@ export const ChatWidget: React.FC = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 flex flex-col gap-4" data-lenis-prevent>
               {messages.map((msg, idx) => (
                 <div 
                   key={idx} 
@@ -124,11 +172,7 @@ export const ChatWidget: React.FC = () => {
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-primary/20 text-primary' : 'bg-secondary text-secondary-foreground'}`}>
                     {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                   </div>
-                  <div 
-                    className={`p-3 rounded-2xl text-sm ${msg.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-secondary text-secondary-foreground rounded-tl-sm'}`}
-                  >
-                    {msg.content}
-                  </div>
+                  <AnimatedMessage content={msg.content} isBot={msg.role === 'model'} />
                 </div>
               ))}
               {isLoading && (
@@ -136,8 +180,8 @@ export const ChatWidget: React.FC = () => {
                   <div className="w-8 h-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center shrink-0">
                     <Bot size={16} />
                   </div>
-                  <div className="p-3 rounded-2xl bg-secondary text-secondary-foreground rounded-tl-sm flex items-center justify-center">
-                    <Loader2 size={16} className="animate-spin text-muted-foreground" />
+                  <div className="p-3 rounded-2xl bg-secondary text-secondary-foreground rounded-tl-sm flex items-center justify-center min-w-[3rem]">
+                    <TypingIndicator />
                   </div>
                 </div>
               )}
