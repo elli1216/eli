@@ -16,6 +16,8 @@ const Skills = React.lazy(() => import('@/components/skills/Skills').then(m => (
 const Contact = React.lazy(() => import('@/components/contact/Contact').then(m => ({ default: m.Contact })));
 const Certificates = React.lazy(() => import('@/components/certificates/Certificates').then(m => ({ default: m.Certificates })));
 
+const ChatWidget = React.lazy(() => import('@/components/chat/ChatWidget').then(m => ({ default: m.ChatWidget })));
+
 const App: React.FC = () => {
   return (
     <ThemeProvider>
@@ -37,6 +39,9 @@ const App: React.FC = () => {
             </main>
             <Footer />
             <BackToTop />
+            <Suspense fallback={null}>
+              <ChatWidget />
+            </Suspense>
           </div>
         </SmoothScroll>
       </AccentProvider>
