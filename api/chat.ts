@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { category } from '../src/constants/constants';
 import {
   EXPERIENCE_DATA,
   PROJECT_DATA,
@@ -7,6 +6,7 @@ import {
   EDUCATION,
   INTERESTS,
   NAMES,
+  certificates,
 } from '../src/constants/constants.js';
 
 // This acts as a Serverless Function
@@ -26,14 +26,14 @@ export default async function handler(req: any, res: any) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
 
-    const serializedExperience = EXPERIENCE_DATA.map((e: any) => ({
+    const serializedExperience = EXPERIENCE_DATA.map((e) => ({
       role: e.role,
       company: e.company,
       period: e.period,
       description: e.description,
     }));
 
-    const serializedProjects = PROJECT_DATA.map((p: any) => ({
+    const serializedProjects = PROJECT_DATA.map((p) => ({
       title: p.title,
       role: p.position,
       problem: p.problem,
@@ -44,7 +44,12 @@ export default async function handler(req: any, res: any) {
       repoLink: p.repoLink,
     }));
 
-    const serializedSkills = SKILL_DATA.map((s: any) => s.name);
+    const serializedCertificates = certificates.map((c) => ({
+      issuer: c.issuer,
+      certificate_name: c.alt,
+    }));
+
+    const serializedSkills = SKILL_DATA.map((s) => s.name);
 
     // Format the optimized portfolio data as context
     const context = `
@@ -59,6 +64,9 @@ export default async function handler(req: any, res: any) {
 
       Eli's Education:
       ${JSON.stringify(EDUCATION, null, 2)}
+
+      Eli's Certificates:
+      ${JSON.stringify(serializedCertificates, null, 2)}
 
       Eli's Interests:
       ${JSON.stringify(INTERESTS, null, 2)}
