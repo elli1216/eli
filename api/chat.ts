@@ -40,6 +40,8 @@ export default async function handler(req: any, res: any) {
       description: p.description,
       techStack: p.techStack,
       category: p.category,
+      demoLink: p.demoLink,
+      repoLink: p.repoLink,
     }));
 
     const serializedSkills = SKILL_DATA.map((s: any) => s.name);
@@ -85,6 +87,7 @@ Your primary purpose is to assist visitors by answering questions strictly about
 <response_style>
 - Tone: Warm, professional, concise, and helpful.
 - Format: Use clean Markdown formatting (bullet points, bold keywords) when listing projects or skills.
+- Project Links: When discussing a project that has a demoLink or repoLink, include them as standard Markdown links like [Live Demo](url) or [GitHub Repository](url).
 - Call to Action: When users ask about hiring or collaborating with Eli, guide them to reach out via the Contact section on the site.
 </response_style>
 
