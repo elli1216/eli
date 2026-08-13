@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Section } from '@/components/layout/Section';
 import { EXPERIENCE_DATA } from '@/constants/constants';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -6,51 +6,9 @@ import { ChevronDown, MapPin, Award } from 'lucide-react';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { useAccent } from '@/contexts/AccentContext';
-import { getInitials } from '@/lib/utils';
 import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
-
-
-
-const CompanyLogo: React.FC<{ domain: string; company: string; className?: string }> = ({ domain, company, className = '' }) => {
-  const [error, setError] = useState(false);
-
-  if (error) {
-    return (
-      <span className={`rounded-full bg-primary/15 text-primary font-bold flex items-center justify-center ${className}`}>
-        {getInitials(company)}
-      </span>
-    );
-  }
-
-  return (
-    <img
-      src={`https://img.logo.dev/${domain}?token=${import.meta.env.VITE_LOGO_DEV_PUBLIC_KEY}&retina=true`}
-      alt={`${company} logo`}
-      onError={() => setError(true)}
-      className={`rounded-full object-contain ${className}`}
-    />
-  );
-};
-
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-const getDurationLabel = (period: string): string => {
-  const [startPart, endPart] = period.split(/\s*[-–]\s*/);
-  const parse = (raw: string) => {
-    const [monthName, year] = raw.split(' ');
-    return new Date(Number(year), MONTHS.indexOf(monthName), 1);
-  };
-  const start = parse(startPart);
-  const end = endPart && endPart.toLowerCase() !== 'present' ? parse(endPart) : new Date();
-
-  let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
-  if (months <= 0) months = 1;
-
-  if (months < 12) return `${months} mo${months > 1 ? 's' : ''}`;
-  const years = Math.floor(months / 12);
-  const rem = months % 12;
-  return rem ? `${years} yr ${rem} mo` : `${years} yr${years > 1 ? 's' : ''}`;
-};
+import CompanyLogo from './CompanyLogo';
+import { getDurationLabel } from '../../lib/utils';
 
 const containerVariants = {
   hidden: { opacity: 0 },

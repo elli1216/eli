@@ -44,3 +44,8 @@ export interface SkillItem {
   icon?: string;
   category: 'frontend' | 'backend' | 'tools';
 }
+
+export interface Message {
+  role: 'user' | 'model';
+  content: string;
+}

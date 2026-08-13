@@ -12,8 +12,6 @@ import { TechStack } from '@/components/shared/TechStack';
 
 const HACKATHON_PROJECTS = PROJECT_DATA.filter((p) => p.category === category.HACKATHON);
 
-
-
 interface HackathonCardProps {
   project: (typeof HACKATHON_PROJECTS)[number];
   accentColor: string;

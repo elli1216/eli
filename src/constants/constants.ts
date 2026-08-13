@@ -1,4 +1,5 @@
 import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from '@/types/types';
+import { Facebook, Github, Linkedin, Mail } from 'lucide-react';
 
 export const category = {
   ACADEMIC: 'Academic Project',
@@ -530,3 +531,45 @@ export const EDUCATION = {
 export const INTERESTS = ['Football', 'League of Legends', 'Java', 'Design Patterns'];
 
 export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 'Ellison Floresca'];
+
+export const contactItems = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'floresca.darlellisong@gmail.com',
+    href: 'mailto:floresca.darlellisong@gmail.com',
+  },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    value: 'Darl Ellison Floresca',
+    href: 'https://www.linkedin.com/in/darlfloresca/',
+  },
+  {
+    icon: Github,
+    label: 'GitHub',
+    value: '@elli1216',
+    href: 'https://github.com/elli1216',
+  },
+  {
+    icon: Facebook,
+    label: 'Facebook',
+    value: 'Darl Ellison Floresca',
+    href: 'https://www.facebook.com/darlellison/',
+  },
+];
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];

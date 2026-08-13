@@ -1,41 +1,12 @@
-import React from 'react';
 import { Section } from '@/components/layout/Section';
-import { Mail, Linkedin, Github, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { useAccent } from '@/contexts/AccentContext';
-
-const contactItems = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'floresca.darlellisong@gmail.com',
-    href: 'mailto:floresca.darlellisong@gmail.com',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'Darl Ellison Floresca',
-    href: 'https://www.linkedin.com/in/darlfloresca/',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: '@elli1216',
-    href: 'https://github.com/elli1216',
-  },
-  {
-    icon: Facebook,
-    label: 'Facebook',
-    value: 'Darl Ellison Floresca',
-    href: 'https://www.facebook.com/darlellison/',
-  },
-];
+import { contactItems } from '@/constants/constants';
 
 export const Contact = () => {
   const { currentAccent } = useAccent();
-
   return (
     <Section id="contact">
       <div className="max-w-4xl mx-auto text-center">
