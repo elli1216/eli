@@ -36,7 +36,7 @@ const AnimatedMessage: React.FC<{
   }
 
   return (
-    <div className="p-3 rounded-2xl text-sm bg-secondary text-secondary-foreground rounded-tl-sm overflow-hidden 
+    <div className="p-3 rounded-2xl text-sm bg-primary/10 text-secondary-foreground rounded-tl-sm overflow-hidden 
       [&>p]:mb-2 last:[&>p]:mb-0 [&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4 [&>li]:mb-1 [&>strong]:font-bold [&>a]:text-blue-500 [&>a]:underline"
     >
       <ReactMarkdown 

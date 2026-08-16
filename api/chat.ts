@@ -109,11 +109,46 @@ ${context}
       systemInstruction: systemInstruction,
     });
 
-    // Format history for the Gemini API
-    const formattedHistory = history.map((msg: any) => ({
-      role: msg.role === 'user' ? 'user' : 'model',
-      parts: [{ text: msg.content }],
-    }));
+    // Format and normalize history for the Gemini API
+    const formattedHistory: { role: string; parts: { text: string }[] }[] = [];
+
+    for (const msg of history) {
+      const role = msg.role === 'user' ? 'user' : 'model';
+
+      // Filter out known automated UI messages to prevent model confusion
+      if (
+        role === 'model' &&
+        (msg.content.startsWith("Hi! I'm Nova") ||
+          msg.content.startsWith("You're sending messages too fast") ||
+          msg.content.startsWith("Sorry, I'm having trouble connecting"))
+      ) {
+        continue;
+      }
+
+      const last = formattedHistory[formattedHistory.length - 1];
+      if (last && last.role === role) {
+        // Combine consecutive messages of the same role
+        last.parts[0].text += '\n\n' + msg.content;
+      } else {
+        formattedHistory.push({
+          role,
+          parts: [{ text: msg.content }],
+        });
+      }
+    }
+
+    // Ensure history starts with 'user'
+    if (formattedHistory.length > 0 && formattedHistory[0].role === 'model') {
+      formattedHistory.shift();
+    }
+
+    // Ensure history ends with 'model' (since the next action is user sending a message)
+    if (
+      formattedHistory.length > 0 &&
+      formattedHistory[formattedHistory.length - 1].role === 'user'
+    ) {
+      formattedHistory.pop();
+    }
 
     // Start chat with history
     const chat = model.startChat({
