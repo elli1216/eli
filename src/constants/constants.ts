@@ -1,6 +1,34 @@
 import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from '@/types/types';
 import { Facebook, Github, Linkedin, Mail } from 'lucide-react';
 
+export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 'Ellison Floresca'];
+export const INTERESTS = ['Football', 'League of Legends', 'Java', 'Design Patterns'];
+export const EDUCATION = {
+  uninversity_attended: 'Bulacan State University',
+  location: 'Malolos City, Bulacan',
+  course: 'Bachelor of Science in Information Technology',
+  date_started: 'Aug 2022',
+  date_graduated: 'Jun 2026',
+  gpa: 1.71,
+};
+
+export const PERSONAL_DATA = {
+  short_introduction:
+    'I am a BSIT graduate of Bulacan State University from Marilao, Bulacan, currently working as an Custom Software Engineer at Accenture.As a highly coachable developer, I thrive on constructive feedback and industry-best practices to continuously sharpen my skills. I bring rigorous, hands-on project experience and a strict commitment to maintaining high standards for code scalability and performance. I am eager to leverage my adaptable mindset and strong technical foundation within a dynamic development team.',
+  names: NAMES,
+  education: EDUCATION,
+  mobile_number: '09629837530',
+  emails: ['floresca.darlellisong@gmail.com', 'darlellisonf@gmail.com'],
+  age: '23 years old',
+  birthdate: 'December 16, 2002',
+  github: { username: 'elli1216', link: 'https://github.com/elli1216' },
+  linkedid: {
+    name: 'Darl Ellison Floresca',
+    link: 'https://www.linkedin.com/in/darlfloresca',
+  },
+  interests: INTERESTS,
+};
+
 export const category = {
   ACADEMIC: 'Academic Project',
   PERSONAL: 'Personal Project',
@@ -536,18 +564,6 @@ export const certificates = [
     href: 'https://www.credly.com/badges/fb5d7810-4e12-4d93-ab39-0b54c34bc1a5/public_url',
   },
 ];
-
-export const EDUCATION = {
-  uninversity_attended: 'Bulacan State University',
-  location: 'Malolos City, Bulacan',
-  course: 'Bachelor of Science in Information Technology',
-  date_started: 'Aug 2022',
-  date_graduated: 'Jun 2026',
-};
-
-export const INTERESTS = ['Football', 'League of Legends', 'Java', 'Design Patterns'];
-
-export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 'Ellison Floresca'];
 
 export const contactItems = [
   {
