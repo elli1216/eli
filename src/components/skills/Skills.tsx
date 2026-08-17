@@ -1,4 +1,3 @@
-import React from 'react';
 import StackIcon from 'tech-stack-icons';
 import { SKILL_DATA } from '@/constants/constants';
 import { motion } from 'motion/react';
@@ -7,6 +6,7 @@ import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { useAccent } from '@/contexts/AccentContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { SectionDescription } from '../layout/SectionDescription';
 
 const SKILL_GROUPS = [
   { label: 'Frontend', key: 'frontend' as const },
@@ -22,9 +22,9 @@ export const Skills = () => {
     <Section id="skills">
       <div className="mb-12">
         <SectionTitle>Tech Stack & Skills</SectionTitle>
-        <p className="text-center text-muted-foreground mt-4 max-w-xl mx-auto text-sm md:text-base italic">
+        <SectionDescription>
           The tools I reach for daily, grouped by what they do.
-        </p>
+        </SectionDescription>
       </div>
 
       <div className="space-y-10">

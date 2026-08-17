@@ -88,6 +88,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
   );
 };
 
+import { SectionDescription } from '@/components/layout/SectionDescription';
+
 export const Projects: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
@@ -104,6 +106,9 @@ export const Projects: React.FC = () => {
     <Section id="projects">
       <div className="mb-12">
         <SectionTitle>Works so far</SectionTitle>
+        <SectionDescription>
+          A collection of things I've built, broken, and fixed.
+        </SectionDescription>
         <div className="mt-6 flex flex-wrap justify-center gap-2.5">
           {CATEGORY_COUNTS.map((cat) => {
             const isActive = activeFilter === cat.name;

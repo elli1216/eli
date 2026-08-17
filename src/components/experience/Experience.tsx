@@ -26,6 +26,7 @@ const itemVariants = {
     transition: { duration: 0.5, ease: 'easeOut' },
   } as const,
 };
+import { SectionDescription } from '@/components/layout/SectionDescription';
 
 export const Experience = () => {
   const [expandedId, setExpandedId] = useState<string | number | null>(null);
@@ -34,7 +35,12 @@ export const Experience = () => {
 
   return (
     <Section id="experience" className="mt-10">
-      <SectionTitle className="mb-12">Experience</SectionTitle>
+      <div className="mb-12">
+        <SectionTitle>Experience</SectionTitle>
+        <SectionDescription>
+          Where I've applied my skills in the real world.
+        </SectionDescription>
+      </div>
 
       <div className="relative">
         {/* Desktop center line */}
@@ -120,29 +126,37 @@ export const Experience = () => {
                       </div>
 
                       {/* Description with expand */}
-                      {item.description && (
+                      {item.description && item.description.length > 0 && (
                         <div>
-                          <p className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? 'hidden' : 'line-clamp-2'}`}>
-                            {item.description}
-                          </p>
+                          <div className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? 'hidden' : 'line-clamp-2'}`}>
+                            <ul className="list-disc pl-4 space-y-1">
+                              {item.description.map((desc, i) => (
+                                <li key={i}>{desc}</li>
+                              ))}
+                            </ul>
+                          </div>
                           <AnimatePresence initial={false}>
                             {isExpanded && (
-                              <motion.p
+                              <motion.div
                                 key="full-description"
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                                className="text-sm text-muted-foreground leading-relaxed overflow-hidden"
+                                className="text-sm text-muted-foreground leading-relaxed overflow-hidden mt-2"
                               >
-                                {item.description}
-                              </motion.p>
+                                <ul className="list-disc pl-4 space-y-1">
+                                  {item.description.map((desc, i) => (
+                                    <li key={i}>{desc}</li>
+                                  ))}
+                                </ul>
+                              </motion.div>
                             )}
                           </AnimatePresence>
-                          {item.description.length > 120 && (
+                          {item.description.join(' ').length > 120 && (
                             <button
                               onClick={() => setExpandedId(isExpanded ? null : index)}
-                              className="text-xs text-primary hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
+                              className="text-xs text-primary hover:underline mt-2 flex items-center gap-1 cursor-pointer"
                             >
                               {isExpanded ? 'Show less' : 'Read more'}
                               <ChevronDown size={12} className={`transition-transform ${isExpanded ? 'rotate-180' : ''}`} />

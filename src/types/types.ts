@@ -17,7 +17,7 @@ export interface ExperienceItem {
   companyUrl?: string;
   period: string;
   location: string;
-  description: string;
+  description: string[];
   certificate?: string;
 }
 

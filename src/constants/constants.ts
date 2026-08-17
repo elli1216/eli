@@ -2,7 +2,8 @@ import { AccentColor, ExperienceItem, ProjectItem, SkillItem } from '@/types/typ
 import { Facebook, Github, Linkedin, Mail } from 'lucide-react';
 
 export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 'Ellison Floresca'];
-export const INTERESTS = ['Football', 'League of Legends', 'Java', 'Design Patterns'];
+export const INTERESTS = ['Football', 'League of Legends'];
+export const EXPLORING = ['AI Engineering', 'Cloud', 'Spring Boot'];
 export const EDUCATION = {
   uninversity_attended: 'Bulacan State University',
   location: 'Malolos City, Bulacan',
@@ -14,10 +15,10 @@ export const EDUCATION = {
 
 export const PERSONAL_DATA = {
   short_introduction:
-    'I am a BSIT graduate of Bulacan State University from Marilao, Bulacan, currently working as an Custom Software Engineer at Accenture.As a highly coachable developer, I thrive on constructive feedback and industry-best practices to continuously sharpen my skills. I bring rigorous, hands-on project experience and a strict commitment to maintaining high standards for code scalability and performance. I am eager to leverage my adaptable mindset and strong technical foundation within a dynamic development team.',
+    'I am a BSIT graduate of Bulacan State University (Malolos) currently working as an Custom Software Engineer at Accenture.As a highly coachable developer, I thrive on constructive feedback and industry-best practices to continuously sharpen my skills. I bring rigorous, hands-on project experience and a strict commitment to maintaining high standards for code scalability and performance. I am eager to leverage my adaptable mindset and strong technical foundation within a dynamic development team.',
   names: NAMES,
+  based_in: 'Marilao, Bulacan, Philippines',
   education: EDUCATION,
-  mobile_number: '09629837530',
   emails: ['floresca.darlellisong@gmail.com', 'darlellisonf@gmail.com'],
   age: '23 years old',
   birthdate: 'December 16, 2002',
@@ -26,7 +27,7 @@ export const PERSONAL_DATA = {
     name: 'Darl Ellison Floresca',
     link: 'https://www.linkedin.com/in/darlfloresca',
   },
-  interests: INTERESTS,
+  interests: { INTERESTS, EXPLORING },
 };
 
 export const category = {
@@ -62,7 +63,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: 'accenture.com',
     period: 'August 2026 - Present',
     location: 'NCR, Philippines | Hybrid',
-    description: 'Onboarded as an Custom Software Engineer after 4 month long training.',
+    description: ['Onboarded as a Custom Software Engineer after 3 month training.'],
   },
   {
     role: 'Full Stack Development Trainee',
@@ -70,8 +71,11 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: 'accenture.com',
     period: 'April 2026 - July 2026',
     location: 'Mandaluyong City, Philippines | Hybrid',
-    description:
-      'Got selected to take an exclusive 343-hour training program to sharpen my skills on Full Stack Development and Microservices, covering Core Java, Spring Boot for backend. ReactJS and TypeScript for Frontend.',
+    description: [
+      'Selected for an exclusive 343-hour intensive training program focused on Full Stack Development and Microservices.',
+      'Mastered enterprise backend technologies including Core Java and Spring Boot.',
+      'Developed responsive frontend applications utilizing modern ReactJS and TypeScript.',
+    ],
     certificate: '/certificates/training.png',
   },
   {
@@ -80,8 +84,12 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: 'landbank.com',
     period: 'February 2026 - April 2026',
     location: 'Malate, Manila, Philippines',
-    description:
-      'Contributed to the migration and development of 10+ COBOL programs to z/OS mainframe for financial data processing. Worked with PS and VSAM input files to handle data reading, validation, and processing logic. Executed JCL job submissions and monitored execution status to maintain system reliability. Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration.',
+    description: [
+      'Contributed to the migration and development of 10+ COBOL programs to z/OS mainframe for financial data processing.',
+      'Worked with PS and VSAM input files to handle data reading, validation, and processing logic.',
+      'Executed JCL job submissions and monitored execution status to maintain system reliability.',
+      'Performed unit testing and ensured the programs complied with IBM z/OS coding standards to ensure seamless enterprise integration.',
+    ],
     certificate: '/certificates/internship.png',
   },
   {
@@ -90,8 +98,11 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: 'thesmartbridge.com',
     period: 'March 2025 – May 2025',
     location: 'Philippines | Remote',
-    description:
-      'Completed 22 superbadges on Salesforce Trailhead, reflecting hands-on experience in CRM concepts, security models, workflow automation, and scalable system design, simulating real-world scenarios on utilizing Salesforce technologies.',
+    description: [
+      'Completed 22 intensive superbadges on Salesforce Trailhead through simulated real-world scenarios.',
+      'Gained hands-on experience implementing core CRM concepts, security models, and workflow automation.',
+      'Applied best practices for scalable system design utilizing various Salesforce cloud technologies.',
+    ],
     certificate: '/certificates/salesforce.png',
   },
   {
@@ -100,8 +111,11 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     companyUrl: 'bulsu.edu.ph',
     period: 'January 2025 – May 2025',
     location: 'Malolos City, Bulacan, Philippines',
-    description:
-      'Managed front desk operations and document handling, ensuring efficient communication between university offices while maintaining high service standards for student inquiries.',
+    description: [
+      'Managed daily front desk operations, document handling, and administrative tasks.',
+      'Facilitated efficient communication and coordination between various university offices.',
+      'Maintained high service standards while actively resolving student inquiries and concerns.',
+    ],
   },
 ];
 

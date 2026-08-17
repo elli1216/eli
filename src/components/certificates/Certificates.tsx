@@ -9,6 +9,8 @@ import { useAccent } from '@/contexts/AccentContext';
 import { Eye, Award, ArrowRight } from 'lucide-react';
 import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
 
+import { SectionDescription } from '@/components/layout/SectionDescription';
+
 export const Certificates = () => {
   const [showAll, setShowAll] = useState(false);
   const [selectedCert, setSelectedCert] = useState<CertificateModalData | null>(null);
@@ -22,9 +24,9 @@ export const Certificates = () => {
     <Section id="certificates">
       <div className="mb-12">
         <SectionTitle>Certificates</SectionTitle>
-        <p className="text-center text-muted-foreground mt-4 max-w-xl mx-auto text-sm md:text-base italic">
-          Credentials from online courses, tracks, and programs — {certificates.length} and counting.
-        </p>
+        <SectionDescription>
+          Proof that I occasionally finish what I start. (And {certificates.length} credentials from courses and programs).
+        </SectionDescription>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

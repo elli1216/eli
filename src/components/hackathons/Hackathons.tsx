@@ -9,6 +9,7 @@ import { PROJECT_DATA, category } from '@/constants/constants';
 import { getInitials } from '@/lib/utils';
 import { ProjectMetrics } from '@/components/shared/ProjectMetrics';
 import { TechStack } from '@/components/shared/TechStack';
+import { SectionDescription } from '@/components/layout/SectionDescription';
 
 const HACKATHON_PROJECTS = PROJECT_DATA.filter((p) => p.category === category.HACKATHON);
 
@@ -154,10 +155,12 @@ export const Hackathons: React.FC = () => {
 
   return (
     <Section id="hackathons">
-      <SectionTitle className="mb-4">Hackathons</SectionTitle>
-      <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto text-sm md:text-base italic">
-        Where I go to stretch — tight deadlines, messy real-world problems, and something shippable at the end.
-      </p>
+      <div className="mb-12">
+        <SectionTitle>Hackathons</SectionTitle>
+        <SectionDescription>
+          Where I go to stretch — tight deadlines, messy real-world problems, and something shippable at the end.
+        </SectionDescription>
+      </div>
 
       <div
         className="relative max-w-3xl mx-auto"

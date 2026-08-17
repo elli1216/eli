@@ -30,12 +30,12 @@ export const ProjectMetrics: React.FC<ProjectMetricsProps> = ({
       )}
       <div className={cn(
         "grid gap-2.5 sm:gap-3", 
-        hasMetrics ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-2",
+        hasMetrics ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-1 sm:grid-cols-2",
         gridClassName
       )}>
         {project.placement && (
-          <div className={cn("rounded-lg border border-yellow-500/30 bg-yellow-500/5 px-2 py-3 text-center flex flex-col justify-center", itemClassName)}>
-            <p className="text-lg sm:text-xl font-extrabold text-yellow-600 dark:text-yellow-400 leading-tight">
+          <div className={cn("rounded-lg border border-border/50 bg-background/50 px-2 py-3 text-center flex flex-col justify-center", itemClassName)}>
+            <p className="text-lg sm:text-xl font-extrabold text-primary leading-tight">
               {project.placement}
             </p>
             <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-muted-foreground mt-1 leading-snug">

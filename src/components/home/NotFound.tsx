@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Home, Compass } from 'lucide-react';
+import { Home } from 'lucide-react';
 import { useAccent } from '@/contexts/AccentContext';
 import FuzzyText from './FuzzyText';
 
@@ -38,12 +38,8 @@ export const NotFound: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-center justify-center"
+          className="flex flex-col items-center justify-center gap-3"
         >
-          <motion.div variants={itemVariants} className="mb-6">
-            <Compass size={64} className="text-primary animate-pulse mx-auto" />
-          </motion.div>
-
           <motion.div variants={itemVariants}>
             <FuzzyText
               baseIntensity={0.2}
@@ -53,13 +49,15 @@ export const NotFound: React.FC = () => {
               404
             </FuzzyText>
           </motion.div>
-
           <motion.div variants={itemVariants}>
-            <h2 className="text-2xl md:text-4xl font-semibold mb-4 text-foreground">
-              Looks like you're lost in space
-            </h2>
+            <FuzzyText
+              baseIntensity={0.2}
+              hoverIntensity={0.5}
+              enableHover
+            >
+              Not Found
+            </FuzzyText>
           </motion.div>
-
           <motion.div variants={itemVariants}>
             <motion.a
               href="/"
@@ -68,7 +66,6 @@ export const NotFound: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Home size={18} />
               Back to Home
             </motion.a>
           </motion.div>
