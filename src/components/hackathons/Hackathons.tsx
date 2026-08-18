@@ -10,17 +10,45 @@ import { getInitials } from '@/lib/utils';
 import { ProjectMetrics } from '@/components/shared/ProjectMetrics';
 import { TechStack } from '@/components/shared/TechStack';
 import { SectionDescription } from '@/components/layout/SectionDescription';
+import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
 
 const HACKATHON_PROJECTS = PROJECT_DATA.filter((p) => p.category === category.HACKATHON);
+
+const ExpandableText: React.FC<{ text: string, className?: string, accentColor?: string, threshold?: number }> = ({ text, className = "", accentColor, threshold = 180 }) => {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > threshold;
+  
+  return (
+    <motion.div layout className="relative">
+      <motion.p 
+        layout
+        className={`${className} ${!expanded && isLong ? 'line-clamp-2' : ''}`}
+        style={accentColor ? { borderColor: `${accentColor}66` } : undefined}
+      >
+        {text}
+      </motion.p>
+      {isLong && (
+        <motion.button 
+          layout
+          onClick={() => setExpanded(!expanded)}
+          className="text-xs font-bold text-primary hover:underline mt-1.5 cursor-pointer inline-block"
+        >
+          {expanded ? "See Less" : "See Full"}
+        </motion.button>
+      )}
+    </motion.div>
+  );
+};
 
 interface HackathonCardProps {
   project: (typeof HACKATHON_PROJECTS)[number];
   accentColor: string;
+  onViewCertificate: (cert: CertificateModalData) => void;
 }
 
-const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) => (
+const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor, onViewCertificate }) => (
   <DecorativeFrame accentColor={accentColor}>
-    <div className="bg-card rounded-xl flex flex-col overflow-hidden">
+    <motion.div layout className="bg-card rounded-xl flex flex-col overflow-hidden">
       {/* Accent hero bar */}
       <div
         className="h-1 w-full shrink-0"
@@ -62,7 +90,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) =
             <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-2.5">
               <Palette size={13} /> Hackathon Theme
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">{project.theme}</p>
+            <ExpandableText text={project.theme} className="text-sm text-muted-foreground leading-relaxed" />
           </div>
         )}
 
@@ -72,12 +100,11 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) =
             <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary-foreground mb-2.5">
               <Target size={13} /> The Problem
             </p>
-            <p
+            <ExpandableText 
+              text={project.problem} 
               className="text-sm text-muted-foreground leading-relaxed border-l-2 pl-4 italic"
-              style={{ borderColor: `${accentColor}66` }}
-            >
-              {project.problem}
-            </p>
+              accentColor={accentColor}
+            />
           </div>
         )}
 
@@ -86,7 +113,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) =
           <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-2.5">
             <Lightbulb size={13} /> What I Built
           </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+          <ExpandableText text={project.description} className="text-sm text-muted-foreground leading-relaxed" />
         </div>
 
         {/* Footer */}
@@ -113,20 +140,30 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor }) =
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <TechStack technologies={project.techStack} />
-            {project.repoLink && (
-              <a
-                href={project.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0"
-              >
-                <Github size={14} /> View Code <ArrowUpRight size={12} />
-              </a>
-            )}
+            <div className="flex items-center gap-4 shrink-0">
+              {project.certificate && (
+                <button
+                  onClick={() => onViewCertificate({ src: project.certificate as string, alt: `${project.title} Certificate` })}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0 cursor-pointer"
+                >
+                  <Trophy size={14} /> View Certificate <ArrowUpRight size={12} />
+                </button>
+              )}
+              {project.repoLink && (
+                <a
+                  href={project.repoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0"
+                >
+                  <Github size={14} /> View Code <ArrowUpRight size={12} />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   </DecorativeFrame>
 );
 
@@ -139,6 +176,7 @@ const slideVariants = {
 export const Hackathons: React.FC = () => {
   const { currentAccent } = useAccent();
   const [[current, direction], setPage] = useState<[number, number]>([0, 0]);
+  const [selectedCert, setSelectedCert] = useState<CertificateModalData | null>(null);
 
   if (HACKATHON_PROJECTS.length === 0) return null;
 
@@ -175,6 +213,7 @@ export const Hackathons: React.FC = () => {
         <div className="overflow-hidden">
           <AnimatePresence mode="wait" custom={direction} initial={false}>
             <motion.div
+              layout
               key={current}
               custom={direction}
               variants={slideVariants}
@@ -194,6 +233,7 @@ export const Hackathons: React.FC = () => {
               <HackathonCard
                 project={HACKATHON_PROJECTS[current]}
                 accentColor={currentAccent}
+                onViewCertificate={setSelectedCert}
               />
             </motion.div>
           </AnimatePresence>
@@ -239,6 +279,11 @@ export const Hackathons: React.FC = () => {
           {String(current + 1).padStart(2, '0')} / {String(HACKATHON_PROJECTS.length).padStart(2, '0')}
         </p>
       </div>
+
+      <CertificateModal 
+        cert={selectedCert} 
+        onClose={() => setSelectedCert(null)} 
+      />
     </Section>
   );
 };

@@ -140,34 +140,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL,
   },
   {
-    title: 'MergeMaster AI',
-    position: 'Full Stack & AI Developer',
-    theme:
-      "AI is evolving from a productivity tool into a true collaborator that can help people plan, coordinate, decide, and execute work moreffectively. Build solutions that help individuals, teams, and organizations achieve better outcomes through intelligent automation, workflow orchestration, and decision support. Whether you're building workflow automation systems, AI co-workers, decision intelligence platforms, or business process orchestration tools, your project should demonstrate how AI can help transform work from disconnected tasks into intelligent, outcome-driven systems.",
-    hackathonTitle: 'IBM AI Builders Challenge (August Wildcard)',
-    collaborators: null,
-    problem:
-      "Engineering teams lose valuable hours manually reviewing code, routing tickets, and hunting for security flaws, which creates severe friction and slows down shipping velocity. Context-switching to fix minor issues or reviewing PRs outside a developer's expertise stalls progress, while traditional AI review tools only leave passive comments that still require manual effort.",
-    description:
-      'MergeMaster AI acts as an active, autonomous co-worker that fixes issues directly and orchestrates the entire pull request workflow. It automatically generates and pushes code fixes for vulnerabilities, intelligently routes PRs to the right domain experts based on touched files, and evaluates deployment safety through AI-driven risk-confidence scoring.',
-    techStack: [
-      'Fast API',
-      'React',
-      'Convex',
-      'WorkOS',
-      'Gemini API',
-      'IBM Bob',
-      'Tanstack Router',
-      'Tanstack Query',
-      'Github Apps',
-      'Shadcn UI',
-    ],
-    image: '/projects/mergemaster.png',
-    // demoLink: "",
-    repoLink: 'https://github.com/elli1216/MergeMasterAI',
-    category: category.HACKATHON,
-  },
-  {
     title: 'WhatsApp AI Notification Router',
     position: 'AI Developer',
     hackathonTitle: 'HackerRank Orchestrate 24-hour Hackathon',
@@ -189,6 +161,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     // demoLink: "",
     repoLink: 'https://github.com/elli1216/message-notification-router',
     category: category.HACKATHON,
+    certificate: '/certificates/hackerrank.png',
   },
   {
     title: 'PlotWeaver AI',
@@ -224,6 +197,35 @@ export const PROJECT_DATA: ProjectItem[] = [
     image: '/projects/plotweaver.png',
     // demoLink: "",
     repoLink: 'https://github.com/IBMPlotWeaver/plotweaver',
+    category: category.HACKATHON,
+    certificate: '/certificates/IBMAIBuildersJuly.png',
+  },
+  {
+    title: 'MergeMaster AI',
+    position: 'Full Stack & AI Developer',
+    theme:
+      "AI is evolving from a productivity tool into a true collaborator that can help people plan, coordinate, decide, and execute work moreffectively. Build solutions that help individuals, teams, and organizations achieve better outcomes through intelligent automation, workflow orchestration, and decision support. Whether you're building workflow automation systems, AI co-workers, decision intelligence platforms, or business process orchestration tools, your project should demonstrate how AI can help transform work from disconnected tasks into intelligent, outcome-driven systems.",
+    hackathonTitle: 'IBM AI Builders Challenge (August Wildcard)',
+    collaborators: null,
+    problem:
+      "Engineering teams lose valuable hours manually reviewing code, routing tickets, and hunting for security flaws, which creates severe friction and slows down shipping velocity. Context-switching to fix minor issues or reviewing PRs outside a developer's expertise stalls progress, while traditional AI review tools only leave passive comments that still require manual effort.",
+    description:
+      'MergeMaster AI acts as an active, autonomous co-worker that fixes issues directly and orchestrates the entire pull request workflow. It automatically generates and pushes code fixes for vulnerabilities, intelligently routes PRs to the right domain experts based on touched files, and evaluates deployment safety through AI-driven risk-confidence scoring.',
+    techStack: [
+      'Fast API',
+      'React',
+      'Convex',
+      'WorkOS',
+      'Gemini API',
+      'IBM Bob',
+      'Tanstack Router',
+      'Tanstack Query',
+      'Github Apps',
+      'Shadcn UI',
+    ],
+    image: '/projects/mergemaster.png',
+    // demoLink: "",
+    repoLink: 'https://github.com/elli1216/MergeMasterAI',
     category: category.HACKATHON,
   },
   {
@@ -322,23 +324,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     demoLink: 'https://stcpacv3.vercel.app/',
     category: category.FREELANCE,
   },
-  // {
-  //   title: "QuickRoute - Local",
-  //   position: "Developer",
-  //   description: "Developed a plug‑and‑play mock server that enables frontend developers and QA testers to simulate REST APIs instantly. Users upload a JSON configuration defining HTTP methods, path patterns (including path variables), response bodies, custom status codes, and artificial network delays.",
-  //   techStack: ["Spring Boot", "Java", "Maven", "MVC", "Rest API", "JSON"],
-  //   image: "https://placehold.co/800/black/white?text=QuickRoute+-+Local&font=playfair-display",
-  //   repoLink: "https://github.com/elli1216/InstantMock-Local",
-  //   category: category.PERSONAL
-  // },
-  // {
-  //   title: "COBOL Files",
-  //   description: "My files from Z/OS Mainframe Developer Course and IBM Z Xplore hands-on labs.",
-  //   techStack: ["COBOL", "JCL", "IBM Z Xplore", "z/OS", "Mainframe", "ISPF", "RACF", "Zowe CLI", "VSAM", "TSO"],
-  //   image: "/projects/zos.png",
-  //   repoLink: "https://github.com/elli1216/ds-jcl-cbl-files",
-  //   category: category.PERSONAL
-  // },
   {
     title: 'Tic-a-Pic Photobooth',
     position: 'Full Stack Developer',
@@ -380,16 +365,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     repoLink: 'https://github.com/elli1216/eli',
     category: category.PERSONAL,
   },
-  // {
-  //   title: "Scroll Report",
-  //   position: "Developer",
-  //   collaborators: null,
-  //   description: "A project I practiced with Next.js using the News API for the data just for practicing NextJS.",
-  //   techStack: ["Next.js", "News API", "Tanstack React Query", "TypeScript"],
-  //   image: "https://placehold.co/800/black/white?text=Scroll+Report&font=playfair-display",
-  //   repoLink: "https://github.com/elli1216/Scroll-Report",
-  //   category: category.PERSONAL
-  // },
   {
     title: 'ByteBazaar',
     position: 'Developer',
@@ -475,6 +450,12 @@ export const SKILL_DATA: SkillItem[] = [
 ];
 
 export const certificates = [
+  {
+    src: '/certificates/IBMAIBuildersJuly.png',
+    issuer: 'IBM SkillsBuild',
+    alt: 'IBM SkillsBuild AI Builders Challenge July',
+    href: 'https://skills.yourlearning.ibm.com/certificate/share/58de257513ewogICJsZWFybmVyQ05VTSIgOiAiNzgwMTAwMFJFRyIsCiAgIm9iamVjdFR5cGUiIDogIkFDVElWSVRZIiwKICAib2JqZWN0SWQiIDogIlVSTC1GMjNEQjc1NEY4MDIiCn0b9e347f166-10',
+  },
   {
     src: '/certificates/hackerrank.png',
     issuer: 'HackerRank',

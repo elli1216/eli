@@ -198,6 +198,19 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   {project.description}
                 </p>
               </div>
+
+              {/* Certificate */}
+              {project.certificate && (
+                <div className="mt-8">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Certificate</h4>
+                  <img 
+                    src={project.certificate} 
+                    alt={`${project.title} Certificate`} 
+                    className="w-full rounded-lg border border-border/50 shadow-sm"
+                    loading="lazy"
+                  />
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

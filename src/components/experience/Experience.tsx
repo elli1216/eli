@@ -46,7 +46,7 @@ export const Experience = () => {
         {/* Desktop center line */}
         <div className="hidden md:block absolute md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-border" />
         {/* Mobile left line */}
-        <div className="md:hidden absolute left-[7px] top-0 bottom-0 w-px bg-border" />
+        <div className="md:hidden absolute left-1.75 top-0 bottom-0 w-px bg-border" />
 
         <motion.div
           className="space-y-8 md:space-y-12"

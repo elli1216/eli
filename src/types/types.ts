@@ -37,6 +37,7 @@ export interface ProjectItem {
   category?: (typeof category)[keyof typeof category];
   placement?: string;
   placementOutOf?: string;
+  certificate?: string;
 }
 
 export interface SkillItem {
