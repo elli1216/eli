@@ -134,7 +134,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
               {/* Tech Stack */}
               <div className="mb-8">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Technologies Used</h4>
+                <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Technologies Used</h4>
                 <TechStack 
                   technologies={project.techStack} 
                   className="gap-2"
@@ -154,7 +154,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               {/* Collaborators */}
               {project.collaborators && project.collaborators.length > 0 && (
                 <div className="mb-8">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">Collaborators</h4>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">Collaborators</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.collaborators.map(({ name, link }) => (
                       <a

@@ -24,7 +24,7 @@ export const ProjectMetrics: React.FC<ProjectMetricsProps> = ({
   return (
     <div className={className}>
       {showTitle && (
-        <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">
+        <h4 className="text-sm font-bold uppercase tracking-wider text-secondary-foreground mb-3">
           Key Results & Achievements
         </h4>
       )}

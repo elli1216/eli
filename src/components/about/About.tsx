@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Section } from '@/components/layout/Section';
 import { useAccent } from '@/contexts/AccentContext';
 import { motion } from 'framer-motion';
@@ -7,6 +7,7 @@ import { SectionDescription } from '@/components/layout/SectionDescription';
 import { Target, TrendingUp, Layers, GraduationCap, MapPin, Briefcase, Sparkles, ChessPawnIcon } from 'lucide-react';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { EDUCATION, EXPERIENCE_DATA, EXPLORING, INTERESTS, PERSONAL_DATA } from '@/constants/constants';
+import { GithubStatsWidget } from '@/components/shared/GithubStatsWidget';
 
 const VALUES = [
   {
@@ -163,6 +164,17 @@ export const About: React.FC = () => {
           })}
         </div>
       </motion.div >
+
+            {/* GitHub Activity & Stats */}
+      <motion.div
+        className="mt-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+      >
+        <GithubStatsWidget />
+      </motion.div>
     </Section >
   );
 };
