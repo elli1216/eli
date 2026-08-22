@@ -8,6 +8,8 @@ import SmoothScroll from '@/components/layout/SmoothScroll';
 import { AccentProvider } from '@/contexts/AccentContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { NotFound } from '@/components/home/NotFound';
+import { ThemedCursor } from './components/home/cursor/ThemedCursor';
+import { useMobile } from './lib/utils';
 
 const About = React.lazy(() => import('@/components/about/About').then(m => ({ default: m.About })));
 const Experience = React.lazy(() => import('@/components/experience/Experience').then(m => ({ default: m.Experience })));
@@ -16,11 +18,11 @@ const Projects = React.lazy(() => import('@/components/projects/Projects').then(
 const Skills = React.lazy(() => import('@/components/skills/Skills').then(m => ({ default: m.Skills })));
 const Contact = React.lazy(() => import('@/components/contact/Contact').then(m => ({ default: m.Contact })));
 const Certificates = React.lazy(() => import('@/components/certificates/Certificates').then(m => ({ default: m.Certificates })));
-
 const ChatWidget = React.lazy(() => import('@/components/chat/ChatWidget').then(m => ({ default: m.ChatWidget })));
 
 const App: React.FC = () => {
   const isNotFound = window.location.pathname !== '/';
+  const isMobile = useMobile();
 
   return (
     <ThemeProvider>
@@ -30,6 +32,7 @@ const App: React.FC = () => {
             <NotFound />
           ) : (
             <div className="min-h-dvh w-full overflow-x-hidden flex flex-col">
+              {isMobile ? null : <ThemedCursor />}
               <Navbar />
               <main className="grow">
                 <Hero />

@@ -1,26 +1,46 @@
 import React, { useState } from 'react';
 import { Section } from '@/components/layout/Section';
-import { SectionTitle } from '@/components/layout/SectionTitle';
-import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { useAccent } from '@/contexts/AccentContext';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Github, Trophy, Users, Target, Lightbulb, ArrowUpRight, ChevronLeft, ChevronRight, Palette } from 'lucide-react';
-import { PROJECT_DATA, category } from '@/constants/constants';
+import {
+  Github,
+  Trophy,
+  Users,
+  Target,
+  Lightbulb,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Palette,
+  Terminal,
+  Award,
+} from 'lucide-react';
 import { getInitials } from '@/lib/utils';
 import { ProjectMetrics } from '@/components/shared/ProjectMetrics';
 import { TechStack } from '@/components/shared/TechStack';
-import { SectionDescription } from '@/components/layout/SectionDescription';
+import { PROJECT_DATA, category } from '@/constants/constants';
 import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
+import {
+  TerminalSectionHeader,
+  TerminalWindow,
+  TerminalBadge,
+  TerminalButton,
+} from '@/components/shared/terminal';
 
 const HACKATHON_PROJECTS = PROJECT_DATA.filter((p) => p.category === category.HACKATHON);
 
-const ExpandableText: React.FC<{ text: string, className?: string, accentColor?: string, threshold?: number }> = ({ text, className = "", accentColor, threshold = 180 }) => {
+const ExpandableText: React.FC<{
+  text: string;
+  className?: string;
+  accentColor?: string;
+  threshold?: number;
+}> = ({ text, className = '', accentColor, threshold = 180 }) => {
   const [expanded, setExpanded] = useState(false);
   const isLong = text.length > threshold;
-  
+
   return (
     <motion.div layout className="relative">
-      <motion.p 
+      <motion.p
         layout
         className={`${className} ${!expanded && isLong ? 'line-clamp-2' : ''}`}
         style={accentColor ? { borderColor: `${accentColor}66` } : undefined}
@@ -28,12 +48,12 @@ const ExpandableText: React.FC<{ text: string, className?: string, accentColor?:
         {text}
       </motion.p>
       {isLong && (
-        <motion.button 
+        <motion.button
           layout
           onClick={() => setExpanded(!expanded)}
-          className="text-xs font-bold text-primary hover:underline mt-1.5 cursor-pointer inline-block"
+          className="text-xs font-bold text-primary hover:underline mt-1.5  inline-block font-mono"
         >
-          {expanded ? "See Less" : "See Full"}
+          {expanded ? '[-- collapse --]' : '[++ read more ++]'}
         </motion.button>
       )}
     </motion.div>
@@ -42,42 +62,57 @@ const ExpandableText: React.FC<{ text: string, className?: string, accentColor?:
 
 interface HackathonCardProps {
   project: (typeof HACKATHON_PROJECTS)[number];
+  index: number;
   accentColor: string;
   onViewCertificate: (cert: CertificateModalData) => void;
 }
 
-const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor, onViewCertificate }) => (
-  <DecorativeFrame accentColor={accentColor}>
-    <motion.div layout className="bg-card rounded-xl flex flex-col overflow-hidden">
-      {/* Accent hero bar */}
-      <div
-        className="h-1 w-full shrink-0"
-        style={{ background: `linear-gradient(90deg, ${accentColor}, transparent)` }}
-      />
+const HackathonCard: React.FC<HackathonCardProps> = ({
+  project,
+  index,
+  accentColor,
+  onViewCertificate,
+}) => {
+  const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
-      <div className="p-6 sm:p-8 flex flex-col flex-1">
+  return (
+    <TerminalWindow
+      title={`hackathon://${slug}.event`}
+      command={`git log -1 --stat ${slug}`}
+      className="w-full shadow-2xl"
+    >
+      <div className="flex flex-col flex-1 font-mono">
         {/* Header */}
-        <div className="flex items-start justify-between gap-4 mb-6">
+        <div className="flex items-start justify-between gap-4 mb-6 border-b border-border/40 pb-5">
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
+            <div className="flex flex-wrap items-center gap-2 mb-2.5">
               {project.hackathonTitle && (
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full">
-                  <Trophy size={11} /> {project.hackathonTitle}
-                </span>
+                <TerminalBadge
+                  variant="accent"
+                  icon={Trophy}
+                  label={project.hackathonTitle}
+                  pulse
+                />
               )}
+              {project.placement && <TerminalBadge variant="success" label={project.placement} />}
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">
+
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight tracking-tight">
               {project.title}
             </h3>
+
             {project.position && (
-              <p className="text-sm text-muted-foreground italic mt-1.5">{project.position}</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                ROLE: <span className="text-primary font-semibold">{project.position}</span>
+              </p>
             )}
           </div>
+
           <span
             aria-hidden
-            className="text-5xl sm:text-6xl font-extrabold text-foreground/5 leading-none select-none shrink-0"
+            className="text-4xl sm:text-5xl font-extrabold text-foreground/10 leading-none select-none shrink-0"
           >
-            {String(HACKATHON_PROJECTS.indexOf(project) + 1).padStart(2, '0')}
+            #{String(index + 1).padStart(2, '0')}
           </span>
         </div>
 
@@ -86,86 +121,109 @@ const HackathonCard: React.FC<HackathonCardProps> = ({ project, accentColor, onV
 
         {/* Theme */}
         {project.theme && (
-          <div className="flex-1 mb-6">
-            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-2.5">
-              <Palette size={13} /> Hackathon Theme
+          <div className="mb-5 p-3 rounded-lg bg-muted/20 border border-border/40">
+            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-1.5">
+              <Palette size={13} /> # HACKATHON THEME
             </p>
-            <ExpandableText text={project.theme} className="text-sm text-muted-foreground leading-relaxed" />
+            <ExpandableText
+              text={project.theme}
+              className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
+            />
           </div>
         )}
 
-        {/* Problem - quote treatment */}
+        {/* Problem */}
         {project.problem && (
-          <div className="mb-6">
-            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary-foreground mb-2.5">
-              <Target size={13} /> The Problem
+          <div className="mb-5 p-3 rounded-lg bg-muted/20 border border-border/40">
+            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-foreground mb-1.5">
+              <Target size={13} className="text-rose-500" /> # THE PROBLEM STATEMENT
             </p>
-            <ExpandableText 
-              text={project.problem} 
-              className="text-sm text-muted-foreground leading-relaxed border-l-2 pl-4 italic"
+            <ExpandableText
+              text={project.problem}
+              className="text-xs sm:text-sm text-muted-foreground leading-relaxed italic"
               accentColor={accentColor}
             />
           </div>
         )}
 
         {/* Solution */}
-        <div className="flex-1 mb-6">
-          <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-2.5">
-            <Lightbulb size={13} /> What I Built
+        <div className="mb-6 p-3 rounded-lg bg-muted/20 border border-border/40">
+          <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-1.5">
+            <Lightbulb size={13} /> # ARCHITECTURE & WHAT I BUILT
           </p>
-          <ExpandableText text={project.description} className="text-sm text-muted-foreground leading-relaxed" />
+          <ExpandableText
+            text={project.description}
+            className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
+          />
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-5 border-t border-border/50">
+        <div className="mt-auto pt-5 border-t border-border/50 space-y-4">
+          {/* Collaborators */}
           {project.collaborators && project.collaborators.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2 mb-4">
-              <Users size={13} className="text-muted-foreground shrink-0" />
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs text-muted-foreground font-bold flex items-center gap-1 mr-1">
+                <Users size={12} className="text-primary" /> TEAM:
+              </span>
               {project.collaborators.map(({ name, link }) => (
                 <a
                   key={name}
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-secondary text-secondary-foreground hover:text-primary hover:border-primary/40 rounded-full border border-border/50 transition-all"
+                  className="cursor-target inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-muted/40 hover:bg-primary/15 hover:text-primary rounded-md border border-border/50 transition-all"
                 >
-                  <span className="size-4.5 rounded-full bg-primary/15 text-primary text-[9px] font-bold flex items-center justify-center">
+                  <span className="size-4 rounded-full bg-primary/15 text-primary text-[9px] font-bold flex items-center justify-center">
                     {getInitials(name)}
                   </span>
-                  {name}
+                  <span>{name}</span>
                 </a>
               ))}
             </div>
           )}
 
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <TechStack technologies={project.techStack} />
-            <div className="flex items-center gap-4 shrink-0">
+          {/* Tech Stack & Executables */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <TechStack
+              technologies={project.techStack}
+              className="gap-1.5"
+              itemClassName="text-[11px]"
+            />
+
+            <div className="flex items-center gap-2 shrink-0">
               {project.certificate && (
-                <button
-                  onClick={() => onViewCertificate({ src: project.certificate as string, alt: `${project.title} Certificate` })}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0 cursor-pointer"
-                >
-                  <Trophy size={14} /> View Certificate <ArrowUpRight size={12} />
-                </button>
+                <TerminalButton
+                  command="./view-cert.sh"
+                  size="sm"
+                  variant="outline"
+                  icon={Award}
+                  onClick={() =>
+                    onViewCertificate({
+                      src: project.certificate as string,
+                      alt: `${project.title} Certificate`,
+                    })
+                  }
+                />
               )}
+
               {project.repoLink && (
-                <a
+                <TerminalButton
+                  command="./git-repo.sh"
+                  size="sm"
+                  variant="secondary"
+                  icon={Github}
                   href={project.repoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0"
-                >
-                  <Github size={14} /> View Code <ArrowUpRight size={12} />
-                </a>
+                />
               )}
             </div>
           </div>
         </div>
       </div>
-    </motion.div>
-  </DecorativeFrame>
-);
+    </TerminalWindow>
+  );
+};
 
 const slideVariants = {
   enter: (direction: number) => ({ x: direction > 0 ? 80 : -80, opacity: 0 }),
@@ -193,15 +251,15 @@ export const Hackathons: React.FC = () => {
 
   return (
     <Section id="hackathons">
-      <div className="mb-12">
-        <SectionTitle>Hackathons</SectionTitle>
-        <SectionDescription>
-          Where I go to stretch — tight deadlines, messy real-world problems, and something shippable at the end.
-        </SectionDescription>
-      </div>
+      <TerminalSectionHeader
+        command='git tag -l "competition-*"'
+        title="Hackathons & Competitions"
+        description="Championship milestones, rapid prototyping sprints, and high-pressure builds."
+        executionTime="7ms"
+      />
 
       <div
-        className="relative max-w-3xl mx-auto"
+        className="relative max-w-4xl mx-auto font-mono"
         role="region"
         aria-roledescription="carousel"
         aria-label="Hackathon projects gallery"
@@ -232,6 +290,7 @@ export const Hackathons: React.FC = () => {
             >
               <HackathonCard
                 project={HACKATHON_PROJECTS[current]}
+                index={current}
                 accentColor={currentAccent}
                 onViewCertificate={setSelectedCert}
               />
@@ -239,51 +298,52 @@ export const Hackathons: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mt-6">
-          <button
+        {/* Terminal Carousel Controls */}
+        <div className="flex items-center justify-between mt-6 px-2 text-xs">
+          <TerminalButton
+            command="< PREV"
+            size="sm"
+            variant="outline"
+            icon={ChevronLeft}
+            iconPosition="left"
             onClick={() => paginate(-1)}
-            aria-label="Previous hackathon"
-            className="p-2.5 rounded-full border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/40 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          >
-            <ChevronLeft size={18} />
-          </button>
+          />
 
           <div className="flex items-center gap-2">
+            <span className="text-muted-foreground">EVENT:</span>
             {HACKATHON_PROJECTS.map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === current}
-                className={`h-2 rounded-full transition-all cursor-pointer ${i === current ? 'w-6' : 'w-2 hover:scale-125'
-                  }`}
+                className={`h-2 rounded-full transition-all  ${
+                  i === current ? 'w-6' : 'w-2 bg-muted-foreground/40 hover:scale-125'
+                }`}
                 style={{
                   backgroundColor: i === current ? currentAccent : undefined,
                 }}
               />
             ))}
+            <span className="text-muted-foreground font-bold ml-1">
+              [{String(current + 1).padStart(2, '0')}/
+              {String(HACKATHON_PROJECTS.length).padStart(2, '0')}]
+            </span>
           </div>
 
-          <button
+          <TerminalButton
+            command="NEXT >"
+            size="sm"
+            variant="outline"
+            icon={ChevronRight}
             onClick={() => paginate(1)}
-            aria-label="Next hackathon"
-            className="p-2.5 rounded-full border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/40 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          >
-            <ChevronRight size={18} />
-          </button>
+          />
         </div>
-
-        {/* Counter */}
-        <p className="text-center text-xs text-muted-foreground mt-3 tabular-nums">
-          {String(current + 1).padStart(2, '0')} / {String(HACKATHON_PROJECTS.length).padStart(2, '0')}
-        </p>
       </div>
 
-      <CertificateModal 
-        cert={selectedCert} 
-        onClose={() => setSelectedCert(null)} 
-      />
+      <CertificateModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
     </Section>
   );
 };
+
+export default Hackathons;

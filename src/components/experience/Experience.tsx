@@ -2,51 +2,91 @@ import { useState } from 'react';
 import { Section } from '@/components/layout/Section';
 import { EXPERIENCE_DATA } from '@/constants/constants';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, MapPin, Award } from 'lucide-react';
-import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
-import { SectionTitle } from '@/components/layout/SectionTitle';
+import { MapPin, Award } from 'lucide-react';
 import { useAccent } from '@/contexts/AccentContext';
 import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
 import CompanyLogo from './CompanyLogo';
 import { getDurationLabel } from '../../lib/utils';
+import { TerminalSectionHeader, TerminalWindow, TerminalBadge } from '@/components/shared/terminal';
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.3 },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: 'easeOut' },
   } as const,
 };
-import { SectionDescription } from '@/components/layout/SectionDescription';
+
+const ExpandableExperienceLogs: React.FC<{ descriptions: string[]; initialCount?: number }> = ({
+  descriptions,
+  initialCount = 2,
+}) => {
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = descriptions.length > initialCount;
+  const visibleLogs = expanded ? descriptions : descriptions.slice(0, initialCount);
+
+  return (
+    <div className="space-y-2">
+      <ul className="space-y-2 text-xs text-muted-foreground leading-relaxed">
+        <AnimatePresence initial={false}>
+          {visibleLogs.map((point, pIndex) => (
+            <motion.li
+              key={pIndex}
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-start gap-2"
+            >
+              <span className="text-primary font-bold mt-0.5">›</span>
+              <span>{point}</span>
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </ul>
+
+      {hasMore && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="cursor-target inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline mt-1.5 font-mono  transition-colors"
+        >
+          {expanded
+            ? '[-- collapse log entries --]'
+            : `[++ read more (+${descriptions.length - initialCount} log entries) ++]`}
+        </button>
+      )}
+    </div>
+  );
+};
 
 export const Experience = () => {
-  const [expandedId, setExpandedId] = useState<string | number | null>(null);
   const [selectedCert, setSelectedCert] = useState<CertificateModalData | null>(null);
   const { currentAccent } = useAccent();
 
   return (
     <Section id="experience" className="mt-10">
-      <div className="mb-12">
-        <SectionTitle>Experience</SectionTitle>
-        <SectionDescription>
-          Where I've applied my skills in the real world.
-        </SectionDescription>
-      </div>
+      {/* Terminal Section Header */}
+      <TerminalSectionHeader
+        command="journalctl -u career.service --reverse"
+        title="Experience"
+        description="System daemon logs and engineering milestones across industry roles."
+        executionTime="9ms"
+      />
 
-      <div className="relative">
+      <div className="relative font-mono">
         {/* Desktop center line */}
-        <div className="hidden md:block absolute md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-border" />
+        <div className="hidden md:block absolute md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-border/80 border-l border-dashed border-border" />
         {/* Mobile left line */}
-        <div className="md:hidden absolute left-1.75 top-0 bottom-0 w-px bg-border" />
+        <div className="md:hidden absolute left-2 top-0 bottom-0 w-px bg-border/80 border-l border-dashed border-border" />
 
         <motion.div
           className="space-y-8 md:space-y-12"
@@ -58,7 +98,6 @@ export const Experience = () => {
           {EXPERIENCE_DATA.map((item, index) => {
             const isEven = index % 2 === 0;
             const isFirst = index === 0;
-            const isExpanded = expandedId === index;
             const duration = getDurationLabel(item.period);
 
             return (
@@ -69,120 +108,101 @@ export const Experience = () => {
               >
                 {/* Center node dot (desktop) */}
                 <span
-                  className="hidden md:block absolute left-1/2 -translate-x-1/2 size-3 rounded-full border-2 border-card"
-                  style={{ backgroundColor: currentAccent, boxShadow: `0 0 0 4px ${currentAccent}22` }}
+                  className="hidden md:block absolute left-1/2 -translate-x-1/2 size-3.5 rounded-full border-2 border-card z-10"
+                  style={{
+                    backgroundColor: currentAccent,
+                    boxShadow: `0 0 0 4px ${currentAccent}25`,
+                  }}
                 />
                 {/* Mobile node dot */}
                 <span
-                  className="md:hidden absolute left-2 top-[50%] -translate-x-1/2 size-3 rounded-full border-2 border-card"
-                  style={{ backgroundColor: currentAccent, boxShadow: `0 0 0 4px ${currentAccent}22` }}
+                  className="md:hidden absolute left-2 top-6 -translate-x-1/2 size-3.5 rounded-full border-2 border-card z-10"
+                  style={{
+                    backgroundColor: currentAccent,
+                    boxShadow: `0 0 0 4px ${currentAccent}25`,
+                  }}
                 />
 
-                {/* Period marker on the opposite side (desktop) */}
+                {/* Period marker on opposite side (desktop) */}
                 <div
-                  className={`hidden md:flex w-1/2 ${isEven ? 'justify-end pr-12 text-right' : 'order-2 justify-start pl-12'
-                    }`}
+                  className={`hidden md:flex w-1/2 ${
+                    isEven ? 'justify-end pr-12 text-right' : 'order-2 justify-start pl-12'
+                  }`}
                 >
-                  <div>
-                    <p className="text-2xl font-extrabold leading-none text-foreground">
+                  <div className="space-y-1">
+                    <p className="text-xl font-bold leading-none text-foreground font-mono">
                       {duration}
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">{item.period}</p>
+                    <p className="text-xs text-muted-foreground font-mono">{item.period}</p>
+                    <TerminalBadge
+                      variant={isFirst ? 'success' : 'neutral'}
+                      label={isFirst ? 'STATUS: ACTIVE' : 'STATUS: COMPLETED'}
+                      pulse={isFirst}
+                    />
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className={`w-full pl-8 md:w-1/2 md:pl-0 ${isEven ? 'md:order-2 md:pr-12' : 'md:order-1 md:pl-12'}`}>
-                  <DecorativeFrame accentColor={currentAccent}>
-                    <div className="bg-card rounded-xl p-5">
-                      {/* badge */}
-                      {isFirst && (
-                        <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-3">
-                          Present
-                        </span>
-                      )}
-
-                      {/* Header: role-first with company logo */}
-                      <div className="flex items-start gap-3 mb-3">
-                        {item.companyUrl && (
-                          <div className="size-10 rounded-lg overflow-hidden bg-background border border-primary/20 flex items-center justify-center shrink-0">
-                            <CompanyLogo domain={item.companyUrl} company={item.company} className="size-6" />
-                          </div>
-                        )}
-                        <div className="min-w-0">
-                          <h3 className="text-base font-bold text-foreground leading-snug">{item.role}</h3>
-                          <p className="text-sm text-muted-foreground">{item.company}</p>
-                        </div>
-                      </div>
-
-                      {/* Period and location */}
-                      <div className="flex flex-wrap items-center gap-2 mb-3">
-                        <span className="md:hidden text-xs text-muted-foreground bg-accent px-2.5 py-1 rounded-full">
-                          {item.period}
-                        </span>
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <MapPin size={12} /> {item.location}
-                        </span>
-                      </div>
-
-                      {/* Description with expand */}
-                      {item.description && item.description.length > 0 && (
+                {/* Content Card */}
+                <div
+                  className={`w-full pl-8 md:w-1/2 md:pl-0 ${isEven ? 'md:order-2 md:pl-12' : 'md:order-1 md:pr-12'}`}
+                >
+                  <TerminalWindow
+                    title={`daemon: ${item.company.toLowerCase().replace(/\s+/g, '-')}.service`}
+                    command={`cat /var/log/career/${index + 1}.log`}
+                  >
+                    <div>
+                      {/* Header Info */}
+                      <div className="flex items-start justify-between gap-3 mb-3">
                         <div>
-                          <div className={`text-sm text-muted-foreground leading-relaxed ${isExpanded ? 'hidden' : 'line-clamp-2'}`}>
-                            <ul className="list-disc pl-4 space-y-1">
-                              {item.description.map((desc, i) => (
-                                <li key={i}>{desc}</li>
-                              ))}
-                            </ul>
+                          <div className="flex items-center gap-2 flex-wrap mb-1">
+                            <h3 className="font-bold text-foreground text-sm sm:text-base">
+                              {item.role}
+                            </h3>
+                            {isFirst && <TerminalBadge variant="accent" label="CURRENT" pulse />}
                           </div>
-                          <AnimatePresence initial={false}>
-                            {isExpanded && (
-                              <motion.div
-                                key="full-description"
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3, ease: 'easeOut' }}
-                                className="text-sm text-muted-foreground leading-relaxed overflow-hidden mt-2"
-                              >
-                                <ul className="list-disc pl-4 space-y-1">
-                                  {item.description.map((desc, i) => (
-                                    <li key={i}>{desc}</li>
-                                  ))}
-                                </ul>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                          {item.description.join(' ').length > 120 && (
-                            <button
-                              onClick={() => setExpandedId(isExpanded ? null : index)}
-                              className="text-xs text-primary hover:underline mt-2 flex items-center gap-1 cursor-pointer"
-                            >
-                              {isExpanded ? 'Show less' : 'Read more'}
-                              <ChevronDown size={12} className={`transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-                            </button>
-                          )}
+                          <p className="text-xs text-primary font-semibold">{item.company}</p>
                         </div>
-                      )}
+                        <CompanyLogo
+                          domain={item.companyUrl || ''}
+                          company={item.company}
+                          className="size-10 shrink-0"
+                        />
+                      </div>
 
-                      {/* Certificate trigger */}
+                      {/* Location & Period (Mobile) */}
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-4">
+                        <span className="flex items-center gap-1">
+                          <MapPin size={12} className="text-primary" />
+                          <span>{item.location}</span>
+                        </span>
+                        <span className="md:hidden font-mono text-[11px] text-foreground">
+                          · {item.period} ({duration})
+                        </span>
+                      </div>
+
+                      {/* Responsibilities Log with Expand/Collapse */}
+                      <ExpandableExperienceLogs descriptions={item.description} initialCount={2} />
+
+                      {/* Certificate Attachment */}
                       {item.certificate && (
-                        <div className="mt-4 pt-3 border-t border-border/50 flex items-center">
+                        <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between">
                           <button
                             onClick={() =>
                               setSelectedCert({
                                 src: item.certificate!,
-                                alt: `${item.role}`,
+                                issuer: item.company,
+                                alt: `${item.role} Certificate`,
                               })
                             }
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all cursor-pointer border border-primary/20 shadow-xs"
+                            className="cursor-target inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-mono"
                           >
-                            <Award size={14} /> View Certificate
+                            <Award size={13} />
+                            <span>cat credentials.pem</span>
                           </button>
                         </div>
                       )}
                     </div>
-                  </DecorativeFrame>
+                  </TerminalWindow>
                 </div>
               </motion.div>
             );
@@ -190,8 +210,15 @@ export const Experience = () => {
         </motion.div>
       </div>
 
-      {/* Lightbox Modal */}
-      <CertificateModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
+      {selectedCert && (
+        <CertificateModal
+          certificate={selectedCert}
+          isOpen={!!selectedCert}
+          onClose={() => setSelectedCert(null)}
+        />
+      )}
     </Section>
   );
 };
+
+export default Experience;

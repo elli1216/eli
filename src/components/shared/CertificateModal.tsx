@@ -1,30 +1,37 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, Terminal, ShieldCheck } from 'lucide-react';
+import { useAccent } from '@/contexts/AccentContext';
+import { TerminalBadge, TerminalButton } from '@/components/shared/terminal';
 
 export interface CertificateModalData {
   src: string;
   alt: string;
+  issuer?: string;
   href?: string;
 }
 
 interface CertificateModalProps {
-  cert: CertificateModalData | null;
+  cert?: CertificateModalData | null;
+  certificate?: CertificateModalData | null;
+  isOpen?: boolean;
   onClose: () => void;
 }
 
-/**
- * Reusable modal component for displaying certificate images in a lightbox.
- * Includes accessibility features (keyboard ESC handling, focus management, data-lenis-prevent).
- */
-export const CertificateModal: React.FC<CertificateModalProps> = ({ cert, onClose }) => {
+export const CertificateModal: React.FC<CertificateModalProps> = ({
+  cert,
+  certificate,
+  onClose,
+}) => {
+  const activeCert = cert || certificate;
+  const { currentAccent } = useAccent();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
-    if (cert) {
+    if (activeCert) {
       closeButtonRef.current?.focus();
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
@@ -35,66 +42,106 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ cert, onClos
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
     };
-  }, [cert, onClose]);
+  }, [activeCert, onClose]);
+
+  const certSlug = activeCert?.alt
+    ? activeCert.alt.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+    : 'cert';
 
   return (
     <AnimatePresence>
-      {cert && (
+      {activeCert && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-background/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-background/85 backdrop-blur-md font-mono"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
           data-lenis-prevent="true"
         >
-          {/* Close button - Top Right */}
-          <button
-            ref={closeButtonRef}
-            onClick={onClose}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-card/80 hover:bg-card text-foreground transition-all backdrop-blur-md border border-border/50 shadow-lg z-50 cursor-pointer hover:rotate-90 hover:scale-110"
-            aria-label="Close modal"
-          >
-            <X size={24} />
-          </button>
-
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl w-full max-h-[85vh] flex flex-col items-center bg-card rounded-2xl overflow-hidden shadow-2xl border border-border"
+            className="relative max-w-4xl w-full max-h-[90vh] flex flex-col bg-card rounded-2xl overflow-hidden shadow-2xl border border-border/80"
           >
-            {/* Image Container */}
-            <div className="w-full h-full overflow-auto p-2 sm:p-4 bg-muted/30">
+            {/* Terminal Window Header */}
+            <div className="flex items-center justify-between px-4 py-3 bg-muted/40 border-b border-border/70 select-none">
+              {/* Traffic light dots */}
+              <div className="flex items-center gap-2">
+                <span className="size-3 rounded-full bg-rose-500/80 inline-block" />
+                <span className="size-3 rounded-full bg-amber-500/80 inline-block" />
+                <span className="size-3 rounded-full bg-emerald-500/80 inline-block" />
+              </div>
+
+              {/* Title */}
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground truncate max-w-xs sm:max-w-md">
+                <Terminal size={12} className="text-primary shrink-0" />
+                <span className="truncate">x509://certs/{certSlug}.pem</span>
+              </div>
+
+              {/* Close button */}
+              <button
+                ref={closeButtonRef}
+                onClick={onClose}
+                className="cursor-target p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
+                aria-label="Close modal"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Simulated Command Prompt */}
+            <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-xs text-foreground flex items-center justify-between gap-2 flex-wrap select-text">
+              <div className="flex items-center gap-1.5 font-medium">
+                <span className="text-primary font-bold">eli@portfolio</span>
+                <span className="text-muted-foreground">:</span>
+                <span className="text-primary/70">~</span>
+                <span className="text-muted-foreground">$</span>
+                <span>openssl x509 -in {certSlug}.pem -text</span>
+              </div>
+              <TerminalBadge variant="success" icon={ShieldCheck} label="SIGNATURE_VALID" pulse />
+            </div>
+
+            {/* Certificate Preview Image */}
+            <div className="w-full flex-1 overflow-auto p-4 sm:p-6 bg-muted/10 flex items-center justify-center">
               <img
-                src={cert.src}
-                alt={cert.alt}
-                className="w-full h-auto max-h-[70vh] object-contain rounded-xl shadow-inner"
+                src={activeCert.src}
+                alt={activeCert.alt}
+                className="w-full h-auto max-h-[60vh] object-contain rounded-lg border border-border/60 shadow-lg"
                 id="modal-title"
               />
             </div>
 
-            {/* Action Bar */}
-            <div className="w-full p-4 border-t border-border flex items-center justify-between bg-card/80 backdrop-blur-md">
-              <p className="font-medium text-foreground truncate mr-4">
-                {cert.alt}
-              </p>
-              {cert.href && (
-                <a
-                  href={cert.href}
+            {/* Terminal Action Bar */}
+            <div className="w-full p-4 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-3 bg-card/90">
+              <div className="truncate text-left w-full sm:w-auto">
+                <p className="font-bold text-foreground text-xs sm:text-sm truncate">
+                  {activeCert.alt}
+                </p>
+                {activeCert.issuer && (
+                  <p className="text-[11px] text-primary font-semibold">
+                    ISSUER: {activeCert.issuer}
+                  </p>
+                )}
+              </div>
+
+              {activeCert.href && (
+                <TerminalButton
+                  command="./verify-credential.sh"
+                  href={activeCert.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-sm shrink-0"
-                >
-                  <ExternalLink size={16} />
-                  <span className="hidden sm:inline">Verify Credential</span>
-                  <span className="sm:hidden">Verify</span>
-                </a>
+                  variant="primary"
+                  size="sm"
+                  icon={ExternalLink}
+                  className="w-full sm:w-auto shrink-0"
+                />
               )}
             </div>
           </motion.div>
@@ -103,3 +150,5 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ cert, onClos
     </AnimatePresence>
   );
 };
+
+export default CertificateModal;

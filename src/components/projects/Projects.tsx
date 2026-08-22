@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { Section } from '@/components/layout/Section';
-import { SectionTitle } from '@/components/layout/SectionTitle';
 import { PROJECT_DATA } from '@/constants/constants';
 import { ProjectItem } from '@/types/types';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ChevronRight, ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { category } from '@/constants/constants';
-import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
-import { getBadgeStyles } from '@/lib/utils';
 import { TechStack } from '@/components/shared/TechStack';
 import { ProjectModal } from './ProjectModal';
-import { useAccent } from '@/contexts/AccentContext';
+import {
+  TerminalSectionHeader,
+  TerminalWindow,
+  TerminalBadge,
+  TerminalButton,
+} from '@/components/shared/terminal';
 
 const CATEGORY_COUNTS = Object.values(category)
   .map((cat) => ({
-    name: cat as typeof category[keyof typeof category],
+    name: cat as (typeof category)[keyof typeof category],
     count: PROJECT_DATA.filter((p) => p.category === cat).length,
   }))
   .filter((cat) => cat.count > 0);
@@ -26,117 +28,126 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) => {
-  const { currentAccent } = useAccent();
+  const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="h-fit"
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className="h-full flex flex-col"
     >
-      <DecorativeFrame accentColor={currentAccent} className="h-full">
+      <TerminalWindow
+        title={`./bin/${slug}`}
+        command={`run --target=${slug}`}
+        className="h-fit flex flex-col"
+        bodyClassName="flex flex-col flex-1"
+      >
         <button
           onClick={onClick}
-          className="group relative w-full h-full text-left rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-card border border-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background flex flex-col cursor-pointer"
+          className="cursor-target text-left w-full h-full flex flex-col group justify-between"
         >
-          {/* Accent top bar */}
-          <div
-            className="h-1 w-full shrink-0"
-            style={{ background: `linear-gradient(90deg, ${currentAccent}, transparent)` }}
-          />
+          <div>
+            {/* Top Meta */}
+            <div className="flex items-center justify-between gap-2 mb-3">
+              {project.category && (
+                <TerminalBadge
+                  variant={
+                    project.category === category.HACKATHON
+                      ? 'warning'
+                      : project.category === category.PERSONAL
+                        ? 'accent'
+                        : 'info'
+                  }
+                  label={`--${project.category}`}
+                />
+              )}
 
-          <div className="relative flex-1 flex flex-col p-6">
-            {/* Category badge */}
-            {project.category && (
-              <span className={`inline-flex w-fit items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full border ${getBadgeStyles(project.category)} mb-3`}>
-                {project.category}
-              </span>
-            )}
+              {project.placement && <TerminalBadge variant="success" label={project.placement} />}
+            </div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight mb-1">
+            <h3 className="text-base sm:text-lg font-bold font-mono text-foreground group-hover:text-primary transition-colors leading-snug mb-1">
               {project.title}
             </h3>
+
             {project.position && (
-              <p className="text-sm font-normal text-muted-foreground italic group-hover:text-primary/70 transition-colors">
-                {project.position} {project.category === category.HACKATHON ? "(Hackathon)" : ""}
+              <p className="text-xs font-mono text-muted-foreground mb-3">
+                Role: <span className="text-primary/90">{project.position}</span>
               </p>
             )}
+
+            {/* Description Snippet */}
+            <p className="text-xs font-mono text-muted-foreground/90 line-clamp-3 leading-relaxed mb-4">
+              {project.description}
+            </p>
 
             {/* Tech Stack */}
             <TechStack
               technologies={project.techStack}
               limit={4}
-              className="mt-4 mb-5"
-              itemClassName="sm:text-xs"
-              moreClassName="sm:text-xs"
+              className="mb-4"
+              itemClassName="text-[11px] font-mono"
+              moreClassName="text-[11px] font-mono"
             />
+          </div>
 
-            {/* Footer CTA */}
-            <div className="flex items-center justify-end mt-auto pt-4 border-t border-border/50">
-              <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                View Details
-                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </span>
-            </div>
+          {/* Footer Call to Action */}
+          <div className="pt-3 border-t border-border/40 flex items-center justify-between font-mono text-xs text-primary font-semibold mt-auto">
+            <span>./inspect-module.sh</span>
+            <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </div>
         </button>
-      </DecorativeFrame>
+      </TerminalWindow>
     </motion.div>
   );
 };
-
-import { SectionDescription } from '@/components/layout/SectionDescription';
 
 export const Projects: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
-  const INITIAL_VISIBLE = 4;
+  const INITIAL_VISIBLE = 6;
   const filteredProjects = activeFilter
     ? PROJECT_DATA.filter((p) => p.category === activeFilter)
     : PROJECT_DATA;
-  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, INITIAL_VISIBLE);
-  const remainingCount = filteredProjects.length - INITIAL_VISIBLE;
+
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, INITIAL_VISIBLE);
 
   return (
-    <Section id="projects">
-      <div className="mb-12">
-        <SectionTitle>Works so far</SectionTitle>
-        <SectionDescription>
-          A collection of things I've built, broken, and fixed.
-        </SectionDescription>
-        <div className="mt-6 flex flex-wrap justify-center gap-2.5">
-          {CATEGORY_COUNTS.map((cat) => {
-            const isActive = activeFilter === cat.name;
-            return (
-              <button
-                key={cat.name}
-                onClick={() => {
-                  setActiveFilter(isActive ? null : cat.name);
-                  setShowAll(false);
-                }}
-                className={`inline-flex items-center gap-2 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full border transition-all cursor-pointer hover:scale-105 active:scale-95 ${isActive || activeFilter === null
-                  ? getBadgeStyles(cat.name)
-                  : 'bg-transparent text-muted-foreground border-border/50 hover:border-border hover:text-foreground'
-                  }`}
-              >
-                {cat.name}
-                <span className={`px-1.5 py-0.5 rounded-md text-[10px] shadow-sm ${isActive || activeFilter === null ? 'bg-background/40 backdrop-blur-sm' : 'bg-secondary/50 text-muted-foreground'
-                  }`}>
-                  {cat.count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+    <Section id="projects" className="mt-10">
+      {/* Terminal Section Header */}
+      <TerminalSectionHeader
+        command="ls -la ./projects/ --sort=impact"
+        title="Featured Projects"
+        description="Production systems, scalable architectures, and developer tooling."
+        executionTime="12ms"
+      />
+
+      {/* CLI Filter Arguments Bar */}
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-10 font-mono">
+        <TerminalButton
+          command="--filter=all"
+          size="sm"
+          active={activeFilter === null}
+          onClick={() => setActiveFilter(null)}
+        />
+        {CATEGORY_COUNTS.map((cat) => (
+          <TerminalButton
+            key={cat.name}
+            command={`--filter=${cat.name} (${cat.count})`}
+            size="sm"
+            active={activeFilter === cat.name}
+            onClick={() => setActiveFilter(cat.name)}
+          />
+        ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {visibleProjects.map((project, index) => (
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        {displayedProjects.map((project, index) => (
           <ProjectCard
             key={project.title}
             project={project}
@@ -146,30 +157,33 @@ export const Projects: React.FC = () => {
         ))}
       </div>
 
-      {!showAll && remainingCount > 0 ? (
-        <div className="mt-12 flex flex-col items-center gap-3">
-          <p className="text-xs text-muted-foreground tabular-nums">
-            Showing {visibleProjects.length} of {filteredProjects.length} projects
-          </p>
-          <button
-            onClick={() => setShowAll(true)}
-            className="group flex items-center gap-2 px-6 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-medium cursor-pointer"
-          >
-            See More ({remainingCount})
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+      {/* Show More / Show Less Toggle Button */}
+      {filteredProjects.length > INITIAL_VISIBLE && (
+        <div className="flex justify-center mt-12">
+          <TerminalButton
+            command={
+              showAll
+                ? './paginate.sh --limit=collapse'
+                : `./paginate.sh --fetch-all (+${filteredProjects.length - INITIAL_VISIBLE})`
+            }
+            variant="secondary"
+            size="md"
+            icon={ArrowDown}
+            onClick={() => setShowAll(!showAll)}
+          />
         </div>
-      ) : visibleProjects.length > 4 ?
-        <div className="mt-12 flex justify-center">
-          <button
-            onClick={() => setShowAll(false)}
-            className="group flex items-center gap-2 px-6 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-medium cursor-pointer"
-          >
-            See Less
-          </button>
-        </div> : null}
+      )}
 
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </Section>
   );
 };
+
+export default Projects;

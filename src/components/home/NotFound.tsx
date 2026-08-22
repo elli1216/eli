@@ -41,27 +41,19 @@ export const NotFound: React.FC = () => {
           className="flex flex-col items-center justify-center gap-3"
         >
           <motion.div variants={itemVariants}>
-            <FuzzyText
-              baseIntensity={0.2}
-              hoverIntensity={0.5}
-              enableHover
-            >
+            <FuzzyText baseIntensity={0.2} hoverIntensity={0.5} enableHover>
               404
             </FuzzyText>
           </motion.div>
           <motion.div variants={itemVariants}>
-            <FuzzyText
-              baseIntensity={0.2}
-              hoverIntensity={0.5}
-              enableHover
-            >
+            <FuzzyText baseIntensity={0.2} hoverIntensity={0.5} enableHover>
               Not Found
             </FuzzyText>
           </motion.div>
           <motion.div variants={itemVariants}>
             <motion.a
               href="/"
-              className="px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg mx-auto w-fit cursor-pointer"
+              className="px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg mx-auto w-fit "
               style={{ boxShadow: `0 10px 15px -3px ${currentAccent}33` }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -44,6 +44,7 @@ export interface SkillItem {
   name: string;
   icon?: string;
   category: 'frontend' | 'backend' | 'tools';
+  render?: boolean;
 }
 
 export interface Message {

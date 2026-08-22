@@ -8,7 +8,7 @@ interface DecorativeFrameProps {
 
 export const DecorativeFrame: React.FC<DecorativeFrameProps> = ({ children, accentColor, className = '' }) => {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative cursor-target ${className}`}>
       <div className="absolute inset-0 rounded-xl border border-primary/20 pointer-events-none" style={{ boxShadow: `0px 0px 40px 0px ${accentColor}15, inset 0px 0px 20px 0px ${accentColor}08` }} />
       <div className="absolute inset-1 rounded-xl border border-primary/10 pointer-events-none" />
       <div className="absolute inset-1 rounded-xl border border-primary/15 animate-pulse pointer-events-none" style={{ boxShadow: `0px 0px 15px 0px ${accentColor}30` }} />

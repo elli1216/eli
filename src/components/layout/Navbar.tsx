@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, Palette } from 'lucide-react';
+import { Moon, Sun, Menu, X, Palette, Terminal } from 'lucide-react';
 import { NAV_ITEMS, ACCENT_COLORS } from '@/constants/constants';
 import { motion } from 'framer-motion';
 import { useAccent } from '@/contexts/AccentContext';
 import { useTheme } from '@/contexts/ThemeContext';
-import { SectionTitle } from './SectionTitle';
+import { TerminalBadge } from '@/components/shared/terminal';
 
 export const Navbar = () => {
   const { accentColor, setAccentColor } = useAccent();
@@ -27,31 +27,42 @@ export const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-        ? 'bg-card/80 backdrop-blur-md shadow-sm border-b'
+        ? 'bg-card/85 backdrop-blur-md shadow-sm border-b border-border/70'
         : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <motion.a
-          href="#"
-          className="text-xl font-bold text-foreground tracking-tighter"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <SectionTitle textSize='2xl'>Eli</SectionTitle>
-        </motion.a>
+        {/* Terminal Brand / Logo */}
+        <div className="flex items-center gap-3">
+          <motion.a
+            href="#"
+            className="cursor-target font-mono text-base sm:text-lg font-bold text-foreground tracking-tight flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-muted/40 border border-border/50 hover:border-primary/50 transition-colors"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Terminal size={15} className="text-primary animate-pulse" />
+            <span className="text-primary font-bold">eli</span>
+            <span className="text-muted-foreground">:</span>
+            <span className="text-foreground">~#</span>
+          </motion.a>
+
+          <div className="hidden lg:block">
+            <TerminalBadge variant="success" label="SYS: ONLINE" pulse />
+          </div>
+        </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-6 relative">
+        <div className="hidden md:flex items-center space-x-5 relative font-mono">
           {NAV_ITEMS.map((item) => (
             <motion.a
               key={item.label}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.1, color: "var(--primary)" }}
+              className="cursor-target text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 py-1 px-2 rounded-md hover:bg-muted/40"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {item.label}
+              <span className="text-primary/70 text-xs">./</span>
+              <span>{item.label.toLowerCase()}</span>
             </motion.a>
           ))}
           <div className="flex items-center gap-1">
