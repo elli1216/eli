@@ -61,7 +61,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     role: 'Custom Software Engineer',
     company: 'Accenture',
     companyUrl: 'accenture.com',
-    period: 'August 2026 - Present',
+    period: 'September 2026 - Present',
     location: 'NCR, Philippines | Hybrid',
     description: ['Onboarded as a Custom Software Engineer after 3 month training.'],
   },
@@ -450,6 +450,12 @@ export const SKILL_DATA: SkillItem[] = [
 ];
 
 export const certificates = [
+  {
+    src: '/certificates/ms-azure.png',
+    issuer: 'DataCamp',
+    alt: 'Microsoft Azure Developer Associate (AZ-204)',
+    href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/8a4506c24dd5ca85734bb78dd40fbe0e299f852d?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
+  },
   {
     src: '/certificates/IBMAIBuildersJuly.png',
     issuer: 'IBM SkillsBuild',
