@@ -182,9 +182,9 @@ export const ChatWidget: React.FC = () => {
                         </span>
 
                         <div
-                          className={`p-3 rounded-lg max-w-[90%] border select-text ${
+                          className={`rounded-lg max-w-[90%] select-text ${
                             isUser
-                              ? 'bg-primary text-primary-foreground border-primary/20 shadow-xs'
+                              ? 'bg-muted/40 text-primary-foreground border-primary/20 shadow-xs'
                               : 'bg-muted/40 text-foreground border-border/60 shadow-xs'
                           }`}
                         >

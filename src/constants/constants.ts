@@ -3,7 +3,7 @@ import { Facebook, Github, Linkedin, Mail } from 'lucide-react';
 
 export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 'Ellison Floresca'];
 export const INTERESTS = ['Football', 'League of Legends'];
-export const EXPLORING = ['AI Engineering', 'Cloud', 'Spring Boot'];
+export const EXPLORING = ['AI Engineering', 'Cloud Computing', 'Spring Boot'];
 export const EDUCATION = {
   uninversity_attended: 'Bulacan State University',
   location: 'Malolos City, Bulacan',
@@ -446,6 +446,13 @@ export const SKILL_DATA: SkillItem[] = [
   { name: 'Python', category: 'backend', icon: 'python' },
   { name: 'Prisma', category: 'backend', icon: 'prisma' },
   { name: 'OpenAI', category: 'tools', icon: 'openai' },
+  { name: 'AWS', category: 'tools', icon: 'aws' },
+  { name: 'Azure', category: 'tools', icon: 'azure' },
+  { name: 'Cloudfare', category: 'tools', icon: 'cloudfare' },
+  { name: 'Langchain', category: 'tools', icon: 'langchain' },
+  { name: 'Gemini', category: 'tools', icon: 'gemini' },
+  { name: 'Claude', category: 'tools', icon: 'claude' },
+  { name: 'Opencode', category: 'tools', icon: 'opencode' },
   { name: 'Vite', category: 'frontend', icon: 'vitejs' },
 ];
 

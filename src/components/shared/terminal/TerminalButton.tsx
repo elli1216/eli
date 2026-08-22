@@ -54,7 +54,7 @@ export const TerminalButton: React.FC<TerminalButtonProps> = ({
     </>
   );
 
-  const baseClasses = `cursor-target group inline-flex items-center justify-center rounded-lg transition-all select-none cursor-pointer ${sizeStyles[size]} ${variantStyles[variant]} ${activeStyles} ${className}`;
+  const baseClasses = `cursor-target group inline-flex items-center justify-center rounded-lg transition-all select-none  ${sizeStyles[size]} ${variantStyles[variant]} ${activeStyles} ${className}`;
 
   if (href) {
     return (

@@ -28,7 +28,7 @@ const itemVariants = {
 
 const ExpandableExperienceLogs: React.FC<{ descriptions: string[]; initialCount?: number }> = ({
   descriptions,
-  initialCount = 2,
+  initialCount = 1,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const hasMore = descriptions.length > initialCount;
@@ -181,7 +181,7 @@ export const Experience = () => {
                       </div>
 
                       {/* Responsibilities Log with Expand/Collapse */}
-                      <ExpandableExperienceLogs descriptions={item.description} initialCount={2} />
+                      <ExpandableExperienceLogs descriptions={item.description} initialCount={1} />
 
                       {/* Certificate Attachment */}
                       {item.certificate && (

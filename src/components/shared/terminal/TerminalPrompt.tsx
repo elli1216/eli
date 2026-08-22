@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
-import { useAccent } from '@/contexts/AccentContext';
+import React from 'react';
 
 export interface TerminalPromptProps {
   command: string;
@@ -20,32 +18,18 @@ export const TerminalPrompt: React.FC<TerminalPromptProps> = ({
   host = 'portfolio',
   executionTime = '8ms',
   statusCode = '200 OK',
-  showCopy = true,
+  // showCopy = true,
   className = '',
 }) => {
-  const { currentAccent } = useAccent();
-  const [copied, setCopied] = useState(false);
-
-  const fullCommandLine = `${user}@${host}:${path}$ ${command}`;
-
-  const handleCopy = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(fullCommandLine);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy command:', err);
-    }
-  };
-
   return (
     <div
       className={`group/prompt inline-flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3.5 sm:py-2 bg-muted/40 backdrop-blur-sm rounded-lg border border-border/60 font-mono text-[11px] sm:text-xs select-none transition-colors hover:border-primary/40 max-w-full overflow-hidden ${className}`}
     >
       {/* Command Prompt String */}
       <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap font-medium min-w-0">
-        <span className="text-primary font-bold">{user}@{host}</span>
+        <span className="text-primary font-bold">
+          {user}@{host}
+        </span>
         <span className="text-muted-foreground">:</span>
         <span className="text-foreground/80">{path}</span>
         <span className="text-muted-foreground">$</span>
@@ -62,17 +46,6 @@ export const TerminalPrompt: React.FC<TerminalPromptProps> = ({
               <span className="opacity-70 hidden xs:inline">({executionTime})</span>
             )}
           </span>
-        )}
-
-        {showCopy && (
-          <button
-            onClick={handleCopy}
-            aria-label="Copy Command"
-            title={copied ? 'Copied!' : 'Copy command'}
-            className="cursor-target p-1 text-muted-foreground hover:text-primary transition-colors rounded hover:bg-muted/80"
-          >
-            {copied ? <Check size={11} className="text-emerald-500" /> : <Copy size={11} />}
-          </button>
         )}
       </div>
     </div>
