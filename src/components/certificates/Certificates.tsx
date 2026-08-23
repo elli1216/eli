@@ -5,7 +5,7 @@ import { Section } from '@/components/layout/Section';
 import { certificates } from '@/constants/constants';
 import { DecorativeFrame } from '@/components/shared/DecorativeFrame';
 import { useAccent } from '@/contexts/AccentContext';
-import { Award, ArrowDown, ExternalLink } from 'lucide-react';
+import { Award, ArrowDown, EyeIcon } from 'lucide-react';
 import { CertificateModal, CertificateModalData } from '@/components/shared/CertificateModal';
 import { TerminalSectionHeader, TerminalBadge, TerminalButton } from '@/components/shared/terminal';
 
@@ -66,10 +66,7 @@ export const Certificates = () => {
                 {/* Footer Command */}
                 <div className="pt-3 border-t border-border/40 w-full flex items-center justify-between text-xs text-muted-foreground group-hover:text-primary transition-colors">
                   <span className="text-[11px]">cat x509.pem</span>
-                  <ExternalLink
-                    size={12}
-                    className="group-hover:translate-x-0.5 transition-transform"
-                  />
+                  <EyeIcon size={12} className="group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </button>
             </DecorativeFrame>

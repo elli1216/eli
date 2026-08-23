@@ -142,12 +142,12 @@ Status: Ready for deployment.`;
           {/* Terminal Body */}
           <div key={key} className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] leading-relaxed space-y-2 select-text">
             {/* Command Prompt */}
-            <div className="flex items-center gap-2 text-foreground font-semibold flex-wrap">
-              <span className="text-primary font-bold">eli@portfolio</span>
-              <span className="text-muted-foreground">:</span>
-              <span className="text-primary/70">~</span>
-              <span className="text-muted-foreground">$</span>
-              <span className="text-foreground">./init-system.sh --verbose</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 text-foreground font-semibold whitespace-nowrap overflow-x-auto no-scrollbar py-0.5">
+              <span className="text-primary font-bold shrink-0">eli@portfolio</span>
+              <span className="text-muted-foreground shrink-0">:</span>
+              <span className="text-primary/70 shrink-0">~</span>
+              <span className="text-muted-foreground shrink-0">$</span>
+              <span className="text-foreground shrink-0 font-medium whitespace-nowrap">./init-system.sh --verbose</span>
             </div>
 
             {/* Staggered Log Output Lines */}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Terminal, ShieldCheck } from 'lucide-react';
 import { useAccent } from '@/contexts/AccentContext';
-import { TerminalBadge, TerminalButton } from '@/components/shared/terminal';
+import { TerminalBadge, TerminalButton, useDraggableScroll } from '@/components/shared/terminal';
 
 export interface CertificateModalData {
   src: string;
@@ -26,6 +26,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
   const activeCert = cert || certificate;
   const { currentAccent } = useAccent();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const promptScrollRef = useDraggableScroll<HTMLDivElement>();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -96,16 +97,19 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               </button>
             </div>
 
-            {/* Simulated Command Prompt */}
-            <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-xs text-foreground flex items-center justify-between gap-2 flex-wrap select-text">
-              <div className="flex items-center gap-1.5 font-medium">
-                <span className="text-primary font-bold">eli@portfolio</span>
-                <span className="text-muted-foreground">:</span>
-                <span className="text-primary/70">~</span>
-                <span className="text-muted-foreground">$</span>
-                <span>openssl x509 -in {certSlug}.pem -text</span>
+            {/* Simulated Command Prompt: Draggable */}
+            <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-xs text-foreground flex items-center justify-between gap-2 select-text overflow-hidden">
+              <div
+                ref={promptScrollRef}
+                className="flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap no-scrollbar flex-1 select-none"
+              >
+                <span className="text-primary font-bold shrink-0 pointer-events-none">eli@portfolio</span>
+                <span className="text-muted-foreground shrink-0 pointer-events-none">:</span>
+                <span className="text-primary/70 shrink-0 pointer-events-none">~</span>
+                <span className="text-muted-foreground shrink-0 pointer-events-none">$</span>
+                <span className="shrink-0 font-medium pointer-events-none">openssl x509 -in {certSlug}.pem -text</span>
               </div>
-              <TerminalBadge variant="success" icon={ShieldCheck} label="SIGNATURE_VALID" pulse />
+              <TerminalBadge variant="success" icon={ShieldCheck} label="SIGNATURE_VALID" pulse className="shrink-0" />
             </div>
 
             {/* Certificate Preview Image */}

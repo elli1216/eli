@@ -442,7 +442,7 @@ export const SKILL_DATA: SkillItem[] = [
   { name: 'Git', category: 'tools', icon: 'git', render: true },
   { name: 'GitHub', category: 'tools', icon: 'github' },
   { name: 'Bash', category: 'tools', icon: 'bash' },
-  { name: 'Supabase', category: 'tools', icon: 'supabase', render: true },
+  { name: 'Supabase', category: 'tools', icon: 'supabase' },
   { name: 'Python', category: 'backend', icon: 'python' },
   { name: 'Prisma', category: 'backend', icon: 'prisma' },
   { name: 'OpenAI', category: 'tools', icon: 'openai' },

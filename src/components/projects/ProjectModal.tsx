@@ -4,7 +4,7 @@ import { X, ExternalLink, Github, Trophy, Terminal, Users } from 'lucide-react';
 import { ProjectItem } from '@/types/types';
 import { ProjectMetrics } from '@/components/shared/ProjectMetrics';
 import { TechStack } from '@/components/shared/TechStack';
-import { TerminalBadge, TerminalButton } from '@/components/shared/terminal';
+import { TerminalBadge, TerminalButton, useDraggableScroll } from '@/components/shared/terminal';
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -14,6 +14,7 @@ interface ProjectModalProps {
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const promptScrollRef = useDraggableScroll<HTMLDivElement>();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -82,14 +83,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               </button>
             </div>
 
-            {/* Simulated Prompt Header */}
-            <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-xs text-foreground flex items-center justify-between gap-2 flex-wrap select-text">
-              <div className="flex items-center gap-1.5 font-medium">
-                <span className="text-primary font-bold">eli@portfolio</span>
-                <span className="text-muted-foreground">:</span>
-                <span className="text-primary/70">~</span>
-                <span className="text-muted-foreground">$</span>
-                <span>cat ./projects/{slug}/README.md</span>
+            {/* Simulated Prompt Header: Draggable */}
+            <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-xs text-foreground flex items-center justify-between gap-2 select-text overflow-hidden">
+              <div
+                ref={promptScrollRef}
+                className="flex items-center gap-1.5 font-medium overflow-x-auto whitespace-nowrap no-scrollbar flex-1 select-none"
+              >
+                <span className="text-primary font-bold shrink-0 pointer-events-none">eli@portfolio</span>
+                <span className="text-muted-foreground shrink-0 pointer-events-none">:</span>
+                <span className="text-primary/70 shrink-0 pointer-events-none">~</span>
+                <span className="text-muted-foreground shrink-0 pointer-events-none">$</span>
+                <span className="shrink-0 font-medium pointer-events-none">cat ./projects/{slug}/README.md</span>
               </div>
 
               <div className="flex items-center gap-2">

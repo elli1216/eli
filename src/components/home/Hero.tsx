@@ -87,13 +87,32 @@ export const Hero: React.FC = () => {
               />
             </motion.div>
 
-            {/* Impactful Headline */}
+            {/* Impactful Human Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-5 font-mono"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] mb-4 font-mono"
             >
-              Engineering scalable web systems.
+              Engineering solutions <span className="text-primary">that scale.</span>
             </motion.h1>
+
+            {/* Git Execution Command Block */}
+            <motion.div
+              variants={itemVariants}
+              className="mb-5 p-3 sm:p-3.5 rounded-xl bg-muted/30 backdrop-blur-xs border border-border/60 font-mono text-xs sm:text-sm max-w-full sm:max-w-md w-full shadow-xs text-left"
+            >
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <span className="text-primary font-bold shrink-0">$</span>
+                <span className="text-foreground shrink-0">git commit -m</span>
+                <span className="text-primary font-semibold">"feat: scalable-systems"</span>
+              </div>
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-muted-foreground/90 mt-1.5 text-[11px] sm:text-xs">
+                <span className="text-primary font-bold shrink-0">$</span>
+                <span className="shrink-0">git push origin main</span>
+                <span className="text-emerald-500 text-[10px] font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 shrink-0">
+                  ● 100% deployed
+                </span>
+              </div>
+            </motion.div>
 
             {/* Subtitle / Typewriter Specialization */}
             <motion.div variants={itemVariants} className="min-h-[3.5rem] mb-6 flex items-center">

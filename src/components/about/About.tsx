@@ -71,17 +71,21 @@ export const About: React.FC = () => {
         executionTime="11ms"
       />
 
-      <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+      <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-stretch w-full min-w-0">
         {/* Left Column: Narrative Terminal Window */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="h-full flex"
+          className="h-fit flex flex-col w-full min-w-0"
         >
-          <TerminalWindow title="engineer-manifest.md" command="cat summary.txt" className="h-fit">
-            <div className="space-y-4 text-xs sm:text-sm font-mono text-muted-foreground leading-relaxed">
+          <TerminalWindow
+            title="engineer-manifest.md"
+            command="cat summary.txt"
+            className="h-fit w-full min-w-0"
+          >
+            <div className="space-y-4 text-xs sm:text-sm font-mono text-muted-foreground leading-relaxed break-words">
               <p>
                 <span className="text-primary font-bold"># 01. Background & Education</span>
                 <br />I am a <span className="text-primary font-semibold">
@@ -122,92 +126,96 @@ export const About: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.15 }}
           viewport={{ once: true }}
-          className="h-full flex"
+          className="h-fit flex flex-col w-full min-w-0"
         >
           <TerminalWindow
             title="telemetry-specs.json"
             command="jq '.profile' telemetry.json"
-            className="h-fit"
+            className="h-fit w-full min-w-0"
           >
-            <div className="space-y-2 font-mono">
-              <div className="flex items-start gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40">
+            <div className="space-y-2 font-mono w-full min-w-0">
+              <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
                 <div
-                  className="size-9 rounded-md flex items-center justify-center shrink-0"
+                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
                 >
-                  <Briefcase size={16} />
+                  <Briefcase size={15} />
                 </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     CURRENT_ROLE
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
                     {EXPERIENCE_DATA[0].role} @ {EXPERIENCE_DATA[0].company}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40">
+              <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
                 <div
-                  className="size-9 rounded-md flex items-center justify-center shrink-0"
+                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
                 >
-                  <GraduationCap size={16} />
+                  <GraduationCap size={15} />
                 </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     EDUCATION_CREDENTIAL
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
                     BSIT @ {EDUCATION.uninversity_attended}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40">
+              <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
                 <div
-                  className="size-9 rounded-md flex items-center justify-center shrink-0"
+                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
                 >
-                  <MapPin size={16} />
+                  <MapPin size={15} />
                 </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     PRIMARY_LOCATION
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
                     {PERSONAL_DATA.based_in}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40">
+              <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
                 <div
-                  className="size-9 rounded-md flex items-center justify-center shrink-0"
+                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
                 >
-                  <Sparkles size={16} />
+                  <Sparkles size={15} />
                 </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     CURRENTLY_EXPLORING
                   </p>
-                  <p className="text-xs font-medium text-foreground">{EXPLORING.join(' · ')}</p>
+                  <p className="text-xs font-medium text-foreground break-words">
+                    {EXPLORING.join(' · ')}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40">
+              <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
                 <div
-                  className="size-9 rounded-md flex items-center justify-center shrink-0"
+                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
                   style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
                 >
-                  <ChessPawnIcon size={16} />
+                  <ChessPawnIcon size={15} />
                 </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     INTERESTS_AND_HOBBIES
                   </p>
-                  <p className="text-xs font-medium text-foreground">{INTERESTS.join(' · ')}</p>
+                  <p className="text-xs font-medium text-foreground break-words">
+                    {INTERESTS.join(' · ')}
+                  </p>
                 </div>
               </div>
             </div>
@@ -217,7 +225,7 @@ export const About: React.FC = () => {
 
       {/* What Drives Me: Core Principles */}
       <motion.div
-        className="mt-16 sm:mt-20"
+        className="mt-14 sm:mt-20 w-full min-w-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -230,7 +238,7 @@ export const About: React.FC = () => {
           executionTime="4ms"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 font-mono w-full min-w-0">
           {VALUES.map((value, index) => {
             const Icon = value.icon;
             return (
@@ -240,24 +248,24 @@ export const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="h-full flex flex-col"
+                className="h-full flex flex-col w-full min-w-0"
               >
                 <TerminalWindow
                   title={`sysctl://${value.service}`}
                   command={`systemctl status ${value.service}`}
-                  className="h-full flex flex-col shadow-md"
-                  bodyClassName="p-5 flex flex-col flex-1 justify-between font-mono"
+                  className="h-full flex flex-col shadow-md w-full min-w-0"
+                  bodyClassName="p-4 sm:p-5 flex flex-col flex-1 justify-between font-mono min-w-0"
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-4 min-w-0">
                     {/* Status & Tag */}
-                    <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center justify-between gap-2 min-w-0">
                       <div
-                        className="size-9 rounded-lg flex items-center justify-center border border-primary/20"
+                        className="size-8 sm:size-9 rounded-lg flex items-center justify-center border border-primary/20 shrink-0"
                         style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
                       >
-                        <Icon size={18} />
+                        <Icon size={17} />
                       </div>
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5 shrink-0">
                         <span className="text-[10px] text-muted-foreground font-bold">
                           {value.tag}
                         </span>
@@ -266,26 +274,26 @@ export const About: React.FC = () => {
                     </div>
 
                     {/* Title */}
-                    <div>
-                      <h4 className="font-bold text-sm sm:text-base text-foreground tracking-tight">
+                    <div className="min-w-0">
+                      <h4 className="font-bold text-sm sm:text-base text-foreground tracking-tight break-words">
                         {value.title}
                       </h4>
-                      <p className="text-[11px] text-primary/80 font-semibold mt-0.5">
+                      <p className="text-[11px] text-primary/80 font-semibold mt-0.5 truncate">
                         daemon://{value.key}
                       </p>
                     </div>
 
                     {/* Code Block Description */}
-                    <div className="p-3 rounded-lg bg-muted/30 border border-border/40 text-xs text-muted-foreground leading-relaxed">
+                    <div className="p-3 rounded-lg bg-muted/30 border border-border/40 text-xs text-muted-foreground leading-relaxed break-words">
                       <span className="text-primary font-bold mr-1.5">#</span>
                       {value.description}
                     </div>
                   </div>
 
                   {/* Telemetry Footer */}
-                  <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between text-[10px] text-muted-foreground font-mono">
-                    <span className="text-emerald-500 font-semibold">[ACTIVE_DAEMON]</span>
-                    <span className="text-foreground/70">{value.telemetry}</span>
+                  <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between gap-2 text-[10px] text-muted-foreground font-mono flex-wrap">
+                    <span className="text-emerald-500 font-semibold shrink-0">[ACTIVE_DAEMON]</span>
+                    <span className="text-foreground/70 truncate min-w-0">{value.telemetry}</span>
                   </div>
                 </TerminalWindow>
               </motion.div>
@@ -296,7 +304,7 @@ export const About: React.FC = () => {
 
       {/* GitHub Activity & Stats */}
       <motion.div
-        className="mt-16 sm:mt-20"
+        className="mt-14 sm:mt-20 w-full min-w-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}

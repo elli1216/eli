@@ -286,7 +286,6 @@ export const Hackathons: React.FC = () => {
                 if (info.offset.x < -80 || info.velocity.x < -400) paginate(1);
                 else if (info.offset.x > 80 || info.velocity.x > 400) paginate(-1);
               }}
-              className="cursor-grab active:cursor-grabbing"
             >
               <HackathonCard
                 project={HACKATHON_PROJECTS[current]}

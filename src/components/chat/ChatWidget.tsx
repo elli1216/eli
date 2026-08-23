@@ -13,10 +13,11 @@ import {
   MessageScrollerItem,
   MessageScrollerButton,
 } from '@/components/ui/message-scroller';
-import { TerminalBadge } from '@/components/shared/terminal';
+import { TerminalBadge, useDraggableScroll } from '@/components/shared/terminal';
 
 export const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const promptScrollRef = useDraggableScroll<HTMLDivElement>();
   const [messages, setMessages] = useState<MessageType[]>([
     {
       role: 'model',
@@ -148,15 +149,19 @@ export const ChatWidget: React.FC = () => {
           </button>
         </div>
 
-        {/* Subheader Prompt Banner */}
-        <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-[11px] text-muted-foreground flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1">
-            <span className="text-primary font-bold">eli@portfolio</span>
-            <span>:</span>
-            <span className="text-primary/70">~</span>
-            <span>$ nova-ai --listen</span>
+        {/* Subheader Prompt Banner: Draggable */}
+        <div className="px-4 py-2 bg-muted/20 border-b border-border/40 text-[11px] text-muted-foreground flex items-center justify-between gap-2 select-none overflow-hidden">
+          <div
+            ref={promptScrollRef}
+            className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar flex-1 select-none"
+          >
+            <span className="text-primary font-bold shrink-0 pointer-events-none">eli@portfolio</span>
+            <span className="shrink-0 pointer-events-none">:</span>
+            <span className="text-primary/70 shrink-0 pointer-events-none">~</span>
+            <span className="shrink-0 pointer-events-none">$</span>
+            <span className="font-semibold text-foreground shrink-0 pointer-events-none">nova-ai --listen</span>
           </div>
-          <TerminalBadge variant="success" label="ONLINE" pulse />
+          <TerminalBadge variant="success" label="ONLINE" pulse className="shrink-0 pointer-events-none" />
         </div>
 
         {/* Messages Area */}
