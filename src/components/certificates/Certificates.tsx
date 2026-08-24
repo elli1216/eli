@@ -36,12 +36,12 @@ export const Certificates = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="w-full h-full"
+            className="w-full h-fit"
           >
             <DecorativeFrame accentColor={currentAccent} className="w-full h-full">
               <button
                 onClick={() => setSelectedCert(cert)}
-                className="group w-full h-full min-h-[170px] relative  focus:outline-none bg-card/95 hover:bg-muted/20 transition-all flex flex-col justify-between p-5 rounded-xl overflow-hidden focus-visible:ring-2 focus-visible:ring-primary border border-border/70 shadow-sm"
+                className="group w-full h-full min-h-42.5 relative  focus:outline-none bg-card/95 hover:bg-muted/20 transition-all flex flex-col justify-between p-5 rounded-xl overflow-hidden focus-visible:ring-2 focus-visible:ring-primary border border-border/70 shadow-sm"
                 aria-label={`View ${cert.alt} certificate`}
               >
                 {/* Header status */}

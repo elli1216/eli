@@ -248,12 +248,12 @@ export const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="h-full flex flex-col w-full min-w-0"
+                className="h-fit flex flex-col w-full min-w-0"
               >
                 <TerminalWindow
                   title={`sysctl://${value.service}`}
                   command={`systemctl status ${value.service}`}
-                  className="h-full flex flex-col shadow-md w-full min-w-0"
+                  className="h-fit flex flex-col shadow-md w-full min-w-0"
                   bodyClassName="p-4 sm:p-5 flex flex-col flex-1 justify-between font-mono min-w-0"
                 >
                   <div className="space-y-4 min-w-0">

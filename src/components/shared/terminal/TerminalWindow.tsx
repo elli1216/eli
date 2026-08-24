@@ -29,7 +29,10 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
   const commandScrollRef = useDraggableScroll<HTMLDivElement>();
 
   return (
-    <DecorativeFrame accentColor={currentAccent} className={`w-full max-w-full min-w-0 ${className}`}>
+    <DecorativeFrame
+      accentColor={currentAccent}
+      className={`w-full max-w-full h-fit min-w-0 ${className}`}
+    >
       <div className="bg-card/95 backdrop-blur-xl rounded-xl overflow-hidden border border-border/80 flex flex-col h-full shadow-lg w-full max-w-full min-w-0">
         {/* Terminal Window Header */}
         <div
@@ -77,7 +80,9 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
         )}
 
         {/* Terminal Window Body */}
-        <div className={`p-3.5 sm:p-6 flex-1 min-w-0 max-w-full overflow-hidden ${bodyClassName}`}>{children}</div>
+        <div className={`p-3.5 sm:p-6 flex-1 min-w-0 max-w-full overflow-hidden ${bodyClassName}`}>
+          {children}
+        </div>
       </div>
     </DecorativeFrame>
   );

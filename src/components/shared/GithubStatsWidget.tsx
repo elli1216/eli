@@ -152,7 +152,7 @@ export const GithubStatsWidget: React.FC = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  });
 
   // Dynamic theme colors that scale from inactive to full accent
   const calendarTheme = useMemo(
@@ -190,7 +190,7 @@ export const GithubStatsWidget: React.FC = () => {
         <TerminalWindow
           title="git://profile-metrics.json"
           command="gh api user --jq '{repos, stars, forks}'"
-          className="h-full flex flex-col shadow-lg"
+          className="h-fit flex flex-col shadow-lg"
           bodyClassName="p-5 flex flex-col flex-1 justify-between gap-5"
         >
           {/* Top Bar Header */}
@@ -281,7 +281,7 @@ export const GithubStatsWidget: React.FC = () => {
         <TerminalWindow
           title="git://ecosystem-breakdown.conf"
           command="git log --summary --languages"
-          className="h-full flex flex-col shadow-lg"
+          className="h-fit flex flex-col shadow-lg"
           bodyClassName="p-5 flex flex-col flex-1 justify-between gap-5"
         >
           {/* Header */}
@@ -379,7 +379,7 @@ export const GithubStatsWidget: React.FC = () => {
             className="w-full overflow-x-auto scrollbar-none flex justify-start md:justify-center pb-1 text-xs text-muted-foreground [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
             style={{ scrollBehavior: 'smooth' }}
           >
-            <div className="min-w-[700px] md:min-w-0 md:w-full flex justify-center py-2">
+            <div className="min-w-175 md:min-w-0 md:w-full flex justify-center py-2">
               <GitHubCalendar
                 username="elli1216"
                 colorScheme={darkMode ? 'dark' : 'light'}
