@@ -140,6 +140,34 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL,
   },
   {
+    title: 'MergeMaster AI',
+    position: 'Full Stack & AI Developer',
+    theme:
+      "AI is evolving from a productivity tool into a true collaborator that can help people plan, coordinate, decide, and execute work moreffectively. Build solutions that help individuals, teams, and organizations achieve better outcomes through intelligent automation, workflow orchestration, and decision support. Whether you're building workflow automation systems, AI co-workers, decision intelligence platforms, or business process orchestration tools, your project should demonstrate how AI can help transform work from disconnected tasks into intelligent, outcome-driven systems.",
+    hackathonTitle: 'IBM AI Builders Challenge (August Wildcard)',
+    collaborators: null,
+    problem:
+      "Engineering teams lose valuable hours manually reviewing code, routing tickets, and hunting for security flaws, which creates severe friction and slows down shipping velocity. Context-switching to fix minor issues or reviewing PRs outside a developer's expertise stalls progress, while traditional AI review tools only leave passive comments that still require manual effort.",
+    description:
+      'MergeMaster AI acts as an active, autonomous co-worker that fixes issues directly and orchestrates the entire pull request workflow. It automatically generates and pushes code fixes for vulnerabilities, intelligently routes PRs to the right domain experts based on touched files, and evaluates deployment safety through AI-driven risk-confidence scoring.',
+    techStack: [
+      'Fast API',
+      'React',
+      'Convex',
+      'WorkOS',
+      'Gemini API',
+      'IBM Bob',
+      'Tanstack Router',
+      'Tanstack Query',
+      'Github Apps',
+      'Shadcn UI',
+    ],
+    image: '/projects/mergemaster.png',
+    demoLink: 'https://merge-master-ai.vercel.app',
+    repoLink: 'https://github.com/elli1216/MergeMasterAI',
+    category: category.HACKATHON,
+  },
+  {
     title: 'WhatsApp AI Notification Router',
     position: 'AI Developer',
     hackathonTitle: 'HackerRank Orchestrate 24-hour Hackathon',
@@ -199,34 +227,6 @@ export const PROJECT_DATA: ProjectItem[] = [
     repoLink: 'https://github.com/IBMPlotWeaver/plotweaver',
     category: category.HACKATHON,
     certificate: '/certificates/IBMAIBuildersJuly.png',
-  },
-  {
-    title: 'MergeMaster AI',
-    position: 'Full Stack & AI Developer',
-    theme:
-      "AI is evolving from a productivity tool into a true collaborator that can help people plan, coordinate, decide, and execute work moreffectively. Build solutions that help individuals, teams, and organizations achieve better outcomes through intelligent automation, workflow orchestration, and decision support. Whether you're building workflow automation systems, AI co-workers, decision intelligence platforms, or business process orchestration tools, your project should demonstrate how AI can help transform work from disconnected tasks into intelligent, outcome-driven systems.",
-    hackathonTitle: 'IBM AI Builders Challenge (August Wildcard)',
-    collaborators: null,
-    problem:
-      "Engineering teams lose valuable hours manually reviewing code, routing tickets, and hunting for security flaws, which creates severe friction and slows down shipping velocity. Context-switching to fix minor issues or reviewing PRs outside a developer's expertise stalls progress, while traditional AI review tools only leave passive comments that still require manual effort.",
-    description:
-      'MergeMaster AI acts as an active, autonomous co-worker that fixes issues directly and orchestrates the entire pull request workflow. It automatically generates and pushes code fixes for vulnerabilities, intelligently routes PRs to the right domain experts based on touched files, and evaluates deployment safety through AI-driven risk-confidence scoring.',
-    techStack: [
-      'Fast API',
-      'React',
-      'Convex',
-      'WorkOS',
-      'Gemini API',
-      'IBM Bob',
-      'Tanstack Router',
-      'Tanstack Query',
-      'Github Apps',
-      'Shadcn UI',
-    ],
-    image: '/projects/mergemaster.png',
-    // demoLink: "",
-    repoLink: 'https://github.com/elli1216/MergeMasterAI',
-    category: category.HACKATHON,
   },
   {
     title: 'EntityForge',
