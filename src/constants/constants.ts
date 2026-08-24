@@ -458,22 +458,16 @@ export const SKILL_DATA: SkillItem[] = [
 
 export const certificates = [
   {
+    src: '/certificates/aws_cloud.png',
+    issuer: 'DataCamp',
+    alt: 'AWS Cloud Practitioner (CLF-C02)',
+    href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/37aa7cab72a12269629abcc4c662ac4af70fbbc1?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
+  },
+  {
     src: '/certificates/ms-azure.png',
     issuer: 'DataCamp',
     alt: 'Microsoft Azure Developer Associate (AZ-204)',
     href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/8a4506c24dd5ca85734bb78dd40fbe0e299f852d?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
-  },
-  {
-    src: '/certificates/IBMAIBuildersJuly.png',
-    issuer: 'IBM SkillsBuild',
-    alt: 'IBM SkillsBuild AI Builders Challenge July',
-    href: 'https://skills.yourlearning.ibm.com/certificate/share/58de257513ewogICJsZWFybmVyQ05VTSIgOiAiNzgwMTAwMFJFRyIsCiAgIm9iamVjdFR5cGUiIDogIkFDVElWSVRZIiwKICAib2JqZWN0SWQiIDogIlVSTC1GMjNEQjc1NEY4MDIiCn0b9e347f166-10',
-  },
-  {
-    src: '/certificates/hackerrank.png',
-    issuer: 'HackerRank',
-    alt: 'HackerRank Orchestrate August',
-    href: 'https://www.hackerrank.com/contests/hackerrank-orchestrate-august26/challenges/message-notification-router/leaderboard?username=darl',
   },
   {
     src: '/certificates/assocai.png',
@@ -534,12 +528,6 @@ export const certificates = [
     issuer: 'Pluralsight',
     alt: 'Java 8 Fundamentals',
     href: 'https://app.pluralsight.com/achievements/share/ece26aa5-2f58-4dc6-91aa-6bbad8e143b8',
-  },
-  {
-    src: '/certificates/sfvip2025floresca.jpg',
-    issuer: 'TheSmartBridge',
-    alt: 'Salesforce Internship Completion Certificate',
-    href: 'https://www.salesforce.com/ap/',
   },
   {
     src: '/certificates/nextjsproj_page.jpg',

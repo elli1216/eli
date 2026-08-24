@@ -85,7 +85,7 @@ export const About: React.FC = () => {
             command="cat summary.txt"
             className="h-fit w-full min-w-0"
           >
-            <div className="space-y-4 text-xs sm:text-sm font-mono text-muted-foreground leading-relaxed break-words">
+            <div className="space-y-4 text-xs sm:text-sm font-mono text-muted-foreground leading-relaxed wrap-break-word">
               <p>
                 <span className="text-primary font-bold"># 01. Background & Education</span>
                 <br />I am a <span className="text-primary font-semibold">
@@ -145,7 +145,7 @@ export const About: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     CURRENT_ROLE
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground wrap-break-word">
                     {EXPERIENCE_DATA[0].role} @ {EXPERIENCE_DATA[0].company}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export const About: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     EDUCATION_CREDENTIAL
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground wrap-break-word">
                     BSIT @ {EDUCATION.uninversity_attended}
                   </p>
                 </div>
@@ -179,7 +179,7 @@ export const About: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     PRIMARY_LOCATION
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground wrap-break-word">
                     {PERSONAL_DATA.based_in}
                   </p>
                 </div>
@@ -196,7 +196,7 @@ export const About: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     CURRENTLY_EXPLORING
                   </p>
-                  <p className="text-xs font-medium text-foreground break-words">
+                  <p className="text-xs font-medium text-foreground wrap-break-word">
                     {EXPLORING.join(' · ')}
                   </p>
                 </div>
@@ -213,7 +213,7 @@ export const About: React.FC = () => {
                   <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     INTERESTS_AND_HOBBIES
                   </p>
-                  <p className="text-xs font-medium text-foreground break-words">
+                  <p className="text-xs font-medium text-foreground wrap-break-word">
                     {INTERESTS.join(' · ')}
                   </p>
                 </div>
@@ -275,7 +275,7 @@ export const About: React.FC = () => {
 
                     {/* Title */}
                     <div className="min-w-0">
-                      <h4 className="font-bold text-sm sm:text-base text-foreground tracking-tight break-words">
+                      <h4 className="font-bold text-sm sm:text-base text-foreground tracking-tight wrap-break-word">
                         {value.title}
                       </h4>
                       <p className="text-[11px] text-primary/80 font-semibold mt-0.5 truncate">
@@ -284,7 +284,7 @@ export const About: React.FC = () => {
                     </div>
 
                     {/* Code Block Description */}
-                    <div className="p-3 rounded-lg bg-muted/30 border border-border/40 text-xs text-muted-foreground leading-relaxed break-words">
+                    <div className="p-3 rounded-lg bg-muted/30 border border-border/40 text-xs text-muted-foreground leading-relaxed wrap-break-word">
                       <span className="text-primary font-bold mr-1.5">#</span>
                       {value.description}
                     </div>
