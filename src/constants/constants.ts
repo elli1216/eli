@@ -153,6 +153,7 @@ export const PROJECT_DATA: ProjectItem[] = [
     techStack: [
       'Fast API',
       'React',
+      'Docker',
       'Convex',
       'WorkOS',
       'Gemini API',
@@ -252,6 +253,7 @@ export const PROJECT_DATA: ProjectItem[] = [
       'A Spring Boot mock server that instantly generates live REST endpoints from uploaded JSON definitions. Supports dynamic route registration without restart, configurable HTTP status codes, response delays, and path variable substitution. Includes automatic mock expiry and a built-in management UI for browsing and deleting mocks.',
     techStack: [
       'Spring Boot',
+      'Docker',
       'PostgreSQL',
       'Docker',
       'Java',
