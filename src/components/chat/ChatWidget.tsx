@@ -15,9 +15,23 @@ import {
 } from '@/components/ui/message-scroller';
 import { TerminalBadge, useDraggableScroll } from '@/components/shared/terminal';
 
+const getRateLimitState = (timestamps: number[]) => {
+  const now = Date.now();
+  const oneMinuteAgo = now - 60000;
+  const recentMessages = timestamps.filter((t) => t > oneMinuteAgo);
+  return { now, recentMessages };
+};
+
 export const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const promptScrollRef = useDraggableScroll<HTMLDivElement>();
+  const [hasUserSent, setHasUserSent] = useState(false);
+  const SUGGESTIONS = [
+    'What are his tech stack?',
+    'Tell me about his experience.',
+    'Show me his projects.',
+    'What are his interests?',
+  ];
   const [messages, setMessages] = useState<MessageType[]>([
     {
       role: 'model',
@@ -51,14 +65,11 @@ export const ChatWidget: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isLoading) return;
 
     // Client-Side Rate Limiting: Max 5 messages per minute
-    const now = Date.now();
-    const oneMinuteAgo = now - 60000;
-    const recentMessages = messageTimestamps.filter((t) => t > oneMinuteAgo);
+    const { now, recentMessages } = getRateLimitState(messageTimestamps);
 
     if (recentMessages.length >= 5) {
       setMessages((prev) => [
@@ -74,7 +85,8 @@ export const ChatWidget: React.FC = () => {
 
     setMessageTimestamps([...recentMessages, now]);
 
-    const userMsg = input.trim();
+    const userMsg = text.trim();
+    setHasUserSent(true);
     setInput('');
     setMessages((prev) => [...prev, { role: 'user', content: userMsg }]);
     setIsLoading(true);
@@ -90,6 +102,10 @@ export const ChatWidget: React.FC = () => {
       });
 
       if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        if (data?.error) {
+          throw new Error(data.error);
+        }
         throw new Error('Failed to send message');
       }
 
@@ -97,16 +113,23 @@ export const ChatWidget: React.FC = () => {
       setMessages((prev) => [...prev, { role: 'model', content: data.text }]);
     } catch (error) {
       console.error(error);
+      const message =
+        error instanceof Error ? error.message : 'An unexpected error occurred.';
       setMessages((prev) => [
         ...prev,
         {
           role: 'model',
-          content: 'ERROR_CONNECTION: Network socket disconnected. Please try again later.',
+          content: `ERROR_CONNECTION: ${message}`,
         },
       ]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await sendMessage(input);
   };
 
   return (
@@ -170,14 +193,43 @@ export const ChatWidget: React.FC = () => {
             ref={promptScrollRef}
             className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar flex-1 select-none"
           >
-            <span className="text-primary font-bold shrink-0 pointer-events-none">eli@portfolio</span>
+            <span className="text-primary font-bold shrink-0 pointer-events-none">
+              eli@portfolio
+            </span>
             <span className="shrink-0 pointer-events-none">:</span>
             <span className="text-primary/70 shrink-0 pointer-events-none">~</span>
             <span className="shrink-0 pointer-events-none">$</span>
-            <span className="font-semibold text-foreground shrink-0 pointer-events-none">nova-ai --listen</span>
+            <span className="font-semibold text-foreground shrink-0 pointer-events-none">
+              nova-ai --listen
+            </span>
           </div>
-          <TerminalBadge variant="success" label="ONLINE" pulse className="shrink-0 pointer-events-none" />
+          <TerminalBadge
+            variant="success"
+            label="ONLINE"
+            pulse
+            className="shrink-0 pointer-events-none"
+          />
         </div>
+
+        {/* Suggested Prompts */}
+        {!hasUserSent && !isLoading && (
+          <div className="px-4 py-3 border-b border-border/40 bg-card/40 shrink-0">
+            <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+              suggested commands
+            </span>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {SUGGESTIONS.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  onClick={() => sendMessage(suggestion)}
+                  className="cursor-target px-3 py-1.5 rounded-lg bg-muted/30 border border-border/60 text-xs text-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-primary transition-all"
+                >
+                  <span className="text-primary/70 font-bold select-none">&gt;</span> {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Messages Area */}
         <MessageScrollerProvider>
@@ -269,6 +321,7 @@ export const ChatWidget: React.FC = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a command or ask a question..."
+            maxLength={200}
             className="flex-1 bg-card text-foreground text-xs rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-primary border border-border/70 font-mono transition-all"
             disabled={isLoading}
           />

@@ -28,6 +28,21 @@ export default async function handler(req: any, res: any) {
   try {
     const { message, history } = req.body;
 
+    // ==========================================
+    // Input Validation
+    // ==========================================
+    if (typeof message !== 'string' || message.trim().length === 0) {
+      return res.status(400).json({ error: 'Message is required.' });
+    }
+
+    if (message.length > 200) {
+      return res.status(400).json({ error: 'Message must be less than 200 characters.' });
+    }
+
+    if (!Array.isArray(history)) {
+      return res.status(400).json({ error: 'History must be an array.' });
+    }
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return res.status(500).json({ error: 'GEMINI_API_KEY is not configured on the server.' });

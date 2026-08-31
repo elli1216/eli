@@ -82,7 +82,7 @@ export const Hero: React.FC = () => {
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] mb-4 font-mono"
             >
-              Hi there👋, I'm <br /> <span className="text-primary">Eli Floresca</span>
+              Hi there, I'm <br /> <span className="text-primary">Eli Floresca</span>
             </motion.h1>
 
             {/* Git Execution Command Block */}
