@@ -73,7 +73,7 @@ export const Experience = () => {
   const { currentAccent } = useAccent();
 
   return (
-    <Section id="experience" className="mt-10">
+    <Section id="experience">
       {/* Terminal Section Header */}
       <TerminalSectionHeader
         command="journalctl -u career.service --reverse"

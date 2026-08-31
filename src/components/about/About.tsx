@@ -1,6 +1,5 @@
 import React from 'react';
 import { Section } from '@/components/layout/Section';
-import { useAccent } from '@/contexts/AccentContext';
 import { motion } from 'framer-motion';
 import {
   Target,
@@ -59,8 +58,6 @@ const VALUES = [
 ];
 
 export const About: React.FC = () => {
-  const { currentAccent } = useAccent();
-
   return (
     <Section id="about">
       {/* Section Header */}
@@ -85,7 +82,7 @@ export const About: React.FC = () => {
             command="cat summary.txt"
             className="h-fit w-full min-w-0"
           >
-            <div className="space-y-4 text-xs sm:text-sm font-mono text-muted-foreground leading-relaxed wrap-break-word">
+            <div className="space-y-4 text-xs sm:text-sm font-mono text-muted-foreground leading-relaxed break-words">
               <p>
                 <span className="text-primary font-bold"># 01. Background & Education</span>
                 <br />I am a <span className="text-primary font-semibold">
@@ -135,10 +132,7 @@ export const About: React.FC = () => {
           >
             <div className="space-y-2 font-mono w-full min-w-0">
               <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
-                <div
-                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                >
+                <div className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                   <Briefcase size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -152,27 +146,21 @@ export const About: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
-                <div
-                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                >
+                <div className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                   <GraduationCap size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
                     EDUCATION_CREDENTIAL
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-foreground wrap-break-word">
-                    BSIT @ {EDUCATION.uninversity_attended}
+                  <p className="text-xs sm:text-sm font-semibold text-foreground break-words">
+                    BSIT @ {EDUCATION.university_attended}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
-                <div
-                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                >
+                <div className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                   <MapPin size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -186,10 +174,7 @@ export const About: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
-                <div
-                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                >
+                <div className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                   <Sparkles size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -203,10 +188,7 @@ export const About: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-2.5 sm:gap-3 p-2.5 rounded-lg bg-muted/30 border border-border/40 min-w-0 w-full">
-                <div
-                  className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                >
+                <div className="size-8 sm:size-9 rounded-md flex items-center justify-center shrink-0 bg-primary/10 text-primary">
                   <ChessPawnIcon size={15} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -259,10 +241,7 @@ export const About: React.FC = () => {
                   <div className="space-y-4 min-w-0">
                     {/* Status & Tag */}
                     <div className="flex items-center justify-between gap-2 min-w-0">
-                      <div
-                        className="size-8 sm:size-9 rounded-lg flex items-center justify-center border border-primary/20 shrink-0"
-                        style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                      >
+                      <div className="size-8 sm:size-9 rounded-lg flex items-center justify-center border border-primary/20 shrink-0 bg-primary/10 text-primary">
                         <Icon size={17} />
                       </div>
                       <div className="flex items-center gap-1.5 shrink-0">

@@ -1,6 +1,5 @@
 import { Section } from '@/components/layout/Section';
 import { motion } from 'framer-motion';
-import { useAccent } from '@/contexts/AccentContext';
 import { contactItems } from '@/constants/constants';
 import { ExternalLink, Terminal } from 'lucide-react';
 import {
@@ -10,10 +9,8 @@ import {
 } from '@/components/shared/terminal';
 
 export const Contact = () => {
-  const { currentAccent } = useAccent();
-
   return (
-    <Section id="contact" className="mt-10">
+    <Section id="contact">
       <div className="max-w-4xl mx-auto">
         {/* Terminal Section Header */}
         <TerminalSectionHeader
@@ -47,10 +44,7 @@ export const Contact = () => {
                     className="cursor-target flex items-center justify-between gap-3 group"
                   >
                     <div className="flex items-center gap-3">
-                      <div
-                        className="size-10 rounded-lg flex items-center justify-center shrink-0 border border-primary/20"
-                        style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                      >
+                      <div className="size-10 rounded-lg flex items-center justify-center shrink-0 border border-primary/20 bg-primary/10 text-primary">
                         <Icon size={18} />
                       </div>
                       <div className="text-left min-w-0">

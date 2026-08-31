@@ -3,7 +3,6 @@ import StackIcon from 'tech-stack-icons';
 import { SKILL_DATA } from '@/constants/constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section } from '@/components/layout/Section';
-import { useAccent } from '@/contexts/AccentContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
   TerminalSectionHeader,
@@ -52,7 +51,6 @@ const CATEGORIES: CategoryConfig[] = [
 ];
 
 export const Skills = () => {
-  const { currentAccent } = useAccent();
   const { darkMode } = useTheme();
   const [activeTab, setActiveTab] = useState<CategoryFilter>('all');
 
@@ -60,7 +58,7 @@ export const Skills = () => {
     activeTab === 'all' ? CATEGORIES : CATEGORIES.filter((c) => c.key === activeTab);
 
   return (
-    <Section id="skills" className="mt-10">
+    <Section id="skills">
       {/* Terminal Section Header */}
       <TerminalSectionHeader
         command="tree ./tech-stack --level=2 --classified"
@@ -73,25 +71,25 @@ export const Skills = () => {
       <div className="flex flex-wrap items-center justify-center gap-2 mb-8 font-mono text-xs">
         <TerminalButton
           command="--filter=all"
-          variant={activeTab === 'all' ? 'primary' : 'outline'}
+          active={activeTab === 'all'}
           size="sm"
           onClick={() => setActiveTab('all')}
         />
         <TerminalButton
           command="--filter=frontend"
-          variant={activeTab === 'frontend' ? 'primary' : 'outline'}
+          active={activeTab === 'frontend'}
           size="sm"
           onClick={() => setActiveTab('frontend')}
         />
         <TerminalButton
           command="--filter=backend"
-          variant={activeTab === 'backend' ? 'primary' : 'outline'}
+          active={activeTab === 'backend'}
           size="sm"
           onClick={() => setActiveTab('backend')}
         />
         <TerminalButton
           command="--filter=tools"
-          variant={activeTab === 'tools' ? 'primary' : 'outline'}
+          active={activeTab === 'tools'}
           size="sm"
           onClick={() => setActiveTab('tools')}
         />
@@ -127,10 +125,7 @@ export const Skills = () => {
                   {/* Category Header */}
                   <div className="flex items-center justify-between border-b border-border/40 pb-3">
                     <div className="flex items-center gap-2.5">
-                      <div
-                        className="size-8 rounded-lg flex items-center justify-center border border-primary/20"
-                        style={{ backgroundColor: `${currentAccent}1a`, color: currentAccent }}
-                      >
+                      <div className="size-8 rounded-lg flex items-center justify-center border border-primary/20 bg-primary/10 text-primary">
                         <CategoryIcon size={16} />
                       </div>
                       <div>
@@ -169,13 +164,7 @@ export const Skills = () => {
                                 className="size-4.5"
                               />
                             ) : (
-                              <span
-                                className="text-[9px] font-bold px-1 py-0.5 rounded"
-                                style={{
-                                  backgroundColor: `${currentAccent}20`,
-                                  color: currentAccent,
-                                }}
-                              >
+                              <span className="text-[9px] font-bold px-1 py-0.5 rounded bg-primary/15 text-primary">
                                 {skill.name.slice(0, 3)}
                               </span>
                             )}

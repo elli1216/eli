@@ -40,6 +40,17 @@ export const ChatWidget: React.FC = () => {
     scrollToBottom();
   }, [messages, isLoading]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -107,6 +118,7 @@ export const ChatWidget: React.FC = () => {
         onClick={() => setIsOpen(true)}
         initial={{ scale: 0 }}
         animate={{ scale: isOpen ? 0 : 1 }}
+        aria-label="Open terminal AI assistant"
       >
         <Terminal size={18} className="animate-pulse" />
         <span>./nova-ai</span>
@@ -122,7 +134,10 @@ export const ChatWidget: React.FC = () => {
             : { opacity: 0, y: 20, scale: 0.95, pointerEvents: 'none' }
         }
         transition={{ duration: 0.2 }}
-        className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:w-108 h-[calc(100dvh-2rem)] sm:h-135 max-h-[85dvh] bg-card/95 backdrop-blur-xl border border-border/80 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden font-mono"
+        className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto sm:w-[27rem] h-[calc(100dvh-2rem)] sm:h-[33.75rem] max-h-[85dvh] bg-card/95 backdrop-blur-xl border border-border/80 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden font-mono"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Terminal AI assistant chat"
       >
         {/* Terminal Header */}
         <div className="px-4 py-3 bg-muted/50 border-b border-border/70 flex items-center justify-between select-none">
@@ -189,7 +204,7 @@ export const ChatWidget: React.FC = () => {
                         <div
                           className={`rounded-lg max-w-[90%] select-text ${
                             isUser
-                              ? 'bg-muted/40 text-primary-foreground border-primary/20 shadow-xs'
+                              ? 'bg-primary text-primary-foreground border-primary/20 shadow-xs'
                               : 'bg-muted/40 text-foreground border-border/60 shadow-xs'
                           }`}
                         >
@@ -245,7 +260,11 @@ export const ChatWidget: React.FC = () => {
           className="p-3 border-t border-border/60 bg-muted/30 flex gap-2 items-center shrink-0"
         >
           <span className="text-xs text-primary font-bold pl-1 hidden sm:inline">input:~$</span>
+          <label htmlFor="chat-input" className="sr-only">
+            Type a message to the assistant
+          </label>
           <input
+            id="chat-input"
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -258,6 +277,7 @@ export const ChatWidget: React.FC = () => {
             disabled={!input.trim() || isLoading}
             className="cursor-target px-3.5 py-2.5 rounded-lg flex items-center gap-1.5 text-xs text-primary-foreground font-semibold disabled:opacity-40 disabled:cursor-not-allowed  transition-all hover:brightness-110 active:scale-95 shrink-0"
             style={{ backgroundColor: currentAccent }}
+            aria-label="Send message"
           >
             <span>SEND</span>
             <Send size={13} />

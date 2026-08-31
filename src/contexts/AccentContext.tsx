@@ -23,7 +23,14 @@ export const AccentProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('accent-green', 'accent-blue', 'accent-red', 'accent-orange', 'accent-purple');
+    root.classList.remove(
+      'accent-green',
+      'accent-blue',
+      'accent-red',
+      'accent-orange',
+      'accent-purple',
+      'accent-gray'
+    );
     root.classList.add(`accent-${accentColor}`);
     localStorage.setItem('accentColor', accentColor);
   }, [accentColor]);

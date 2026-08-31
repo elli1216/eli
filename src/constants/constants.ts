@@ -5,7 +5,7 @@ export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 
 export const INTERESTS = ['Football', 'League of Legends'];
 export const EXPLORING = ['AI Engineering', 'Cloud Computing', 'Spring Boot'];
 export const EDUCATION = {
-  uninversity_attended: 'Bulacan State University',
+  university_attended: 'Bulacan State University',
   location: 'Malolos City, Bulacan',
   course: 'Bachelor of Science in Information Technology',
   date_started: 'Aug 2022',
@@ -15,7 +15,7 @@ export const EDUCATION = {
 
 export const PERSONAL_DATA = {
   short_introduction:
-    'I am a BSIT graduate of Bulacan State University (Malolos) currently working as an Custom Software Engineer at Accenture.As a highly coachable developer, I thrive on constructive feedback and industry-best practices to continuously sharpen my skills. I bring rigorous, hands-on project experience and a strict commitment to maintaining high standards for code scalability and performance. I am eager to leverage my adaptable mindset and strong technical foundation within a dynamic development team.',
+    'I am a BSIT graduate of Bulacan State University (Malolos) currently working as a Custom Software Engineer at Accenture. As a highly coachable developer, I thrive on constructive feedback and industry-best practices to continuously sharpen my skills. I bring rigorous, hands-on project experience and a strict commitment to maintaining high standards for code scalability and performance. I am eager to leverage my adaptable mindset and strong technical foundation within a dynamic development team.',
   names: NAMES,
   based_in: 'Marilao, Bulacan, Philippines',
   education: EDUCATION,
@@ -44,6 +44,7 @@ export const ACCENT_COLORS: AccentColor[] = [
   { name: 'red', value: '#e63946' },
   { name: 'orange', value: '#ea580c' },
   { name: 'purple', value: '#9333ea' },
+  { name: 'gray', value: '#6e7781' },
 ];
 
 export const NAV_ITEMS = [

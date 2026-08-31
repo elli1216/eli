@@ -47,6 +47,19 @@
       href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (theme === 'dark' || (!theme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+          var accent = localStorage.getItem('accentColor') || 'green';
+          document.documentElement.classList.add('accent-' + accent);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body class="bg-background text-foreground roboto">
     <div id="root"></div>

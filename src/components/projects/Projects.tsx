@@ -117,7 +117,7 @@ export const Projects: React.FC = () => {
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, INITIAL_VISIBLE);
 
   return (
-    <Section id="projects" className="mt-10">
+    <Section id="projects">
       {/* Terminal Section Header */}
       <TerminalSectionHeader
         command="ls -la ./projects/ --sort=impact"

@@ -19,7 +19,7 @@ export const Certificates = () => {
   const remainingCount = certificates.length - INITIAL_VISIBLE;
 
   return (
-    <Section id="certificates" className="mt-10">
+    <Section id="certificates">
       {/* Terminal Section Header */}
       <TerminalSectionHeader
         command="security verify-cert -d /etc/ssl/certs/"
