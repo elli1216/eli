@@ -1,11 +1,11 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { ArrowRight, FileText, Facebook, Github, Linkedin, Terminal } from 'lucide-react'
-import TextType from '@/components/shared/TextType'
-import Particles from '@/components/home/Particles'
-import { useAccent } from '@/contexts/AccentContext'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, FileText, Facebook, Github, Linkedin } from 'lucide-react';
+import TextType from '@/components/shared/TextType';
+import Particles from '@/components/home/Particles';
+import { useAccent } from '@/contexts/AccentContext';
 import { TerminalCard } from './TerminalCard';
-import { TerminalBadge, TerminalButton } from '@/components/shared/terminal';
+import { TerminalButton } from '@/components/shared/terminal';
 
 const containerVariants = {
   hidden: {},
@@ -15,7 +15,7 @@ const containerVariants = {
       delayChildren: 0.1,
     },
   },
-} as const
+} as const;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -24,21 +24,21 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
-} as const
+} as const;
 
 export const Hero: React.FC = () => {
   const { currentAccent, accentColor } = useAccent();
 
   const handleViewResume = async () => {
     try {
-      const response = await fetch('/Floresca-Darl-Resume-2026.pdf')
-      const blob = await response.blob()
-      const url = URL.createObjectURL(blob)
-      window.open(url, '_blank')
+      const response = await fetch('/Floresca-Darl-Resume-2026.pdf');
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
     } catch (error) {
-      console.error('Error opening resume:', error)
+      console.error('Error opening resume:', error);
     }
-  }
+  };
 
   return (
     <section className="flex items-center justify-center min-h-dvh relative mt-10 sm:mt-0">
@@ -77,22 +77,12 @@ export const Hero: React.FC = () => {
         >
           {/* Left Column: Context, Headline, and Typewriter */}
           <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-            {/* Terminal Eyebrow Badge */}
-            <motion.div variants={itemVariants} className="mb-4">
-              <TerminalBadge
-                variant="accent"
-                icon={Terminal}
-                label="Eli Floresca · Software Engineer"
-                pulse
-              />
-            </motion.div>
-
             {/* Impactful Human Headline */}
             <motion.h1
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] mb-4 font-mono"
             >
-              Engineering solutions <span className="text-primary">that scale.</span>
+              Hi there👋, I'm <br /> <span className="text-primary">Eli Floresca</span>
             </motion.h1>
 
             {/* Git Execution Command Block */}
@@ -102,22 +92,29 @@ export const Hero: React.FC = () => {
             >
               <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                 <span className="text-primary font-bold shrink-0">$</span>
+                <span className="text-foreground shrink-0">git init</span>
+              </div>
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <span className="text-primary font-bold shrink-0">$</span>
                 <span className="text-foreground shrink-0">git commit -m</span>
                 <span className="text-primary font-semibold">"feat: scalable-systems"</span>
               </div>
-              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-muted-foreground/90 mt-1.5 text-[11px] sm:text-xs">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                 <span className="text-primary font-bold shrink-0">$</span>
-                <span className="shrink-0">git push origin main</span>
-                <span className="text-emerald-500 text-[10px] font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 shrink-0">
-                  ● 100% deployed
-                </span>
+                <span className="text-foreground shrink-0">git push origin main</span>
               </div>
             </motion.div>
 
             {/* Subtitle / Typewriter Specialization */}
-            <motion.div variants={itemVariants} className="min-h-[3.5rem] mb-6 flex items-center">
+            <motion.div variants={itemVariants} className="min-h-14 mb-6 flex items-center">
               <TextType
-                text={["React & Next.js", "TanStack Ecosystem", "Java & Spring", "COBOL Mainframe", "Full Stack Development"]}
+                text={[
+                  'React & Next.js',
+                  'TanStack Ecosystem',
+                  'Java & Spring Boot',
+                  'COBOL Mainframe',
+                  'Full Stack Development',
+                ]}
                 typingSpeed={90}
                 pauseDuration={1500}
                 showCursor={true}
@@ -129,7 +126,10 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             {/* CTAs and Social Links */}
-            <motion.div variants={itemVariants} className="flex flex-col w-fit sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col w-fit sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4"
+            >
               <TerminalButton
                 command="./view-resume.sh"
                 variant="primary"
@@ -137,7 +137,7 @@ export const Hero: React.FC = () => {
                 onClick={handleViewResume}
                 size="md"
               />
-              
+
               <div className="flex flex-col md:flex-row items-center gap-2 w-full sm:w-auto justify-center">
                 <TerminalButton
                   command="./explore-work.sh"
@@ -146,7 +146,7 @@ export const Hero: React.FC = () => {
                   href="#projects"
                   size="md"
                 />
-                
+
                 <div className="flex items-center gap-1 md:border-l md:border-border/60 pl-2 ml-1">
                   <motion.a
                     href="https://www.facebook.com/profile.php?id=61582634784747"
@@ -187,7 +187,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right Column: Interactive System Diagnostic Terminal */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="flex-1 flex items-center justify-center relative w-full max-w-lg lg:max-w-xl py-4"
           >
@@ -196,5 +196,5 @@ export const Hero: React.FC = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};

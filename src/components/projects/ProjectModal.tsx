@@ -198,7 +198,47 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 </div>
               )}
 
-              {/* Architecture & Solution Description */}
+              {/* System Architecture */}
+              {project.architecture && (
+                <div className="space-y-2 p-4 rounded-xl bg-muted/20 border border-border/40">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-primary">
+                    # LINTING & SYSTEM ARCHITECTURE
+                  </h4>
+                  {Array.isArray(project.architecture) ? (
+                    <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      {project.architecture.map((arch, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-primary font-bold shrink-0 mt-0.5">❯</span>
+                          <span>{arch}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      {project.architecture}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Key Features */}
+              {project.features && project.features.length > 0 && (
+                <div className="space-y-2 p-4 rounded-xl bg-muted/20 border border-border/40">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-primary">
+                    # KEY FEATURES & CAPABILITIES
+                  </h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-muted-foreground">
+                    {project.features.map((feat, idx) => (
+                      <li key={idx} className="flex items-start gap-2 bg-card/60 p-2.5 rounded-lg border border-border/40">
+                        <span className="text-emerald-500 font-bold shrink-0 mt-0.5">✔</span>
+                        <span className="text-foreground/90">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Solution Description */}
               <div className="space-y-2 p-4 rounded-xl bg-muted/20 border border-border/40">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-primary">
                   # SYSTEM IMPLEMENTATION & DESCRIPTION

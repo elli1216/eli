@@ -28,6 +28,8 @@ export interface ProjectItem {
   theme?: string;
   description: string;
   problem?: string;
+  features?: string[];
+  architecture?: string | string[];
   metrics?: { label: string; value: string }[];
   techStack: string[];
   collaborators?: { name: string; link: string }[] | null;

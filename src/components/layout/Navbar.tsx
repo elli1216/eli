@@ -4,7 +4,6 @@ import { NAV_ITEMS, ACCENT_COLORS } from '@/constants/constants';
 import { motion } from 'framer-motion';
 import { useAccent } from '@/contexts/AccentContext';
 import { useTheme } from '@/contexts/ThemeContext';
-import { TerminalBadge } from '@/components/shared/terminal';
 
 export const Navbar = () => {
   const { accentColor, setAccentColor } = useAccent();
@@ -26,10 +25,11 @@ export const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-        ? 'bg-card/85 backdrop-blur-md shadow-sm border-b border-border/70'
-        : 'bg-transparent'
-        }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-card/85 backdrop-blur-md shadow-sm border-b border-border/70'
+          : 'bg-transparent'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Terminal Brand / Logo */}
@@ -45,10 +45,6 @@ export const Navbar = () => {
             <span className="text-muted-foreground">:</span>
             <span className="text-foreground">~#</span>
           </motion.a>
-
-          <div className="hidden lg:block">
-            <TerminalBadge variant="success" label="SYS: ONLINE" pulse />
-          </div>
         </div>
 
         {/* Desktop Menu */}
@@ -97,8 +93,11 @@ export const Navbar = () => {
                         setAccentColor(color.name);
                         setShowColorPicker(false);
                       }}
-                      className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''
-                        }`}
+                      className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${
+                        accentColor === color.name
+                          ? 'ring-2 ring-offset-2 ring-primary scale-110'
+                          : ''
+                      }`}
                       style={{ backgroundColor: color.value }}
                       aria-label={`Set accent color to ${color.name}`}
                     />
@@ -141,8 +140,9 @@ export const Navbar = () => {
                     setAccentColor(color.name);
                     setShowColorPicker(false);
                   }}
-                  className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''
-                    }`}
+                  className={`w-6 h-6 rounded-full transition-transform hover:scale-110 ${
+                    accentColor === color.name ? 'ring-2 ring-offset-2 ring-primary scale-110' : ''
+                  }`}
                   style={{ backgroundColor: color.value }}
                   aria-label={`Set accent color to ${color.name}`}
                 />
@@ -170,7 +170,7 @@ export const Navbar = () => {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className="text-base font-medium text-muted-foreground hover:text-primary"
-                whileHover={{ x: 10, color: "var(--primary)" }}
+                whileHover={{ x: 10, color: 'var(--primary)' }}
                 whileTap={{ scale: 0.98 }}
               >
                 {item.label}
