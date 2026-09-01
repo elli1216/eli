@@ -6,6 +6,8 @@ import Particles from '@/components/home/Particles';
 import { useAccent } from '@/contexts/AccentContext';
 import { TerminalCard } from './TerminalCard';
 import { TerminalButton } from '@/components/shared/terminal';
+import { EXPERIENCE_DATA, NAMES, PERSONAL_DATA } from '@/constants/constants';
+import { DecorativeFrame } from '../shared/DecorativeFrame';
 
 const containerVariants = {
   hidden: {},
@@ -82,27 +84,43 @@ export const Hero: React.FC = () => {
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] mb-4 font-mono"
             >
-              Hi there, I'm <br /> <span className="text-primary">Eli Floresca</span>
+              Hi there
+              <motion.span
+                className="inline-block cursor-pointer"
+                whileHover={{ rotate: [0, 20, -20, 20, -20, 0], transition: { duration: 0.8 } }}
+                whileTap={{ rotate: [0, 20, -20, 20, 0], transition: { duration: 0.5 } }}
+                aria-label="waving hand"
+              >
+                👋
+              </motion.span>
             </motion.h1>
 
-            {/* Git Execution Command Block */}
+            {/* Profile Info JSON Block */}
             <motion.div
               variants={itemVariants}
-              className="mb-5 p-3 sm:p-3.5 rounded-xl bg-muted/30 backdrop-blur-xs border border-border/60 font-mono text-xs sm:text-sm max-w-full sm:max-w-md w-full shadow-xs text-left"
+              className="mb-5 rounded-xl bg-muted/30 backdrop-blur-xs border border-border/60 font-mono text-xs sm:text-sm max-w-full sm:max-w-md w-full shadow-xs text-left whitespace-pre overflow-x-auto"
             >
-              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                <span className="text-primary font-bold shrink-0">$</span>
-                <span className="text-foreground shrink-0">git init</span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                <span className="text-primary font-bold shrink-0">$</span>
-                <span className="text-foreground shrink-0">git commit -m</span>
-                <span className="text-primary font-semibold">"feat: scalable-systems"</span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                <span className="text-primary font-bold shrink-0">$</span>
-                <span className="text-foreground shrink-0">git push origin main</span>
-              </div>
+              <DecorativeFrame accentColor={currentAccent} className="w-full h-full p-3 sm:p-3.5">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-primary font-bold shrink-0">$</span>
+                  <span className="text-foreground shrink-0">cat info.json</span>
+                </div>
+                <pre className="mt-1 font-mono text-xs sm:text-sm leading-relaxed">
+                  {'{\n'}
+                  {`  "name": `}
+                  <span className="text-primary">"{NAMES[0]}"</span>,{'\n'}
+                  {`  "role": `}
+                  <span className="text-primary">"{EXPERIENCE_DATA[0].role}"</span>,{'\n'}
+                  {`  "company": `}
+                  <span className="text-primary">"{EXPERIENCE_DATA[0].company}"</span>,{'\n'}
+                  {`  "based": `}
+                  <span className="text-primary">"{PERSONAL_DATA.based_in}"</span>,{'\n'}
+                  {`  "status": `}
+                  <span className="text-primary">"building solutions that scale"</span>
+                  {'\n'}
+                  {'}'}
+                </pre>
+              </DecorativeFrame>
             </motion.div>
 
             {/* Subtitle / Typewriter Specialization */}
