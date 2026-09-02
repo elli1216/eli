@@ -78,7 +78,7 @@ export const Experience = () => {
       <TerminalSectionHeader
         command="journalctl -u career.service --reverse"
         title="Experience"
-        description="System daemon logs and engineering milestones across industry roles."
+        description="Where I've worked and what I've shipped."
         executionTime="9ms"
       />
 

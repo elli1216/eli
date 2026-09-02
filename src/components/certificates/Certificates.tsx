@@ -24,7 +24,7 @@ export const Certificates = () => {
       <TerminalSectionHeader
         command="security verify-cert -d /etc/ssl/certs/"
         title="Verified Credentials"
-        description={`Cryptographically verified online certificates, tracks, and diplomas (${certificates.length} credentials).`}
+        description={`Online courses, tracks, and diplomas I've completed (${certificates.length} total).`}
         executionTime="5ms"
       />
 

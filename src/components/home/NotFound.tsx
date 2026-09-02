@@ -28,10 +28,15 @@ export const NotFound: React.FC = () => {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-dvh px-6 relative overflow-hidden bg-background text-foreground">
-      {/* Background Decorative Blobs */}
-      <div className="absolute top-1/4 -left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob pointer-events-none" />
-      <div className="absolute top-1/3 -right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-2000 pointer-events-none" />
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-color-dodge animate-blob animation-delay-4000 pointer-events-none" />
+      {/* Scanline overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0 opacity-[0.015]"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg, transparent, transparent 1px, currentColor 1px, currentColor 2px)',
+          backgroundSize: '100% 3px',
+        }}
+      />
 
       <div className="max-w-2xl mx-auto w-full text-center relative z-10">
         <motion.div

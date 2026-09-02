@@ -122,7 +122,7 @@ export const Projects: React.FC = () => {
       <TerminalSectionHeader
         command="ls -la ./projects/ --sort=impact"
         title="Featured Projects"
-        description="Production systems, scalable architectures, and developer tooling."
+        description="Apps and tools I've built — from full-stack products to developer utilities."
         executionTime="12ms"
       />
 

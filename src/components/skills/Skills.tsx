@@ -63,7 +63,7 @@ export const Skills = () => {
       <TerminalSectionHeader
         command="tree ./tech-stack --level=2 --classified"
         title="Tech Stack & Dependencies"
-        description="Production dependencies, enterprise runtimes, databases, and AI tooling."
+        description="Languages, frameworks, databases, and tools I work with day to day."
         executionTime="6ms"
       />
 

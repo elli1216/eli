@@ -16,7 +16,7 @@ export const Contact = () => {
         <TerminalSectionHeader
           command="ssh connect@elifloresca.dev --port=22"
           title="Direct Transmission"
-          description="Every scalable system starts with a conversation. Connect directly via open sockets or dispatch an email."
+          description="Get in touch — drop a message or reach out on any of these platforms."
           executionTime="18ms"
         />
 

@@ -254,7 +254,7 @@ export const Hackathons: React.FC = () => {
       <TerminalSectionHeader
         command='git tag -l "competition-*"'
         title="Hackathons & Competitions"
-        description="Championship milestones, rapid prototyping sprints, and high-pressure builds."
+        description="Hackathons and competitions I've participated in."
         executionTime="7ms"
       />
 

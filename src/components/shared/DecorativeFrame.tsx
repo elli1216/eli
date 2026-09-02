@@ -21,7 +21,7 @@ export const DecorativeFrame: React.FC<DecorativeFrameProps> = ({
       />
       <div className="absolute inset-1 rounded-xl border border-primary/10 pointer-events-none" />
       <div
-        className="absolute inset-1 rounded-xl border border-primary/15 animate-pulse pointer-events-none"
+        className="absolute inset-1 rounded-xl border border-primary/15 pointer-events-none"
         style={{ boxShadow: `0px 0px 15px 0px ${accentColor}30` }}
       />
       <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary/60 rounded-tl pointer-events-none" />

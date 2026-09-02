@@ -72,7 +72,7 @@ export const Navbar = () => {
             whileTap={{ scale: 0.98 }}
             aria-label="Back to top"
           >
-            <Terminal size={15} className="text-primary animate-pulse" />
+            <Terminal size={15} className="text-primary" />
             <span className="text-primary font-bold">eli</span>
             <span className="text-muted-foreground">:</span>
             <span className="text-foreground">~#</span>

@@ -19,41 +19,26 @@ import {
   PERSONAL_DATA,
 } from '@/constants/constants';
 import { GithubStatsWidget } from '@/components/shared/GithubStatsWidget';
-import { TerminalSectionHeader, TerminalWindow, TerminalBadge } from '@/components/shared/terminal';
+import { TerminalSectionHeader, TerminalWindow } from '@/components/shared/terminal';
 
 const VALUES = [
   {
     icon: Target,
-    key: 'calm_flow',
     title: 'Challenge → Calm',
-    service: 'calm-flow.service',
-    status: 'ACTIVE',
-    tag: 'RULE_01',
     description:
       'I take noisy, tangled problems and ship systems that feel effortless — turning chaos into something calm and dependable.',
-    telemetry: 'LOAD: 0.04 · THREAD: 0x01',
   },
   {
     icon: TrendingUp,
-    key: 'eval_growth',
     title: 'Feedback → Growth',
-    service: 'continuous-eval.service',
-    status: 'OPTIMIZED',
-    tag: 'RULE_02',
     description:
       "I'm highly coachable. Every code review and industry benchmark is a chance to level up, not a critique to defend.",
-    telemetry: 'ITER: 1,420+ · EPOCH: INF',
   },
   {
     icon: Layers,
-    key: 'scale_arch',
     title: 'Complexity → Scalability',
-    service: 'arch-opt.service',
-    status: 'ENFORCED',
-    tag: 'RULE_03',
     description:
       'I care about code that stays clean, type-safe, and maintainable long after launch — strict standards over quick shortcuts.',
-    telemetry: 'DEBT: 0.0% · TYPE_SAFE: 100%',
   },
 ];
 
@@ -233,46 +218,25 @@ export const About: React.FC = () => {
                 className="h-fit flex flex-col w-full min-w-0"
               >
                 <TerminalWindow
-                  title={`sysctl://${value.service}`}
-                  command={`systemctl status ${value.service}`}
+                  title={`rule-${index + 1}.md`}
+                  command={`cat rule-${index + 1}.md`}
                   className="h-fit flex flex-col shadow-md w-full min-w-0"
                   bodyClassName="p-4 sm:p-5 flex flex-col flex-1 justify-between font-mono min-w-0"
                 >
-                  <div className="space-y-4 min-w-0">
-                    {/* Status & Tag */}
-                    <div className="flex items-center justify-between gap-2 min-w-0">
+                  <div className="space-y-3 min-w-0">
+                    <div className="flex items-center gap-2.5">
                       <div className="size-8 sm:size-9 rounded-lg flex items-center justify-center border border-primary/20 shrink-0 bg-primary/10 text-primary">
                         <Icon size={17} />
                       </div>
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        <span className="text-[10px] text-muted-foreground font-bold">
-                          {value.tag}
-                        </span>
-                        <TerminalBadge variant="success" label={value.status} pulse />
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <div className="min-w-0">
                       <h4 className="font-bold text-sm sm:text-base text-foreground tracking-tight wrap-break-word">
                         {value.title}
                       </h4>
-                      <p className="text-[11px] text-primary/80 font-semibold mt-0.5 truncate">
-                        daemon://{value.key}
-                      </p>
                     </div>
 
-                    {/* Code Block Description */}
                     <div className="p-3 rounded-lg bg-muted/30 border border-border/40 text-xs text-muted-foreground leading-relaxed wrap-break-word">
                       <span className="text-primary font-bold mr-1.5">#</span>
                       {value.description}
                     </div>
-                  </div>
-
-                  {/* Telemetry Footer */}
-                  <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between gap-2 text-[10px] text-muted-foreground font-mono flex-wrap">
-                    <span className="text-emerald-500 font-semibold shrink-0">[ACTIVE_DAEMON]</span>
-                    <span className="text-foreground/70 truncate min-w-0">{value.telemetry}</span>
                   </div>
                 </TerminalWindow>
               </motion.div>
@@ -291,8 +255,8 @@ export const About: React.FC = () => {
       >
         <TerminalSectionHeader
           command='git log --stat --author="elli1216"'
-          title="GitHub Telemetry"
-          description="Live commit frequency, streak diagnostics, and repository telemetry."
+          title="GitHub Activity"
+          description="Recent commit history and contribution stats."
           executionTime="14ms"
         />
         <GithubStatsWidget />
