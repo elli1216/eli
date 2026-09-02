@@ -144,6 +144,14 @@
   html, body {
     @apply bg-background text-foreground overflow-x-hidden max-w-full;
   }
+  /* Hide the page-level scrollbar: the hero is a clean static screen and the
+     terminal's own scrollback (.term-scrollbar) is the only inner scroll. */
+  html {
+    scrollbar-width: none; /* Firefox */
+  }
+  html::-webkit-scrollbar {
+    display: none; /* Chrome / Safari / Edge */
+  }
 }
 
 html.lenis,
@@ -189,4 +197,20 @@ html.lenis body {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Terminal scrollback scrollbar */
+.term-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--accent-rgb), 0.35) transparent;
+}
+.term-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.term-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.term-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(var(--accent-rgb), 0.35);
+  border-radius: 8px;
 }

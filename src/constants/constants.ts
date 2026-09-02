@@ -3,7 +3,7 @@ import { Facebook, Github, Linkedin, Mail } from 'lucide-react';
 
 export const NAMES = ['Darl Ellison Floresca', 'Darl Floresca', 'Eli Floresca', 'Ellison Floresca'];
 export const INTERESTS = ['Football', 'League of Legends'];
-export const EXPLORING = ['AI Engineering', 'Cloud Computing', 'Spring Boot'];
+export const EXPLORING = ['AI Engineering', 'Cloud Computing'];
 export const EDUCATION = {
   university_attended: 'Bulacan State University',
   location: 'Malolos City, Bulacan',
@@ -52,7 +52,6 @@ export const NAV_ITEMS = [
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Hackathons', href: '#hackathons' },
   { label: 'Certificates', href: '#certificates' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -122,40 +121,6 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export const PROJECT_DATA: ProjectItem[] = [
   {
-    title: 'Code3270',
-    position: 'Full Stack & Compiler Developer',
-    collaborators: null,
-    problem:
-      'Learning and validating enterprise COBOL and JCL traditionally requires heavy z/OS mainframe emulators, complex terminal setups (TN3270), and slow feedback cycles. This steep configuration barrier prevents developers and students from efficiently practicing mainframe programming in a zero-setup environment.',
-    description:
-      'A frictionless, web-based platform designed to help developers learn, write, and validate COBOL and Job Control Language (JCL) directly in the browser with zero emulators, accounts, or server dependencies. Features split-screen markdown tutorials, Monaco Editor integration with a retro "Green Screen" theme, and 100% client-side validation.',
-    architecture: [
-      'Strategy (Rule-Based) Design Pattern: Both COBOL and JCL linters decouple individual syntax validations (Sequence Area boundaries, Area A/B division rules, Undefined Variables, JCL Continuation cards) into independent, reusable rule objects conforming to strict CobolRule and JclRule interfaces.',
-      'Open-Closed Principle (OCP): Core linting engines iterate over registered rule arrays (ALL_COBOL_RULES & ALL_JCL_RULES). Adding new syntax checks requires zero modifications to the core parser loop, enabling seamless extension.',
-      'Single Source of Truth Specs: Positional column numbers (Cols 1-6 Sequence, Col 7 Indicator, Cols 8-11 Area A, Cols 12-72 Area B), allowed clauses, and reserved mainframe words are centralized in standardized constants (COBOL_SPECS & JCL_SPECS).',
-      'Zero-Latency Client-Side Execution: Validation runs entirely in the browser runtime with localStorage persistence for progress tracking, guaranteeing code privacy and instant feedback.',
-    ],
-    features: [
-      'Instant In-Browser COBOL & JCL Syntax Validation',
-      'Interactive Split-Screen Markdown Tutorials',
-      'Monaco Editor with Retro Mainframe "Green Screen" Theme',
-      '100% Client-Side Privacy with Zero Server Dependencies',
-    ],
-    techStack: [
-      'React',
-      'TypeScript',
-      'Tanstack Start',
-      'Monaco Editor',
-      'Tailwind CSS',
-      'Shadcn UI',
-      'Strategy Design Pattern',
-    ],
-    image: '/projects/code3270.png',
-    demoLink: 'https://code3270.vercel.app/',
-    repoLink: 'https://github.com/elli1216/code3270',
-    category: category.PERSONAL,
-  },
-  {
     title: 'MergeMaster AI',
     position: 'Full Stack & AI Developer',
     theme:
@@ -200,6 +165,79 @@ export const PROJECT_DATA: ProjectItem[] = [
     demoLink: 'https://merge-master-ai.vercel.app',
     repoLink: 'https://github.com/elli1216/MergeMasterAI',
     category: category.HACKATHON,
+  },
+  {
+    title: 'QuickRoute',
+    position: 'Full Stack Developer',
+    collaborators: null,
+    problem:
+      'Frontend engineers and QA testers often get blocked waiting for backend APIs to be designed, deployed, or stabilized. Existing mocking tools (Postman Mock, WireMock, Mockoon) are either paid, complex, require account sign-ups, or demand tedious local installations, creating friction in fast-paced development cycles.',
+    description:
+      'An instant REST API mock server that lets developers visually construct endpoints, upload schema definitions, and receive live, callable HTTP URLs within seconds. Built with a Spring Boot reactive dispatcher backend and a TanStack Start edge frontend on Cloudflare Workers, supporting dynamic route registration, simulated network latency, and path variable substitution.',
+    architecture: [
+      'Spring Boot Dynamic Route Dispatcher: Custom Spring Boot request handler evaluating wildcard URI patterns (/mock/{mockId}/**), interpolating path variables (:id) into JSON response templates, and simulating network delays.',
+      'Dual-Environment Persistence Layer: Utilizes Spring Data JPA with PostgreSQL in production for persistent mock state and in-memory H2 database during development.',
+      'Automated Lifecycle & Rate Limiting: Built-in 7-day TTL expiration daemon and IP-based rate-limiting servlet filters to prevent resource exhaustion without requiring user logins.',
+      'Edge-Deployed Frontend on Cloudflare Workers: TanStack Start SSR/SPA client compiling TypeScript route configurations and validating JSON payloads with sub-second response times.',
+    ],
+    features: [
+      'Visual Route Builder for GET, POST, PUT, DELETE, & PATCH',
+      'Instant Callable Endpoints (https://host/mock/{id}/path)',
+      'Configurable Network Latency & Response Delay Simulation',
+      'Dynamic Path Variable Substitution (:id in Body)',
+      'Zero Sign-Up & 7-Day Automatic Mock TTL Expiry',
+      'Edge-Deployed on Cloudflare Workers with Spring Boot Core',
+    ],
+    techStack: [
+      'Spring Boot',
+      'Java',
+      'PostgreSQL',
+      'Hibernate',
+      'Tanstack Start',
+      'React',
+      'Cloudflare Workers',
+      'Docker',
+      'Tailwind CSS',
+      'Shadcn UI',
+    ],
+    image: '/projects/quickroute.png',
+    demoLink: 'https://quick-route.app/',
+    repoLink: 'https://github.com/elli1216/QuickRoute-Web',
+    category: category.PERSONAL,
+  },
+  {
+    title: 'Code3270',
+    position: 'Developer',
+    collaborators: null,
+    problem:
+      'Learning and validating enterprise COBOL and JCL traditionally requires heavy z/OS mainframe emulators, complex terminal setups (TN3270), and slow feedback cycles. This steep configuration barrier prevents developers and students from efficiently practicing mainframe programming in a zero-setup environment.',
+    description:
+      'A frictionless, web-based platform designed to help developers learn, write, and validate COBOL and Job Control Language (JCL) directly in the browser with zero emulators, accounts, or server dependencies. Features split-screen markdown tutorials, Monaco Editor integration with a retro "Green Screen" theme, and 100% client-side validation.',
+    architecture: [
+      'Strategy (Rule-Based) Design Pattern: Both COBOL and JCL linters decouple individual syntax validations (Sequence Area boundaries, Area A/B division rules, Undefined Variables, JCL Continuation cards) into independent, reusable rule objects conforming to strict CobolRule and JclRule interfaces.',
+      'Open-Closed Principle (OCP): Core linting engines iterate over registered rule arrays (ALL_COBOL_RULES & ALL_JCL_RULES). Adding new syntax checks requires zero modifications to the core parser loop, enabling seamless extension.',
+      'Single Source of Truth Specs: Positional column numbers (Cols 1-6 Sequence, Col 7 Indicator, Cols 8-11 Area A, Cols 12-72 Area B), allowed clauses, and reserved mainframe words are centralized in standardized constants (COBOL_SPECS & JCL_SPECS).',
+      'Zero-Latency Client-Side Execution: Validation runs entirely in the browser runtime with localStorage persistence for progress tracking, guaranteeing code privacy and instant feedback.',
+    ],
+    features: [
+      'Instant In-Browser COBOL & JCL Syntax Validation',
+      'Interactive Split-Screen Markdown Tutorials',
+      'Monaco Editor with Retro Mainframe "Green Screen" Theme',
+      '100% Client-Side Privacy with Zero Server Dependencies',
+    ],
+    techStack: [
+      'React',
+      'TypeScript',
+      'Tanstack Start',
+      'Monaco Editor',
+      'Tailwind CSS',
+      'Shadcn UI',
+      'Strategy Design Pattern',
+    ],
+    image: '/projects/code3270.png',
+    demoLink: 'https://code3270.vercel.app/',
+    repoLink: 'https://github.com/elli1216/code3270',
+    category: category.PERSONAL,
   },
   {
     title: 'AstriaAI',
@@ -248,7 +286,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: 'WhatsApp AI Notification Router',
-    position: 'AI Developer & Pipeline Architect',
+    position: 'AI Developer',
     hackathonTitle: 'HackerRank Orchestrate 24-hour Hackathon',
     collaborators: null,
     placement: '401st Place',
@@ -294,7 +332,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: 'PlotWeaver AI',
-    position: 'Full Stack Lead & Frontend Architect',
+    position: 'Full Stack Lead',
     hackathonTitle: 'IBM AI Builders Challenge (July Edition)',
     theme:
       "AI is transforming how people create content, tell stories, design experiences, and bring ideas to life. Creative industries are driven by imagination and expression, but the creative process is often constrained by time-consuming production workflows, technical complexity, limited access to advanced tools, and challenges turning ideas into finished outputs quickly. As demand for digital content continues to grow, creators are expected to produce more, faster, and across multiple formats than ever before. Your challenge is to build AI-powered tools that transform how creative work is imagined, produced, and experienced. Whether you're creating AI creative partners, storytelling tools, multimodal experiences, creative ideation platforms, or personalized creative assistants, your solution should demonstrate how AI can expand creative potential and redefine creative workflows.",
@@ -348,7 +386,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: 'EntityForge',
-    position: 'Frontend & CodeGen Architect',
+    position: 'Developer',
     collaborators: null,
     problem:
       'Setting up a Spring Boot backend with JPA/Hibernate is tedious, repetitive, and error-prone. Developers face friction manually translating Entity Relationship Diagrams (ERDs) into compilable Java classes, correctly configuring complex relational mappings (@OneToMany, @ManyToOne, @JoinColumn), and writing matching Flyway DDL migration scripts.',
@@ -385,47 +423,8 @@ export const PROJECT_DATA: ProjectItem[] = [
     category: category.PERSONAL,
   },
   {
-    title: 'QuickRoute',
-    position: 'Full Stack Engineer & Backend Architect',
-    collaborators: null,
-    problem:
-      'Frontend engineers and QA testers often get blocked waiting for backend APIs to be designed, deployed, or stabilized. Existing mocking tools (Postman Mock, WireMock, Mockoon) are either paid, complex, require account sign-ups, or demand tedious local installations, creating friction in fast-paced development cycles.',
-    description:
-      'An instant REST API mock server that lets developers visually construct endpoints, upload schema definitions, and receive live, callable HTTP URLs within seconds. Built with a Spring Boot reactive dispatcher backend and a TanStack Start edge frontend on Cloudflare Workers, supporting dynamic route registration, simulated network latency, and path variable substitution.',
-    architecture: [
-      'Spring Boot Dynamic Route Dispatcher: Custom Spring Boot request handler evaluating wildcard URI patterns (/mock/{mockId}/**), interpolating path variables (:id) into JSON response templates, and simulating network delays.',
-      'Dual-Environment Persistence Layer: Utilizes Spring Data JPA with PostgreSQL in production for persistent mock state and in-memory H2 database during development.',
-      'Automated Lifecycle & Rate Limiting: Built-in 7-day TTL expiration daemon and IP-based rate-limiting servlet filters to prevent resource exhaustion without requiring user logins.',
-      'Edge-Deployed Frontend on Cloudflare Workers: TanStack Start SSR/SPA client compiling TypeScript route configurations and validating JSON payloads with sub-second response times.',
-    ],
-    features: [
-      'Visual Route Builder for GET, POST, PUT, DELETE, & PATCH',
-      'Instant Callable Endpoints (https://host/mock/{id}/path)',
-      'Configurable Network Latency & Response Delay Simulation',
-      'Dynamic Path Variable Substitution (:id in Body)',
-      'Zero Sign-Up & 7-Day Automatic Mock TTL Expiry',
-      'Edge-Deployed on Cloudflare Workers with Spring Boot Core',
-    ],
-    techStack: [
-      'Spring Boot',
-      'Java',
-      'PostgreSQL',
-      'Hibernate',
-      'Tanstack Start',
-      'React',
-      'Cloudflare Workers',
-      'Docker',
-      'Tailwind CSS',
-      'Shadcn UI',
-    ],
-    image: '/projects/quickroute.png',
-    demoLink: 'https://quick-route.app/',
-    repoLink: 'https://github.com/elli1216/QuickRoute-Web',
-    category: category.PERSONAL,
-  },
-  {
     title: 'BulSU OSAS Grievance and Response Management Portal',
-    position: 'Full Stack Lead & Frontend Architect',
+    position: 'Full Stack Developer',
     collaborators: [
       {
         name: 'Mico Cerbito',
@@ -480,7 +479,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: 'STC Performing Arts Center Website',
-    position: 'Full Stack Lead & Freelance Engineer',
+    position: 'Full Stack Developer',
     collaborators: null,
     problem:
       'The studio managed its class registrations, coach bookings, studio rentals, and payment collections through manual Google Forms and direct messaging. This led to capacity overbooking, manual payment verification bottlenecks, payment reconciliation errors, and difficult student schedule coordination as the business expanded.',
@@ -522,7 +521,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: 'Tic-a-Pic Photobooth',
-    position: 'Full Stack Lead & Creative Developer',
+    position: 'Full Stack Developer',
     collaborators: [
       {
         name: 'Paolo Angelo',
@@ -565,7 +564,7 @@ export const PROJECT_DATA: ProjectItem[] = [
   },
   {
     title: 'Jobinator',
-    position: 'Full Stack Engineer',
+    position: 'Full Stack Developer',
     collaborators: null,
     problem:
       'Managing dozens of active job applications, recruiter communications, interview stages, and salary offers across fragmented spreadsheets and disparate job boards is messy and error-prone, making it easy to miss follow-ups and deadlines during the recruitment cycle.',
@@ -718,31 +717,27 @@ export const SKILL_DATA: SkillItem[] = [
   { name: 'Tailwind CSS', category: 'frontend', icon: 'tailwindcss', render: true },
   { name: 'NextJS', category: 'frontend', icon: 'nextjs2', render: true },
   { name: 'Tanstack', category: 'frontend', icon: 'tanstack2', render: true },
-  { name: 'JavaScript', category: 'frontend', icon: 'js' },
   { name: 'TypeScript', category: 'frontend', icon: 'typescript', render: true },
-  { name: 'HTML5', category: 'frontend', icon: 'html5' },
-  { name: 'CSS3', category: 'frontend', icon: 'css3' },
-  { name: 'SQL', category: 'backend', icon: 'mysql' },
   { name: 'PostgreSQL', category: 'backend', icon: 'postgresql', render: true },
-  { name: 'SQLite', category: 'backend', icon: 'sqlite' },
-  { name: 'JCL', category: 'backend', icon: '' },
-  { name: 'ExpressJS', category: 'backend', icon: 'expressjs' },
   { name: 'NodeJS', category: 'backend', icon: 'nodejs', render: true },
   { name: 'Docker', category: 'tools', icon: 'docker', render: true },
   { name: 'Git', category: 'tools', icon: 'git', render: true },
+  { name: 'JavaScript', category: 'frontend', icon: 'js' },
+  { name: 'HTML5', category: 'frontend', icon: 'html5' },
+  { name: 'CSS3', category: 'frontend', icon: 'css3' },
+  { name: 'SQL', category: 'backend', icon: 'mysql' },
+  { name: 'JCL', category: 'backend', icon: '' },
+  { name: 'ExpressJS', category: 'backend', icon: 'expressjs' },
   { name: 'GitHub', category: 'tools', icon: 'github' },
   { name: 'Bash', category: 'tools', icon: 'bash' },
-  { name: 'Supabase', category: 'tools', icon: 'supabase' },
   { name: 'Python', category: 'backend', icon: 'python' },
   { name: 'Prisma', category: 'backend', icon: 'prisma' },
   { name: 'OpenAI', category: 'tools', icon: 'openai' },
   { name: 'AWS', category: 'tools', icon: 'aws' },
-  { name: 'Azure', category: 'tools', icon: 'azure' },
   { name: 'Cloudfare', category: 'tools', icon: 'cloudfare' },
   { name: 'Langchain', category: 'tools', icon: 'langchain' },
   { name: 'Gemini', category: 'tools', icon: 'gemini' },
   { name: 'Claude', category: 'tools', icon: 'claude' },
-  { name: 'Opencode', category: 'tools', icon: 'opencode' },
   { name: 'Vite', category: 'frontend', icon: 'vitejs' },
 ];
 
@@ -752,12 +747,6 @@ export const certificates = [
     issuer: 'DataCamp',
     alt: 'AWS Cloud Practitioner (CLF-C02)',
     href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/37aa7cab72a12269629abcc4c662ac4af70fbbc1?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
-  },
-  {
-    src: '/certificates/ms-azure.png',
-    issuer: 'DataCamp',
-    alt: 'Microsoft Azure Developer Associate (AZ-204)',
-    href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/8a4506c24dd5ca85734bb78dd40fbe0e299f852d?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
   },
   {
     src: '/certificates/assocai.png',
@@ -778,6 +767,18 @@ export const certificates = [
     href: 'https://www.coursera.org/account/accomplishments/specialization/certificate/GTA3SGF8S3NV',
   },
   {
+    src: '/certificates/IBMZALLSTAR.jpg',
+    issuer: 'IBM via Credly',
+    alt: 'All Star Badge - IBM Z Xplore',
+    href: 'https://www.credly.com/badges/9c95a33b-7c50-434b-b7eb-eba86e1c1c0e/linked_in_profile',
+  },
+  {
+    src: '/certificates/EnterpriseCOBOLProgrammingwithVSCode.png',
+    issuer: 'IBM via Credly',
+    alt: 'Enterprise COBOL Programming with VSCode',
+    href: 'https://www.credly.com/badges/9f1d7099-11ed-4ddd-af8f-c296f22c7d4a/linked_in?t=tf4cc7',
+  },
+  {
     src: '/certificates/advocate.jpg',
     issuer: 'IBM',
     alt: 'IBM Z Advocate',
@@ -790,22 +791,10 @@ export const certificates = [
     href: 'https://www.codecademy.com/profiles/degf/certificates/2624ed9b49bb4d5c994983877e5263f0',
   },
   {
-    src: '/certificates/IBMZALLSTAR.jpg',
-    issuer: 'IBM via Credly',
-    alt: 'All Star Badge - IBM Z Xplore',
-    href: 'https://www.credly.com/badges/9c95a33b-7c50-434b-b7eb-eba86e1c1c0e/linked_in_profile',
-  },
-  {
     src: '/certificates/rest_api-1.png',
     issuer: 'HackerRank',
     alt: 'Rest API',
     href: 'https://www.hackerrank.com/certificates/1135784070d0',
-  },
-  {
-    src: '/certificates/EnterpriseCOBOLProgrammingwithVSCode.png',
-    issuer: 'IBM via Credly',
-    alt: 'Enterprise COBOL Programming with VSCode',
-    href: 'https://www.credly.com/badges/9f1d7099-11ed-4ddd-af8f-c296f22c7d4a/linked_in?t=tf4cc7',
   },
   {
     src: '/certificates/springbootfundamentals.png',
