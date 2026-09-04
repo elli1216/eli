@@ -755,6 +755,12 @@ export const certificates = [
     href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/185ae827af3fb597750701fb515e41c0c01cff74',
   },
   {
+    src: '/certificates/dockerk8.png',
+    issuer: 'DataCamp',
+    alt: 'Containerization and Virtualization with Docker and Kubernetes',
+    href: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/bb778aa8f1e1e41952d9f7f335fdc69bd8d040f6?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa',
+  },
+  {
     src: '/certificates/javadev-1.png',
     issuer: 'DataCamp',
     alt: 'Java Developer',
