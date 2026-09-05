@@ -94,6 +94,7 @@ export const TerminalEmulator: React.FC = () => {
                 key={cmd}
                 onClick={(e) => {
                   e.stopPropagation();
+                  input.addHistory(cmd);
                   void term.execute(cmd);
                 }}
                 className="cursor-target shrink-0 px-2.5 py-1 rounded-md bg-muted/40 border border-border/50 text-[10px] font-mono text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"

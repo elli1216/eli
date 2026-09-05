@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import type { Registry, Command } from './commands/types';
 import { tokenize } from './parser';
 
@@ -17,6 +17,10 @@ export interface TerminalInputApi {
   setValue(v: string): void;
   onKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void;
   submit(): void;
+  /** Add a command to the arrow-key history without executing it here. */
+  addHistory(cmd: string): void;
+  /** Live autocomplete candidates for the current draft input. */
+  suggestions: string[];
 }
 
 /**
@@ -38,6 +42,29 @@ export function useTerminalInput({ registry, commands, onSubmit, onHint }: Optio
     setCursor(-1);
     completionIndex.current = -1;
   }, [value, onSubmit]);
+
+  const addHistory = useCallback((cmd: string) => {
+    const v = cmd.trim();
+    if (!v) return;
+    history.current = [...history.current, v];
+  }, []);
+
+  // Live autocomplete: match command names + aliases against the current
+  // single-token draft. Hidden once it resolves to an exact known command.
+  const suggestions = useMemo(() => {
+    const trimmed = value.trim();
+    if (!trimmed || /\s/.test(trimmed)) return [];
+    const lower = trimmed.toLowerCase();
+    const names = new Set<string>();
+    for (const c of commands()) {
+      if (c.name.toLowerCase().startsWith(lower)) names.add(c.name);
+      for (const a of c.aliases ?? []) {
+        if (a.toLowerCase().startsWith(lower)) names.add(a);
+      }
+    }
+    if (names.size === 0 || registry().has(lower)) return [];
+    return [...names].sort();
+  }, [value, commands, registry]);
 
   const completeToken = useCallback(
     (token: string) => {
@@ -132,5 +159,5 @@ export function useTerminalInput({ registry, commands, onSubmit, onHint }: Optio
     [cursor, submit, onTab],
   );
 
-  return { value, setValue, onKeyDown, submit };
+  return { value, setValue, onKeyDown, submit, addHistory, suggestions };
 }

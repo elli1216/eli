@@ -152,10 +152,7 @@ const help2: Command = {
       </pre>
     );
     ctx.spacer();
-    ctx.push(
-      'TIP: run "ls" to see files, then "cat <file>" or "more <file>" to read them.',
-      'muted'
-    );
+    ctx.push('Use up/down arrows for history and Tab for completion.', 'muted');
   },
 };
 
